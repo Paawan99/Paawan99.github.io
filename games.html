@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Games — Paawan Shah</title>
+  <meta name="description" content="Play fun mini-games on Paawan Shah's portfolio — Snake, 2048, Memory Match, and Typing Speed Test." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #16161a;
+      --bg-card-hover: #1c1c21;
+      --text-primary: #ececf1;
+      --text-secondary: #8b8b96;
+      --text-muted: #56565e;
+      --accent: #64ffda;
+      --accent-dim: rgba(100, 255, 218, 0.1);
+      --accent-glow: rgba(100, 255, 218, 0.15);
+      --accent-secondary: #7c5cfc;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 255, 255, 0.12);
+      --gradient-1: linear-gradient(135deg, #64ffda 0%, #7c5cfc 100%);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'General Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: var(--bg-primary); }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grid background */
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.4; pointer-events: none; z-index: -1;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 10, 11, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-secondary); transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-link-num { color: var(--accent); margin-right: 0.3rem; }
+
+    /* Page Header */
+    .page-header {
+      padding: 8rem 3rem 3rem;
+      max-width: 1400px; margin: 0 auto;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .page-header p {
+      color: var(--text-secondary); font-size: 1.1rem;
+      max-width: 600px; margin: 0 auto;
+    }
+
+    /* Games Grid */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      padding: 3rem;
+      max-width: 1400px; margin: 0 auto;
+    }
+
+    .game-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.4s var(--transition);
+    }
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .game-header {
+      padding: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .game-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700;
+    }
+    .game-score {
+      font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--accent);
+    }
+    .game-body { padding: 1rem; display: flex; justify-content: center; align-items: center; }
+    .game-controls {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 0.8rem; justify-content: center;
+    }
+
+    .btn {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.7rem 1.5rem;
+      border: 1px solid var(--accent); color: var(--accent);
+      background: transparent; cursor: pointer;
+      transition: all 0.3s ease; border-radius: 4px;
+    }
+    .btn:hover { background: var(--accent); color: var(--bg-primary); }
+
+    /* ========== SNAKE GAME ========== */
+    #snakeCanvas {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* ========== 2048 GAME ========== */
+    .game-2048 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px; padding: 8px;
+      background: #1a1a2e;
+      border-radius: 8px;
+      width: 320px; height: 320px;
+      touch-action: none;
+    }
+    .tile-2048 {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800; border-radius: 6px;
+      font-size: 1.4rem;
+      background: #2a2a3e;
+      color: var(--text-primary);
+      transition: all 0.15s ease;
+    }
+    .tile-2048[data-value="2"] { background: #1e3a5f; color: #64ffda; }
+    .tile-2048[data-value="4"] { background: #1e4d5f; color: #64ffda; }
+    .tile-2048[data-value="8"] { background: #2d6a4f; color: #fff; }
+    .tile-2048[data-value="16"] { background: #40916c; color: #fff; }
+    .tile-2048[data-value="32"] { background: #52b788; color: #0a0a0b; }
+    .tile-2048[data-value="64"] { background: #64ffda; color: #0a0a0b; }
+    .tile-2048[data-value="128"] { background: #7c5cfc; color: #fff; font-size: 1.2rem; }
+    .tile-2048[data-value="256"] { background: #9b5de5; color: #fff; font-size: 1.2rem; }
+    .tile-2048[data-value="512"] { background: #f15bb5; color: #fff; font-size: 1.2rem; }
+    .tile-2048[data-value="1024"] { background: #fee440; color: #0a0a0b; font-size: 1rem; }
+    .tile-2048[data-value="2048"] { background: linear-gradient(135deg, #64ffda, #7c5cfc); color: #0a0a0b; font-size: 1rem; }
+
+    /* ========== MEMORY MATCH ========== */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px; width: 320px;
+    }
+    .memory-card {
+      aspect-ratio: 1;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .memory-card:hover { border-color: var(--accent); transform: scale(1.05); }
+    .memory-card.flipped {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }
+    .memory-card.matched {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      opacity: 0.7;
+    }
+    .memory-card .card-front { display: none; }
+    .memory-card .card-back {
+      font-family: var(--font-display);
+      color: var(--accent); font-size: 1.5rem; font-weight: 800;
+    }
+    .memory-card.flipped .card-front { display: block; }
+    .memory-card.flipped .card-back { display: none; }
+
+    /* ========== TYPING TEST ========== */
+    .typing-container { width: 100%; max-width: 500px; padding: 0 1rem; }
+    .typing-text {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 2;
+      background: var(--bg-secondary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      min-height: 100px;
+    }
+    .typing-text .correct { color: var(--accent); }
+    .typing-text .incorrect { color: #ff6b6b; text-decoration: underline; }
+    .typing-text .current { background: var(--accent-dim); border-bottom: 2px solid var(--accent); }
+    .typing-text .remaining { color: var(--text-muted); }
+
+    .typing-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .typing-input:focus { border-color: var(--accent); }
+
+    .typing-stats {
+      display: flex; gap: 1.5rem; margin-top: 1rem;
+      justify-content: center;
+    }
+    .typing-stat {
+      text-align: center;
+    }
+    .typing-stat-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 800;
+      color: var(--accent);
+    }
+    .typing-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem; text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 30px; height: 20px;
+      position: relative; z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block; width: 100%; height: 2px;
+      background: var(--text-primary);
+      position: absolute; left: 0; transition: all 0.3s ease;
+    }
+    .menu-toggle span:nth-child(1) { top: 0; }
+    .menu-toggle span:nth-child(2) { top: 9px; }
+    .menu-toggle span:nth-child(3) { top: 18px; }
+    .menu-toggle.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links {
+        position: fixed; inset: 0;
+        background: rgba(10, 10, 11, 0.97);
+        flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.5s var(--transition);
+      }
+      .nav-links.open { transform: translateX(0); }
+      .menu-toggle { display: block; }
+      .page-header { padding: 7rem 1.5rem 2rem; }
+      .games-grid { padding: 1.5rem; grid-template-columns: 1fr; }
+      .game-2048 { width: 280px; height: 280px; }
+      .memory-grid { width: 280px; }
+      .tile-2048 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">paawan<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><span class="nav-link-num">00.</span>Home</a></li>
+      <li><a href="games.html"><span class="nav-link-num">01.</span>Games</a></li>
+      <li><a href="credit-card-finder.html"><span class="nav-link-num">02.</span>CC Finder</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-header">
+    <h1>Mini Games</h1>
+    <p>Take a break and play some games. Use arrow keys or swipe on mobile!</p>
+  </div>
+
+  <div class="games-grid">
+
+    <!-- ========== SNAKE ========== -->
+    <div class="game-card">
+      <div class="game-header">
+        <h2>Snake</h2>
+        <div class="game-score">Score: <span id="snakeScore">0</span></div>
+      </div>
+      <div class="game-body">
+        <canvas id="snakeCanvas" width="320" height="320"></canvas>
+      </div>
+      <div class="game-controls">
+        <button class="btn" onclick="startSnake()">New Game</button>
+      </div>
+    </div>
+
+    <!-- ========== 2048 ========== -->
+    <div class="game-card">
+      <div class="game-header">
+        <h2>2048</h2>
+        <div class="game-score">Score: <span id="score2048">0</span></div>
+      </div>
+      <div class="game-body">
+        <div class="game-2048" id="game2048"></div>
+      </div>
+      <div class="game-controls">
+        <button class="btn" onclick="start2048()">New Game</button>
+      </div>
+    </div>
+
+    <!-- ========== MEMORY MATCH ========== -->
+    <div class="game-card">
+      <div class="game-header">
+        <h2>Memory Match</h2>
+        <div class="game-score">Moves: <span id="memoryMoves">0</span></div>
+      </div>
+      <div class="game-body">
+        <div class="memory-grid" id="memoryGrid"></div>
+      </div>
+      <div class="game-controls">
+        <button class="btn" onclick="startMemory()">New Game</button>
+      </div>
+    </div>
+
+    <!-- ========== TYPING TEST ========== -->
+    <div class="game-card">
+      <div class="game-header">
+        <h2>Typing Speed</h2>
+        <div class="game-score">Best: <span id="typingBest">--</span> WPM</div>
+      </div>
+      <div class="game-body">
+        <div class="typing-container">
+          <div class="typing-text" id="typingText"></div>
+          <input type="text" class="typing-input" id="typingInput" placeholder="Start typing here..." autocomplete="off" />
+          <div class="typing-stats">
+            <div class="typing-stat">
+              <div class="typing-stat-value" id="typingWPM">0</div>
+              <div class="typing-stat-label">WPM</div>
+            </div>
+            <div class="typing-stat">
+              <div class="typing-stat-value" id="typingAcc">100</div>
+              <div class="typing-stat-label">Accuracy %</div>
+            </div>
+            <div class="typing-stat">
+              <div class="typing-stat-value" id="typingTime">60</div>
+              <div class="typing-stat-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-controls">
+        <button class="btn" onclick="startTyping()">New Test</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><a href="index.html" style="color:var(--accent);">&larr; Back to Portfolio</a> &nbsp;|&nbsp; Designed & Built by Paawan Shah &copy; 2026</p>
+  </footer>
+
+  <script>
+    // === Mobile Menu ===
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // =============================================
+    //  SNAKE GAME
+    // =============================================
+    const snakeCanvas = document.getElementById('snakeCanvas');
+    const snakeCtx = snakeCanvas.getContext('2d');
+    const GRID = 20;
+    const TILE = snakeCanvas.width / GRID;
+    let snake, food, direction, nextDir, snakeInterval, snakeRunning;
+
+    function startSnake() {
+      snake = [{x: 10, y: 10}];
+      direction = {x: 1, y: 0};
+      nextDir = {x: 1, y: 0};
+      placeFood();
+      document.getElementById('snakeScore').textContent = '0';
+      snakeRunning = true;
+      if (snakeInterval) clearInterval(snakeInterval);
+      snakeInterval = setInterval(updateSnake, 120);
+    }
+
+    function placeFood() {
+      do {
+        food = {x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID)};
+      } while (snake.some(s => s.x === food.x && s.y === food.y));
+    }
+
+    function updateSnake() {
+      if (!snakeRunning) return;
+      direction = {...nextDir};
+      const head = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+
+      // Wall wrap
+      if (head.x < 0) head.x = GRID - 1;
+      if (head.x >= GRID) head.x = 0;
+      if (head.y < 0) head.y = GRID - 1;
+      if (head.y >= GRID) head.y = 0;
+
+      // Self collision
+      if (snake.some(s => s.x === head.x && s.y === head.y)) {
+        snakeRunning = false;
+        clearInterval(snakeInterval);
+        drawSnake();
+        snakeCtx.fillStyle = 'rgba(10,10,11,0.7)';
+        snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+        snakeCtx.fillStyle = '#64ffda';
+        snakeCtx.font = '800 24px Syne, sans-serif';
+        snakeCtx.textAlign = 'center';
+        snakeCtx.fillText('GAME OVER', snakeCanvas.width/2, snakeCanvas.height/2);
+        snakeCtx.font = '14px JetBrains Mono';
+        snakeCtx.fillStyle = '#8b8b96';
+        snakeCtx.fillText('Click "New Game" to play again', snakeCanvas.width/2, snakeCanvas.height/2 + 30);
+        return;
+      }
+
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        document.getElementById('snakeScore').textContent = snake.length - 1;
+        placeFood();
+      } else {
+        snake.pop();
+      }
+      drawSnake();
+    }
+
+    function drawSnake() {
+      snakeCtx.fillStyle = '#111113';
+      snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+
+      // Grid lines
+      snakeCtx.strokeStyle = 'rgba(255,255,255,0.03)';
+      for (let i = 0; i <= GRID; i++) {
+        snakeCtx.beginPath();
+        snakeCtx.moveTo(i * TILE, 0);
+        snakeCtx.lineTo(i * TILE, snakeCanvas.height);
+        snakeCtx.stroke();
+        snakeCtx.beginPath();
+        snakeCtx.moveTo(0, i * TILE);
+        snakeCtx.lineTo(snakeCanvas.width, i * TILE);
+        snakeCtx.stroke();
+      }
+
+      // Food
+      snakeCtx.fillStyle = '#ff6b6b';
+      snakeCtx.beginPath();
+      snakeCtx.arc(food.x * TILE + TILE/2, food.y * TILE + TILE/2, TILE/2 - 2, 0, Math.PI * 2);
+      snakeCtx.fill();
+
+      // Snake
+      snake.forEach((s, i) => {
+        const alpha = 1 - (i / snake.length) * 0.5;
+        snakeCtx.fillStyle = i === 0 ? '#64ffda' : `rgba(100,255,218,${alpha})`;
+        snakeCtx.fillRect(s.x * TILE + 1, s.y * TILE + 1, TILE - 2, TILE - 2);
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!snakeRunning) return;
+      const keys = {ArrowUp: {x:0,y:-1}, ArrowDown: {x:0,y:1}, ArrowLeft: {x:-1,y:0}, ArrowRight: {x:1,y:0}};
+      const nd = keys[e.key];
+      if (nd && !(nd.x === -direction.x && nd.y === -direction.y)) {
+        nextDir = nd;
+        e.preventDefault();
+      }
+    });
+
+    // Touch controls for Snake
+    let touchStartX, touchStartY;
+    snakeCanvas.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+    snakeCanvas.addEventListener('touchend', (e) => {
+      if (!snakeRunning) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        const nd = dx > 0 ? {x:1,y:0} : {x:-1,y:0};
+        if (!(nd.x === -direction.x)) nextDir = nd;
+      } else {
+        const nd = dy > 0 ? {x:0,y:1} : {x:0,y:-1};
+        if (!(nd.y === -direction.y)) nextDir = nd;
+      }
+    });
+
+    // Init snake display
+    startSnake();
+    clearInterval(snakeInterval);
+    snakeRunning = false;
+    drawSnake();
+
+
+    // =============================================
+    //  2048 GAME
+    // =============================================
+    let grid2048, score2048;
+
+    function start2048() {
+      grid2048 = Array(16).fill(0);
+      score2048 = 0;
+      addTile(); addTile();
+      render2048();
+      document.getElementById('score2048').textContent = '0';
+    }
+
+    function addTile() {
+      const empty = grid2048.reduce((a, v, i) => v === 0 ? [...a, i] : a, []);
+      if (empty.length === 0) return;
+      const idx = empty[Math.floor(Math.random() * empty.length)];
+      grid2048[idx] = Math.random() < 0.9 ? 2 : 4;
+    }
+
+    function render2048() {
+      const container = document.getElementById('game2048');
+      container.innerHTML = '';
+      grid2048.forEach(val => {
+        const tile = document.createElement('div');
+        tile.className = 'tile-2048';
+        tile.dataset.value = val;
+        tile.textContent = val || '';
+        container.appendChild(tile);
+      });
+    }
+
+    function slide(row) {
+      let arr = row.filter(v => v !== 0);
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] === arr[i+1]) {
+          arr[i] *= 2;
+          score2048 += arr[i];
+          arr.splice(i+1, 1);
+        }
+      }
+      while (arr.length < 4) arr.push(0);
+      return arr;
+    }
+
+    function move2048(dir) {
+      let moved = false;
+      const old = [...grid2048];
+
+      if (dir === 'left' || dir === 'right') {
+        for (let r = 0; r < 4; r++) {
+          let row = grid2048.slice(r*4, r*4+4);
+          if (dir === 'right') row.reverse();
+          row = slide(row);
+          if (dir === 'right') row.reverse();
+          for (let c = 0; c < 4; c++) grid2048[r*4+c] = row[c];
+        }
+      } else {
+        for (let c = 0; c < 4; c++) {
+          let col = [grid2048[c], grid2048[c+4], grid2048[c+8], grid2048[c+12]];
+          if (dir === 'down') col.reverse();
+          col = slide(col);
+          if (dir === 'down') col.reverse();
+          grid2048[c] = col[0]; grid2048[c+4] = col[1];
+          grid2048[c+8] = col[2]; grid2048[c+12] = col[3];
+        }
+      }
+
+      moved = old.some((v, i) => v !== grid2048[i]);
+      if (moved) {
+        addTile();
+        document.getElementById('score2048').textContent = score2048;
+      }
+      render2048();
+
+      // Check game over
+      if (grid2048.every(v => v !== 0)) {
+        let canMove = false;
+        for (let r = 0; r < 4 && !canMove; r++) {
+          for (let c = 0; c < 4 && !canMove; c++) {
+            const i = r*4+c;
+            if (c < 3 && grid2048[i] === grid2048[i+1]) canMove = true;
+            if (r < 3 && grid2048[i] === grid2048[i+4]) canMove = true;
+          }
+        }
+        if (!canMove) {
+          setTimeout(() => alert('Game Over! Score: ' + score2048), 200);
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const map = {ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right'};
+      if (map[e.key] && grid2048) { move2048(map[e.key]); e.preventDefault(); }
+    });
+
+    // Touch for 2048
+    const game2048El = document.getElementById('game2048');
+    let t2StartX, t2StartY;
+    game2048El.addEventListener('touchstart', (e) => {
+      t2StartX = e.touches[0].clientX;
+      t2StartY = e.touches[0].clientY;
+    });
+    game2048El.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - t2StartX;
+      const dy = e.changedTouches[0].clientY - t2StartY;
+      if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        move2048(dx > 0 ? 'right' : 'left');
+      } else {
+        move2048(dy > 0 ? 'down' : 'up');
+      }
+    });
+
+    start2048();
+
+
+    // =============================================
+    //  MEMORY MATCH
+    // =============================================
+    const memoryEmojis = ['💰','📊','📈','💳','🏦','💎','🎯','📱'];
+    let memoryCards, memoryFlipped, memoryMatched, memoryMoves, memoryLocked;
+
+    function startMemory() {
+      const pairs = [...memoryEmojis, ...memoryEmojis];
+      memoryCards = pairs.sort(() => Math.random() - 0.5);
+      memoryFlipped = []; memoryMatched = []; memoryMoves = 0; memoryLocked = false;
+      document.getElementById('memoryMoves').textContent = '0';
+      renderMemory();
+    }
+
+    function renderMemory() {
+      const grid = document.getElementById('memoryGrid');
+      grid.innerHTML = '';
+      memoryCards.forEach((emoji, i) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        if (memoryFlipped.includes(i) || memoryMatched.includes(i)) card.classList.add('flipped');
+        if (memoryMatched.includes(i)) card.classList.add('matched');
+        card.innerHTML = `<span class="card-front">${emoji}</span><span class="card-back">?</span>`;
+        card.addEventListener('click', () => flipCard(i));
+        grid.appendChild(card);
+      });
+    }
+
+    function flipCard(i) {
+      if (memoryLocked || memoryFlipped.includes(i) || memoryMatched.includes(i)) return;
+      memoryFlipped.push(i);
+      renderMemory();
+
+      if (memoryFlipped.length === 2) {
+        memoryMoves++;
+        document.getElementById('memoryMoves').textContent = memoryMoves;
+        memoryLocked = true;
+        const [a, b] = memoryFlipped;
+
+        if (memoryCards[a] === memoryCards[b]) {
+          memoryMatched.push(a, b);
+          memoryFlipped = [];
+          memoryLocked = false;
+          renderMemory();
+          if (memoryMatched.length === memoryCards.length) {
+            setTimeout(() => alert('You won in ' + memoryMoves + ' moves!'), 300);
+          }
+        } else {
+          setTimeout(() => {
+            memoryFlipped = [];
+            memoryLocked = false;
+            renderMemory();
+          }, 800);
+        }
+      }
+    }
+
+    startMemory();
+
+
+    // =============================================
+    //  TYPING SPEED TEST
+    // =============================================
+    const typingSentences = [
+      "The quick brown fox jumps over the lazy dog near the river bank.",
+      "Financial analysis helps businesses make better decisions about their future investments.",
+      "Budget variance reports compare actual spending against projected forecasts for each quarter.",
+      "Cash flow management is critical for maintaining healthy business operations and growth.",
+      "Data visualization transforms complex numbers into clear actionable insights for stakeholders.",
+      "Profitability ratios measure how efficiently a company generates profit from its operations.",
+      "Working capital optimization ensures a business can meet its short term financial obligations.",
+      "Strategic forecasting uses historical data trends to predict future business performance accurately.",
+      "Excel pivot tables enable quick analysis of large datasets by summarizing key financial metrics.",
+      "Investment portfolio diversification reduces risk while maximizing potential long term returns."
+    ];
+
+    let typingText, typingStartTime, typingTimer, typingActive, typingBestWPM;
+
+    function startTyping() {
+      typingText = typingSentences[Math.floor(Math.random() * typingSentences.length)];
+      typingActive = false;
+      typingStartTime = null;
+      if (typingTimer) clearInterval(typingTimer);
+      document.getElementById('typingInput').value = '';
+      document.getElementById('typingInput').disabled = false;
+      document.getElementById('typingInput').focus();
+      document.getElementById('typingWPM').textContent = '0';
+      document.getElementById('typingAcc').textContent = '100';
+      document.getElementById('typingTime').textContent = '60';
+      renderTypingText('');
+    }
+
+    function renderTypingText(input) {
+      let html = '';
+      for (let i = 0; i < typingText.length; i++) {
+        if (i < input.length) {
+          html += input[i] === typingText[i]
+            ? `<span class="correct">${typingText[i]}</span>`
+            : `<span class="incorrect">${typingText[i]}</span>`;
+        } else if (i === input.length) {
+          html += `<span class="current">${typingText[i]}</span>`;
+        } else {
+          html += `<span class="remaining">${typingText[i]}</span>`;
+        }
+      }
+      document.getElementById('typingText').innerHTML = html;
+    }
+
+    document.getElementById('typingInput').addEventListener('input', (e) => {
+      const input = e.target.value;
+      if (!typingActive) {
+        typingActive = true;
+        typingStartTime = Date.now();
+        typingTimer = setInterval(() => {
+          const elapsed = Math.floor((Date.now() - typingStartTime) / 1000);
+          const remaining = Math.max(0, 60 - elapsed);
+          document.getElementById('typingTime').textContent = remaining;
+          if (remaining <= 0) {
+            clearInterval(typingTimer);
+            document.getElementById('typingInput').disabled = true;
+            typingActive = false;
+          }
+          // Update WPM
+          const words = input.split(' ').filter(w => w).length;
+          const minutes = elapsed / 60 || 1/60;
+          const wpm = Math.round(words / minutes);
+          document.getElementById('typingWPM').textContent = wpm;
+        }, 1000);
+      }
+
+      renderTypingText(input);
+
+      // Accuracy
+      let correct = 0;
+      for (let i = 0; i < input.length; i++) {
+        if (input[i] === typingText[i]) correct++;
+      }
+      const acc = input.length > 0 ? Math.round((correct / input.length) * 100) : 100;
+      document.getElementById('typingAcc').textContent = acc;
+
+      // WPM
+      const elapsed = (Date.now() - typingStartTime) / 1000;
+      const words = input.split(' ').filter(w => w).length;
+      const wpm = elapsed > 0 ? Math.round(words / (elapsed / 60)) : 0;
+      document.getElementById('typingWPM').textContent = wpm;
+
+      // Complete
+      if (input.length >= typingText.length) {
+        clearInterval(typingTimer);
+        document.getElementById('typingInput').disabled = true;
+        typingActive = false;
+        if (!typingBestWPM || wpm > typingBestWPM) {
+          typingBestWPM = wpm;
+          document.getElementById('typingBest').textContent = wpm;
+        }
+      }
+    });
+
+    startTyping();
+  </script>
+</body>
+</html>

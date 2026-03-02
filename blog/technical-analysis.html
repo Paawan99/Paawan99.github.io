@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Technical Analysis - Financial Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f9ff 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            font-size: 0.95em;
+            opacity: 0.95;
+            margin-top: 15px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #00bcd4;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .content h2 {
+            color: #0ea5e9;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #00bcd4;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 0.95em;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .chart-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .example-box {
+            background: #e0f2f1;
+            border-left: 4px solid #00bcd4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .example-box h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        .example-box p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        table th {
+            background: #0ea5e9;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f9ff;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .author-info strong {
+            color: #00796b;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content h2 {
+                font-size: 1.4em;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link" style="display: block; padding: 20px 30px 0;">← Back to Blog</a>
+
+        <div class="header">
+            <h1>Introduction to Technical Analysis</h1>
+            <div class="meta">Charts, Patterns, and Indicators—A Comprehensive Guide to Price-Based Analysis</div>
+        </div>
+
+        <div class="content">
+            <p><strong>Published:</strong> March 2026</p>
+
+            <h2>Introduction</h2>
+            <p>Technical analysis—the practice of predicting future price movements based on past price and volume data—remains one of the most debated methodologies in finance. Academics dismiss it as pseudo-science that violates the Efficient Market Hypothesis. Practitioners swear by its effectiveness. The truth, as is often the case, lies somewhere in between. Technical analysis is neither a crystal ball nor completely irrelevant. Rather, it's a framework for understanding market sentiment, identifying inflection points, and assessing the balance between supply and demand.</p>
+
+            <p>This comprehensive guide explores technical analysis through the lens of modern financial theory, examining its philosophical foundations, practical methodologies, and real-world applications to Canadian equities. By the end, you'll understand both the power and the limitations of technical approaches, and how to integrate them into a comprehensive investment framework.</p>
+
+            <h2>Foundational Concepts</h2>
+
+            <h3>Dow Theory: The Foundation of Technical Analysis</h3>
+            <p>Modern technical analysis traces its roots to Charles Dow, co-founder of Dow Jones & Company, whose observations in the early 1900s established principles still relevant today. Dow Theory rests on several key postulates:</p>
+
+            <ul>
+                <li><strong>The Market Discounts Everything:</strong> All available information—earnings, economic data, geopolitical events—is already reflected in current prices. Technical analysis operates on this principle, assuming that price action contains all relevant information.</li>
+                <li><strong>Markets Move in Trends:</strong> Price movements are not random; they follow identifiable trends that persist until something fundamentally changes. Identifying and trading in the direction of trends is the core of technical analysis.</li>
+                <li><strong>History Repeats:</strong> Human behavior and market psychology follow patterns. While never identical, these patterns recur frequently enough to offer predictive value.</li>
+                <li><strong>Volume Confirms Price:</strong> Price movements accompanied by rising volume are more significant than those occurring on light volume, suggesting institutional participation versus retail noise.</li>
+            </ul>
+
+            <h3>The Efficient Market Hypothesis Debate</h3>
+            <p>The Efficient Market Hypothesis (EMH), formalized by Eugene Fama, proposes that prices reflect all available information, making it impossible to consistently outperform the market through fundamental or technical analysis. In its weak form (used in CFA examinations), the EMH suggests historical prices contain no information useful for future prediction. This directly contradicts technical analysis.</p>
+
+            <p>However, EMH critics point out that markets aren't perfectly efficient—behavioral biases, information asymmetries, and transaction costs create opportunities. Technical analysis, from this perspective, exploits market inefficiencies driven by psychology and momentum. The evidence is mixed: some academic studies find technical indicators have predictive power, particularly in shorter time frames and less liquid markets, while others find the effects disappear after accounting for transaction costs and data mining bias.</p>
+
+            <p>The practical reality for institutional investors is that technical analysis is useful as one tool among many, not as a standalone investment philosophy. Using technical analysis to time entries and exits around fundamental positions enhances results; relying on it exclusively invites disaster.</p>
+
+            <h2>Chart Types and Price Visualization</h2>
+
+            <h3>Candlestick Charts</h3>
+            <p>The candlestick chart, developed in Japan in the 18th century for rice trading, has become the standard for technical analysis. Each candlestick represents a time period (daily, weekly, hourly, etc.) and displays four prices: open, high, low, and close.</p>
+
+            <ul>
+                <li><strong>The body (wick):</strong> Represents the range between open and close. A green body indicates closing above opening (bullish); red indicates closing below opening (bearish).</li>
+                <li><strong>Upper shadow:</strong> The line above the body shows the high price, indicating buyer attempts to push prices higher that failed to hold.</li>
+                <li><strong>Lower shadow:</strong> The line below the body shows the low price, indicating seller attempts that failed to hold prices down.</li>
+            </ul>
+
+            <p>Long upper shadows with small bodies suggest rejection of higher prices (bears winning intraday). Long lower shadows with small bodies suggest rejection of lower prices (buyers stepping in). This visual richness makes candlestick charts superior to simple line charts for technical analysis.</p>
+
+            <h3>Bar Charts and Line Charts</h3>
+            <p>Bar charts display the same OHLC data as candlesticks but use vertical lines with left/right ticks. They're equally informative but less intuitive for most traders. Line charts, connecting only closing prices, provide a cleaner view suitable for longer-term analysis but sacrifice the intraday volatility information that candlesticks capture.</p>
+
+            <h2>Support and Resistance Levels</h2>
+
+            <h3>Understanding Support and Resistance</h3>
+            <p>Support is a price level where buying interest has previously emerged, preventing prices from falling further. Resistance is a price level where selling pressure has previously emerged, preventing prices from rising further. These levels aren't mystical—they represent psychological thresholds and areas where previous traders have positions.</p>
+
+            <p>When price approaches support from above, investors who bought at support levels previously may be watching those levels to add if prices return. This buying interest prevents the price from falling further. Conversely, investors who sold at resistance levels are now profitable if the stock pulls back to that level, potentially selling again, creating resistance.</p>
+
+            <div class="example-box">
+                <h4>Real Example: Enbridge Support and Resistance</h4>
+                <p>Consider Enbridge (ENB) during 2021-2023. The stock established strong support around $45-47 CAD in early 2022 after a sharp decline from $55. Over the following months, whenever ENB declined toward $46-47, buyers emerged, pushing it back up. This level became a reliable support. Similarly, when ENB traded above $52-53, selling pressure emerged consistently, creating a resistance level. Technical traders recognized these levels and structured trading strategies around them—buying near support with stops below, selling near resistance with targets at support. This doesn't mean the levels are permanent (they can be broken), but they reflect meaningful market psychology and provide useful trading levels.</p>
+            </div>
+
+            <h3>Dynamic Support and Resistance: Trend Lines</h3>
+            <p>Beyond static price levels, support and resistance can be dynamic. An uptrend line connects successive low points, representing the floor of the trend. An effective uptrend line should "touch" at least two significant lows and ideally three or more. Each time price bounces off this line, it gains validity. When price eventually breaks below the trend line decisively (on volume), it signals a potential trend reversal.</p>
+
+            <p>Channel lines run parallel to trend lines, representing the ceiling of a trend. A stock in a strong uptrend might rise from support to resistance in a predictable channel, allowing traders to buy near the support line and sell near the resistance line with mechanical consistency.</p>
+
+            <h2>Trend Analysis: Identifying and Trading Trends</h2>
+
+            <h3>Uptrends, Downtrends, and Consolidation</h3>
+            <p>An uptrend is technically defined as a series of successively higher lows and higher highs. Each pullback fails to break the previous low (support holds), and each rally exceeds the previous high (resistance breaks). Downtrends exhibit the opposite: successively lower highs and lower lows.</p>
+
+            <p>Periods of consolidation—where prices oscillate sideways without clearly higher highs/lows or lower highs/lows—represent indecision. These periods often precede significant moves as the eventual breakdown from consolidation indicates which side (buyers or sellers) has won the battle for directional control.</p>
+
+            <h3>Trend Strength and Duration</h3>
+            <p>The angle of a trend line indicates its steepness and thus strength. A very steep uptrend is less sustainable than a moderate one because the rate of appreciation becomes unsustainable. Technical analysts often note that shallow trends tend to persist longer than steep ones. Similarly, the duration of a trend affects its likelihood of reversal—a trend that has persisted for months is more "mature" and faces higher reversal probability than one just beginning.</p>
+
+            <h2>Moving Averages: Smoothing Noise to Identify Trend</h2>
+
+            <h3>Simple Moving Averages (SMA)</h3>
+            <p>A simple moving average calculates the average closing price over a specified period. The 50-day SMA represents the average closing price over the past 50 trading days; the 200-day SMA covers approximately one year.</p>
+
+            <div class="formula">
+SMA_20 = (C1 + C2 + C3 + ... + C20) / 20
+
+Where C represents closing price
+            </div>
+
+            <p>Moving averages serve multiple functions. They smooth price data, reducing random noise and highlighting the underlying trend. A price consistently above its 200-day SMA suggests a long-term uptrend; consistent trading below suggests a downtrend. Traders also use the slope of the moving average—a steeply ascending SMA suggests strong uptrend momentum.</p>
+
+            <h3>Exponential Moving Averages (EMA)</h3>
+            <p>Exponential moving averages weight recent prices more heavily than older prices. A 20-day EMA gives more weight to the last 5 days' closes than to closes from 15-20 days ago. This makes EMAs more responsive to recent price changes than SMAs, causing them to curve more quickly when trends change.</p>
+
+            <p>For longer-term trend identification, SMAs (especially the 50 and 200-day) are preferred because they're less reactive to daily noise. For shorter-term trading, EMAs (especially the 12, 26, and 50-day) are often used because they respond faster to price changes.</p>
+
+            <h3>The Golden Cross and Death Cross</h3>
+            <p>The Golden Cross occurs when a shorter-term moving average (typically the 50-day) crosses above a longer-term one (typically the 200-day). This bullish signal is interpreted as confirmation that intermediate-term momentum has exceeded long-term momentum, suggesting an uptrend is establishing. The Death Cross, the opposite scenario (50-day crossing below 200-day), represents a bearish reversal signal.</p>
+
+            <p>These signals gained particular prominence after the 2008 financial crisis when academic studies found they had predictive power for equity markets. Many Canadian investors use Golden Cross signals to shift from defensive to growth allocations. However, these signals aren't infallible—they work well in trending markets but generate false signals during choppy, sideways markets.</p>
+
+            <div class="chart-container">
+                <canvas id="maChart"></canvas>
+            </div>
+            <div class="chart-caption">Figure 1: Moving Averages and Golden Cross - Price with 50-day (orange) and 200-day (blue) SMAs</div>
+
+            <h2>Momentum Indicators</h2>
+
+            <h3>Relative Strength Index (RSI)</h3>
+            <p>The Relative Strength Index, developed by J. Welles Wilder Jr., measures the magnitude of recent price changes to evaluate overbought or oversold conditions. RSI ranges from 0 to 100.</p>
+
+            <div class="formula">
+RSI = 100 - [100 / (1 + RS)]
+RS = Average gain over 14 periods / Average loss over 14 periods
+
+Typical interpretation:
+RSI > 70: Overbought (potential sell signal)
+RSI < 30: Oversold (potential buy signal)
+RSI 30-70: Neutral
+            </div>
+
+            <p>RSI is not a timing tool but rather an indicator of extreme momentum. When RSI exceeds 70, it means buyers have been particularly aggressive recently—but this doesn't mean the stock will immediately decline. Rather, it suggests the stock has moved far in short time, creating reversion risk. Conversely, RSI below 30 suggests sellers have been dominant, indicating a potential washout that could precede a bounce.</p>
+
+            <p>Important caveat: During strong uptrends, RSI can remain above 70 for extended periods without the stock declining. Novice traders often sell when RSI exceeds 70 in uptrends, only to watch the stock continue higher. Professional traders recognize that high RSI in uptrends is normal and look for RSI to fall below 70 after breaking above it as confirmation of correction.</p>
+
+            <h3>MACD (Moving Average Convergence Divergence)</h3>
+            <p>MACD, created by Gerald Appel, combines two moving averages to identify momentum and trend changes. MACD consists of three components:</p>
+
+            <ul>
+                <li><strong>MACD Line:</strong> The difference between the 12-day EMA and 26-day EMA</li>
+                <li><strong>Signal Line:</strong> A 9-day EMA of the MACD line</li>
+                <li><strong>Histogram:</strong> The difference between MACD and its signal line</li>
+            </ul>
+
+            <p>When MACD crosses above its signal line, it generates a bullish signal suggesting uptrend initiation or continuation. When MACD crosses below its signal line, it generates a bearish signal. The histogram visually represents these crossovers—positive histogram bars occur when MACD is above the signal line.</p>
+
+            <p>MACD also identifies momentum through divergences. A bearish divergence occurs when price reaches a new high but MACD fails to reach a corresponding new high—suggesting momentum is weakening despite higher prices. This often precedes reversals. Bullish divergences occur when price reaches new lows but MACD fails to reach new lows, suggesting buyers are building strength despite lower prices.</p>
+
+            <h2>Volume Analysis</h2>
+
+            <h3>Volume's Role in Technical Analysis</h3>
+            <p>Volume—the number of shares traded—validates price movements. A price breakout from resistance accompanied by volume double or triple the average is more significant than an identical price breakout on below-average volume. High volume suggests institutional participation and conviction; low volume suggests retail speculation.</p>
+
+            <p>Key volume observations include:</p>
+            <ul>
+                <li><strong>Volume increases in breakouts:</strong> A breakout from established support or resistance on high volume is more likely to hold than one on light volume.</li>
+                <li><strong>Volume declines in weak markets:</strong> A decline that occurs on diminishing volume suggests the selling is becoming exhausted, potentially setting up a reversal.</li>
+                <li><strong>Volume climax:</strong> An unusually high-volume day often marks a turning point as the "smart money" exits while weak hands panic.</li>
+            </ul>
+
+            <h2>Chart Patterns</h2>
+
+            <h3>Head and Shoulders</h3>
+            <p>The head and shoulders is one of the most reliable reversal patterns. It consists of three peaks: a left shoulder, a higher peak (the head), and a right shoulder lower than the head. A neckline connects the lows between these peaks. When price breaks below the neckline on volume, it signals a reversal from uptrend to downtrend. The pattern's reliability comes from its logical psychology: buyers push prices to new highs, but when the high fails to exceed the previous high and price pulls back, it indicates that buyer conviction is waning.</p>
+
+            <h3>Double Tops and Bottoms</h3>
+            <p>A double top consists of two peaks at approximately the same level with a trough between them. This pattern signals that resistance is strong—buyers attempted to push prices higher twice but failed at the same level. Breaking below the intermediate trough typically results in significant declines. A double bottom is the inverse—two lows at approximately the same level with a bounce between them, signaling strong support and typically preceding rallies.</p>
+
+            <h3>Triangles</h3>
+            <p>Triangles represent periods of decreasing volatility as price ranges narrow. Ascending triangles (with resistance flat and support rising) are typically bullish; descending triangles (with support flat and resistance declining) are typically bearish. The breakout from the triangle is the significant event—volume should increase meaningfully on the breakout to confirm the pattern.</p>
+
+            <h2>Fibonacci Retracements</h2>
+
+            <h3>The Fibonacci Sequence in Markets</h3>
+            <p>Fibonacci retracements derive from the famous Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21, 34...) where each number is the sum of the previous two. The ratio between consecutive numbers approximates 1.618, known as the "golden ratio." This ratio appears throughout nature and, allegedly, in financial markets.</p>
+
+            <p>Fibonacci retracements are plotted by taking a significant price move and dividing the vertical distance by the Fibonacci ratios (23.6%, 38.2%, 50%, 61.8%, 78.6%). The theory suggests that when price pulls back from a major trend, it will find support at these retracement levels before resuming the trend.</p>
+
+            <p>For example, if a stock rallies from $40 to $60 (a $20 move), Fibonacci traders expect support at $57.27 (38.2% retracement), $51.82 (50% retracement), and $47.36 (61.8% retracement). While this appears to work sometimes, skeptics note that having multiple levels (23.6%, 38.2%, 50%, 61.8%, 78.6%) guarantees a level will be nearby when price retraces, making the pattern a self-fulfilling prophecy rather than fundamental market behavior.</p>
+
+            <h2>Real-World Application: Enbridge Technical Analysis</h2>
+
+            <div class="example-box">
+                <h4>Case Study: Enbridge (ENB) Technical Setup - 2022-2023</h4>
+                <p><strong>Trend Analysis:</strong> From January 2022 ($50) to March 2022 ($45), ENB broke below its 200-day moving average (which had been rising at ~$48), signaling a change in long-term trend. However, by June 2022, ENB had established support at $46-47 and was slowly trending higher, setting up a Golden Cross setup.</p>
+
+                <p><strong>Moving Average Signal:</strong> By September 2022, ENB's 50-day SMA ($48) crossed above its 200-day SMA ($46), generating a Golden Cross. This bullish signal correlated with positive sentiment around energy markets and fundamentals.</p>
+
+                <p><strong>Support/Resistance:</strong> The $46-47 support level (tested multiple times in 2022) provided a clear technical level. Resistance initially was $52-53 (previous highs), then $55-56 after the stock broke above $52.</p>
+
+                <p><strong>Momentum Signals:</strong> RSI ranged between 35 and 65 during the recovery, remaining in healthy but not extreme territory. MACD generated multiple bullish crossovers as the recovery unfolded.</p>
+
+                <p><strong>Volume Confirmation:</strong> Breakouts above $52 resistance occurred on above-average volume, confirming institutional participation.</p>
+
+                <p><strong>Investment Implication:</strong> A technical trader would have recognized the Golden Cross as a buy signal, with stops below the $46-47 support level. The multiple support tests around $46-47 could have been additional buying opportunities at that technical level. The stock subsequently rallied to $62-65 by late 2023, validating the technical setup.</p>
+            </div>
+
+            <h2>CFA Perspective: Efficient Markets vs. Technical Analysis</h2>
+
+            <p>The CFA curriculum (particularly Level II) addresses technical analysis critically within the context of market efficiency. The official CFA position is cautious: technical analysis may work under specific conditions (less efficient markets, short time horizons) but is insufficient as a standalone investment philosophy. Moreover, CFA materials emphasize that apparent patterns can arise through data mining—if you test enough indicators and patterns, some will appear significant purely by chance.</p>
+
+            <p>However, the CFA Level III portfolio management curriculum acknowledges that technical analysis can be valuable for tactical positioning (adjusting around fundamental positions), market timing at extremes, and confirming fundamental analysis. Many CFA charterholders use technical analysis as a supplementary tool to fundamental analysis, particularly for timing entries and exits.</p>
+
+            <h2>Common Technical Analysis Mistakes</h2>
+
+            <h3>Pitfalls to Avoid</h3>
+            <ul>
+                <li><strong>Over-reliance on patterns:</strong> Seeing patterns where none exist (apophenia). Every stock has support and resistance somewhere, so the question isn't "are there levels?" but "are these levels traded?"</li>
+                <li><strong>Ignoring volume:</strong> Price breakouts on light volume are likely to fail. Always confirm price moves with volume.</li>
+                <li><strong>Wrong time frame:</strong> A daily chart might suggest strong support while a weekly chart shows a clear downtrend. Establish your primary time frame and filter signals through it.</li>
+                <li><strong>Neglecting fundamentals:</strong> Technical analysis identifies how markets are pricing something, but fundamentals determine what's reasonable. A stock with terrible fundamentals might bounce from oversold technical levels, but the bounce is likely short-lived.</li>
+                <li><strong>False signals in choppy markets:</strong> Technical indicators work best in trending markets but generate noise in sideways, choppy markets.</li>
+            </ul>
+
+            <h2>Integrating Technical and Fundamental Analysis</h2>
+
+            <p>The most effective investment approach integrates technical and fundamental analysis. A fundamental analyst might identify that Enbridge is undervalued based on cash flow analysis and dividend coverage. Technical analysis then improves the execution by identifying optimal entry points (approaching support levels) and exit points (approaching resistance). This combination—fundamental conviction combined with technical precision—outperforms either approach alone.</p>
+
+            <h2>Conclusion</h2>
+
+            <p>Technical analysis is neither crystal ball nor hokum. It's a framework for understanding market psychology, identifying support and resistance levels where supply and demand have historically balanced, and recognizing patterns that precede price moves. These patterns work often enough to be valuable, but not consistently enough to be foolproof.</p>
+
+            <p>For Canadian investors, technical analysis provides practical tools for improving trading execution and identifying favorable risk/reward setups. Combined with fundamental research, macroeconomic analysis, and rigorous risk management, technical analysis becomes a valuable component of a comprehensive investment process. The key is using it as one tool among many, not as a religion or complete philosophy.</p>
+
+            <p>The stock market rewards those who understand both what prices should be (fundamentals) and where they're likely to go next (technicals). Master both, and your investment success will improve markedly.</p>
+
+            <div class="author-info">
+                <strong>About the Author</strong>
+                <div>Paawan Shah | MBA (University Canada West) | BBA (NMIMS Mumbai)</div>
+                <div style="margin-top: 10px; font-size: 0.9em;">Financial analyst specializing in technical analysis, trading strategy, and Canadian equities.</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Paawan Shah Financial Analysis. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Moving Average Chart
+        const maCtx = document.getElementById('maChart').getContext('2d');
+
+        // Generate realistic price data with trend
+        function generatePriceData() {
+            const labels = [];
+            const prices = [];
+            let price = 50;
+
+            for (let i = 0; i < 250; i++) {
+                labels.push(`D${i+1}`);
+                price += (Math.random() - 0.48) * 2; // Slight uptrend bias
+                prices.push(parseFloat(price.toFixed(2)));
+            }
+
+            return { labels, prices };
+        }
+
+        function calculateSMA(data, period) {
+            return data.map((val, idx) => {
+                if (idx < period - 1) return null;
+                const sum = data.slice(idx - period + 1, idx + 1).reduce((a, b) => a + b, 0);
+                return parseFloat((sum / period).toFixed(2));
+            });
+        }
+
+        const { labels, prices } = generatePriceData();
+        const sma50 = calculateSMA(prices, 50);
+        const sma200 = calculateSMA(prices, 200);
+
+        new Chart(maCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: prices,
+                        borderColor: '#333',
+                        backgroundColor: 'rgba(51, 51, 51, 0.05)',
+                        borderWidth: 1.5,
+                        tension: 0.1,
+                        pointRadius: 0,
+                        fill: true,
+                    },
+                    {
+                        label: '50-day SMA',
+                        data: sma50,
+                        borderColor: '#ff9800',
+                        borderWidth: 2.5,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        tension: 0.3,
+                        fill: false,
+                    },
+                    {
+                        label: '200-day SMA',
+                        data: sma200,
+                        borderColor: '#2196f3',
+                        borderWidth: 2.5,
+                        borderDash: [8, 4],
+                        pointRadius: 0,
+                        tension: 0.3,
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { usePointStyle: true }
+                    }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'Price ($)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

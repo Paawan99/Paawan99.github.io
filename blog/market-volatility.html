@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Market Volatility - Financial Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f9ff 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            font-size: 0.95em;
+            opacity: 0.95;
+            margin-top: 15px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #00bcd4;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .content h2 {
+            color: #0ea5e9;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #00bcd4;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .chart-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .example-box {
+            background: #e0f2f1;
+            border-left: 4px solid #00bcd4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .example-box h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        table th {
+            background: #0ea5e9;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f9ff;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .author-info strong {
+            color: #00796b;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content h2 {
+                font-size: 1.4em;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link" style="display: block; padding: 20px 30px 0;">← Back to Blog</a>
+
+        <div class="header">
+            <h1>Understanding Market Volatility</h1>
+            <div class="meta">A Comprehensive Guide to Price Fluctuations, Risk Measurement, and Portfolio Management</div>
+        </div>
+
+        <div class="content">
+            <p><strong>Published:</strong> March 2026</p>
+
+            <h2>Introduction</h2>
+            <p>Market volatility represents one of the most fundamental concepts in finance, yet it remains one of the most misunderstood. Whether you're a retail investor constructing your first portfolio or an institutional asset manager overseeing billions, understanding volatility is essential for making sound investment decisions. Volatility isn't simply about price movements—it encapsulates uncertainty, risk, opportunity, and the complex interplay of market forces that shape financial outcomes.</p>
+
+            <p>In this comprehensive analysis, we'll explore volatility from multiple perspectives: mathematical foundations, real-world manifestations, risk management implications, and practical strategies for Canadian investors. By the end, you'll understand not just what volatility is, but how to measure it, why it matters, and how to navigate it effectively.</p>
+
+            <h2>Defining Volatility: The Mathematical Foundation</h2>
+
+            <h3>Standard Deviation and Variance</h3>
+            <p>At its core, volatility measures the dispersion of returns around an expected average. The most common measure is standard deviation, which quantifies how much individual returns deviate from the mean return. Mathematically:</p>
+
+            <div class="formula">
+σ = √[(Σ(Rt - R̄)²) / (n - 1)]
+
+Where:
+σ = Standard deviation (volatility)
+Rt = Return in period t
+R̄ = Mean return
+n = Number of observations
+            </div>
+
+            <p>For example, if a stock returned 5%, 8%, -3%, 12%, and 2% over five periods, the mean return is 4.8%. The deviations from this mean are 0.2%, 3.2%, -7.8%, 7.2%, and -2.8% respectively. Squaring these deviations and calculating the square root of their average gives us volatility. The higher this number, the more scattered the returns, and the more volatile the investment.</p>
+
+            <p>Variance is simply the square of standard deviation and is often used in portfolio optimization theory, particularly in Modern Portfolio Theory (discussed in our diversification article). While variance is mathematically elegant, standard deviation is preferred for interpretation since it's expressed in the same units as returns (percentage terms).</p>
+
+            <h3>Annualized Volatility</h3>
+            <p>Investment professionals typically express volatility on an annualized basis. If daily returns have a standard deviation of 1.2%, the annualized volatility is approximately 1.2% × √252 = 19%, where 252 represents the average number of trading days in a year. This normalization allows comparison across different time periods and asset classes.</p>
+
+            <h2>The VIX Index: Fear Gauge of the Market</h2>
+
+            <h3>Understanding the VIX</h3>
+            <p>The Volatility Index (VIX), calculated by the Chicago Board Options Exchange (CBOE), is perhaps the most famous volatility measure globally. The VIX measures implied volatility of S&P 500 index options, specifically the weighted average of implied volatilities of near-term options at the money. Conceptually, it answers the question: "What volatility are options traders pricing into the market over the next 30 days?"</p>
+
+            <p>The VIX typically ranges between 10 and 30 during normal market conditions. Levels below 15 suggest complacency and low expected volatility, while levels above 25 indicate heightened fear. During extreme market stress, the VIX can spike to 40-80 levels. For context, the VIX closed at 82.69 on March 16, 2020, during the COVID-19 panic—the second-highest level ever recorded after the 2008 financial crisis peak of 89.53.</p>
+
+            <div class="chart-container">
+                <canvas id="vixChart"></canvas>
+            </div>
+            <div class="chart-caption">Figure 1: Simulated VIX Index behavior showing spikes during market stress periods</div>
+
+            <h3>VIX Characteristics</h3>
+            <p>The VIX exhibits distinctive properties that make it valuable for risk management:</p>
+            <ul>
+                <li><strong>Mean reversion:</strong> The VIX tends to revert toward historical averages. Extreme readings often precede reversals.</li>
+                <li><strong>Negative correlation with stock returns:</strong> The VIX typically rises when stock markets fall, creating hedging opportunities.</li>
+                <li><strong>Volatility of volatility:</strong> The VIX itself is volatile—it can spike or collapse suddenly, meaning uncertainty about volatility itself exists.</li>
+                <li><strong>Forward-looking nature:</strong> Unlike historical volatility based on past prices, the VIX reflects market expectations going forward.</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Key Insight:</strong> The VIX is sometimes called the "fear index" because it quantifies market participants' expectations of near-term uncertainty. However, it's more accurately described as the "uncertainty index"—high readings indicate expected price swings, whether up or down, not necessarily negative outcomes.
+            </div>
+
+            <h2>Historical vs. Implied Volatility</h2>
+
+            <h3>Historical Volatility</h3>
+            <p>Historical volatility (also called realized volatility or statistical volatility) measures actual past price movements. It's calculated directly from historical returns using the standard deviation formula presented earlier. Historical volatility is objective—it's what actually happened. If you calculate historical volatility for any security using historical prices, you'll always get the same answer.</p>
+
+            <p>The strength of historical volatility is its empirical foundation; the weakness is that "past is not prologue." Markets change, regimes shift, and historical patterns may not repeat. Moreover, historical volatility is lagging—it reflects prices that have already occurred, not future uncertainty.</p>
+
+            <h3>Implied Volatility</h3>
+            <p>Implied volatility (IV) is derived from options prices using option pricing models like Black-Scholes. It represents the volatility level that options traders believe will occur over the life of the option. If an option is trading at a price that implies 25% volatility, traders are essentially saying, "We expect this asset to have annualized volatility of about 25% until this option expires."</p>
+
+            <p>Implied volatility is forward-looking and represents collective market expectations. It's subjective in the sense that different traders may have different views about future volatility, but the options prices reflect the market consensus. The VIX uses implied volatility to construct its readings, which explains why the VIX leads historical volatility during market transitions.</p>
+
+            <div class="example-box">
+                <h4>Real-World Example: Enbridge During the 2022 Energy Crisis</h4>
+                <p>Enbridge (ENB), a major Canadian energy infrastructure company, provides an excellent case study in volatility dynamics. During 2021-2022, the Russia-Ukraine conflict and subsequent energy crisis created unprecedented uncertainty in energy markets. ENB's historical volatility ranged from 18-22% during this period, reflecting the turbulent price action. However, implied volatility of ENB options traded even higher—25-30%—because options traders anticipated potential further disruptions and supply shocks. This divergence between historical and implied volatility created opportunities for volatility traders. Eventually, as energy markets stabilized in late 2022, implied volatility compressed, validating the traders' view that volatility would decline.</p>
+            </div>
+
+            <h2>Volatility Clustering and GARCH Models</h2>
+
+            <h3>Understanding Volatility Clustering</h3>
+            <p>One of the most important empirical observations in financial markets is volatility clustering—the tendency for volatile periods to cluster together. If a market experiences a large price movement on Monday, it's more likely to experience large moves on Tuesday than if there had been small moves on Monday. This violates the assumption of independent and identically distributed returns that underlies much classical financial theory.</p>
+
+            <p>The March 2020 COVID-19 crash illustrates this vividly. Following the initial shock, markets experienced several weeks of extraordinary turbulence with daily moves of 5-10% not uncommon. Conversely, during calm market periods, daily movements are typically 0.5-1.5%. This clustering explains why simple volatility measures (standard deviation) sometimes underestimate risk during stressed periods.</p>
+
+            <h3>GARCH Models</h3>
+            <p>Generalized Autoregressive Conditional Heteroskedasticity (GARCH) models, pioneered by Tim Engle and others, provide a more sophisticated framework for modeling volatility. Unlike simple standard deviation calculations that treat all historical data equally, GARCH models weight recent data more heavily, recognizing that recent volatility is more predictive of near-term volatility than distant volatility.</p>
+
+            <p>A basic GARCH(1,1) model specifies that current volatility depends on three factors: a long-term average volatility level, recent squared returns, and recent volatility itself. Mathematically:</p>
+
+            <div class="formula">
+σt² = ω + α(Rt-1)² + βσt-1²
+
+Where:
+σt² = Volatility in period t
+ω = Long-term average volatility term
+α = Weight on recent squared returns (news impact)
+β = Weight on recent volatility (persistence)
+            </div>
+
+            <p>GARCH models are extensively used by risk managers at institutional firms, central banks, and derivatives dealers because they better capture volatility dynamics than simple historical measures. The CFA Level II curriculum covers GARCH in detail as part of quantitative methods and risk management.</p>
+
+            <h2>How Volatility Impacts Portfolio Returns</h2>
+
+            <h3>Volatility Drag</h3>
+            <p>One of the most counterintuitive concepts in portfolio management is volatility drag—the mathematical phenomenon whereby volatility reduces compounded returns even if expected returns remain constant. Consider a simple example:</p>
+
+            <ul>
+                <li>Investment A: Returns 10% then -5% (average 2.5%, but compounded return is (1.10 × 0.95) - 1 = 4.5%)</li>
+                <li>Investment B: Returns 2.5% then 2.5% (average 2.5%, and compounded return is (1.025 × 1.025) - 1 = 5.06%)</li>
+            </ul>
+
+            <p>Despite identical average returns, Investment B outperforms because it has lower volatility. The relationship is quantified by the formula:</p>
+
+            <div class="formula">
+Expected Compounded Return ≈ Expected Return - (Variance / 2)
+
+Or in terms of volatility:
+Expected Compounded Return ≈ Expected Return - (σ² / 2)
+            </div>
+
+            <p>This drag becomes increasingly important for high-volatility investments. An asset with 30% annual volatility suffers a 4.5% annual drag from volatility alone, regardless of its expected return. This mathematical reality is why dividend growth investors often prefer stable, predictable businesses to more volatile growth stocks when expected returns are similar—the volatility drag works against them.</p>
+
+            <h3>Implications for Risk-Return Tradeoff</h3>
+            <p>The relationship between volatility and returns is complex. While higher-volatility investments sometimes compensate with higher average returns (the risk premium), this isn't guaranteed. A stock could be highly volatile and still underperform due to volatility drag. This is particularly important when comparing Canadian dividend aristocrats (lower volatility) to junior mining companies (higher volatility)—higher volatility doesn't guarantee higher returns.</p>
+
+            <h2>Risk Management: Hedging and Diversification Strategies</h2>
+
+            <h3>Hedging Approaches</h3>
+            <p>Hedging involves taking positions that offset potential losses in existing positions. Common hedging strategies include:</p>
+
+            <ul>
+                <li><strong>Put options:</strong> Buying protective puts on holdings limits downside risk while preserving upside—useful during high uncertainty periods.</li>
+                <li><strong>Inverse ETFs:</strong> Canadian investors can use inverse or leveraged inverse ETFs (though with caution regarding daily reset decay) to hedge portfolio downside.</li>
+                <li><strong>Sector rotation:</strong> Shifting to defensive sectors (utilities, consumer staples) during rising VIX periods reduces volatility.</li>
+                <li><strong>Cash allocation:</strong> Holding higher cash during elevated volatility readings provides optionality and reduces portfolio volatility mechanically.</li>
+                <li><strong>Volatility swaps:</strong> Institutional investors can directly hedge volatility through derivatives (advanced strategy).</li>
+            </ul>
+
+            <h3>Diversification as a Volatility Reducer</h3>
+            <p>Perhaps the most practical volatility management tool available to most investors is diversification. By holding multiple assets with different return patterns, overall portfolio volatility can be significantly reduced. This principle is foundational to Modern Portfolio Theory and is discussed extensively in our diversification article. The key insight is that if you hold assets with volatilities of 20%, 25%, and 30%, the portfolio volatility will be significantly lower than 25% if the assets aren't perfectly correlated.</p>
+
+            <h2>The COVID-19 Crash: Real-World Volatility in Action</h2>
+
+            <p>March 2020 provides a textbook case study in volatility dynamics. The initial COVID-19 lockdown announcements triggered a crisis of confidence. The TSX Composite index fell from 13,699 on February 28 to 10,913 on March 18—a 20.4% decline in just 11 trading days. This represented not just a correction, but a full bear market by technical definition.</p>
+
+            <div class="example-box">
+                <h4>Case Study: TSX Performance During COVID-19</h4>
+                <p>The broader market masked significant sector divergence. While energy stocks collapsed (reflecting oil price crash to $20/barrel) and bank stocks fell 35-40%, technology stocks and essential services providers declined more modestly. The VIX-equivalent measure for Canadian volatility (using TSX index options) spiked to levels unseen since 2008. Most significantly, intra-day volatility was extraordinary—single days saw 5-10% swings, with significant morning gaps that reversed by close. For investors, March 2020 demonstrated that even historically "safe" Canadian blue-chip companies experienced severe volatility when systematic market crises occurred. However, it also validated diversification benefits—investors with balanced portfolios experienced 30-40% declines while all-equity portfolios fell 50%+.</p>
+            </div>
+
+            <p>The recovery was equally swift and volatile. From March 18 to May 30, the TSX rallied 25% in just 10 weeks, with multiple 3-5% single-day gains. This demonstrates volatility clustering and mean reversion—the high volatility period was followed by extreme moves in both directions before eventually settling at new normal levels.</p>
+
+            <h2>Options Pricing and Volatility: Black-Scholes Basics</h2>
+
+            <h3>Volatility as a Critical Input</h3>
+            <p>In the Black-Scholes option pricing model, volatility is the single most uncertain input. While you can observe the current stock price, interest rates, and dividend yield, volatility must be estimated. The Black-Scholes formula demonstrates that option prices increase with volatility:</p>
+
+            <div class="formula">
+Call Price = S₀N(d₁) - Ke^(-rT)N(d₂)
+
+Where volatility (σ) appears in the calculation of d₁ and d₂:
+d₁ = [ln(S/K) + (r + σ²/2)T] / (σ√T)
+
+Higher σ → Higher call and put values
+            </div>
+
+            <p>This relationship has profound implications. When volatility is high, both calls and puts become expensive. This is why sophisticated investors sell options when implied volatility spikes—they're receiving inflated option premiums. Conversely, when volatility is suppressed (as it was in 2017-2018), options are relatively cheap, and buying them provides better risk-adjusted payoffs.</p>
+
+            <h3>Practical Application</h3>
+            <p>For Canadian investors trading options on TSX-listed stocks or index options, understanding volatility's impact on option prices is essential. A trader might hold a bullish view on BCE (Bell Canada Enterprises) but still avoid buying call options if implied volatility is 35% because those calls are overpriced. Alternatively, if implied volatility is 15%, the same trader might aggressively buy calls, viewing them as underpriced relative to expected volatility.</p>
+
+            <h2>Practical Tips for Canadian Investors</h2>
+
+            <h3>Monitoring and Interpreting Volatility</h3>
+            <ul>
+                <li><strong>Track the VIX regularly:</strong> Understand that VIX above 20 suggests elevated uncertainty, while below 15 suggests complacency. Use VIX spikes as rebalancing opportunities.</li>
+                <li><strong>Differentiate between price decline and volatility:</strong> A stock down 40% in a straight line is devastating but less volatile than a stock that declines 40% while swinging up and down constantly. Volatility is about the path, not just the destination.</li>
+                <li><strong>Consider volatility regimes:</strong> Low volatility regimes may persist for months or years (like 2017-2019), creating opportunities to use more leverage or derivatives. High volatility regimes justify de-leveraging.</li>
+                <li><strong>Use volatility for tactical allocation:</strong> When VIX spikes above 30, consider rebalancing by adding to equities and trimming bonds or cash—volatility spikes often create buying opportunities.</li>
+            </ul>
+
+            <h3>Portfolio Construction with Volatility in Mind</h3>
+            <ul>
+                <li><strong>Target portfolio volatility:</strong> Determine your risk tolerance in terms of maximum acceptable portfolio volatility. Conservative portfolios might target 8-10% volatility, balanced portfolios 12-15%, and aggressive portfolios 18-25%.</li>
+                <li><strong>Use low-volatility stocks strategically:</strong> Canadian utility stocks (RY, TD, FTS) have lower volatility. Using them as portfolio anchors can dampen overall volatility without sacrificing long-term returns.</li>
+                <li><strong>Implement volatility-managed strategies:</strong> Some investors use dynamic hedging that adjusts as volatility changes, automatically reducing equity exposure when VIX spikes.</li>
+                <li><strong>Understand your holdings' volatility:</strong> Know the historical volatility of your major positions. A portfolio of high-volatility junior mining stocks has very different volatility characteristics than a portfolio of Canadian dividend aristocrats.</li>
+            </ul>
+
+            <h2>Advanced Concepts: Volatility Clustering and Market Microstructure</h2>
+
+            <p>Beyond basic volatility measurement, sophisticated investors understand that volatility varies based on market conditions, information arrival, and trader behavior. During earnings announcements, volatility typically spikes. During low-volume periods (summer months, holiday seasons), volatility often compresses. Weekends produce volatility expansion due to uncertainty accumulation.</p>
+
+            <p>Market microstructure—the mechanics of how trades execute—also affects volatility. Bid-ask spreads widen when volatility rises, making execution more costly. Large block orders can trigger volatility spikes even without news, as traders interpret large trades as information signals. Understanding these dynamics is crucial for institutional investors and day traders, though less relevant for long-term buy-and-hold investors.</p>
+
+            <h2>Conclusion</h2>
+
+            <p>Volatility is far more than abstract statistical noise in financial markets. It represents real uncertainty, reflects collective market sentiment, impacts portfolio returns through volatility drag, and creates both risks and opportunities for investors. Understanding volatility's measurement, dynamics, and implications is essential for effective risk management.</p>
+
+            <p>For Canadian investors, the tools are available: the VIX for sentiment measurement, historical volatility calculations for empirical analysis, implied volatility from options for forward-looking expectations, and strategic frameworks like GARCH models for sophisticated analysis. The key is moving beyond viewing volatility as purely negative (fear) and recognizing it as the reality of financial markets—something to measure, understand, and navigate thoughtfully.</p>
+
+            <p>Whether you're building a retirement portfolio, managing institutional assets, or trading derivatives, volatility considerations should inform your decision-making. The investors and institutions that understand volatility most deeply often outperform those who ignore it, not because volatility can be predicted perfectly, but because they've built strategies that work across different volatility regimes.</p>
+
+            <div class="author-info">
+                <strong>About the Author</strong>
+                <div>Paawan Shah | MBA (University Canada West) | BBA (NMIMS Mumbai)</div>
+                <div style="margin-top: 10px; font-size: 0.9em;">Financial analyst specializing in portfolio management, risk analysis, and Canadian capital markets.</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Paawan Shah Financial Analysis. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // VIX Chart Simulation
+        const vixCtx = document.getElementById('vixChart').getContext('2d');
+
+        // Generate realistic VIX data with clustering
+        function generateVIXData() {
+            const data = [];
+            let vix = 18;
+            const labels = [];
+
+            for (let i = 0; i < 120; i++) {
+                const month = Math.floor(i / 30);
+                const dayInMonth = i % 30;
+                labels.push(`M${month+1}-D${dayInMonth}`);
+
+                // Simulate volatility clustering
+                const random = Math.random();
+                if (random < 0.1) {
+                    vix += Math.random() * 15 - 5; // Spike
+                } else if (vix > 20) {
+                    vix -= Math.random() * 2; // Mean reversion when elevated
+                } else {
+                    vix += (Math.random() * 2 - 1) * 0.5; // Small changes
+                }
+
+                vix = Math.max(10, Math.min(80, vix)); // Bounds
+                data.push(Math.round(vix * 10) / 10);
+            }
+
+            return { labels, data };
+        }
+
+        const vixData = generateVIXData();
+
+        new Chart(vixCtx, {
+            type: 'line',
+            data: {
+                labels: vixData.labels,
+                datasets: [{
+                    label: 'VIX Index',
+                    data: vixData.data,
+                    borderColor: '#0ea5e9',
+                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { usePointStyle: true }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 10,
+                        max: 80,
+                        title: { display: true, text: 'VIX Level' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

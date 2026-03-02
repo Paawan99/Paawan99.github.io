@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Diversification Strategies - Financial Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f9ff 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            font-size: 0.95em;
+            opacity: 0.95;
+            margin-top: 15px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #00bcd4;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .content h2 {
+            color: #0ea5e9;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #00bcd4;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 0.95em;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .chart-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .example-box {
+            background: #e0f2f1;
+            border-left: 4px solid #00bcd4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .example-box h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        .example-box p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        table th {
+            background: #0ea5e9;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f9ff;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .author-info strong {
+            color: #00796b;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content h2 {
+                font-size: 1.4em;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link" style="display: block; padding: 20px 30px 0;">← Back to Blog</a>
+
+        <div class="header">
+            <h1>Portfolio Diversification Strategies</h1>
+            <div class="meta">Modern Portfolio Theory, Asset Allocation, and Risk Reduction Techniques</div>
+        </div>
+
+        <div class="content">
+            <p><strong>Published:</strong> March 2026</p>
+
+            <h2>Introduction</h2>
+            <p>Diversification stands as one of the few free lunches in investing. By holding multiple assets that don't move in perfect lockstep, investors can reduce portfolio volatility without sacrificing expected returns—a mathematical miracle that forms the foundation of modern portfolio management. Yet despite its proven benefits, many investors remain under-diversified, concentrating excessively in individual stocks, single sectors, or their home country's markets.</p>
+
+            <p>This comprehensive guide explores diversification from foundational principles through advanced implementation strategies. We'll examine Modern Portfolio Theory, the role of correlation in risk reduction, practical asset allocation models, and specific considerations for Canadian investors. By the end, you'll understand not just why diversification matters, but how to construct genuinely diversified portfolios that balance growth, stability, and tax efficiency.</p>
+
+            <h2>Modern Portfolio Theory: The Foundation</h2>
+
+            <h3>Harry Markowitz and the Efficient Frontier</h3>
+            <p>In 1952, Harry Markowitz published "Portfolio Selection," which fundamentally changed investment management. Markowitz demonstrated that for a given level of expected return, investors should choose the portfolio with the lowest risk (variance). Conversely, for a given level of acceptable risk, investors should choose the portfolio with the highest expected return. These optimal portfolios form the "efficient frontier"—a curve of maximum-return-for-given-risk portfolio combinations.</p>
+
+            <p>Markowitz's insight was profound: adding a lower-return asset to a portfolio could actually reduce overall portfolio risk if that asset had low correlation with existing holdings. This explained why holding US Treasury bonds alongside volatile stocks reduces overall volatility despite bonds offering lower expected returns than stocks. The diversification benefit—risk reduction—compensates for lower returns.</p>
+
+            <p>Mathematically, portfolio variance depends not just on individual asset volatilities but on correlation between assets:</p>
+
+            <div class="formula">
+σ²p = w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρ₁₂σ₁σ₂
+
+Where:
+σ²p = Portfolio variance
+w₁, w₂ = Portfolio weights
+σ₁, σ₂ = Individual asset volatilities
+ρ₁₂ = Correlation between assets
+            </div>
+
+            <p>Notice the critical term: 2w₁w₂ρ₁₂σ₁σ₂. If correlation (ρ₁₂) is zero or negative, this term reduces portfolio variance. If correlation is +1 (perfect positive correlation), diversification provides no risk reduction. This explains why holding two tech stocks provides far less diversification than holding one tech stock and one utility stock—their correlation is much lower.</p>
+
+            <h3>Limitations and Evolutions of MPT</h3>
+            <p>While powerful, Modern Portfolio Theory has limitations. It assumes returns are normally distributed (they're not—financial returns have fatter tails), assumes historical correlations persist (they often change during crises), and requires estimating expected returns (notoriously difficult). During the 2008 financial crisis, correlations across asset classes spiked toward +1, violating the diversification assumption precisely when it was most needed.</p>
+
+            <p>Despite these limitations, MPT remains the conceptual framework for professional portfolio management. The CFA curriculum teaches MPT extensively (Level II-III), and its core insight—correlation matters more than individual volatilities—remains absolutely correct.</p>
+
+            <h2>Systematic vs. Unsystematic Risk</h2>
+
+            <h3>Understanding Risk Decomposition</h3>
+            <p>Total risk (volatility) can be decomposed into two components:</p>
+
+            <ul>
+                <li><strong>Systematic Risk (Market Risk):</strong> The risk that affects all securities simultaneously—interest rate changes, economic recessions, currency movements. This risk cannot be diversified away. If the entire market falls 20%, even a perfectly diversified portfolio will fall 20% (in a market-cap weighted sense).</li>
+                <li><strong>Unsystematic Risk (Idiosyncratic Risk):</strong> The risk specific to individual securities—a company's product flop, management change, lawsuit. This risk can be eliminated through diversification. As you add more securities, unsystematic risk approaches zero.</li>
+            </ul>
+
+            <p>The capital asset pricing model (CAPM), taught in CFA Level I, formalizes this. Expected return equals the risk-free rate plus a premium for systematic risk (beta):</p>
+
+            <div class="formula">
+Expected Return = Rf + β(Rm - Rf)
+
+Where:
+Rf = Risk-free rate
+β = Beta (systematic risk measure)
+Rm = Market return
+            </div>
+
+            <p>Beta measures a security's sensitivity to market movements. A stock with beta of 1.5 moves 1.5% for every 1% market move. The key insight for diversification: you're only compensated (in expected return) for systematic risk. Unsystematic risk provides no return compensation, so it's irrational to bear it. This is why holding a concentrated portfolio of individual stocks is suboptimal—you're bearing unnecessary risk without additional return.</p>
+
+            <h2>Correlation: The Core of Diversification</h2>
+
+            <h3>Correlation Mechanics</h3>
+            <p>Correlation measures how two assets move together, ranging from -1 (perfectly negative—when one rises, the other falls) to +1 (perfectly positive—they move in lockstep). A correlation of 0 means movements are completely independent.</p>
+
+            <p>Correlations are not permanent. Historical correlations often differ from forward correlations, especially during market stress. For example, during normal markets, gold has near-zero correlation with stocks. During crisis periods (2008, 2011, 2020), correlation temporarily rises as investors sell everything indiscriminately. However, over longer periods, gold's correlation with stocks remains much lower than bonds or other stocks, validating its inclusion as a diversifier.</p>
+
+            <div class="chart-container">
+                <canvas id="correlationChart"></canvas>
+            </div>
+            <div class="chart-caption">Figure 1: Simulated Correlation Matrix Heatmap showing typical asset class correlations</div>
+
+            <h3>Correlation Across Asset Classes</h3>
+            <p>Typical correlations among major asset classes (based on long-term data):</p>
+
+            <ul>
+                <li><strong>Canadian Equities to US Equities:</strong> ~0.85 (high correlation, but meaningful diversification)</li>
+                <li><strong>Canadian Equities to Canadian Bonds:</strong> ~0.15-0.25 (low correlation, excellent diversification)</li>
+                <li><strong>Canadian Equities to Real Estate (REITs):</strong> ~0.50 (moderate correlation)</li>
+                <li><strong>Canadian Equities to Gold:</strong> ~0.05 (very low, excellent crisis hedge)</li>
+                <li><strong>Canadian Bonds to Gold:</strong> ~0.10 (both benefit during risk-off periods)</li>
+            </ul>
+
+            <p>The low correlation between equities and bonds is particularly important for Canadian investors. When stocks fall due to economic weakness, bonds typically rally as investors flee to safety and central banks cut rates. This negative correlation makes a balanced equity/bond portfolio far less risky than either alone.</p>
+
+            <h2>Asset Allocation Models</h2>
+
+            <h3>The 60/40 Portfolio</h3>
+            <p>The classic 60/40 allocation (60% equities, 40% bonds) has been the industry standard for decades. For a Canadian investor, this might look like:</p>
+
+            <ul>
+                <li>30% TSX-listed Canadian equities</li>
+                <li>30% US equities (via index funds)</li>
+                <li>40% Canadian bonds (various durations)</li>
+            </ul>
+
+            <p>The 60/40 portfolio historically provided reasonable risk-adjusted returns while exhibiting acceptable volatility (~10-12%). However, critics note it's increasingly underperforming in low-yield environments and overweights developed market stocks. More importantly, "60/40" is a rule of thumb, not a scientific prescription. The appropriate allocation depends on individual risk tolerance, time horizon, and return requirements.</p>
+
+            <h3>All-Weather Portfolio</h3>
+            <p>Developed by Ray Dalio and Bridgewater Associates, the All-Weather portfolio attempts to perform acceptably across different economic regimes. Rather than overweighting equities, it uses risk parity principles to balance volatility contributions across asset classes:</p>
+
+            <ul>
+                <li>30% Equities</li>
+                <li>40% Bonds</li>
+                <li>15% Commodities</li>
+                <li>15% Gold</li>
+            </ul>
+
+            <p>The philosophy is that each asset class should contribute equally to portfolio volatility, necessitating lower weight to highly volatile equities and higher weight to volatile commodities. This approach provided surprising resilience during the 2020 COVID crash and subsequent inflation spike, as bonds and commodities hedged equity losses.</p>
+
+            <h3>Endowment Model</h3>
+            <p>Large institutional endowments (Harvard, Yale, Cambridge) employ sophisticated multi-asset allocations reflecting their long time horizons and stable funding:</p>
+
+            <ul>
+                <li>25% Public equities</li>
+                <li>15% Absolute return funds (hedge funds)</li>
+                <li>15% Private equity</li>
+                <li>10% Real estate</li>
+                <li>10% Commodities</li>
+                <li>20% Bonds</li>
+                <li>5% Cash</li>
+            </ul>
+
+            <p>This approach requires sophistication, access to institutional-quality alternative investments, and significant capital. Most individual investors can't replicate it, but the principle—diversifying across return drivers with uncorrelated investments—remains valuable.</p>
+
+            <h2>Canadian-Specific Diversification Challenges</h2>
+
+            <h3>Home Country Bias and TSX Sector Concentration</h3>
+            <p>Canadian investors face a unique challenge: home country bias combined with sector concentration. The TSX is heavily concentrated in energy (TC Energy, Enbridge, Suncor), financials (Royal Bank, TD, BMO), and materials (Barrick Gold, Teck Resources). While these are excellent companies, overweighting them creates unintended bets on commodity prices and specific sectors.</p>
+
+            <p>A Canadian investor holding 60% Canadian equities risks significant concentration despite holding multiple Canadian stocks. Consider: if 30% of the TSX is energy, then 18% of a 60% Canadian equity allocation is energy exposure—likely more than rational diversification suggests.</p>
+
+            <p>The remedy is systematic diversification to non-Canadian equities. A more balanced approach might be:</p>
+            <ul>
+                <li>20% Canadian equities (TSX index or core positions in RBC, TD, Enbridge for dividends)</li>
+                <li>20% US equities (via broad index)</li>
+                <li>10% International developed markets</li>
+                <li>5% Emerging markets</li>
+                <li>45% Bonds, REITs, and alternatives</li>
+            </ul>
+
+            <p>This avoids unnecessary Canadian concentration while maintaining home-country exposure for familiarity and currency hedging benefits.</p>
+
+            <h2>International Diversification Benefits</h2>
+
+            <h3>Why International Matters</h3>
+            <p>International diversification reduces country-specific risk and provides exposure to different growth drivers. While North America has driven equity returns for decades, this won't persist indefinitely. Emerging markets offer higher growth potential (at higher risk), while developed Asia offers stability and tech exposure lacking in North America.</p>
+
+            <p>Currency consideration: Canadian investors investing internationally face currency risk. A 10% rise in the US dollar can offset a 10% stock market decline. Some investors hedge this currency risk using currency-hedged ETFs; others accept currency exposure as an additional diversifier (they're not wrong—currency movements often offset stock declines during crisis periods).</p>
+
+            <div class="example-box">
+                <h4>Case Study: Canadian Portfolio Diversification</h4>
+                <p><strong>Scenario: Building a Balanced Canadian Portfolio ($500,000)</strong></p>
+
+                <p><strong>Asset Allocation:</strong><br>
+                • Equities: $250,000 (50%)<br>
+                  - TSX Index: $75,000 (15% of total)<br>
+                  - US Index: $75,000 (15% of total)<br>
+                  - International Developed: $50,000 (10% of total)<br>
+                  - Emerging Markets: $50,000 (10% of total)<br>
+                • Bonds: $175,000 (35%)<br>
+                  - Canadian Bonds: $100,000 (20% of total)<br>
+                  - Corporate Bonds/Bond ETF: $75,000 (15% of total)<br>
+                • REITs: $50,000 (10%)<br>
+                • Gold/Commodities: $25,000 (5%)</p>
+
+                <p><strong>Expected Volatility: ~9-10%<br>
+                Expected Return: ~5-6% annually (in current yield environment)<br>
+                Diversification Benefit: Portfolio volatility is ~40% lower than an all-TSX portfolio would be</strong></p>
+
+                <p>This portfolio balances Canadian familiarity (30% of equities) with international diversification, includes defensive assets (bonds and gold), and uses low-cost index funds for broad diversification without stock-picking risk. Rebalancing quarterly ensures allocations stay on target.</p>
+            </div>
+
+            <h2>Alternative Investments and Diversification</h2>
+
+            <h3>Real Estate Investment Trusts (REITs)</h3>
+            <p>Canadian REITs (RioCan, Choice Properties, Allied Properties) provide real estate exposure without direct property ownership. REITs correlate moderately with equities (~0.50-0.60) and offer stable dividend yields (4-6%). They diversify equity risk and provide inflation hedges, as real estate values and rents typically rise with inflation.</p>
+
+            <h3>Commodities</h3>
+            <p>Commodity exposure (via commodity ETFs or futures) provides diversification during inflation and supply shocks. Commodities have low or negative correlation with stocks during specific regimes. The tradeoff: commodities don't reliably produce returns between supply shocks, making them "insurance" rather than growth investments.</p>
+
+            <h3>Private Equity and Infrastructure</h3>
+            <p>Institutional investors access private equity and infrastructure for their illiquidity premium (additional returns for illiquid investments) and diversification. Canadian Pension Plan (CPP) and other large institutions allocate 30-40% to these alternatives. Individual investors have limited access, though some Canadian mutual funds provide limited private equity exposure. These are advancing diversification but introduce liquidity and fee considerations.</p>
+
+            <h2>Rebalancing Strategies</h2>
+
+            <h3>Calendar-Based Rebalancing</h3>
+            <p>Rebalancing quarterly or annually back to target allocations ensures disciplined buying of underperformers and selling of overperformers. A portfolio starting 60% stocks/40% bonds might drift to 70% stocks/30% bonds after strong stock market performance. Rebalancing back to 60/40 forces selling winners and buying losers—the opposite of human instinct but optimal for long-term returns.</p>
+
+            <h3>Threshold-Based Rebalancing</h3>
+            <p>More sophisticated investors rebalance when allocations drift beyond thresholds (e.g., when equity weight exceeds 65% or falls below 55%). This approach is more tax-efficient in taxable accounts (avoiding unnecessary trades) while maintaining discipline during extreme markets.</p>
+
+            <h3>Tax-Efficient Rebalancing</h3>
+            <p>In Canadian accounts (RRSP, TFSA), rebalancing is completely tax-efficient since capital gains aren't realized for tax purposes. In non-registered accounts, rebalancing can trigger capital gains taxes. Tax-conscious investors use new contributions to rebalance (if underweight a position, direct new funds there) rather than selling winners and creating tax bills.</p>
+
+            <h2>Factor Investing and Smart Diversification</h2>
+
+            <h3>Beyond Market-Cap Weighting</h3>
+            <p>Factor investing recognizes that returns vary based on exposure to factors like value, momentum, quality, and size. Instead of market-cap-weighted indexing (which concentrates in large, expensive companies), factor-based strategies emphasize factors with better risk-adjusted returns.</p>
+
+            <p>Common factors:</p>
+            <ul>
+                <li><strong>Value:</strong> Cheap stocks outperform expensive ones (long-term evidence strong)</li>
+                <li><strong>Momentum:</strong> Stocks trending upward outperform those trending downward (medium-term)</li>
+                <li><strong>Quality:</strong> Companies with high profitability, low debt, stable earnings outperform (long-term)</li>
+                <li><strong>Low Volatility:</strong> Lower-volatility stocks provide superior risk-adjusted returns</li>
+                <li><strong>Size:</strong> Smaller companies outperform (smallest company effect)</li>
+            </ul>
+
+            <p>Factor-based diversification—tilting portfolio toward value and quality, adding momentum exposure—can enhance returns compared to passive indexing alone, though not without volatility tradeoffs. Many Canadian investors now use ETFs implementing factor strategies rather than pure cap-weighted indices.</p>
+
+            <h2>Risk Parity: Equal Risk Contribution</h2>
+
+            <h3>The Risk Parity Concept</h3>
+            <p>Risk parity portfolios allocate so that each asset contributes equally to portfolio risk rather than having equal dollar weights. Since bonds are less volatile than stocks, equal risk allocation requires higher bond weights than equal dollar allocation.</p>
+
+            <p>A simple risk parity approach with 60% bonds (10% volatility) and 40% stocks (15% volatility) creates equal risk contribution:</p>
+
+            <div class="formula">
+Risk contribution = Weight × Volatility
+Bonds: 60% × 10% = 6% risk contribution
+Stocks: 40% × 15% = 6% risk contribution
+            </div>
+
+            <p>Risk parity philosophically differs from traditional allocation—instead of "60/40 because that's the rule," it's "whatever allocation provides balanced risk contribution." Proponents note risk parity provides steadier returns through market cycles; critics note it's more complex and involves rebalancing during market stress.</p>
+
+            <h2>Diversification in Practice: Canadian Investor Implementation</h2>
+
+            <h3>Tool Selection</h3>
+            <p>Canadian investors have excellent tools for diversification:</p>
+
+            <ul>
+                <li><strong>ETFs:</strong> Low-cost, tax-efficient access to broad diversification (VFV, VAB, VSP cover most asset classes)</li>
+                <li><strong>Mutual Funds:</strong> More expensive but offer professional management (if chosen carefully)</li>
+                <li><strong>Individual Stocks:</strong> For concentrated bets on specific companies combined with diversified holdings</li>
+                <li><strong>Robo-advisors:</strong> Automated, low-cost portfolio management with diversification built-in</li>
+                <li><strong>Self-directed investing:</strong> Complete control but requires discipline</li>
+            </ul>
+
+            <h3>Account Structure</h3>
+            <p>Canadian investors should use available account types strategically:</p>
+
+            <ul>
+                <li><strong>TFSA:</strong> Tax-free growth—ideal for high-growth, high-volatility holdings</li>
+                <li><strong>RRSP:</strong> Tax-deferred growth—ideal for stable, income-generating diversification</li>
+                <li><strong>Non-registered:</strong> For amounts exceeding TFSA/RRSP limits</li>
+            </ul>
+
+            <h2>Common Diversification Mistakes</h2>
+
+            <h3>Pitfalls to Avoid</h3>
+            <ul>
+                <li><strong>False diversification:</strong> Holding 50 stocks in the same industry (tech sector) provides no real diversification</li>
+                <li><strong>Excessive diversification:</strong> Holding 200+ holdings reduces risk but also reduces alpha (outperformance), and increases costs and taxes</li>
+                <li><strong>Correlation assumption:</strong> Assuming correlations remain stable. 2008 proved correlations spike during crises.</li>
+                <li><strong>Neglecting rebalancing:</strong> Letting allocations drift, resulting in accidental concentration</li>
+                <li><strong>Counterintuitive allocation:</strong> Understanding diversification intellectually but emotionally resisting it—holding only Canadian stocks despite intellectual acknowledgment of diversification benefits</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+
+            <p>Diversification reduces risk without requiring higher returns—a mathematical certainty when implemented thoughtfully. Modern Portfolio Theory provides the framework, correlation analysis provides the tools, and asset allocation provides the practical implementation. Canadian investors face specific challenges (home country bias, sector concentration in the TSX) but have excellent solutions (low-cost global ETFs, tax-efficient accounts).</p>
+
+            <p>The perfect portfolio doesn't exist, but a thoughtfully diversified portfolio tailored to individual risk tolerance and return requirements is achievable. The key is moving beyond naive diversification (owning many stocks in one sector) to true diversification (owning assets with genuinely different return drivers). This provides the remarkable benefit of lower risk without sacrificing return—and in some cases, actually enhancing risk-adjusted returns. That's as close to a free lunch as investing offers.</p>
+
+            <div class="author-info">
+                <strong>About the Author</strong>
+                <div>Paawan Shah | MBA (University Canada West) | BBA (NMIMS Mumbai)</div>
+                <div style="margin-top: 10px; font-size: 0.9em;">Financial analyst specializing in portfolio construction, asset allocation, and diversification strategies.</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Paawan Shah Financial Analysis. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Correlation Matrix Heatmap
+        const corrCtx = document.getElementById('correlationChart').getContext('2d');
+
+        // Realistic correlation matrix data
+        const correlationData = [
+            [1.00, 0.85, 0.15, 0.05, 0.50],    // CA Equities
+            [0.85, 1.00, 0.10, 0.05, 0.45],    // US Equities
+            [0.15, 0.10, 1.00, 0.10, 0.20],    // CA Bonds
+            [0.05, 0.05, 0.10, 1.00, 0.15],    // Gold
+            [0.50, 0.45, 0.20, 0.15, 1.00]     // REITs
+        ];
+
+        const assetLabels = ['CA Equities', 'US Equities', 'CA Bonds', 'Gold', 'REITs'];
+
+        // Create heatmap labels
+        const labels = assetLabels;
+
+        // Create dataset for heatmap
+        const heatmapData = [];
+        const colors = [];
+
+        assetLabels.forEach((asset1, i) => {
+            assetLabels.forEach((asset2, j) => {
+                const correlation = correlationData[i][j];
+                colors.push(correlation > 0.5 ? '#ff6b6b' : (correlation > 0.2 ? '#ffd93d' : '#6bcf7f'));
+                heatmapData.push({
+                    x: asset2,
+                    y: asset1,
+                    v: correlation
+                });
+            });
+        });
+
+        new Chart(corrCtx, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Correlation Coefficient',
+                    data: heatmapData.map((d, idx) => ({
+                        x: assetLabels.indexOf(d.x),
+                        y: assetLabels.indexOf(d.y),
+                        r: 30,
+                        label: d.v.toFixed(2)
+                    })),
+                    backgroundColor: colors,
+                    borderColor: '#333',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const idx = context.dataIndex;
+                                return 'Correlation: ' + heatmapData[idx].v.toFixed(2);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        min: -0.5,
+                        max: 4.5,
+                        ticks: {
+                            callback: function(value) {
+                                return assetLabels[value] || '';
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        min: -0.5,
+                        max: 4.5,
+                        ticks: {
+                            callback: function(value) {
+                                return assetLabels[value] || '';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

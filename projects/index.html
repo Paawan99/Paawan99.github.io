@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enbridge Inc. (ENB) - Investment Analysis Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.25em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .project-header h2 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-header .description {
+            font-size: 0.95em;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+            flex: 1;
+        }
+
+        .project-content li {
+            margin: 8px 0;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .project-footer {
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            border-color: #0ea5e9;
+            background: white;
+            color: #0ea5e9;
+        }
+
+        .btn-secondary {
+            background: #f0f9ff;
+            color: #0ea5e9;
+            border: 2px solid #0ea5e9;
+        }
+
+        .btn-secondary:hover {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .stats-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-section h2 {
+            color: #0ea5e9;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 8px;
+            border: 1px solid #bae6fd;
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .features-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-section h2 {
+            color: #0ea5e9;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature {
+            padding: 20px;
+            border-left: 4px solid #0ea5e9;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+
+        .feature h3 {
+            color: #0ea5e9;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .feature p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .author-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .author-section h3 {
+            color: #d97706;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .author-section p {
+            color: #78350f;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        footer {
+            background: white;
+            padding: 30px 40px;
+            text-align: center;
+            color: #6b7280;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Enbridge Inc. (ENB)</h1>
+            <p>Comprehensive Investment Analysis & Research Portfolio</p>
+            <div class="subtitle">Professional-Grade Financial Analysis | CFA Framework</div>
+        </header>
+
+        <!-- Key Statistics -->
+        <div class="stats-section">
+            <h2>Company Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value">$70.65</div>
+                    <div class="label">Stock Price (CAD)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">$156.65B</div>
+                    <div class="label">Market Cap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">5.49%</div>
+                    <div class="label">Dividend Yield</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">24.89x</div>
+                    <div class="label">P/E Ratio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">$20.0B</div>
+                    <div class="label">EBITDA (2025)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">2.35x</div>
+                    <div class="label">Debt/EBITDA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Stock Analysis Framework</h2>
+                    <p class="description">Comprehensive equity valuation using fundamental analysis</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Financial ratio dashboard (ROE, ROIC, leverage)</li>
+                        <li>5-year historical performance analysis</li>
+                        <li>DuPont analysis & WACC calculation</li>
+                        <li>DCF valuation with sensitivity analysis</li>
+                        <li>Comparable company analysis</li>
+                        <li>Dividend analysis & Gordon Growth Model</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="stock-analysis-framework.html" class="btn btn-primary">View Analysis</a>
+                    <a href="Enbridge_Stock_Analysis.xlsx" class="btn btn-secondary" download>Download</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>M&A Valuation Model</h2>
+                    <p class="description">Hypothetical acquisition analysis & transaction value</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Valuation football field (DCF, Comps, Precedents)</li>
+                        <li>Synergy identification & waterfall analysis</li>
+                        <li>Accretion/dilution forecast modeling</li>
+                        <li>Pro forma financials projection</li>
+                        <li>Capital structure & financing sources/uses</li>
+                        <li>CFA concepts: PPA, goodwill, integration risks</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="ma-valuation-model.html" class="btn btn-primary">View Analysis</a>
+                    <a href="Enbridge_MA_Valuation.xlsx" class="btn btn-secondary" download>Download</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Market Analysis Dashboard</h2>
+                    <p class="description">Real-time market intelligence & technical analysis</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Live market metrics & price performance</li>
+                        <li>Sector comparison vs benchmarks</li>
+                        <li>Trading volume & liquidity analysis</li>
+                        <li>Technical indicators (Moving averages, RSI, MACD)</li>
+                        <li>Market sentiment & analyst ratings</li>
+                        <li>Key price drivers & relative strength</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="market-analysis-dashboard.html" class="btn btn-primary">View Analysis</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Portfolio Optimization</h2>
+                    <p class="description">Modern portfolio theory & asset allocation</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Efficient frontier construction</li>
+                        <li>Optimal portfolio asset allocation</li>
+                        <li>Risk-return profile analysis</li>
+                        <li>Correlation heatmap & diversification</li>
+                        <li>Sharpe, Treynor, & Jensen's Alpha metrics</li>
+                        <li>Interactive weight adjustment simulator</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="portfolio-optimization.html" class="btn btn-primary">View Analysis</a>
+                    <a href="Enbridge_Portfolio_Optimization.xlsx" class="btn btn-secondary" download>Download</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Risk Assessment Tools</h2>
+                    <p class="description">Comprehensive risk analysis & stress testing</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Value-at-Risk (VaR) visualization & analysis</li>
+                        <li>Monte Carlo simulation (10,000 paths)</li>
+                        <li>Stress test scenarios (recession, rates, credit)</li>
+                        <li>Sensitivity analysis heatmap</li>
+                        <li>Risk category deep dive assessment</li>
+                        <li>Risk mitigation strategies & recommendations</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="risk-assessment-tools.html" class="btn btn-primary">View Analysis</a>
+                    <a href="Enbridge_Risk_Assessment.xlsx" class="btn btn-secondary" download>Download</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Market Research Project</h2>
+                    <p class="description">Industry analysis & competitive landscape</p>
+                </div>
+                <div class="project-content">
+                    <ul>
+                        <li>Canadian energy infrastructure market overview</li>
+                        <li>Porter's Five Forces analysis</li>
+                        <li>SWOT analysis for Enbridge</li>
+                        <li>Competitive landscape comparison</li>
+                        <li>Regulatory environment & policy framework</li>
+                        <li>ESG considerations & investment thesis</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="market-research-project.html" class="btn btn-primary">View Analysis</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2>Analysis Framework Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Interactive Visualizations</h3>
+                    <p>Chart.js-powered interactive charts for data exploration, responsive design for mobile viewing, dynamic filtering and drill-down capabilities.</p>
+                </div>
+                <div class="feature">
+                    <h3>Professional Design</h3>
+                    <p>Cyan/teal accent color scheme (#0ea5e9, #00bcd4), light theme for readability, consistent typography and spacing, mobile-responsive layouts.</p>
+                </div>
+                <div class="feature">
+                    <h3>CFA Framework</h3>
+                    <p>Level II & III concepts: DuPont analysis, WACC, Jensen's Alpha, Modern Portfolio Theory, VaR, Stress testing, M&A valuation methodologies.</p>
+                </div>
+                <div class="feature">
+                    <h3>Real Financial Data</h3>
+                    <p>Actual Enbridge metrics: stock price $70.65, EBITDA $20.0B, dividend $3.88/year, P/E 24.89x, leverage 2.35x debt/EBITDA.</p>
+                </div>
+                <div class="feature">
+                    <h3>Downloadable Spreadsheets</h3>
+                    <p>Excel files for stock analysis, M&A valuation, portfolio optimization, and risk assessment with detailed calculations and assumptions.</p>
+                </div>
+                <div class="feature">
+                    <h3>Comprehensive Analysis</h3>
+                    <p>2000+ words equivalent per page, 3-4 interactive charts per page, detailed methodology explanations, investment recommendations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Author Section -->
+        <div class="author-section">
+            <h3>About This Analysis</h3>
+            <p>
+                This comprehensive investment analysis portfolio was developed using professional financial research methodology and CFA frameworks. Each page includes standalone HTML with embedded CSS and JavaScript (Chart.js for visualizations), making them fully portable and independent. All analysis is presented for educational purposes and demonstrates professional-grade equity research capabilities.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Paawan Shah</strong></p>
+            <p>MBA (University of Canada West) | BBA (NMIMS University, Mumbai)</p>
+            <p>Investment Analysis & Financial Modeling Specialist</p>
+            <p style="margin-top: 15px; font-size: 0.85em; color: #9ca3af;">
+                Analysis Date: March 2026 | Data as of December 2025 | For Educational Purposes Only
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

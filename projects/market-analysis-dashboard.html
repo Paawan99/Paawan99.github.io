@@ -944,7 +944,7 @@
                     generateSampleData(ticker)
                 ]);
 
-                const yahooData = data[0];
+                const yahooData = data[0] || {};
                 const sampleData = data[1];
 
                 const companyInfo = companies[ticker];
@@ -955,8 +955,8 @@
 
                 // KPI Cards
                 const currentPrice = yahooData.currentPrice || sampleData.currentPrice;
-                const priceChange = yahooData.priceChange || sampleData.priceChange;
-                const priceChangePercent = yahooData.priceChangePercent || sampleData.priceChangePercent;
+                const priceChange = yahooData.priceChange != null ? yahooData.priceChange : sampleData.priceChange;
+                const priceChangePercent = yahooData.priceChangePercent != null ? yahooData.priceChangePercent : sampleData.priceChangePercent;
 
                 document.getElementById('kpiPrice').textContent = `$${currentPrice.toFixed(2)}`;
                 const kpiPriceChangeEl = document.getElementById('kpiPriceChange');
@@ -981,14 +981,15 @@
 
                 const weekHigh = yahooData.weekHigh || sampleData.weekHigh;
                 const weekLow = yahooData.weekLow || sampleData.weekLow;
-                document.getElementById('kpi52Range').textContent = `$${weekLow.toFixed(2)} - $${weekHigh.toFixed(2)}`;
+                document.getElementById('kpi52Range').textContent = `$${weekLow.toFixed(2)} to $${weekHigh.toFixed(2)}`;
 
                 const rangePercent = ((currentPrice - weekLow) / (weekHigh - weekLow)) * 100;
                 document.getElementById('weekRangeBar').style.width = rangePercent + '%';
 
-                document.getElementById('kpiVolume').textContent = formatNumber(yahooData.volume || sampleData.volume);
+                const actualVolume = yahooData.volume || sampleData.volume;
+                document.getElementById('kpiVolume').textContent = formatNumber(actualVolume);
                 const volumeAvg = sampleData.volumeAverage;
-                const volumeChangePercent = (((yahooData.volume || sampleData.volume) - volumeAvg) / volumeAvg * 100);
+                const volumeChangePercent = ((actualVolume - volumeAvg) / volumeAvg * 100);
                 document.getElementById('volumeChange').textContent = `${volumeChangePercent >= 0 ? '+' : ''}${volumeChangePercent.toFixed(0)}% avg`;
 
                 document.getElementById('kpiDividend').textContent = `${sampleData.dividendYield.toFixed(2)}%`;

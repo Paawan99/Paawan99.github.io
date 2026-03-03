@@ -673,11 +673,32 @@
  .project-card {
  background: var(--bg-card);
  border: 1px solid var(--border);
- border-radius: 2px;
- padding: 2.5rem;
+ border-radius: 8px;
+ padding: 0;
  transition: all 0.4s var(--transition);
  position: relative;
  overflow: hidden;
+ }
+
+ .project-card-img-wrap {
+ overflow: hidden;
+ }
+
+ .project-card-img {
+ width: 100%;
+ height: 200px;
+ object-fit: cover;
+ display: block;
+ border-bottom: 1px solid var(--border);
+ transition: transform 0.4s var(--transition);
+ }
+
+ .project-card:hover .project-card-img {
+ transform: scale(1.05);
+ }
+
+ .project-card-body {
+ padding: 1.8rem 2rem 2rem;
  }
 
  .project-card::after {
@@ -1177,6 +1198,10 @@
  </div>
  <div class="projects-grid">
  <a href="projects/stock-analysis-framework.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/stock-analysis.png" alt="Stock Analysis" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1191,8 +1216,13 @@
  <span>Comps</span>
  <span>Excel</span>
  </div>
+ </div>
  </a>
  <a href="projects/ma-valuation-model.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/ma-valuation.png" alt="Ma Valuation" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1207,8 +1237,13 @@
  <span>Synergies</span>
  <span>Excel</span>
  </div>
+ </div>
  </a>
  <a href="projects/portfolio-optimization.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/portfolio-optimization.png" alt="Portfolio Optimization" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1223,8 +1258,13 @@
  <span>Monte Carlo</span>
  <span>Excel</span>
  </div>
+ </div>
  </a>
  <a href="projects/risk-assessment-tools.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/risk-assessment.png" alt="Risk Assessment" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1239,8 +1279,13 @@
  <span>Stress Testing</span>
  <span>Excel</span>
  </div>
+ </div>
  </a>
  <a href="projects/market-analysis-dashboard.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/market-dashboard.png" alt="Market Dashboard" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1255,8 +1300,13 @@
  <span>Data Viz</span>
  <span>API</span>
  </div>
+ </div>
  </a>
  <a href="projects/market-research-project.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+ <div class="project-card-img-wrap">
+ <img src="images/energy-research.png" alt="Energy Research" class="project-card-img" loading="lazy">
+ </div>
+ <div class="project-card-body">
  <div class="project-top">
  <span class="project-folder">📂</span>
  <div class="project-links">
@@ -1270,6 +1320,7 @@
  <span>ESG</span>
  <span>Research</span>
  <span>CFA L3</span>
+ </div>
  </div>
  </a>
  </div>

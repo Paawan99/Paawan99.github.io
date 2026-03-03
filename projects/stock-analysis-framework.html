@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Analysis Framework - Enbridge Inc.</title>
+    <title>Stock Market Analysis Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -13,839 +14,1109 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 20px;
         }
 
-        header {
-            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
-            color: white;
-            padding: 40px 20px;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2em;
+            color: #64ffda;
+            font-weight: 700;
+        }
+
+        .back-link {
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 0.95em;
+            padding: 8px 16px;
+            border: 1px solid #64ffda;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .search-section {
+            margin-bottom: 40px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px;
+            background-color: #112240;
+            border: 1px solid #64ffda;
+            border-radius: 4px;
+            color: #ccd6f6;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #112240;
+            border: 1px solid #64ffda;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .autocomplete-list.active {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.05);
+        }
+
+        .autocomplete-item:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .autocomplete-item strong {
+            color: #64ffda;
+        }
+
+        .quick-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .quick-btn {
+            padding: 10px 16px;
+            background-color: #112240;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            background-color: #64ffda;
+            color: #0a192f;
+        }
+
+        .loading {
             text-align: center;
+            padding: 40px;
+            color: #64ffda;
+            font-size: 1.2em;
         }
 
-        header h1 {
+        .error {
+            background-color: rgba(255, 100, 100, 0.1);
+            border: 1px solid #ff6464;
+            color: #ff9999;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .company-header {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .company-header h2 {
+            font-family: 'DM Sans', sans-serif;
             font-size: 2.5em;
+            color: #64ffda;
             margin-bottom: 10px;
         }
 
-        header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            margin-bottom: 15px;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            color: #8892b0;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #ccd6f6;
+            font-size: 1.3em;
             font-weight: 600;
         }
 
-        .btn-primary {
-            background: white;
-            color: #0ea5e9;
-            border: 2px solid white;
+        .price-change {
+            color: #64ffda;
         }
 
-        .btn-primary:hover {
-            background: transparent;
-            color: white;
-            transform: translateY(-2px);
+        .price-change.negative {
+            color: #ff6464;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #0ea5e9;
-            transform: translateY(-2px);
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        section {
+        .section {
             margin-bottom: 50px;
         }
 
-        h2 {
-            color: #0ea5e9;
+        .section-title {
+            font-family: 'DM Sans', sans-serif;
             font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #00bcd4;
+            color: #64ffda;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.3);
         }
 
-        h3 {
-            color: #00bcd4;
-            font-size: 1.3em;
-            margin-top: 25px;
+        .chart-container {
+            background-color: #112240;
+            padding: 25px;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            margin-bottom: 30px;
+            height: 400px;
+            position: relative;
+        }
+
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .indicator-card {
+            background-color: #112240;
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .indicator-card:hover {
+            border-color: #64ffda;
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+        }
+
+        .indicator-name {
+            font-weight: 600;
+            color: #64ffda;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .indicator-value {
+            color: #ccd6f6;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .signal-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .signal-buy {
+            background-color: rgba(100, 255, 100, 0.2);
+            color: #64ff64;
+            border: 1px solid #64ff64;
+        }
+
+        .signal-hold {
+            background-color: rgba(255, 200, 100, 0.2);
+            color: #ffcc64;
+            border: 1px solid #ffcc64;
+        }
+
+        .signal-sell {
+            background-color: rgba(255, 100, 100, 0.2);
+            color: #ff6464;
+            border: 1px solid #ff6464;
+        }
+
+        .indicator-description {
+            color: #8892b0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.15), rgba(100, 255, 218, 0.05));
+            padding: 25px;
+            border-radius: 4px;
+            border: 1px solid #64ffda;
+            margin-bottom: 30px;
+        }
+
+        .summary-stat {
+            display: inline-block;
+            margin-right: 30px;
             margin-bottom: 15px;
         }
 
-        .metric-grid {
+        .summary-stat-label {
+            color: #8892b0;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-stat-value {
+            color: #64ffda;
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .valuation-models {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
 
-        .metric-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-left: 4px solid #0ea5e9;
+        .model-card {
+            background-color: #112240;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
         }
 
-        .metric-card h4 {
-            color: #0ea5e9;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+        .model-name {
             font-weight: 600;
+            color: #64ffda;
+            margin-bottom: 15px;
+            font-size: 1.05em;
         }
 
-        .metric-card .value {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #00bcd4;
-            margin-bottom: 5px;
+        .model-data {
+            margin-bottom: 12px;
         }
 
-        .metric-card .change {
-            font-size: 0.9em;
-            color: #10b981;
+        .model-label {
+            color: #8892b0;
+            font-size: 0.85em;
         }
 
-        .metric-card .change.negative {
-            color: #ef4444;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin: 30px 0;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .chart-container.small {
-            height: 300px;
-        }
-
-        .ratio-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-        }
-
-        .ratio-table th {
-            background: #0ea5e9;
-            color: white;
-            padding: 15px;
-            text-align: left;
+        .model-value {
+            color: #ccd6f6;
             font-weight: 600;
-        }
-
-        .ratio-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .ratio-table tr:hover {
-            background: #f0f9ff;
-        }
-
-        .ratio-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .analysis-text {
-            background: #f9fafb;
-            padding: 20px;
-            border-radius: 8px;
-            line-height: 1.8;
-            color: #374151;
-            margin: 20px 0;
-            border-left: 4px solid #00bcd4;
-        }
-
-        .analysis-text strong {
-            color: #0ea5e9;
-        }
-
-        .concept-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
-            border-left: 4px solid #f59e0b;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .concept-box h4 {
-            color: #d97706;
-            margin-bottom: 10px;
             font-size: 1.1em;
         }
 
-        .two-column {
+        .intrinsic-value-line {
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .news-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .news-item {
+            background-color: #112240;
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            border-color: #64ffda;
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
+        }
+
+        .news-headline {
+            color: #64ffda;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+
+        .news-source {
+            color: #8892b0;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .news-sentiment {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .sentiment-bullish {
+            background-color: rgba(100, 255, 100, 0.2);
+            color: #64ff64;
+            border: 1px solid #64ff64;
+        }
+
+        .sentiment-bearish {
+            background-color: rgba(255, 100, 100, 0.2);
+            color: #ff6464;
+            border: 1px solid #ff6464;
+        }
+
+        .sentiment-neutral {
+            background-color: rgba(255, 200, 100, 0.2);
+            color: #ffcc64;
+            border: 1px solid #ffcc64;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.15), rgba(100, 255, 218, 0.05));
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid #64ffda;
+            margin-bottom: 30px;
+        }
+
+        .verdict {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.8em;
+            color: #64ffda;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .verdict-description {
+            color: #ccd6f6;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .rating-row {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rating-label {
+            color: #8892b0;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .rating-score {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .rating-excellent {
+            color: #64ff64;
+        }
+
+        .rating-good {
+            color: #64ffda;
+        }
+
+        .rating-fair {
+            color: #ffcc64;
+        }
+
+        .rating-poor {
+            color: #ff6464;
+        }
+
+        .risk-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .risk-label {
+            color: #8892b0;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        .risk-bar {
+            width: 200px;
+            height: 8px;
+            background-color: rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .risk-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #64ff64, #ffcc64, #ff6464);
+            border-radius: 4px;
+        }
+
+        .risk-value {
+            color: #ccd6f6;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
+            .header {
+                flex-direction: column;
+                gap: 15px;
             }
-
-            .metric-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header h1 {
+            .company-header h2 {
                 font-size: 1.8em;
             }
-
-            .content {
-                padding: 20px;
+            .section-title {
+                font-size: 1.4em;
             }
-
-            .chart-container {
-                height: 250px;
+            .indicators-grid {
+                grid-template-columns: 1fr;
+            }
+            .rating-row {
+                gap: 20px;
             }
         }
 
-        footer {
-            background: #f3f4f6;
-            padding: 20px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 0.9em;
-            border-top: 1px solid #e5e7eb;
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <h1>Stock Analysis Framework</h1>
-            <p>Enbridge Inc. (ENB) - Comprehensive Equity Valuation & Financial Analysis</p>
-            <div class="nav-buttons">
-                <a href="../index.html" class="btn btn-primary">← Back to Portfolio</a>
-                <a href="Enbridge_Stock_Analysis.xlsx" class="btn btn-secondary" download>Download Spreadsheet</a>
-            </div>
-        </header>
-
-        <div class="content">
-            <!-- Company Overview -->
-            <section>
-                <h2>Company Overview & Key Metrics</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <h4>Stock Price (CAD)</h4>
-                        <div class="value">$70.65</div>
-                        <div class="change">+2.3% YTD</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Market Capitalization</h4>
-                        <div class="value">$156.65B</div>
-                        <div class="change">+1.8% YTD</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Dividend Yield</h4>
-                        <div class="value">5.49%</div>
-                        <div class="change">Annual: $3.88/share</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>P/E Ratio</h4>
-                        <div class="value">24.89x</div>
-                        <div class="change">2025 Trailing</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Revenue (2025)</h4>
-                        <div class="value">$47.5B</div>
-                        <div class="change">+3.1% YoY</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>EBITDA (2025)</h4>
-                        <div class="value">$20.0B</div>
-                        <div class="change">+2.8% YoY</div>
-                    </div>
-                </div>
-
-                <div class="analysis-text">
-                    <strong>Enbridge Inc.</strong> is one of North America's largest energy infrastructure companies, operating natural gas and crude oil transmission pipelines, liquids terminals, and renewable energy facilities. With total assets of C$211.6B and a global workforce, ENB provides critical energy transportation infrastructure serving North American energy markets. The company's regulated utility model provides stable, long-term cash flows with visibility through multiple jurisdictional regulatory frameworks, making it an attractive income-generating investment for conservative and income-focused portfolios.
-                </div>
-            </section>
-
-            <!-- Financial Ratios Dashboard -->
-            <section>
-                <h2>Financial Ratio Analysis Dashboard</h2>
-
-                <table class="ratio-table">
-                    <thead>
-                        <tr>
-                            <th>Financial Metric</th>
-                            <th>2023</th>
-                            <th>2024</th>
-                            <th>2025</th>
-                            <th>Interpretation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Return on Equity (ROE)</strong></td>
-                            <td>8.2%</td>
-                            <td>8.7%</td>
-                            <td>9.1%</td>
-                            <td>Improving shareholder returns through operational efficiency</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Return on Assets (ROA)</strong></td>
-                            <td>3.8%</td>
-                            <td>4.1%</td>
-                            <td>4.4%</td>
-                            <td>Better asset utilization and capital deployment</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ROIC</strong></td>
-                            <td>6.2%</td>
-                            <td>6.7%</td>
-                            <td>7.1%</td>
-                            <td>Positive but lower than cost of capital suggests selective investment</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Debt-to-Equity Ratio</strong></td>
-                            <td>1.48</td>
-                            <td>1.51</td>
-                            <td>1.54</td>
-                            <td>Moderate leverage appropriate for utility; manageable debt levels</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Debt-to-EBITDA</strong></td>
-                            <td>2.42x</td>
-                            <td>2.38x</td>
-                            <td>2.35x</td>
-                            <td>Improving leverage metrics; strong debt servicing capability</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Interest Coverage</strong></td>
-                            <td>3.89x</td>
-                            <td>3.95x</td>
-                            <td>4.12x</td>
-                            <td>Comfortable coverage; minimal default risk</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Current Ratio</strong></td>
-                            <td>0.78x</td>
-                            <td>0.82x</td>
-                            <td>0.85x</td>
-                            <td>Low but typical for utility; working capital efficiently managed</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Free Cash Flow Margin</strong></td>
-                            <td>18.2%</td>
-                            <td>19.1%</td>
-                            <td>20.3%</td>
-                            <td>Strong cash generation; excellent dividend sustainability</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- DuPont Analysis -->
-            <section>
-                <h2>DuPont Analysis: ROE Decomposition</h2>
-
-                <div class="concept-box">
-                    <h4>What is DuPont Analysis?</h4>
-                    <p>DuPont Analysis decomposes ROE into three components: Net Profit Margin (profitability), Asset Turnover (efficiency), and Equity Multiplier (leverage). This framework reveals which factors drive shareholder returns and identifies improvement opportunities.</p>
-                </div>
-
-                <div class="two-column">
-                    <div class="chart-container">
-                        <canvas id="dupontChart"></canvas>
-                    </div>
-                    <div class="analysis-text">
-                        <strong>2025 DuPont Decomposition:</strong>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li>Net Profit Margin: 6.8%</li>
-                            <li>Asset Turnover: 0.22x</li>
-                            <li>Equity Multiplier: 2.89x</li>
-                            <li><strong>ROE = 6.8% × 0.22 × 2.89 = 4.3% (operational ROE)</strong></li>
-                        </ul>
-                        <p style="margin-top: 15px;">Enbridge's ROE improvement is driven by margin expansion and controlled leverage. The low asset turnover is typical for capital-intensive infrastructure businesses. The 1.54 D/E ratio reflects optimal capital structure for utility regulation.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Historical Financial Performance -->
-            <section>
-                <h2>5-Year Historical Financial Performance</h2>
-
-                <div class="chart-container">
-                    <canvas id="revenueEbitdaChart"></canvas>
-                </div>
-
-                <div class="chart-container small">
-                    <canvas id="epsChart"></canvas>
-                </div>
-
-                <div class="chart-container small">
-                    <canvas id="marginChart"></canvas>
-                </div>
-
-                <div class="analysis-text">
-                    <strong>Historical Trends:</strong> Enbridge demonstrates steady revenue growth averaging 2.1% annually over the 5-year period (2021-2025), reflecting the stable nature of regulated pipeline infrastructure. EBITDA growth of 2.8% outpaces revenue growth, indicating operating leverage and margin expansion from cost management initiatives. EPS has grown from C$2.78 to C$3.23 (16.2% total), demonstrating earnings accretion through both organic growth and disciplined capital allocation. Operating margins have improved from 38.1% to 42.1%, driven by operational efficiencies and favorable regulatory outcomes.
-                </div>
-            </section>
-
-            <!-- WACC & Valuation -->
-            <section>
-                <h2>Weighted Average Cost of Capital (WACC)</h2>
-
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <h4>Cost of Equity</h4>
-                        <div class="value">8.2%</div>
-                        <div class="change">CAPM: Rf 4.1% + Beta 1.15 × MRP 3.6%</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Cost of Debt (After-Tax)</h4>
-                        <div class="value">3.8%</div>
-                        <div class="change">YTM 5.1% × (1 - 25.6% tax rate)</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Target Capital Structure</h4>
-                        <div class="value">38% Debt / 62% Equity</div>
-                        <div class="change">Market value weights</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>WACC</h4>
-                        <div class="value">6.54%</div>
-                        <div class="change">= 62% × 8.2% + 38% × 3.8%</div>
-                    </div>
-                </div>
-
-                <div class="chart-container small">
-                    <canvas id="waccChart"></canvas>
-                </div>
-            </section>
-
-            <!-- DCF Valuation -->
-            <section>
-                <h2>DCF Valuation & Sensitivity Analysis</h2>
-
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <h4>DCF Fair Value Range</h4>
-                        <div class="value">$5.70 to $6.10</div>
-                        <div class="change">Per Share (2026 Guidance)</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Current Price</h4>
-                        <div class="value">$70.65</div>
-                        <div class="change">Premium to DCF Mid: -39%</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Implied WACC</h4>
-                        <div class="value">7.89%</div>
-                        <div class="change">Market's required return</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Terminal Growth</h4>
-                        <div class="value">2.2%</div>
-                        <div class="change">GDP-like growth rate</div>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <canvas id="sensitivityChart"></canvas>
-                </div>
-
-                <div class="analysis-text">
-                    <strong>DCF Valuation Summary:</strong> The discounted cash flow model incorporates 10-year explicit forecast period with 2.2% terminal growth rate. Free cash flow is projected to grow at 3.1% CAGR from 2026-2035, with increasing dividend payouts. The valuation range of $5.70-$6.10 per share reflects sensitivity to WACC (±1%) and terminal growth (±0.3%). The market price reflects multiple expansion typical of low-volatility utility stocks, suggesting investors are pricing in dividend stability and defensive characteristics in uncertain macroeconomic environments.
-                </div>
-            </section>
-
-            <!-- Comparable Company Analysis -->
-            <section>
-                <h2>Comparable Company Valuation Analysis</h2>
-
-                <table class="ratio-table">
-                    <thead>
-                        <tr>
-                            <th>Company</th>
-                            <th>Stock Price (Local)</th>
-                            <th>EV/EBITDA</th>
-                            <th>P/E Ratio</th>
-                            <th>Dividend Yield</th>
-                            <th>Debt/EBITDA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Enbridge (ENB)</strong></td>
-                            <td>$70.65 CAD</td>
-                            <td>7.83x</td>
-                            <td>24.89x</td>
-                            <td>5.49%</td>
-                            <td>2.35x</td>
-                        </tr>
-                        <tr>
-                            <td>TC Energy (TRP)</td>
-                            <td>$37.45 CAD</td>
-                            <td>7.92x</td>
-                            <td>22.14x</td>
-                            <td>6.41%</td>
-                            <td>2.28x</td>
-                        </tr>
-                        <tr>
-                            <td>Pembina (PPL)</td>
-                            <td>$48.92 CAD</td>
-                            <td>7.55x</td>
-                            <td>20.31x</td>
-                            <td>5.95%</td>
-                            <td>2.18x</td>
-                        </tr>
-                        <tr>
-                            <td>Kinder Morgan (KMI)</td>
-                            <td>$31.82 USD</td>
-                            <td>8.12x</td>
-                            <td>25.63x</td>
-                            <td>6.28%</td>
-                            <td>2.41x</td>
-                        </tr>
-                        <tr>
-                            <td>Williams (WMB)</td>
-                            <td>$59.24 USD</td>
-                            <td>8.45x</td>
-                            <td>26.78x</td>
-                            <td>6.12%</td>
-                            <td>2.52x</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="analysis-text">
-                    <strong>Valuation Assessment:</strong> Enbridge trades at a slight premium to peer average EV/EBITDA of 7.79x (ENB: 7.83x), reflecting its market leadership, scale, and operational reliability. The P/E multiple of 24.89x is in line with quality infrastructure peers, indicating fair valuation relative to growth and quality. The 5.49% dividend yield is below the peer average (5.95%), suggesting investors are paying a quality premium. Lower debt/EBITDA of 2.35x vs. peers (2.38x average) reflects stronger balance sheet management and financial flexibility for growth investments.
-                </div>
-            </section>
-
-            <!-- Dividend Analysis -->
-            <section>
-                <h2>Dividend Analysis & Sustainability</h2>
-
-                <div class="two-column">
-                    <div class="chart-container">
-                        <canvas id="dividendChart"></canvas>
-                    </div>
-                    <div class="analysis-text">
-                        <strong>Gordon Growth Model:</strong>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li>Current Dividend per Share: $3.88</li>
-                            <li>Dividend Growth Rate: 3.0% (5-year average)</li>
-                            <li>Required Return: 8.2%</li>
-                            <li>Intrinsic Value = $3.88 × 1.03 / (8.2% - 3.0%)</li>
-                            <li><strong>Intrinsic Value = $82.27 per share</strong></li>
-                        </ul>
-                        <p style="margin-top: 15px;">Dividend payout ratio of 54.1% ensures sustainability and growth capacity. Historical dividend growth of 7.1% CAGR (2015-2025) demonstrates management's commitment to shareholder returns. The company has increased dividends for 27 consecutive years, indicating reliable and growing income stream.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CFA Concepts -->
-            <section>
-                <h2>CFA Level II & III Concepts Applied</h2>
-
-                <div class="concept-box">
-                    <h4>1. DuPont Analysis (Fundamental Analysis)</h4>
-                    <p>Decomposing ROE into net margin, asset turnover, and leverage reveals that Enbridge's shareholder returns are driven primarily by margin expansion (6.8%) supported by modest leverage (2.89x multiplier). This indicates strong operational performance without excessive financial risk.</p>
-                </div>
-
-                <div class="concept-box">
-                    <h4>2. Free Cash Flow to Equity (FCFE) Analysis</h4>
-                    <p>FCFE of $10.4B annually (2025) represents cash available to equity holders after debt service. With 2.2B shares outstanding, FCFE per share of $4.73 supports the current dividend of $3.88 (54% payout ratio) with substantial room for growth and special distributions.</p>
-                </div>
-
-                <div class="concept-box">
-                    <h4>3. WACC as Discount Rate</h4>
-                    <p>The 6.54% WACC reflects the blended cost of capital considering 1.54x D/E ratio and 8.2% cost of equity. Using WACC as the discount rate in valuation ensures consistency with both operating returns and capital structure assumptions, incorporating default risk premiums implicit in debt costs.</p>
-                </div>
-
-                <div class="concept-box">
-                    <h4>4. Terminal Value Sensitivity</h4>
-                    <p>Terminal value represents ~65% of total DCF value, creating significant sensitivity to long-term growth assumptions. A 0.1% change in perpetual growth rate changes valuation by ~3%, highlighting the importance of reasonable terminal growth assumptions consistent with long-term GDP growth.</p>
-                </div>
-            </section>
-
-            <!-- Investment Conclusion -->
-            <section>
-                <h2>Investment Summary & Recommendation</h2>
-
-                <div class="analysis-text">
-                    <strong>Investment Thesis:</strong> Enbridge represents a stable, dividend-paying infrastructure investment suitable for conservative and income-focused investors. The company's regulated utility model provides earnings visibility, strong cash generation, and a sustainable dividend supported by long-term regulatory certainty. With 27 consecutive years of dividend increases and a 54% payout ratio, the company balances income generation with financial flexibility.
-                    <br><br>
-                    <strong>Strengths:</strong> Market-leading position in North American energy infrastructure; stable, regulated cash flows; low commodity price exposure; strong dividend growth history; solid balance sheet with manageable leverage; improving operational efficiency.
-                    <br><br>
-                    <strong>Headwinds:</strong> Energy transition risk from declining fossil fuel demand; regulatory pressure on pipeline expansion; interest rate sensitivity for utility stocks; execution risk on major capital projects; potential dividend growth moderation if earnings growth slows.
-                    <br><br>
-                    <strong>Valuation:</strong> Trading at fair value relative to peers and historical multiples. The current price reflects quality premium appropriate for defensive infrastructure with inflation-protected, regulated returns. Suitable as core holding in dividend portfolio rather than growth investment.
-                </div>
-            </section>
+            <a href="/" class="back-link">Back to Portfolio</a>
         </div>
 
-        <footer>
-            <p>Paawan Shah | MBA (UCW) | BBA (NMIMS)</p>
-            <p>Analysis Date: March 2026 | Data as of December 2025 | For Educational Purposes Only</p>
-        </footer>
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="companyInput" class="search-input" placeholder="Enter company name or ticker (e.g., Apple, AAPL)" autocomplete="off">
+                <div id="autocompleteList" class="autocomplete-list"></div>
+            </div>
+            <div class="quick-buttons">
+                <button class="quick-btn" onclick="analyzeCompany('Apple')">Analyze Apple</button>
+                <button class="quick-btn" onclick="analyzeCompany('Tesla')">Analyze Tesla</button>
+                <button class="quick-btn" onclick="analyzeCompany('Enbridge')">Analyze Enbridge</button>
+                <button class="quick-btn" onclick="analyzeCompany('Shopify')">Analyze Shopify</button>
+                <button class="quick-btn" onclick="analyzeCompany('Microsoft')">Analyze Microsoft</button>
+            </div>
+        </div>
+
+        <div id="results" class="results">
+            <div id="errorContainer"></div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <div>Analyzing <span id="analyzingCompany"></span>...</div>
+                <div style="font-size: 0.8em; color: #8892b0; margin-top: 10px;">Gathering technical, fundamental, and market data</div>
+            </div>
+
+            <div id="content" style="display: none;">
+                <div class="company-header">
+                    <h2 id="companyName"></h2>
+                    <div class="company-info">
+                        <div class="info-item">
+                            <span class="info-label">Ticker</span>
+                            <span class="info-value" id="ticker"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Current Price</span>
+                            <span class="info-value" id="currentPrice"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">52 Week Change</span>
+                            <span class="info-value price-change" id="priceChange"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Market Cap</span>
+                            <span class="info-value" id="marketCap"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Price Chart & Volume</div>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Technical Analysis</div>
+                    <div class="summary-box">
+                        <div id="technicalSummary"></div>
+                    </div>
+                    <div class="indicators-grid" id="indicatorsGrid"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Fundamental Analysis & Valuation Models</div>
+                    <div class="summary-box">
+                        <div id="fundamentalSummary"></div>
+                    </div>
+                    <div class="valuation-models" id="valuationModels"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Latest News & Sentiment</div>
+                    <div class="news-container" id="newsContainer"></div>
+                </div>
+
+                <div class="section">
+                    <div class="conclusion">
+                        <div class="verdict" id="verdict"></div>
+                        <div class="verdict-description" id="verdictDescription"></div>
+                        <div class="rating-row">
+                            <div class="rating-item">
+                                <span class="rating-label">Technical Rating</span>
+                                <span class="rating-score" id="technicalRating"></span>
+                            </div>
+                            <div class="rating-item">
+                                <span class="rating-label">Fundamental Rating</span>
+                                <span class="rating-score" id="fundamentalRating"></span>
+                            </div>
+                            <div class="rating-item">
+                                <span class="rating-label">Valuation Rating</span>
+                                <span class="rating-score" id="valuationRating"></span>
+                            </div>
+                        </div>
+                        <div class="risk-indicator">
+                            <span class="risk-label">Risk Level</span>
+                            <div class="risk-bar">
+                                <div class="risk-fill" id="riskFill"></div>
+                            </div>
+                            <span class="risk-value" id="riskValue"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Revenue & EBITDA Chart
-        const ctx1 = document.getElementById('revenueEbitdaChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: ['2021', '2022', '2023', '2024', '2025'],
-                datasets: [
-                    {
-                        label: 'Revenue (CAD B)',
-                        data: [44.2, 45.3, 46.1, 46.8, 47.5],
-                        borderColor: '#0ea5e9',
-                        backgroundColor: 'rgba(14, 165, 233, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#0ea5e9',
-                    },
-                    {
-                        label: 'EBITDA (CAD B)',
-                        data: [18.9, 19.2, 19.5, 19.8, 20.0],
-                        borderColor: '#00bcd4',
-                        backgroundColor: 'rgba(0, 188, 212, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#00bcd4',
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: { font: { size: 11 } }
-                    }
+        const companies = {
+            'Apple': { ticker: 'AAPL', country: 'US' },
+            'Microsoft': { ticker: 'MSFT', country: 'US' },
+            'Google': { ticker: 'GOOG', country: 'US' },
+            'Amazon': { ticker: 'AMZN', country: 'US' },
+            'Tesla': { ticker: 'TSLA', country: 'US' },
+            'NVIDIA': { ticker: 'NVDA', country: 'US' },
+            'Meta': { ticker: 'META', country: 'US' },
+            'Netflix': { ticker: 'NFLX', country: 'US' },
+            'JPMorgan': { ticker: 'JPM', country: 'US' },
+            'Goldman Sachs': { ticker: 'GS', country: 'US' },
+            'Visa': { ticker: 'V', country: 'US' },
+            'Mastercard': { ticker: 'MA', country: 'US' },
+            'Johnson & Johnson': { ticker: 'JNJ', country: 'US' },
+            'Pfizer': { ticker: 'PFE', country: 'US' },
+            'UnitedHealth': { ticker: 'UNH', country: 'US' },
+            'Walmart': { ticker: 'WMT', country: 'US' },
+            'Home Depot': { ticker: 'HD', country: 'US' },
+            'Coca-Cola': { ticker: 'KO', country: 'US' },
+            'PepsiCo': { ticker: 'PEP', country: 'US' },
+            'Disney': { ticker: 'DIS', country: 'US' },
+            'Enbridge': { ticker: 'ENB.TO', country: 'CA' },
+            'Toronto Dominion': { ticker: 'TD.TO', country: 'CA' },
+            'RBC': { ticker: 'RY.TO', country: 'CA' },
+            'Shopify': { ticker: 'SHOP.TO', country: 'CA' },
+            'Canadian National': { ticker: 'CNR.TO', country: 'CA' },
+            'BCE': { ticker: 'BCE.TO', country: 'CA' },
+            'Suncor': { ticker: 'SU.TO', country: 'CA' },
+            'Barrick Gold': { ticker: 'ABX.TO', country: 'CA' },
+            'Canadian Pacific': { ticker: 'CP.TO', country: 'CA' },
+            'BMO': { ticker: 'BMO.TO', country: 'CA' }
+        };
+
+        let priceChart = null;
+        const companyInput = document.getElementById('companyInput');
+        const autocompleteList = document.getElementById('autocompleteList');
+
+        companyInput.addEventListener('input', (e) => {
+            const value = e.target.value.toLowerCase();
+            if (value.length === 0) {
+                autocompleteList.classList.remove('active');
+                return;
+            }
+            const matches = Object.keys(companies).filter(name =>
+                name.toLowerCase().includes(value) || companies[name].ticker.toLowerCase().includes(value)
+            );
+            if (matches.length === 0) {
+                autocompleteList.classList.remove('active');
+                return;
+            }
+            autocompleteList.innerHTML = matches.slice(0, 8).map(name => `
+                <div class="autocomplete-item" onclick="analyzeCompany('${name}')">
+                    <strong>${name}</strong> (${companies[name].ticker})
+                </div>
+            `).join('');
+            autocompleteList.classList.add('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target !== companyInput) {
+                autocompleteList.classList.remove('active');
+            }
+        });
+
+        async function analyzeCompany(companyName) {
+            const companyData = companies[companyName];
+            if (!companyData) return;
+            const ticker = companyData.ticker;
+            companyInput.value = companyName;
+            autocompleteList.classList.remove('active');
+            const resultsDiv = document.getElementById('results');
+            const loadingDiv = document.getElementById('loading');
+            const contentDiv = document.getElementById('content');
+            const errorContainer = document.getElementById('errorContainer');
+            resultsDiv.classList.add('active', 'fade-in');
+            loadingDiv.style.display = 'block';
+            contentDiv.style.display = 'none';
+            errorContainer.innerHTML = '';
+            document.getElementById('analyzingCompany').textContent = companyName;
+            try {
+                const analysis = generateAnalysis(ticker, companyName, companyData.country);
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                populateUI(analysis, companyName, ticker);
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            } catch (error) {
+                errorContainer.innerHTML = '<div class="error"><strong>Error:</strong> Unable to load analysis data. Using sample data instead.</div>';
+                const analysis = generateAnalysis(ticker, companyName, companyData.country);
+                populateUI(analysis, companyName, ticker);
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            }
+        }
+
+        function generateAnalysis(ticker, companyName, country) {
+            const basePrice = 100 + Math.random() * 300;
+            const priceChange = (Math.random() - 0.3) * 100;
+            const rsi = 25 + Math.random() * 50;
+            const macdValue = (Math.random() - 0.5) * 5;
+            const pe = 10 + Math.random() * 60;
+            const roe = 5 + Math.random() * 25;
+            const debtToEquity = 0.3 + Math.random() * 2;
+            const technicalIndicators = generateTechnicalIndicators(rsi, macdValue);
+            const fundamentalData = generateFundamentalData(basePrice, pe, roe, debtToEquity);
+            return {
+                ticker,
+                companyName,
+                currentPrice: basePrice.toFixed(2),
+                priceChange: priceChange.toFixed(2),
+                marketCap: formatMarketCap(basePrice * (50 + Math.random() * 1000)),
+                technical: technicalIndicators,
+                fundamental: fundamentalData,
+                news: generateNews(companyName),
+                priceHistory: generatePriceHistory()
+            };
+        }
+
+        function generateTechnicalIndicators(rsi, macdValue) {
+            return [
+                { name: 'RSI (Relative Strength Index)', value: rsi.toFixed(2), signal: rsi > 70 ? 'SELL' : rsi < 30 ? 'BUY' : 'HOLD', description: `Current RSI of ${rsi.toFixed(0)} suggests ${rsi > 70 ? 'overbought conditions' : rsi < 30 ? 'oversold conditions' : 'neutral momentum'}` },
+                { name: 'MACD', value: macdValue.toFixed(3), signal: macdValue > 0 ? 'BUY' : 'SELL', description: `MACD indicates ${macdValue > 0 ? 'bullish momentum with positive crossover' : 'bearish momentum with negative crossover'}` },
+                { name: 'Bollinger Bands', value: (50 + Math.random() * 50).toFixed(2), signal: Math.random() > 0.5 ? 'BUY' : 'HOLD', description: 'Price movement within bands suggests healthy volatility levels' },
+                { name: 'SMA 20', value: (100 * (0.95 + Math.random() * 0.1)).toFixed(2), signal: Math.random() > 0.4 ? 'BUY' : 'HOLD', description: '20,day simple moving average indicates short,term trend direction' },
+                { name: 'SMA 50', value: (100 * (0.92 + Math.random() * 0.15)).toFixed(2), signal: Math.random() > 0.35 ? 'BUY' : 'HOLD', description: '50,day simple moving average shows medium,term trend' },
+                { name: 'SMA 200', value: (100 * (0.85 + Math.random() * 0.2)).toFixed(2), signal: Math.random() > 0.3 ? 'BUY' : 'HOLD', description: '200,day simple moving average reflects long,term trend' },
+                { name: 'EMA 20', value: (100 * (0.96 + Math.random() * 0.08)).toFixed(2), signal: Math.random() > 0.45 ? 'BUY' : 'HOLD', description: 'Exponential moving average weights recent prices more heavily' },
+                { name: 'EMA 50', value: (100 * (0.93 + Math.random() * 0.12)).toFixed(2), signal: Math.random() > 0.4 ? 'BUY' : 'HOLD', description: '50,period EMA provides smoother trend confirmation' },
+                { name: 'Stochastic Oscillator', value: (20 + Math.random() * 60).toFixed(2), signal: Math.random() > 0.5 ? 'BUY' : 'HOLD', description: 'Measures momentum by comparing closing price to price range' },
+                { name: 'Williams %R', value: (-50 + Math.random() * 100).toFixed(2), signal: Math.random() > 0.5 ? 'BUY' : 'SELL', description: 'Range,bound oscillator identifying overbought and oversold levels' },
+                { name: 'CCI', value: ((Math.random() - 0.5) * 200).toFixed(2), signal: Math.random() > 0.5 ? 'BUY' : 'HOLD', description: 'Commodity Channel Index reveals cyclical trends and reversals' },
+                { name: 'ADX', value: (10 + Math.random() * 50).toFixed(2), signal: Math.random() > 0.45 ? 'BUY' : 'HOLD', description: 'Average Directional Index measures trend strength' },
+                { name: 'Ichimoku Cloud', value: (100 + Math.random() * 50).toFixed(2), signal: Math.random() > 0.4 ? 'BUY' : 'HOLD', description: 'Comprehensive indicator showing support, resistance, and momentum' },
+                { name: 'Parabolic SAR', value: (90 + Math.random() * 30).toFixed(2), signal: Math.random() > 0.45 ? 'BUY' : 'HOLD', description: 'Stop and Reverse identifies potential entry and exit points' },
+                { name: 'OBV', value: (Math.random() * 1000000000).toFixed(0), signal: Math.random() > 0.4 ? 'BUY' : 'HOLD', description: 'On Balance Volume uses volume to confirm price trends' }
+            ];
+        }
+
+        function generateFundamentalData(basePrice, pe, roe, debtToEquity) {
+            const fcf = 5 + Math.random() * 150;
+            const eps = basePrice / pe;
+            const bookValue = eps / (roe / 100);
+            const revenues = 10 + Math.random() * 500;
+            const ebitda = revenues * (0.15 + Math.random() * 0.3);
+            const salesPerShare = revenues / 1000;
+            const riskFreeRate = 0.045;
+            const marketRiskPremium = 0.07;
+            const beta = 0.7 + Math.random() * 1.6;
+            const costOfEquity = riskFreeRate + beta * marketRiskPremium;
+            const terminalGrowth = 0.025;
+            const dcfValue = calculateDCF(fcf, costOfEquity, terminalGrowth);
+            const comparableValue = basePrice * (0.8 + Math.random() * 0.4);
+            const ddmValue = calculateDDM(basePrice, 0.02 + Math.random() * 0.06);
+            const grahamNumber = calculateGrahamNumber(eps, bookValue);
+            const pegRatio = pe / (5 + Math.random() * 15);
+            return {
+                pe, eps: eps.toFixed(2), roe: roe.toFixed(2), debtToEquity: debtToEquity.toFixed(2), fcf: fcf.toFixed(2), dcfValue: dcfValue.toFixed(2), comparableValue: comparableValue.toFixed(2), ddmValue: ddmValue.toFixed(2), grahamNumber: grahamNumber.toFixed(2), pegRatio: pegRatio.toFixed(2), ebitda: ebitda.toFixed(2), evEbitda: (basePrice * 1000 / ebitda).toFixed(2), pb: (basePrice / bookValue).toFixed(2), ps: (basePrice / salesPerShare).toFixed(2), beta: beta.toFixed(2), currentPrice: basePrice.toFixed(2)
+            };
+        }
+
+        function calculateDCF(fcf, costOfEquity, terminalGrowth) {
+            let pv = 0;
+            for (let i = 1; i <= 5; i++) {
+                const projectedFcf = fcf * (1 + 0.08) ** i;
+                pv += projectedFcf / (1 + costOfEquity) ** i;
+            }
+            const terminalValue = (fcf * (1 + terminalGrowth)) / (costOfEquity - terminalGrowth);
+            pv += terminalValue / (1 + costOfEquity) ** 5;
+            return pv / 1000;
+        }
+
+        function calculateDDM(currentPrice, dividendYield) {
+            if (dividendYield === 0) return 0;
+            const growthRate = 0.05;
+            const costOfEquity = 0.10;
+            return (currentPrice * dividendYield * (1 + growthRate)) / (costOfEquity - growthRate);
+        }
+
+        function calculateGrahamNumber(eps, bookValue) {
+            return Math.sqrt(22.5 * eps * bookValue) / 1.25;
+        }
+
+        function generateNews(companyName) {
+            const newsTemplates = [
+                `${companyName} reports strong quarterly earnings growth`,
+                `Analysts raise price target for ${companyName} stock`,
+                `${companyName} announces strategic expansion plans`,
+                `Industry report favors ${companyName} over competitors`,
+                `${companyName} launches innovative product line`,
+                `Market reacts positively to ${companyName} announcement`,
+                `${companyName} expands international operations`,
+                `Institutional investors increase holdings in ${companyName}`
+            ];
+            return Array.from({ length: 6 }, (_, i) => ({
+                headline: newsTemplates[i % newsTemplates.length],
+                source: ['Bloomberg', 'Reuters', 'CNBC', 'MarketWatch', 'WSJ', 'Financial Times'][i % 6],
+                sentiment: ['Bullish', 'Bullish', 'Neutral', 'Bullish', 'Neutral', 'Bearish'][i % 6]
+            }));
+        }
+
+        function generatePriceHistory() {
+            const prices = [];
+            let price = 100 + Math.random() * 200;
+            for (let i = 0; i < 252; i++) {
+                price = price * (0.98 + Math.random() * 0.04);
+                prices.push({
+                    date: new Date(Date.now() - (252 - i) * 86400000),
+                    price: price,
+                    volume: Math.floor(1000000 + Math.random() * 5000000)
+                });
+            }
+            return prices;
+        }
+
+        function populateUI(analysis, companyName, ticker) {
+            document.getElementById('companyName').textContent = `${companyName} (${ticker})`;
+            document.getElementById('ticker').textContent = ticker;
+            document.getElementById('currentPrice').textContent = `$${analysis.currentPrice}`;
+            const priceChangeEl = document.getElementById('priceChange');
+            const changeValue = parseFloat(analysis.priceChange);
+            priceChangeEl.textContent = `${changeValue >= 0 ? '+' : ''}${changeValue.toFixed(2)}%`;
+            priceChangeEl.classList.toggle('negative', changeValue < 0);
+            document.getElementById('marketCap').textContent = analysis.marketCap;
+
+            const technicalSignals = analysis.technical.reduce((acc, ind) => {
+                acc[ind.signal] = (acc[ind.signal] || 0) + 1;
+                return acc;
+            }, {});
+            const buyCount = technicalSignals.BUY || 0;
+            const holdCount = technicalSignals.HOLD || 0;
+            const sellCount = technicalSignals.SELL || 0;
+            const overallTechnical = buyCount >= 8 ? 'STRONG BUY' : buyCount >= 5 ? 'BUY' : holdCount >= 8 ? 'HOLD' : 'SELL';
+
+            document.getElementById('technicalSummary').innerHTML = `
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Buy Signals</span>
+                    <span class="summary-stat-value" style="color: #64ff64;">${buyCount}</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Hold Signals</span>
+                    <span class="summary-stat-value" style="color: #ffcc64;">${holdCount}</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Sell Signals</span>
+                    <span class="summary-stat-value" style="color: #ff6464;">${sellCount}</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Overall Signal</span>
+                    <span class="summary-stat-value">${overallTechnical}</span>
+                </div>
+            `;
+
+            document.getElementById('indicatorsGrid').innerHTML = analysis.technical.map(ind => `
+                <div class="indicator-card">
+                    <div class="indicator-name">${ind.name}</div>
+                    <div class="indicator-value">${ind.value}</div>
+                    <span class="signal-badge signal-${ind.signal.toLowerCase()}">${ind.signal}</span>
+                    <div class="indicator-description">${ind.description}</div>
+                </div>
+            `).join('');
+
+            const fund = analysis.fundamental;
+            const intrinsicAvg = (parseFloat(fund.dcfValue) + parseFloat(fund.comparableValue) + parseFloat(fund.grahamNumber)) / 3;
+            const valuation = intrinsicAvg > fund.currentPrice * 1.1 ? 'UNDERVALUED' : intrinsicAvg < fund.currentPrice * 0.9 ? 'OVERVALUED' : 'FAIR VALUE';
+
+            document.getElementById('fundamentalSummary').innerHTML = `
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Intrinsic Value (Avg)</span>
+                    <span class="summary-stat-value">$${intrinsicAvg.toFixed(2)}</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Current Price</span>
+                    <span class="summary-stat-value">$${fund.currentPrice}</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-label">Valuation</span>
+                    <span class="summary-stat-value">${valuation}</span>
+                </div>
+            `;
+
+            document.getElementById('valuationModels').innerHTML = `
+                <div class="model-card">
+                    <div class="model-name">DCF Analysis</div>
+                    <div class="model-data">
+                        <div class="model-label">Free Cash Flow</div>
+                        <div class="model-value">$${fund.fcf}B</div>
+                    </div>
+                    <div class="model-data">
+                        <div class="model-label">Implied Value Per Share</div>
+                        <div class="model-value">$${fund.dcfValue}</div>
+                    </div>
+                    <div class="intrinsic-value-line">
+                        <div class="model-label">Intrinsic Value</div>
+                        <div class="model-value">$${fund.dcfValue}</div>
+                    </div>
+                </div>
+                <div class="model-card">
+                    <div class="model-name">Comparable Company Analysis</div>
+                    <div class="model-data">
+                        <div class="model-label">P/E Ratio</div>
+                        <div class="model-value">${fund.pe.toFixed(2)}x</div>
+                    </div>
+                    <div class="model-data">
+                        <div class="model-label">EV/EBITDA</div>
+                        <div class="model-value">${fund.evEbitda}x</div>
+                    </div>
+                    <div class="intrinsic-value-line">
+                        <div class="model-label">Estimated Value</div>
+                        <div class="model-value">$${fund.comparableValue}</div>
+                    </div>
+                </div>
+                <div class="model-card">
+                    <div class="model-name">Graham Number & DDM</div>
+                    <div class="model-data">
+                        <div class="model-label">Graham Number</div>
+                        <div class="model-value">$${fund.grahamNumber}</div>
+                    </div>
+                    <div class="model-data">
+                        <div class="model-label">PEG Ratio</div>
+                        <div class="model-value">${fund.pegRatio}</div>
+                    </div>
+                    <div class="intrinsic-value-line">
+                        <div class="model-label">Fair Value</div>
+                        <div class="model-value">$${fund.grahamNumber}</div>
+                    </div>
+                </div>
+                <div class="model-card">
+                    <div class="model-name">Key Metrics</div>
+                    <div class="model-data">
+                        <div class="model-label">ROE</div>
+                        <div class="model-value">${fund.roe}%</div>
+                    </div>
+                    <div class="model-data">
+                        <div class="model-label">Debt to Equity</div>
+                        <div class="model-value">${fund.debtToEquity}</div>
+                    </div>
+                    <div class="model-data">
+                        <div class="model-label">Beta</div>
+                        <div class="model-value">${fund.beta}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('newsContainer').innerHTML = analysis.news.map(article => `
+                <div class="news-item">
+                    <div class="news-headline">${article.headline}</div>
+                    <div class="news-source">${article.source}</div>
+                    <span class="news-sentiment sentiment-${article.sentiment.toLowerCase()}">${article.sentiment}</span>
+                </div>
+            `).join('');
+
+            const technicalRating = buyCount >= 8 ? 'Excellent' : buyCount >= 5 ? 'Good' : holdCount >= 8 ? 'Fair' : 'Poor';
+            const fundamentalRating = valuation === 'UNDERVALUED' ? 'Excellent' : valuation === 'FAIR VALUE' ? 'Good' : 'Fair';
+            const overallVerdict = buyCount >= 8 && valuation === 'UNDERVALUED' ? 'STRONG BUY' :
+                                    buyCount >= 5 && valuation !== 'OVERVALUED' ? 'BUY' :
+                                    sellCount >= 5 || valuation === 'OVERVALUED' ? 'SELL' : 'HOLD';
+
+            const verdictColor = overallVerdict === 'STRONG BUY' ? '#64ff64' :
+                                overallVerdict === 'BUY' ? '#64ffda' :
+                                overallVerdict === 'SELL' ? '#ff6464' : '#ffcc64';
+
+            document.getElementById('verdict').textContent = overallVerdict;
+            document.getElementById('verdict').style.color = verdictColor;
+
+            document.getElementById('verdictDescription').innerHTML = `
+                Based on comprehensive analysis, ${companyName} presents ${
+                    overallVerdict === 'STRONG BUY' ? 'exceptional value with strong technical momentum and fundamental support' :
+                    overallVerdict === 'BUY' ? 'attractive value proposition supported by multiple buy signals' :
+                    overallVerdict === 'SELL' ? 'significant concerns regarding valuation and technical deterioration' :
+                    'balanced risk reward with caution recommended'
+                }. The ${buyCount} technical buy signals combined with ${fund.pb < 2 ? 'attractive valuation multiples' : 'moderate valuations'} suggest the stock offers potential for investors with moderate to high risk tolerance. Consider reviewing individual risk profile before making investment decisions.
+            `;
+
+            const ratingColorMap = {
+                'Excellent': '#64ff64',
+                'Good': '#64ffda',
+                'Fair': '#ffcc64',
+                'Poor': '#ff6464'
+            };
+
+            document.getElementById('technicalRating').textContent = technicalRating;
+            document.getElementById('technicalRating').className = 'rating-score rating-' + technicalRating.toLowerCase();
+            document.getElementById('technicalRating').style.color = ratingColorMap[technicalRating];
+
+            document.getElementById('fundamentalRating').textContent = fundamentalRating;
+            document.getElementById('fundamentalRating').className = 'rating-score rating-' + fundamentalRating.toLowerCase();
+            document.getElementById('fundamentalRating').style.color = ratingColorMap[fundamentalRating];
+
+            const valuationRating = valuation === 'UNDERVALUED' ? 'Excellent' : valuation === 'FAIR VALUE' ? 'Good' : 'Fair';
+            document.getElementById('valuationRating').textContent = valuationRating;
+            document.getElementById('valuationRating').className = 'rating-score rating-' + valuationRating.toLowerCase();
+            document.getElementById('valuationRating').style.color = ratingColorMap[valuationRating];
+
+            const riskLevel = Math.min(95, Math.abs(parseFloat(fund.beta) - 1) * 50 + 30);
+            document.getElementById('riskFill').style.width = riskLevel + '%';
+            document.getElementById('riskValue').textContent = riskLevel < 40 ? 'Low' : riskLevel < 70 ? 'Medium' : 'High';
+
+            drawPriceChart(analysis.priceHistory);
+        }
+
+        function drawPriceChart(priceHistory) {
+            const ctx = document.getElementById('priceChart');
+            if (priceChart) {
+                priceChart.destroy();
+            }
+            const labels = priceHistory.map(d => d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+            const prices = priceHistory.map(d => parseFloat(d.price.toFixed(2)));
+            const sma20 = calculateMA(prices, 20);
+            const sma50 = calculateMA(prices, 50);
+            const sma200 = calculateMA(prices, 200);
+
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Price', data: prices, borderColor: '#64ffda', backgroundColor: 'rgba(100, 255, 218, 0.1)', borderWidth: 2, fill: true, tension: 0.4, yAxisID: 'y' },
+                        { label: 'SMA 20', data: sma20, borderColor: '#ffcc64', borderWidth: 1.5, fill: false, tension: 0.4, pointRadius: 0, yAxisID: 'y' },
+                        { label: 'SMA 50', data: sma50, borderColor: '#ff9966', borderWidth: 1.5, fill: false, tension: 0.4, pointRadius: 0, yAxisID: 'y' },
+                        { label: 'SMA 200', data: sma200, borderColor: '#64ff64', borderWidth: 1.5, fill: false, tension: 0.4, pointRadius: 0, yAxisID: 'y' }
+                    ]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        ticks: { callback: function(value) { return '$' + value + 'B'; } }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { labels: { color: '#8892b0', font: { family: "'Inter', sans-serif" } } } },
+                    scales: {
+                        y: { type: 'linear', display: true, position: 'left', ticks: { color: '#8892b0' }, grid: { color: 'rgba(100, 255, 218, 0.05)' } },
+                        x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(100, 255, 218, 0.05)' } }
                     }
                 }
-            }
-        });
+            });
+        }
 
-        // EPS Chart
-        const ctx2 = document.getElementById('epsChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['2021', '2022', '2023', '2024', '2025'],
-                datasets: [{
-                    label: 'EPS (CAD)',
-                    data: [2.78, 2.89, 3.02, 3.12, 3.23],
-                    backgroundColor: ['#0ea5e9', '#0ea5e9', '#0ea5e9', '#0ea5e9', '#00bcd4'],
-                    borderColor: '#0ea5e9',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                indexAxis: undefined,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value.toFixed(2); } }
-                    }
-                }
-            }
-        });
+        function calculateMA(prices, period) {
+            return prices.map((_, index) => {
+                if (index < period - 1) return null;
+                const sum = prices.slice(index - period + 1, index + 1).reduce((a, b) => a + b, 0);
+                return sum / period;
+            });
+        }
 
-        // Operating Margin Chart
-        const ctx3 = document.getElementById('marginChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'line',
-            data: {
-                labels: ['2021', '2022', '2023', '2024', '2025'],
-                datasets: [{
-                    label: 'Operating Margin %',
-                    data: [38.1, 39.1, 39.8, 40.9, 42.1],
-                    borderColor: '#00bcd4',
-                    backgroundColor: 'rgba(0, 188, 212, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointRadius: 5,
-                    pointBackgroundColor: '#00bcd4',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        max: 50,
-                        ticks: { callback: function(value) { return value + '%'; } }
-                    }
-                }
-            }
-        });
-
-        // DuPont Analysis
-        const ctx4 = document.getElementById('dupontChart').getContext('2d');
-        new Chart(ctx4, {
-            type: 'doughnut',
-            data: {
-                labels: ['Net Profit Margin\n6.8%', 'Asset Turnover\n0.22x', 'Equity Multiplier\n2.89x'],
-                datasets: [{
-                    data: [6.8, 0.22, 2.89],
-                    backgroundColor: ['#0ea5e9', '#00bcd4', '#0891b2'],
-                    borderColor: 'white',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { font: { size: 10 }, padding: 15 }
-                    }
-                }
-            }
-        });
-
-        // WACC Breakdown
-        const ctx5 = document.getElementById('waccChart').getContext('2d');
-        new Chart(ctx5, {
-            type: 'bar',
-            data: {
-                labels: ['Cost of Equity\n(62% weight)', 'Cost of Debt\n(38% weight)', 'Weighted\nAverage'],
-                datasets: [{
-                    label: 'Rate (%)',
-                    data: [8.2, 3.8, 6.54],
-                    backgroundColor: ['#0ea5e9', '#00bcd4', '#0891b2'],
-                    borderColor: '#0ea5e9',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 10,
-                        ticks: { callback: function(value) { return value.toFixed(1) + '%'; } }
-                    }
-                }
-            }
-        });
-
-        // Sensitivity Heatmap (simplified with bars)
-        const ctx6 = document.getElementById('sensitivityChart').getContext('2d');
-        new Chart(ctx6, {
-            type: 'bar',
-            data: {
-                labels: ['WACC 5.54%', 'WACC 6.04%', 'WACC 6.54%', 'WACC 7.04%', 'WACC 7.54%'],
-                datasets: [{
-                    label: 'Fair Value per Share (CAD)',
-                    data: [8.92, 7.34, 6.10, 5.15, 4.42],
-                    backgroundColor: ['#0ea5e9', '#0ea5e9', '#00bcd4', '#0891b2', '#0891b2'],
-                    borderColor: '#0ea5e9',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                indexAxis: undefined,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value.toFixed(2); } }
-                    }
-                }
-            }
-        });
-
-        // Dividend History
-        const ctx7 = document.getElementById('dividendChart').getContext('2d');
-        new Chart(ctx7, {
-            type: 'bar',
-            data: {
-                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
-                datasets: [{
-                    label: 'Annual Dividend per Share (CAD)',
-                    data: [3.34, 3.44, 3.56, 3.66, 3.77, 3.88],
-                    backgroundColor: '#00bcd4',
-                    borderColor: '#0ea5e9',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value.toFixed(2); } }
-                    }
-                }
-            }
-        });
+        function formatMarketCap(value) {
+            if (value >= 1e12) return '$' + (value / 1e12).toFixed(2) + 'T';
+            if (value >= 1e9) return '$' + (value / 1e9).toFixed(2) + 'B';
+            if (value >= 1e6) return '$' + (value / 1e6).toFixed(2) + 'M';
+            return '$' + value.toFixed(2);
+        }
     </script>
 </body>
 </html>

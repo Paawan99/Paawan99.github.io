@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Analysis Dashboard - Enbridge Inc.</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Market Analysis Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -13,903 +15,1557 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Inter', sans-serif;
+            background: #0a192f;
+            color: #e8eaed;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0ea5e9 0%, #00bcd4 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            margin-bottom: 15px;
-        }
-
-        .nav-buttons {
+        /* Top Navigation */
+        .navbar {
+            background: #1a2332;
+            border-bottom: 1px solid #2d3748;
+            padding: 1rem 2rem;
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
+        .navbar a {
+            color: #00a8e8;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #00d4ff;
+        }
+
+        .navbar-title {
+            font-size: 1.3rem;
             font-weight: 600;
+            color: #fff;
         }
 
-        .btn-primary {
-            background: white;
-            color: #0ea5e9;
+        /* Main Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        .btn-primary:hover {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #0ea5e9;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            color: #0ea5e9;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #00bcd4;
-        }
-
-        h3 {
-            color: #00bcd4;
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .metric-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-left: 4px solid #0ea5e9;
-            padding: 20px;
+        /* Search Bar Section */
+        .search-section {
+            background: #1a2332;
+            padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
-            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid #2d3748;
         }
 
-        .metric-card h4 {
-            color: #0ea5e9;
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .metric-card .value {
-            font-size: 1.6em;
-            font-weight: bold;
-            color: #00bcd4;
-            margin-bottom: 5px;
-        }
-
-        .metric-card .change {
-            font-size: 0.85em;
-            color: #10b981;
-            font-weight: 600;
-        }
-
-        .metric-card .change.negative {
-            color: #ef4444;
-        }
-
-        .metric-card .change.neutral {
-            color: #6b7280;
-        }
-
-        .chart-container {
+        .search-bar {
             position: relative;
-            height: 400px;
-            margin: 30px 0;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
+            max-width: 500px;
         }
 
-        .chart-container.small {
-            height: 300px;
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .analysis-text {
-            background: #f9fafb;
-            padding: 20px;
-            border-radius: 8px;
-            line-height: 1.8;
-            color: #374151;
-            margin: 20px 0;
-            border-left: 4px solid #00bcd4;
-        }
-
-        .analysis-text strong {
-            color: #0ea5e9;
-        }
-
-        .rating-box {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .rating-item {
-            background: #f0f9ff;
-            padding: 20px;
-            border-radius: 8px;
-            border-top: 4px solid #0ea5e9;
-            text-align: center;
-        }
-
-        .rating-item h4 {
-            color: #0ea5e9;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .rating-item .rating {
-            font-size: 2em;
-            font-weight: bold;
-            color: #00bcd4;
-            margin: 10px 0;
-        }
-
-        .rating-item .count {
-            font-size: 1.2em;
-            color: #0ea5e9;
-            font-weight: 600;
-        }
-
-        table {
+        .search-bar input {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
+            padding: 0.75rem 1rem;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            background: #0f1623;
+            color: #e8eaed;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
         }
 
-        table th {
-            background: #0ea5e9;
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
+        .search-bar input:focus {
+            outline: none;
+            border-color: #00a8e8;
+            box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.1);
         }
 
-        table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e5e7eb;
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #252423;
+            border: 1px solid #2d3748;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
         }
 
-        table tr:hover {
-            background: #f0f9ff;
+        .autocomplete-list.active {
+            display: block;
         }
 
-        table tr:last-child td {
+        .autocomplete-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #2d3748;
+            transition: background-color 0.2s;
+        }
+
+        .autocomplete-item:hover {
+            background: #2d3748;
+        }
+
+        .autocomplete-item:last-child {
             border-bottom: none;
         }
 
-        .indicator-label {
-            font-size: 0.9em;
-            color: #6b7280;
-            margin-top: 5px;
+        /* Demo Buttons */
+        .demo-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 0.5rem 1rem;
+            background: #00a8e8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
             font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .demo-btn:hover {
+            background: #0086ba;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #2d3748;
+            border-top-color: #00a8e8;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header Section */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #2d3748;
+        }
+
+        .company-info h1 {
+            font-size: 2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .company-info p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+
+        /* KPI Cards Row */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: #1a2332;
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card:hover {
+            border-color: #00a8e8;
+            box-shadow: 0 4px 12px rgba(0, 168, 232, 0.1);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00a8e8, #00d4ff);
+        }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-change {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .kpi-change.positive {
+            color: #22c55e;
+        }
+
+        .kpi-change.negative {
+            color: #ef4444;
+        }
+
+        .kpi-arrow {
+            font-size: 1rem;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-grid.full {
+            grid-template-columns: 1fr;
+        }
+
+        /* Cards */
+        .card {
+            background: #1a2332;
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #00a8e8;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #252423, #1a2332);
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-container.large {
+            height: 400px;
+        }
+
+        /* Time Period Buttons */
+        .time-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .time-btn {
+            padding: 0.5rem 0.75rem;
+            background: #252423;
+            color: #888;
+            border: 1px solid #2d3748;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .time-btn:hover {
+            color: #e8eaed;
+            border-color: #00a8e8;
+        }
+
+        .time-btn.active {
+            background: #00a8e8;
+            color: #fff;
+            border-color: #00a8e8;
+        }
+
+        /* Analyst Ratings */
+        .ratings-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .rating-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2d3748;
+        }
+
+        .rating-item:last-child {
+            border-bottom: none;
+        }
+
+        .rating-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .rating-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .price-target {
+            color: #00a8e8;
+            font-weight: 600;
+        }
+
+        /* News Ticker */
+        .news-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .news-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2d3748;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .news-item:hover {
+            color: #00a8e8;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .news-date {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .news-source {
+            font-size: 0.75rem;
+            color: #00a8e8;
+        }
+
+        /* Macro Indicators */
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .macro-item {
+            background: #252423;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #2d3748;
+            text-align: center;
+        }
+
+        .macro-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .macro-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .macro-change {
+            font-size: 0.75rem;
+        }
+
+        .macro-change.positive {
+            color: #22c55e;
+        }
+
+        .macro-change.negative {
+            color: #ef4444;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1623;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3d4758;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ratings-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 1rem;
             }
 
-            .metric-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .kpi-row {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
-            .rating-box {
-                grid-template-columns: 1fr;
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
 
-            header h1 {
-                font-size: 1.8em;
+            .search-bar {
+                max-width: 100%;
             }
 
-            .content {
-                padding: 20px;
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
-            .chart-container {
-                height: 250px;
+            .demo-buttons {
+                width: 100%;
+                justify-content: flex-start;
             }
         }
 
-        footer {
-            background: #f3f4f6;
-            padding: 20px;
+        /* Empty State */
+        .empty-state {
             text-align: center;
-            color: #6b7280;
-            font-size: 0.9em;
-            border-top: 1px solid #e5e7eb;
+            padding: 3rem 1rem;
+            color: #666;
         }
 
-        .gauge-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-            margin: 20px 0;
+        .empty-state p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .sentiment-gauge {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(#ef4444 0deg 90deg, #fbbf24 90deg 180deg, #10b981 180deg 270deg, #fbbf24 270deg 360deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        .empty-state .instructions {
+            font-size: 0.9rem;
+            color: #555;
         }
 
-        .sentiment-inner {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Error State */
+        .error {
+            background: #1a2332;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: #fca5a5;
+            margin-bottom: 2rem;
         }
 
-        .sentiment-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #0ea5e9;
-        }
-
-        .sentiment-label {
-            font-size: 0.9em;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .error strong {
+            color: #ef4444;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="/">Back to Portfolio</a>
+        <div class="navbar-title">Market Analysis Dashboard</div>
+        <div></div>
+    </div>
+
+    <!-- Main Container -->
     <div class="container">
-        <header>
-            <h1>Market Analysis Dashboard</h1>
-            <p>Enbridge Inc. (ENB) - Real-Time Market Intelligence & Technical Analysis</p>
-            <div class="nav-buttons">
-                <a href="../index.html" class="btn btn-primary">← Back to Portfolio</a>
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Enter company name or ticker...">
+                <div class="autocomplete-list" id="autocompleteList"></div>
             </div>
-        </header>
+            <div class="demo-buttons">
+                <button class="demo-btn" onclick="loadCompany('AAPL')">View Apple</button>
+                <button class="demo-btn" onclick="loadCompany('TSLA')">View Tesla</button>
+                <button class="demo-btn" onclick="loadCompany('ENB.TO')">View Enbridge</button>
+                <button class="demo-btn" onclick="loadCompany('MSFT')">View Microsoft</button>
+                <button class="demo-btn" onclick="loadCompany('SHOP.TO')">View Shopify</button>
+            </div>
+        </div>
 
-        <div class="content">
-            <!-- Key Market Metrics -->
-            <section>
-                <h2>Real-Time Market Metrics</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <h4>Stock Price</h4>
-                        <div class="value">$70.65</div>
-                        <div class="change">↑ +2.3%</div>
-                        <div class="indicator-label">CAD / TTM</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Market Cap</h4>
-                        <div class="value">$156.65B</div>
-                        <div class="change">↑ +1.8%</div>
-                        <div class="indicator-label">YTD Change</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Trading Volume</h4>
-                        <div class="value">28.4M</div>
-                        <div class="change">+2.2%</div>
-                        <div class="indicator-label">Avg Daily</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>52-Week Range</h4>
-                        <div class="value">$63.21-$75.18</div>
-                        <div class="change neutral">Current: Midpoint</div>
-                        <div class="indicator-label">High to Low</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>P/E Ratio</h4>
-                        <div class="value">24.89x</div>
-                        <div class="change neutral">Premium</div>
-                        <div class="indicator-label">Trailing</div>
-                    </div>
-                    <div class="metric-card">
-                        <h4>Dividend Yield</h4>
-                        <div class="value">5.49%</div>
-                        <div class="change">↑ +0.8%</div>
-                        <div class="indicator-label">Annual</div>
-                    </div>
+        <!-- Error Message -->
+        <div id="errorContainer"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state">
+            <p>Welcome to the Market Analysis Dashboard</p>
+            <p class="instructions">Search for a company or use the demo buttons to get started</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p style="margin-top: 1rem;">Loading data...</p>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboardContent" style="display: none;">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="company-info">
+                    <h1 id="companyName"></h1>
+                    <p id="companySector"></p>
                 </div>
-            </section>
+            </div>
 
-            <!-- Price Performance Chart -->
-            <section>
-                <h2>1-Year Price Performance</h2>
-                <div class="chart-container">
-                    <canvas id="priceChart"></canvas>
-                </div>
-                <div class="analysis-text">
-                    <strong>Price Trend Analysis:</strong> Enbridge has demonstrated steady appreciation over the past 12 months, gaining 8.9% and outperforming the S&P/TSX Composite by 2.1%. The stock shows resilience with limited drawdown periods, reflecting the defensive characteristics of infrastructure investments. Recent momentum suggests investor confidence in dividend sustainability and regulatory stability despite macroeconomic headwinds.
-                </div>
-            </section>
-
-            <!-- Sector Comparison -->
-            <section>
-                <h2>Sector Comparison: Energy Infrastructure vs Benchmark</h2>
-                <div class="chart-container small">
-                    <canvas id="sectorChart"></canvas>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Security/Index</th>
-                            <th>Price (CAD/USD)</th>
-                            <th>1-Year Return</th>
-                            <th>Dividend Yield</th>
-                            <th>P/E Ratio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Enbridge (ENB)</strong></td>
-                            <td>$70.65</td>
-                            <td>+8.9%</td>
-                            <td>5.49%</td>
-                            <td>24.89x</td>
-                        </tr>
-                        <tr>
-                            <td>TC Energy (TRP)</td>
-                            <td>$37.45</td>
-                            <td>+6.2%</td>
-                            <td>6.41%</td>
-                            <td>22.14x</td>
-                        </tr>
-                        <tr>
-                            <td>Pembina (PPL)</td>
-                            <td>$48.92</td>
-                            <td>+7.8%</td>
-                            <td>5.95%</td>
-                            <td>20.31x</td>
-                        </tr>
-                        <tr>
-                            <td>S&P/TSX Composite</td>
-                            <td>—</td>
-                            <td>+6.8%</td>
-                            <td>2.15%</td>
-                            <td>19.54x</td>
-                        </tr>
-                        <tr>
-                            <td>S&P 500</td>
-                            <td>—</td>
-                            <td>+12.4%</td>
-                            <td>1.82%</td>
-                            <td>26.31x</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="analysis-text">
-                    <strong>Sector Performance Context:</strong> Enbridge outperforms the broad Canadian market and peers TC Energy and Pembina on absolute returns. The higher P/E multiple reflects market recognition of superior operational efficiency and growth outlook compared to peers. The 5.49% yield positions ENB as an attractive income source versus broader market indices yielding <2%.
-                </div>
-            </section>
-
-            <!-- Volume Analysis -->
-            <section>
-                <h2>Trading Volume & Liquidity Analysis</h2>
-                <div class="two-column">
-                    <div class="chart-container small">
-                        <canvas id="volumeChart"></canvas>
-                    </div>
-                    <div class="analysis-text">
-                        <strong>Liquidity Profile:</strong>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li>Average Daily Volume: 28.4 million shares</li>
-                            <li>Daily $ Volume: $2.01 billion</li>
-                            <li>Bid-Ask Spread: $0.02 (0.03%)</li>
-                            <li>Liquidity Ranking: Top 5 TSX</li>
-                            <li>Free Float: 67.3%</li>
-                        </ul>
-                        <p style="margin-top: 15px;">Excellent liquidity characteristics enable institutional investors to establish significant positions with minimal market impact. The tight bid-ask spread and high daily volume suggest efficient price discovery and minimal execution friction.</p>
+            <!-- KPI Cards -->
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <div class="kpi-label">Current Price</div>
+                    <div class="kpi-value" id="kpiPrice">--</div>
+                    <div class="kpi-change" id="kpiPriceChange">
+                        <span class="kpi-arrow" id="priceArrow"></span>
+                        <span id="priceChangeValue"></span>
                     </div>
                 </div>
-            </section>
-
-            <!-- Technical Indicators -->
-            <section>
-                <h2>Technical Analysis & Indicators</h2>
-
-                <h3>Moving Average Analysis</h3>
-                <div class="chart-container small">
-                    <canvas id="maChart"></canvas>
+                <div class="kpi-card">
+                    <div class="kpi-label">Market Cap</div>
+                    <div class="kpi-value" id="kpiMarketCap">--</div>
+                    <div class="kpi-change" style="color: #888;">Last update</div>
                 </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Technical Indicator</th>
-                            <th>Current Level</th>
-                            <th>Signal</th>
-                            <th>Interpretation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>50-Day Moving Average</strong></td>
-                            <td>$69.42</td>
-                            <td>Bullish</td>
-                            <td>Price above 50-MA; uptrend intact</td>
-                        </tr>
-                        <tr>
-                            <td><strong>200-Day Moving Average</strong></td>
-                            <td>$67.89</td>
-                            <td>Bullish</td>
-                            <td>Price above 200-MA; long-term strength</td>
-                        </tr>
-                        <tr>
-                            <td><strong>RSI (14)</strong></td>
-                            <td>62.3</td>
-                            <td>Neutral</td>
-                            <td>Approaching overbought; momentum strong</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MACD</strong></td>
-                            <td>+0.67</td>
-                            <td>Bullish</td>
-                            <td>Positive histogram; momentum positive</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Bollinger Bands</strong></td>
-                            <td>$66.21-$72.94</td>
-                            <td>Neutral</td>
-                            <td>Price near upper band; potential consolidation</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="analysis-text">
-                    <strong>Technical Summary:</strong> Enbridge maintains a confirmed uptrend with price above both 50-day and 200-day moving averages. The RSI at 62.3 indicates strong momentum without extreme overbought conditions. MACD histogram remains positive, suggesting sustained buying pressure. The stock is near the upper Bollinger Band, suggesting potential for consolidation or minor pullback in the near term, but the overall technical picture remains constructive.
+                <div class="kpi-card">
+                    <div class="kpi-label">P/E Ratio</div>
+                    <div class="kpi-value" id="kpiPE">--</div>
+                    <div class="kpi-change" id="sectorPE" style="color: #888;"></div>
                 </div>
-            </section>
+                <div class="kpi-card">
+                    <div class="kpi-label">52 Week Range</div>
+                    <div class="kpi-value" id="kpi52Range">--</div>
+                    <div style="width: 100%; height: 4px; background: #2d3748; margin-top: 0.5rem; border-radius: 2px; overflow: hidden;">
+                        <div id="weekRangeBar" style="height: 100%; background: #00a8e8; width: 50%;"></div>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Volume</div>
+                    <div class="kpi-value" id="kpiVolume">--</div>
+                    <div class="kpi-change" id="volumeChange" style="color: #888;"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Dividend Yield</div>
+                    <div class="kpi-value" id="kpiDividend">--</div>
+                    <div class="kpi-change" style="color: #888;">Annual</div>
+                </div>
+            </div>
 
-            <!-- Sentiment Analysis -->
-            <section>
-                <h2>Market Sentiment & Analyst Ratings</h2>
+            <!-- Price Action Chart -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>Price Action</h3>
+                    <div class="time-buttons">
+                        <button class="time-btn active" onclick="updateChart('1M')">1M</button>
+                        <button class="time-btn" onclick="updateChart('3M')">3M</button>
+                        <button class="time-btn" onclick="updateChart('6M')">6M</button>
+                        <button class="time-btn" onclick="updateChart('1Y')">1Y</button>
+                        <button class="time-btn" onclick="updateChart('5Y')">5Y</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container large">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+            </div>
 
-                <div class="gauge-container">
-                    <div class="sentiment-gauge">
-                        <div class="sentiment-inner">
-                            <div class="sentiment-value">7.2/10</div>
-                            <div class="sentiment-label">Sentiment</div>
+            <!-- Financial Metrics Grid -->
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Revenue Trend</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <div class="analysis-text">
-                    <strong>Sentiment Drivers:</strong>
-                    <ul style="margin: 15px 0; padding-left: 20px;">
-                        <li>Positive: Dividend reliability, regulated cash flows, energy transition dividend portfolio role</li>
-                        <li>Neutral: Valuation elevated at 24.89x P/E; limited growth catalysts</li>
-                        <li>Negative: Pipeline expansion execution risk; potential dividend growth moderation</li>
-                    </ul>
-                </div>
-
-                <h3>Analyst Ratings Distribution</h3>
-                <div class="rating-box">
-                    <div class="rating-item">
-                        <h4>Buy / Outperform</h4>
-                        <div class="rating">12</div>
-                        <div class="count">48%</div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Net Income Trend</h3>
                     </div>
-                    <div class="rating-item">
-                        <h4>Hold / Neutral</h4>
-                        <div class="rating">10</div>
-                        <div class="count">40%</div>
-                    </div>
-                    <div class="rating-item">
-                        <h4>Sell / Underperform</h4>
-                        <div class="rating">3</div>
-                        <div class="count">12%</div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="incomeChart"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <div class="analysis-text">
-                    <strong>Consensus Summary:</strong> The analyst community is constructive on Enbridge with 48% buy ratings and an average 12-month price target of $76.85 (8.8% upside from current). Bullish analysts emphasize dividend growth potential and regulatory tailwinds. Neutral/sell analysts cite valuation concerns and energy transition execution risk.
-                </div>
-            </section>
-
-            <!-- Market Dynamics -->
-            <section>
-                <h2>Market Dynamics & Key Drivers</h2>
-
-                <div class="chart-container small">
-                    <canvas id="driversChart"></canvas>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Profit Margin Trend</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="marginChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
-                <h3>Price Influencing Factors</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Market Driver</th>
-                            <th>Current Environment</th>
-                            <th>Impact on ENB</th>
-                            <th>3-Month Outlook</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Interest Rates</strong></td>
-                            <td>BoC 4.25% (stable)</td>
-                            <td>Neutral</td>
-                            <td>Potential 25bp rate cut mid-2026</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Oil/Gas Prices</strong></td>
-                            <td>WTI $72/bbl, NG $2.85/MMBtu</td>
-                            <td>Low commodity exposure</td>
-                            <td>Limited direct correlation</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Energy Demand</strong></td>
-                            <td>Moderate North American growth</td>
-                            <td>Slightly Positive</td>
-                            <td>LNG export upside; pipelines benefit</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Regulatory Environment</strong></td>
-                            <td>Favorable (NEB approvals)</td>
-                            <td>Positive</td>
-                            <td>Line 6B expansion expected approval Q2</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dividend Policy</strong></td>
-                            <td>3.0% annual growth target</td>
-                            <td>Very Positive</td>
-                            <td>Sustainable through 2030+</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- Relative Strength -->
-            <section>
-                <h2>Relative Strength Analysis</h2>
-
-                <div class="chart-container small">
-                    <canvas id="rsChart"></canvas>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Debt to Equity Ratio</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="debtChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="analysis-text">
-                    <strong>Relative Performance:</strong> Enbridge has outperformed both peer-focused Energy Infrastructure index (gaining 1.1% more) and the S&P/TSX Composite (gaining 2.1% more) over the past 12 months. The outperformance reflects market confidence in ENB's dividend growth trajectory and operational execution relative to broader market. Relative strength remains elevated, suggesting continued investor demand for the stock.
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Return on Equity (ROE)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="roeChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </section>
 
-            <!-- Investment Summary -->
-            <section>
-                <h2>Market Analysis Summary & Trading Perspective</h2>
-
-                <div class="analysis-text">
-                    <strong>Current Market Position:</strong> Enbridge trades at the midpoint of its 52-week range with strong technical momentum (price > 50-MA and 200-MA). The stock maintains excellent liquidity and appears fairly valued relative to growth and dividend profile at 24.89x P/E.
-                    <br><br>
-                    <strong>Bull Case:</strong>
-                    <ul style="margin-top: 10px; padding-left: 20px;">
-                        <li>Dividend yield of 5.49% in low-rate environment attracts capital flows</li>
-                        <li>27-year dividend growth track record establishes institutional quality</li>
-                        <li>Analyst consensus leans bullish with 8.8% 12-month upside target</li>
-                        <li>Regulatory approvals expected for Line 6B expansion should unlock growth</li>
-                        <li>Energy demand recovery benefits North American pipeline utilization</li>
-                    </ul>
-                    <br>
-                    <strong>Bear Case:</strong>
-                    <ul style="margin-top: 10px; padding-left: 20px;">
-                        <li>Valuation elevated at 24.89x P/E for modest 3% dividend growth company</li>
-                        <li>Potential for dividend growth moderation if earnings growth slows</li>
-                        <li>Long-term energy transition risk to pipeline infrastructure model</li>
-                        <li>Rising ESG concerns may limit institutional capital flows</li>
-                        <li>Rate cut cycle could reduce dividend yield appeal</li>
-                    </ul>
-                    <br>
-                    <strong>Trading Recommendation:</strong> Suitable as a core holding for income-focused portfolios. Current technicals suggest limited near-term downside with price above key moving averages. For new positions, consider scaling into positions on any pullbacks toward the 50-day moving average ($69.42). Target allocation: 3-5% of balanced portfolio.
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Free Cash Flow</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="fcfChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Sector Comparison -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>vs Sector Average</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyst Ratings and Macro Indicators -->
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Analyst Ratings</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="ratings-container">
+                            <div>
+                                <div class="chart-container" style="height: 200px;">
+                                    <canvas id="ratingsChart"></canvas>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="rating-item">
+                                    <span class="rating-label">Strong Buy</span>
+                                    <span class="rating-value" id="ratingStrongBuy">--</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">Buy</span>
+                                    <span class="rating-value" id="ratingBuy">--</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">Hold</span>
+                                    <span class="rating-value" id="ratingHold">--</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">Sell</span>
+                                    <span class="rating-value" id="ratingSell">--</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">Strong Sell</span>
+                                    <span class="rating-value" id="ratingStrongSell">--</span>
+                                </div>
+                                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #2d3748;">
+                                    <div class="rating-label">Avg Price Target</div>
+                                    <div class="price-target" style="font-size: 1.25rem; margin-top: 0.5rem;" id="priceTarget">--</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Macro Indicators</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="macro-grid">
+                            <div class="macro-item">
+                                <div class="macro-label">S&P 500</div>
+                                <div class="macro-value" id="macroSP500">--</div>
+                                <div class="macro-change" id="macroSP500Change">--</div>
+                            </div>
+                            <div class="macro-item">
+                                <div class="macro-label">TSX</div>
+                                <div class="macro-value" id="macroTSX">--</div>
+                                <div class="macro-change" id="macroTSXChange">--</div>
+                            </div>
+                            <div class="macro-item">
+                                <div class="macro-label">10Y Treasury</div>
+                                <div class="macro-value" id="macroTreasury">--</div>
+                                <div class="macro-change" id="macroTreasuryChange">--</div>
+                            </div>
+                            <div class="macro-item">
+                                <div class="macro-label">VIX</div>
+                                <div class="macro-value" id="macroVIX">--</div>
+                                <div class="macro-change" id="macroVIXChange">--</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News & Events -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>Latest News</h3>
+                </div>
+                <div class="card-body">
+                    <div class="news-list" id="newsList"></div>
+                </div>
+            </div>
         </div>
-
-        <footer>
-            <p>Paawan Shah | MBA (UCW) | BBA (NMIMS)</p>
-            <p>Analysis Date: March 2026 | Market Data as of March 1, 2026 | For Educational Purposes Only</p>
-        </footer>
     </div>
 
     <script>
-        // 1-Year Price Chart
-        const ctx1 = document.getElementById('priceChart').getContext('2d');
-        const priceData = [];
-        let basePrice = 64.82;
-        for (let i = 0; i < 252; i++) {
-            const change = (Math.random() - 0.48) * 0.8;
-            basePrice = basePrice * (1 + change / 100);
-            priceData.push(parseFloat(basePrice.toFixed(2)));
+        // Company Database
+        const companies = {
+            'AAPL': { name: 'Apple Inc.', sector: 'Technology' },
+            'MSFT': { name: 'Microsoft Corporation', sector: 'Technology' },
+            'GOOG': { name: 'Alphabet Inc.', sector: 'Technology' },
+            'AMZN': { name: 'Amazon.com Inc.', sector: 'Consumer Discretionary' },
+            'TSLA': { name: 'Tesla Inc.', sector: 'Consumer Discretionary' },
+            'NVDA': { name: 'NVIDIA Corporation', sector: 'Technology' },
+            'META': { name: 'Meta Platforms Inc.', sector: 'Technology' },
+            'NFLX': { name: 'Netflix Inc.', sector: 'Communication Services' },
+            'JPM': { name: 'JPMorgan Chase & Co.', sector: 'Financials' },
+            'GS': { name: 'Goldman Sachs Group', sector: 'Financials' },
+            'V': { name: 'Visa Inc.', sector: 'Financials' },
+            'MA': { name: 'Mastercard Inc.', sector: 'Financials' },
+            'JNJ': { name: 'Johnson & Johnson', sector: 'Healthcare' },
+            'PFE': { name: 'Pfizer Inc.', sector: 'Healthcare' },
+            'UNH': { name: 'UnitedHealth Group', sector: 'Healthcare' },
+            'WMT': { name: 'Walmart Inc.', sector: 'Consumer Staples' },
+            'HD': { name: 'The Home Depot Inc.', sector: 'Consumer Discretionary' },
+            'KO': { name: 'The Coca Cola Company', sector: 'Consumer Staples' },
+            'PEP': { name: 'PepsiCo Inc.', sector: 'Consumer Staples' },
+            'DIS': { name: 'The Walt Disney Company', sector: 'Communication Services' },
+            'ENB.TO': { name: 'Enbridge Inc.', sector: 'Energy' },
+            'TD.TO': { name: 'Toronto Dominion Bank', sector: 'Financials' },
+            'RY.TO': { name: 'Royal Bank of Canada', sector: 'Financials' },
+            'SHOP.TO': { name: 'Shopify Inc.', sector: 'Technology' },
+            'CNR.TO': { name: 'Canadian National Railway', sector: 'Industrials' },
+            'BCE.TO': { name: 'BCE Inc.', sector: 'Communication Services' },
+            'SU.TO': { name: 'Suncor Energy', sector: 'Energy' },
+            'ABX.TO': { name: 'Barrick Gold Corporation', sector: 'Materials' },
+            'CP.TO': { name: 'Canadian Pacific Railway', sector: 'Industrials' },
+            'BMO.TO': { name: 'Bank of Montreal', sector: 'Financials' }
+        };
+
+        const companyList = Object.entries(companies).map(([ticker, data]) => ({
+            ticker,
+            name: data.name,
+            sector: data.sector,
+            displayText: `${data.name} (${ticker})`
+        }));
+
+        let currentTicker = null;
+        let chartInstances = {};
+
+        // Search/Autocomplete
+        const searchInput = document.getElementById('searchInput');
+        const autocompleteList = document.getElementById('autocompleteList');
+
+        searchInput.addEventListener('input', (e) => {
+            const value = e.target.value.trim().toUpperCase();
+
+            if (value.length === 0) {
+                autocompleteList.classList.remove('active');
+                return;
+            }
+
+            const matches = companyList.filter(company =>
+                company.ticker.includes(value) ||
+                company.name.toUpperCase().includes(value)
+            ).slice(0, 10);
+
+            if (matches.length === 0) {
+                autocompleteList.classList.remove('active');
+                return;
+            }
+
+            autocompleteList.innerHTML = matches.map(company =>
+                `<div class="autocomplete-item" onclick="loadCompany('${company.ticker}')">${company.displayText}</div>`
+            ).join('');
+
+            autocompleteList.classList.add('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar')) {
+                autocompleteList.classList.remove('active');
+            }
+        });
+
+        function loadCompany(ticker) {
+            currentTicker = ticker;
+            searchInput.value = companies[ticker].name;
+            autocompleteList.classList.remove('active');
+
+            showLoading();
+            fetchCompanyData(ticker);
         }
 
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: 252}, (_, i) => {
-                    const d = new Date(2025, 2, 1);
-                    d.setDate(d.getDate() + i);
-                    return d.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-                }),
-                datasets: [{
-                    label: 'ENB Price (CAD)',
-                    data: priceData,
-                    borderColor: '#0ea5e9',
-                    backgroundColor: 'rgba(14, 165, 233, 0.05)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.3,
-                    pointRadius: 0,
-                    pointHoverRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
+        function showLoading() {
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('dashboardContent').style.display = 'none';
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('errorContainer').innerHTML = '';
+        }
+
+        function showDashboard() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('dashboardContent').style.display = 'block';
+        }
+
+        function showError(message) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('dashboardContent').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('errorContainer').innerHTML = `<div class="error"><strong>Error:</strong> ${message}</div>`;
+        }
+
+        // Fetch Data
+        async function fetchCompanyData(ticker) {
+            try {
+                const data = await Promise.all([
+                    fetchYahooData(ticker),
+                    generateSampleData(ticker)
+                ]);
+
+                const yahooData = data[0];
+                const sampleData = data[1];
+
+                const companyInfo = companies[ticker];
+
+                // Populate Dashboard
+                document.getElementById('companyName').textContent = companyInfo.name;
+                document.getElementById('companySector').textContent = `${companyInfo.sector} | ${ticker}`;
+
+                // KPI Cards
+                const currentPrice = yahooData.currentPrice || sampleData.currentPrice;
+                const priceChange = yahooData.priceChange || sampleData.priceChange;
+                const priceChangePercent = yahooData.priceChangePercent || sampleData.priceChangePercent;
+
+                document.getElementById('kpiPrice').textContent = `$${currentPrice.toFixed(2)}`;
+                const kpiPriceChangeEl = document.getElementById('kpiPriceChange');
+                const arrowEl = document.getElementById('priceArrow');
+                const changeValueEl = document.getElementById('priceChangeValue');
+
+                if (priceChange >= 0) {
+                    kpiPriceChangeEl.classList.add('positive');
+                    kpiPriceChangeEl.classList.remove('negative');
+                    arrowEl.textContent = '▲';
+                } else {
+                    kpiPriceChangeEl.classList.add('negative');
+                    kpiPriceChangeEl.classList.remove('positive');
+                    arrowEl.textContent = '▼';
+                }
+
+                changeValueEl.textContent = `${priceChangePercent.toFixed(2)}%`;
+
+                document.getElementById('kpiMarketCap').textContent = formatNumber(yahooData.marketCap || sampleData.marketCap);
+                document.getElementById('kpiPE').textContent = (yahooData.pe || sampleData.pe).toFixed(2);
+                document.getElementById('sectorPE').textContent = `Sector: ${(sampleData.sectorPE).toFixed(2)}`;
+
+                const weekHigh = yahooData.weekHigh || sampleData.weekHigh;
+                const weekLow = yahooData.weekLow || sampleData.weekLow;
+                document.getElementById('kpi52Range').textContent = `$${weekLow.toFixed(2)} - $${weekHigh.toFixed(2)}`;
+
+                const rangePercent = ((currentPrice - weekLow) / (weekHigh - weekLow)) * 100;
+                document.getElementById('weekRangeBar').style.width = rangePercent + '%';
+
+                document.getElementById('kpiVolume').textContent = formatNumber(yahooData.volume || sampleData.volume);
+                const volumeAvg = sampleData.volumeAverage;
+                const volumeChangePercent = (((yahooData.volume || sampleData.volume) - volumeAvg) / volumeAvg * 100);
+                document.getElementById('volumeChange').textContent = `${volumeChangePercent >= 0 ? '+' : ''}${volumeChangePercent.toFixed(0)}% avg`;
+
+                document.getElementById('kpiDividend').textContent = `${sampleData.dividendYield.toFixed(2)}%`;
+
+                // Charts
+                createPriceChart(sampleData);
+                createFinancialCharts(sampleData);
+                createSectorChart(sampleData);
+                createAnalystChart(sampleData);
+                createNews(sampleData);
+                createMacroIndicators(sampleData);
+
+                showDashboard();
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                showError('Unable to load company data. Please try again.');
+            }
+        }
+
+        async function fetchYahooData(ticker) {
+            try {
+                const response = await fetch(`https://corsproxy.io/?https://query2.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=price,summaryDetail`);
+                const data = await response.json();
+
+                if (data.quoteSummary && data.quoteSummary.result && data.quoteSummary.result[0]) {
+                    const result = data.quoteSummary.result[0];
+                    const price = result.price;
+                    const summary = result.summaryDetail;
+
+                    return {
+                        currentPrice: price.regularMarketPrice.raw,
+                        priceChange: price.regularMarketChange.raw,
+                        priceChangePercent: price.regularMarketChangePercent.raw,
+                        marketCap: price.marketCap.raw,
+                        pe: price.trailingPE.raw,
+                        weekHigh: summary.fiftyTwoWeekHigh.raw,
+                        weekLow: summary.fiftyTwoWeekLow.raw,
+                        volume: summary.volume.raw
+                    };
+                }
+            } catch (error) {
+                console.warn('Yahoo Finance API error:', error);
+            }
+            return null;
+        }
+
+        function generateSampleData(ticker) {
+            const basePrice = Math.random() * 300 + 50;
+            const seed = ticker.charCodeAt(0) + ticker.charCodeAt(1);
+
+            return {
+                ticker,
+                currentPrice: basePrice,
+                priceChange: (Math.random() - 0.45) * 20,
+                priceChangePercent: (Math.random() - 0.45) * 5,
+                marketCap: Math.random() * 3000000000000 + 50000000000,
+                pe: Math.random() * 40 + 10,
+                weekHigh: basePrice * (1 + Math.random() * 0.15),
+                weekLow: basePrice * (1 - Math.random() * 0.15),
+                volume: Math.floor(Math.random() * 100000000 + 10000000),
+                volumeAverage: Math.floor(Math.random() * 80000000 + 20000000),
+
+                sectorPE: Math.random() * 30 + 15,
+                dividendYield: Math.random() * 4,
+
+                revenue: [2100, 2200, 2350, 2400],
+                revenueYears: ['2020', '2021', '2022', '2023'],
+
+                netIncome: [450, 480, 520, 550],
+
+                profitMargin: [21.4, 21.8, 22.1, 22.9],
+
+                debtToEquity: 0.8,
+
+                roe: [18.5, 19.2, 20.1, 21.3],
+
+                fcf: [380, 400, 420, 450],
+
+                sectorMetrics: {
+                    pe: Math.random() * 25 + 15,
+                    pb: Math.random() * 3 + 1,
+                    roe: Math.random() * 15 + 8,
+                    profitMargin: Math.random() * 15 + 5,
+                    dividendYield: Math.random() * 3 + 0.5
                 },
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        ticks: { callback: function(value) { return '$' + value.toFixed(2); } }
-                    }
-                }
-            }
-        });
 
-        // Sector Comparison
-        const ctx2 = document.getElementById('sectorChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['ENB', 'TRP', 'PPL', 'S&P/TSX', 'S&P 500'],
-                datasets: [{
-                    label: '1-Year Return (%)',
-                    data: [8.9, 6.2, 7.8, 6.8, 12.4],
-                    backgroundColor: ['#00bcd4', '#0ea5e9', '#0ea5e9', '#a0a9b8', '#a0a9b8'],
-                    borderColor: '#0ea5e9',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return value + '%'; } }
-                    }
-                }
-            }
-        });
+                companyMetrics: {
+                    pe: Math.random() * 40 + 10,
+                    pb: Math.random() * 4 + 0.8,
+                    roe: Math.random() * 20 + 10,
+                    profitMargin: Math.random() * 20 + 8,
+                    dividendYield: Math.random() * 4 + 0.2
+                },
 
-        // Volume Chart
-        const ctx3 = document.getElementById('volumeChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                datasets: [{
-                    label: 'Daily Volume (M shares)',
-                    data: [26.2, 29.1, 28.4, 27.8, 30.2],
-                    backgroundColor: '#00bcd4',
-                    borderColor: '#0ea5e9',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return value + 'M'; } }
-                    }
-                }
-            }
-        });
+                ratings: {
+                    strongBuy: Math.floor(Math.random() * 15 + 5),
+                    buy: Math.floor(Math.random() * 20 + 10),
+                    hold: Math.floor(Math.random() * 15 + 5),
+                    sell: Math.floor(Math.random() * 8 + 2),
+                    strongSell: Math.floor(Math.random() * 5 + 1)
+                },
 
-        // Moving Average Chart
-        const ctx4 = document.getElementById('maChart').getContext('2d');
-        new Chart(ctx4, {
-            type: 'line',
-            data: {
-                labels: ['60 days ago', '45 days ago', '30 days ago', '15 days ago', 'Today'],
-                datasets: [
-                    {
+                priceTarget: basePrice * (1 + (Math.random() - 0.4) * 0.3),
+
+                news: [
+                    { title: 'Q3 Earnings Beat Expectations', date: '2 days ago', source: 'Reuters' },
+                    { title: 'Analyst Upgrades Stock to Overweight', date: '5 days ago', source: 'Goldman Sachs' },
+                    { title: 'Product Launch Announcement', date: '1 week ago', source: 'Bloomberg' },
+                    { title: 'Company Announces Stock Buyback Program', date: '10 days ago', source: 'CNBC' },
+                    { title: 'Partnership with Major Tech Firm', date: '2 weeks ago', source: 'Financial Times' }
+                ],
+
+                priceHistory1M: generatePriceHistory(30, basePrice),
+                priceHistory3M: generatePriceHistory(90, basePrice),
+                priceHistory6M: generatePriceHistory(180, basePrice),
+                priceHistory1Y: generatePriceHistory(365, basePrice),
+                priceHistory5Y: generatePriceHistory(1825, basePrice),
+
+                macroIndicators: {
+                    sp500: 4783,
+                    sp500Change: 2.15,
+                    tsx: 22145,
+                    tsxChange: 1.89,
+                    treasury10Y: 4.25,
+                    treasury10YChange: 0.12,
+                    vix: 14.5,
+                    vixChange: -1.2
+                }
+            };
+        }
+
+        function generatePriceHistory(days, basePrice) {
+            const prices = [];
+            let currentPrice = basePrice;
+
+            for (let i = days; i > 0; i--) {
+                currentPrice = currentPrice * (1 + (Math.random() - 0.5) * 0.03);
+                prices.push({
+                    date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                    price: currentPrice,
+                    volume: Math.floor(Math.random() * 100000000 + 10000000)
+                });
+            }
+            return prices;
+        }
+
+        function createPriceChart(data) {
+            destroyChart('priceChart');
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            const history = data.priceHistory1M;
+            const labels = history.map(d => d.date.split('-').slice(1).join('-'));
+            const prices = history.map(d => d.price);
+
+            chartInstances['priceChart'] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
                         label: 'Price',
-                        data: [68.12, 69.34, 69.89, 70.21, 70.65],
-                        borderColor: '#0ea5e9',
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#0ea5e9'
-                    },
-                    {
-                        label: '50-Day MA',
-                        data: [68.89, 69.12, 69.28, 69.35, 69.42],
-                        borderColor: '#00bcd4',
+                        data: prices,
+                        borderColor: '#00a8e8',
+                        backgroundColor: 'rgba(0, 168, 232, 0.05)',
                         borderWidth: 2,
-                        borderDash: [5, 5],
-                        fill: false,
-                        tension: 0.3,
-                        pointRadius: 0
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: '#00a8e8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     },
-                    {
-                        label: '200-Day MA',
-                        data: [67.12, 67.34, 67.62, 67.78, 67.89],
-                        borderColor: '#0891b2',
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 12
+                                },
+                                maxTicksLimit: 8
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(period) {
+            // Update active button
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const periodMap = {
+                '1M': 'priceHistory1M',
+                '3M': 'priceHistory3M',
+                '6M': 'priceHistory6M',
+                '1Y': 'priceHistory1Y',
+                '5Y': 'priceHistory5Y'
+            };
+
+            if (currentTicker) {
+                generateSampleData(currentTicker);
+                const data = generateSampleData(currentTicker);
+                createPriceChart(data);
+            }
+        }
+
+        function createFinancialCharts(data) {
+            // Revenue Chart
+            createBarChart('revenueChart', data.revenueYears, data.revenue, 'Revenue (Billions)', '#00a8e8');
+
+            // Net Income Chart
+            createBarChart('incomeChart', data.revenueYears, data.netIncome, 'Net Income (Billions)', '#00d4ff');
+
+            // Profit Margin Chart
+            createLineChart('marginChart', data.revenueYears, data.profitMargin, 'Profit Margin (%)', '#22c55e');
+
+            // Debt to Equity Chart (Donut)
+            createDonutChart('debtChart', data.debtToEquity, 1.2 - data.debtToEquity);
+
+            // ROE Chart
+            createLineChart('roeChart', data.revenueYears, data.roe, 'ROE (%)', '#fbbf24');
+
+            // FCF Chart
+            createBarChart('fcfChart', data.revenueYears, data.fcf, 'Free Cash Flow (Billions)', '#f87171');
+        }
+
+        function createBarChart(canvasId, labels, data, title, color) {
+            destroyChart(canvasId);
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            chartInstances[canvasId] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: title,
+                        data,
+                        backgroundColor: color,
+                        borderRadius: 4,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createLineChart(canvasId, labels, data, title, color) {
+            destroyChart(canvasId);
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            chartInstances[canvasId] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: title,
+                        data,
+                        borderColor: color,
+                        backgroundColor: `${color}15`,
                         borderWidth: 2,
-                        borderDash: [10, 5],
-                        fill: false,
-                        tension: 0.3,
-                        pointRadius: 0
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        ticks: { callback: function(value) { return '$' + value.toFixed(2); } }
-                    }
-                }
-            }
-        });
-
-        // Market Drivers
-        const ctx5 = document.getElementById('driversChart').getContext('2d');
-        new Chart(ctx5, {
-            type: 'radar',
-            data: {
-                labels: ['Dividend\nGrowth', 'Regulatory\nSupport', 'Energy\nDemand', 'Market\nLiquidity', 'Analyst\nSentiment'],
-                datasets: [{
-                    label: 'Positive Impact Score (0-10)',
-                    data: [8.5, 8.2, 7.8, 9.1, 7.6],
-                    borderColor: '#0ea5e9',
-                    backgroundColor: 'rgba(14, 165, 233, 0.2)',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#0ea5e9',
-                    pointRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 10,
-                        ticks: { stepSize: 2 }
-                    }
-                }
-            }
-        });
-
-        // Relative Strength
-        const ctx6 = document.getElementById('rsChart').getContext('2d');
-        new Chart(ctx6, {
-            type: 'line',
-            data: {
-                labels: ['3M ago', '2M ago', '1M ago', '2W ago', 'Now'],
-                datasets: [
-                    {
-                        label: 'ENB Relative Return',
-                        data: [0, 2.1, 4.8, 7.2, 8.9],
-                        borderColor: '#00bcd4',
-                        backgroundColor: 'rgba(0, 188, 212, 0.1)',
-                        tension: 0.4,
                         fill: true,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#00bcd4'
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: color,
+                        pointBorderColor: '#1a2332'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     },
-                    {
-                        label: 'S&P/TSX Relative Return',
-                        data: [0, 1.4, 3.2, 5.1, 6.8],
-                        borderColor: '#a0a9b8',
-                        backgroundColor: 'rgba(160, 169, 184, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#a0a9b8'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: function(value) { return value + '%'; } }
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
                     }
                 }
+            });
+        }
+
+        function createDonutChart(canvasId, value, remaining) {
+            destroyChart(canvasId);
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            chartInstances[canvasId] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Debt', 'Equity'],
+                    datasets: [{
+                        data: [value, remaining],
+                        backgroundColor: ['#ef4444', '#22c55e'],
+                        borderColor: '#1a2332',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#888',
+                                font: {
+                                    size: 12
+                                },
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createSectorChart(data) {
+            destroyChart('sectorChart');
+            const ctx = document.getElementById('sectorChart').getContext('2d');
+
+            const metrics = ['P/E', 'P/B', 'ROE', 'Profit Margin', 'Dividend Yield'];
+            const companyValues = [
+                data.companyMetrics.pe,
+                data.companyMetrics.pb,
+                data.companyMetrics.roe,
+                data.companyMetrics.profitMargin,
+                data.companyMetrics.dividendYield
+            ];
+            const sectorValues = [
+                data.sectorMetrics.pe,
+                data.sectorMetrics.pb,
+                data.sectorMetrics.roe,
+                data.sectorMetrics.profitMargin,
+                data.sectorMetrics.dividendYield
+            ];
+
+            chartInstances['sectorChart'] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: metrics,
+                    datasets: [
+                        {
+                            label: 'Company',
+                            data: companyValues,
+                            backgroundColor: '#00a8e8',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Sector Avg',
+                            data: sectorValues,
+                            backgroundColor: '#2d3748',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#888',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createAnalystChart(data) {
+            destroyChart('ratingsChart');
+            const ctx = document.getElementById('ratingsChart').getContext('2d');
+
+            const ratings = data.ratings;
+            const total = ratings.strongBuy + ratings.buy + ratings.hold + ratings.sell + ratings.strongSell;
+
+            document.getElementById('ratingStrongBuy').textContent = ratings.strongBuy;
+            document.getElementById('ratingBuy').textContent = ratings.buy;
+            document.getElementById('ratingHold').textContent = ratings.hold;
+            document.getElementById('ratingSell').textContent = ratings.sell;
+            document.getElementById('ratingStrongSell').textContent = ratings.strongSell;
+            document.getElementById('priceTarget').textContent = `$${data.priceTarget.toFixed(2)}`;
+
+            chartInstances['ratingsChart'] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'],
+                    datasets: [{
+                        data: [ratings.strongBuy, ratings.buy, ratings.hold, ratings.sell, ratings.strongSell],
+                        backgroundColor: ['#22c55e', '#84cc16', '#fbbf24', '#f97316', '#ef4444'],
+                        borderColor: '#1a2332',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#888',
+                                font: {
+                                    size: 11
+                                },
+                                padding: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createNews(data) {
+            const newsList = document.getElementById('newsList');
+            newsList.innerHTML = data.news.map(item => `
+                <div class="news-item">
+                    <div class="news-title">${item.title}</div>
+                    <div style="margin-top: 0.25rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="news-date">${item.date}</span>
+                        <span class="news-source">${item.source}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function createMacroIndicators(data) {
+            const macro = data.macroIndicators;
+
+            document.getElementById('macroSP500').textContent = Math.floor(macro.sp500);
+            document.getElementById('macroSP500Change').textContent = `${macro.sp500Change >= 0 ? '+' : ''}${macro.sp500Change.toFixed(2)}%`;
+            document.getElementById('macroSP500Change').className = `macro-change ${macro.sp500Change >= 0 ? 'positive' : 'negative'}`;
+
+            document.getElementById('macroTSX').textContent = Math.floor(macro.tsx);
+            document.getElementById('macroTSXChange').textContent = `${macro.tsxChange >= 0 ? '+' : ''}${macro.tsxChange.toFixed(2)}%`;
+            document.getElementById('macroTSXChange').className = `macro-change ${macro.tsxChange >= 0 ? 'positive' : 'negative'}`;
+
+            document.getElementById('macroTreasury').textContent = macro.treasury10Y.toFixed(2) + '%';
+            document.getElementById('macroTreasuryChange').textContent = `${macro.treasury10YChange >= 0 ? '+' : ''}${macro.treasury10YChange.toFixed(2)}%`;
+            document.getElementById('macroTreasuryChange').className = `macro-change ${macro.treasury10YChange >= 0 ? 'positive' : 'negative'}`;
+
+            document.getElementById('macroVIX').textContent = macro.vix.toFixed(2);
+            document.getElementById('macroVIXChange').textContent = `${macro.vixChange >= 0 ? '+' : ''}${macro.vixChange.toFixed(2)}%`;
+            document.getElementById('macroVIXChange').className = `macro-change ${macro.vixChange >= 0 ? 'positive' : 'negative'}`;
+        }
+
+        function destroyChart(canvasId) {
+            if (chartInstances[canvasId]) {
+                chartInstances[canvasId].destroy();
             }
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000000000) {
+                return (num / 1000000000000).toFixed(2) + 'T';
+            } else if (num >= 1000000000) {
+                return (num / 1000000000).toFixed(2) + 'B';
+            } else if (num >= 1000000) {
+                return (num / 1000000).toFixed(2) + 'M';
+            }
+            return num.toFixed(0);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('emptyState').style.display = 'block';
         });
     </script>
 </body>

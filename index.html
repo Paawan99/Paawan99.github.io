@@ -1,529 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Paawan Shah, Finance & Analytics Portfolio</title>
-
- <!-- SEO Meta Tags -->
- <meta name="description" content="Paawan Shah — Finance & Business Analytics professional. BBA from NMIMS Mumbai, MBA from UCW Vancouver. Specializing in financial analysis, equity research, valuation, and portfolio strategy." />
- <meta name="keywords" content="Paawan Shah, finance, business analytics, UCW, financial analysis, budgeting, data visualization, portfolio" />
- <meta name="author" content="Paawan Shah" />
- <meta name="robots" content="index, follow" />
- <link rel="canonical" href="https://paawanshah99.com/" />
-
- <!-- Open Graph / Social Media -->
- <meta property="og:type" content="website" />
- <meta property="og:url" content="https://paawanshah99.com/" />
- <meta property="og:title" content="Paawan Shah — Finance & Analytics Portfolio" />
- <meta property="og:description" content="Finance & Business Analytics professional specializing in financial reporting, budgeting, and data-driven decision making." />
- <meta property="og:image" content="https://paawanshah99.com/og-image.png" />
- <meta property="og:site_name" content="Paawan Shah Portfolio" />
-
- <!-- Twitter Card -->
- <meta name="twitter:card" content="summary_large_image" />
- <meta name="twitter:title" content="Paawan Shah — Finance & Analytics Portfolio" />
- <meta name="twitter:description" content="Finance & Business Analytics professional specializing in financial reporting, budgeting, and data-driven decision making." />
- <meta name="twitter:image" content="https://paawanshah99.com/og-image.png" />
-
- <!-- Favicon -->
- <link rel="icon" type="image/svg+xml" href="favicon.svg" />
- <link rel="apple-touch-icon" href="favicon.svg" />
-
- <!-- Theme Color -->
- <meta name="theme-color" content="#06060a" />
-
- <!-- Google Fonts -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
- <!-- Three.js + GSAP -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
- <!-- Structured Data (JSON-LD) -->
- <script type="application/ld+json">
- {
-   "@context": "https://schema.org",
-   "@type": "Person",
-   "name": "Paawan Shah",
-   "url": "https://paawanshah99.com",
-   "jobTitle": "Finance & Analytics Professional",
-   "alumniOf": {
-     "@type": "CollegeOrUniversity",
-     "name": "University Canada West"
-   },
-   "sameAs": [
-     "https://www.linkedin.com/in/paawan-shah-61249b304/",
-     "https://github.com/Paawan99"
-   ]
- }
- </script>
-
- <style>
- :root {
- --bg-primary: #06060a;
- --bg-secondary: #0c0c12;
- --bg-card: #111118;
- --bg-card-hover: #18181f;
- --text-primary: #e8e8f0;
- --text-secondary: #8b8b96;
- --text-muted: #56565e;
- --accent: #64ffda;
- --accent-dim: rgba(100, 255, 218, 0.1);
- --accent-glow: rgba(100, 255, 218, 0.12);
- --accent-secondary: #7c5cfc;
- --accent-pink: #ff6b9d;
- --border: rgba(255, 255, 255, 0.05);
- --border-hover: rgba(255, 255, 255, 0.12);
- --gradient-1: linear-gradient(135deg, #64ffda 0%, #7c5cfc 100%);
- --font-display: 'Syne', sans-serif;
- --font-body: 'DM Sans', sans-serif;
- --font-mono: 'JetBrains Mono', monospace;
- --ease: cubic-bezier(0.16, 1, 0.3, 1);
- }
- *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
- html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--accent) var(--bg-primary); }
- body { font-family:var(--font-body); background:var(--bg-primary); color:var(--text-primary); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
- ::selection { background:var(--accent); color:var(--bg-primary); }
- a { color:inherit; text-decoration:none; }
- img { max-width:100%; display:block; }
-
- /* Noise */
- body::after {
- content:''; position:fixed; inset:0; pointer-events:none; z-index:9998;
- background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
- }
-
- /* Cursor glow */
- .glow-orb { position:fixed; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%); pointer-events:none; z-index:-1; will-change:transform; transition:transform 0.2s ease-out; }
-
- /* 3D Canvas */
- #heroCanvas { position:fixed; top:0; left:0; width:100%; height:100vh; z-index:0; pointer-events:none; }
-
- /* Dot Nav */
- .dot-nav { position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:1000; display:flex; flex-direction:column; gap:14px; }
- .dot-nav a { width:8px; height:8px; border-radius:50%; background:var(--text-muted); transition:all 0.4s var(--ease); position:relative; display:block; }
- .dot-nav a:hover,.dot-nav a.active { background:var(--accent); box-shadow:0 0 10px rgba(100,255,218,0.4); transform:scale(1.5); }
- .dot-nav a .dot-tip { position:absolute; right:22px; top:50%; transform:translateY(-50%) translateX(6px); font-family:var(--font-mono); font-size:0.6rem; color:var(--accent); white-space:nowrap; opacity:0; pointer-events:none; transition:all 0.3s; letter-spacing:0.05em; text-transform:uppercase; }
- .dot-nav a:hover .dot-tip { opacity:1; transform:translateY(-50%) translateX(0); }
-
- /* Nav */
- nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.1rem 2.5rem; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(20px) saturate(180%); background:rgba(6,6,10,0.75); border-bottom:1px solid var(--border); transition:all 0.4s var(--ease); }
- nav.scrolled { padding:0.7rem 2.5rem; background:rgba(6,6,10,0.95); }
- .nav-logo { font-family:var(--font-display); font-weight:800; font-size:1.3rem; letter-spacing:-0.02em; }
- .nav-logo span { color:var(--accent); }
- .nav-links { display:flex; gap:2.2rem; list-style:none; }
- .nav-links a { font-family:var(--font-mono); font-size:0.73rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary); transition:color 0.3s; position:relative; }
- .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s var(--ease); }
- .nav-links a:hover { color:var(--accent); }
- .nav-links a:hover::after { width:100%; }
- .nav-link-num { color:var(--accent); margin-right:0.3rem; }
- .menu-toggle { display:none; background:none; border:none; cursor:pointer; width:30px; height:20px; position:relative; z-index:1001; }
- .menu-toggle span { display:block; width:100%; height:2px; background:var(--text-primary); position:absolute; left:0; transition:all 0.3s ease; }
- .menu-toggle span:nth-child(1){top:0} .menu-toggle span:nth-child(2){top:9px} .menu-toggle span:nth-child(3){top:18px}
- .menu-toggle.active span:nth-child(1){top:9px;transform:rotate(45deg)} .menu-toggle.active span:nth-child(2){opacity:0} .menu-toggle.active span:nth-child(3){top:9px;transform:rotate(-45deg)}
-
- /* Hero */
- .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:8rem 8% 4rem; position:relative; z-index:1; }
- .hero-overline { font-family:var(--font-mono); font-size:0.85rem; color:var(--accent); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1.5rem; opacity:0; transform:translateY(20px); animation:fadeUp 0.8s var(--ease) 0.2s forwards; }
- .hero-name { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:800; line-height:1; letter-spacing:-0.03em; margin-bottom:1rem; opacity:0; transform:translateY(30px); animation:fadeUp 0.8s var(--ease) 0.4s forwards; }
- .hero-name .gradient-text { background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
- .hero-title { font-family:var(--font-display); font-size:clamp(1.2rem,3vw,2rem); font-weight:500; color:var(--text-secondary); margin-bottom:2rem; opacity:0; transform:translateY(30px); animation:fadeUp 0.8s var(--ease) 0.6s forwards; }
- .hero-desc { max-width:560px; font-size:1.05rem; color:var(--text-secondary); line-height:1.8; margin-bottom:3rem; opacity:0; transform:translateY(30px); animation:fadeUp 0.8s var(--ease) 0.8s forwards; }
- .hero-cta { display:flex; gap:1.5rem; opacity:0; transform:translateY(30px); animation:fadeUp 0.8s var(--ease) 1s forwards; }
- .btn-primary { font-family:var(--font-mono); font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; padding:1rem 2.2rem; border:1px solid var(--accent); color:var(--accent); background:transparent; cursor:pointer; transition:all 0.4s var(--ease); position:relative; overflow:hidden; }
- .btn-primary::before { content:''; position:absolute; inset:0; background:var(--accent); transform:scaleX(0); transform-origin:right; transition:transform 0.4s var(--ease); z-index:-1; }
- .btn-primary:hover { color:var(--bg-primary); }
- .btn-primary:hover::before { transform:scaleX(1); transform-origin:left; }
- .btn-secondary { font-family:var(--font-mono); font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; padding:1rem 2.2rem; border:1px solid var(--border-hover); color:var(--text-secondary); background:transparent; cursor:pointer; transition:all 0.4s var(--ease); }
- .btn-secondary:hover { border-color:var(--text-secondary); color:var(--text-primary); }
- .hero-scroll { position:absolute; bottom:3rem; left:8%; display:flex; align-items:center; gap:1rem; font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted); letter-spacing:0.15em; text-transform:uppercase; opacity:0; animation:fadeUp 0.8s var(--ease) 1.5s forwards; }
- .scroll-line { width:40px; height:1px; background:var(--text-muted); position:relative; overflow:hidden; }
- .scroll-line::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:var(--accent); animation:scrollSlide 2s ease-in-out infinite; }
-
- /* Section labels (Principle 4) */
- .section-label { font-family:var(--font-mono); font-size:0.68rem; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px; }
- .section-label::after { content:''; flex:1; height:1px; background:var(--border-hover); max-width:250px; }
- .section-heading { font-family:var(--font-display); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; letter-spacing:-0.02em; margin-bottom:3rem; }
- .section-heading em { font-style:italic; background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
- /* About */
- .about-wrap { padding:10rem 0; position:relative; background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-secondary) 40%,var(--bg-primary) 100%); }
- .about-inner { max-width:1200px; margin:0 auto; padding:0 8%; display:grid; grid-template-columns:1.3fr 0.7fr; gap:5rem; align-items:start; }
- .about-text p { color:var(--text-secondary); margin-bottom:1.4rem; font-size:1rem; line-height:1.85; }
- .about-text p strong { color:var(--text-primary); font-weight:600; }
- .about-text .about-highlight { color:var(--accent); font-weight:500; }
- .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
- .stat-card { padding:1.8rem 1.5rem; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; transition:all 0.5s var(--ease); cursor:default; }
- .stat-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 12px 40px rgba(100,255,218,0.06); }
- .stat-number { font-family:var(--font-display); font-size:2rem; font-weight:800; background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; margin-bottom:0.4rem; }
- .stat-label { font-family:var(--font-mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); font-weight:500; }
-
- /* Embedded sections */
- .embedded-section { padding:6rem 0 3rem; max-width:1200px; margin:0 auto; }
- .embedded-section-inner { padding:0 8%; }
- .embedded-section p.section-desc { color:var(--text-secondary); margin-bottom:2rem; max-width:700px; font-size:0.95rem; }
- .embed-frame { width:100%; border:1px solid var(--border); border-radius:12px; background:var(--bg-secondary); overflow:hidden; }
- .embed-frame iframe { width:100%; border:none; display:block; }
- .open-fullpage { display:inline-block; margin-top:1.2rem; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.55rem 1.4rem; border-radius:4px; transition:all 0.3s ease; }
- .open-fullpage:hover { background:var(--accent); color:var(--bg-primary); }
-
- /* Skills */
- .skills-wrap { padding:8rem 0; overflow:hidden; }
- .skills-header { max-width:1200px; margin:0 auto; padding:0 8% 2.5rem; }
- .skills-track { display:flex; gap:1.5rem; padding:0 8%; }
- .skill-category { flex-shrink:0; width:320px; padding:2.5rem 2rem; background:var(--bg-card); border:1px solid var(--border); border-radius:16px; transition:all 0.5s var(--ease); position:relative; overflow:hidden; }
- .skill-category::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--gradient-1); transition:height 0.5s var(--ease); }
- .skill-category:hover { border-color:var(--border-hover); transform:translateY(-6px); }
- .skill-category:hover::before { height:100%; }
- .skill-category:nth-child(1):hover { border-color:var(--accent-secondary); box-shadow:0 20px 50px rgba(124,92,252,0.08); }
- .skill-category:nth-child(2):hover { border-color:var(--accent); box-shadow:0 20px 50px rgba(100,255,218,0.08); }
- .skill-category:nth-child(3):hover { border-color:var(--accent-pink); box-shadow:0 20px 50px rgba(255,107,157,0.08); }
- .skill-category:nth-child(4):hover { border-color:var(--accent-secondary); box-shadow:0 20px 50px rgba(124,92,252,0.08); }
- .skill-icon { font-size:1.8rem; margin-bottom:1.2rem; }
- .skill-category h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:600; margin-bottom:1.2rem; }
- .skill-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
- .skill-tag { font-family:var(--font-mono); font-size:0.68rem; padding:0.35rem 0.8rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; color:var(--text-secondary); letter-spacing:0.04em; transition:all 0.3s ease; }
- .skill-tag:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-dim); }
-
- /* Experience */
- .exp-wrap { padding:10rem 0; background:var(--bg-secondary); }
- .exp-inner { max-width:1200px; margin:0 auto; padding:0 8%; }
- .exp-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
- .exp-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:2.5rem; position:relative; overflow:hidden; transition:all 0.5s var(--ease); }
- .exp-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:0%; background:var(--gradient-1); transition:height 0.6s var(--ease); }
- .exp-card:hover::before { height:100%; }
- .exp-card:hover { border-color:var(--border-hover); transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.25); }
- .exp-date { font-family:var(--font-mono); font-size:0.72rem; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.8rem; }
- .exp-card h3 { font-family:var(--font-display); font-size:1.3rem; font-weight:700; margin-bottom:0.3rem; }
- .exp-company { color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.2rem; }
- .exp-desc { color:var(--text-secondary); font-size:0.9rem; }
- .exp-desc li { list-style:none; padding-left:1.3rem; position:relative; margin-bottom:0.5rem; line-height:1.7; }
- .exp-desc li::before { content:'\203A'; position:absolute; left:0; color:var(--accent); font-weight:700; }
-
- /* Projects */
- .projects-wrap { padding:10rem 0; }
- .projects-inner { max-width:1200px; margin:0 auto; padding:0 8%; }
- .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
- .projects-grid .project-card:nth-child(1) { grid-column:span 2; }
- .projects-grid .project-card:nth-child(4) { grid-column:span 2; }
- .project-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.5s var(--ease); position:relative; display:block; }
- .project-card::after { content:''; position:absolute; inset:0; border-radius:12px; background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(100,255,218,0.04),transparent 40%); opacity:0; transition:opacity 0.4s; pointer-events:none; }
- .project-card:hover::after { opacity:1; }
- .project-card:hover { border-color:var(--border-hover); transform:translateY(-6px); box-shadow:0 25px 60px rgba(0,0,0,0.3); }
- .project-card-img-wrap { overflow:hidden; }
- .project-card-img { width:100%; height:200px; object-fit:cover; display:block; border-bottom:1px solid var(--border); transition:transform 0.5s var(--ease); }
- .project-card:hover .project-card-img { transform:scale(1.06); }
- .project-card-body { padding:1.8rem 2rem 2rem; }
- .project-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; }
- .project-folder { font-size:1.8rem; }
- .project-links { display:flex; gap:1rem; }
- .project-links span { color:var(--text-muted); font-size:1.1rem; transition:all 0.3s; display:inline-block; }
- .project-card:hover .project-links span { color:var(--accent); transform:translate(3px,-3px); }
- .project-card h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:700; margin-bottom:0.8rem; transition:color 0.3s; }
- .project-card:hover h3 { color:var(--accent); }
- .project-card p { color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.3rem; line-height:1.7; }
- .project-tech { display:flex; flex-wrap:wrap; gap:0.7rem; }
- .project-tech span { font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); letter-spacing:0.04em; }
-
- /* Blog */
- .blog-wrap { padding:10rem 0; background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-secondary) 100%); }
- .blog-inner { max-width:1200px; margin:0 auto; padding:0 8%; }
- .blog-list { display:flex; flex-direction:column; }
- .blog-item { display:grid; grid-template-columns:40px 1fr auto auto; gap:1.5rem; align-items:center; padding:1.6rem 0; border-bottom:1px solid var(--border); transition:all 0.4s var(--ease); }
- .blog-item:first-child { border-top:1px solid var(--border); }
- .blog-item:hover { padding-left:1rem; }
- .blog-num { font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); }
- .blog-item h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; transition:color 0.3s; }
- .blog-item:hover h3 { color:var(--accent); }
- .blog-tags { display:flex; gap:0.4rem; }
- .blog-tags span { font-family:var(--font-mono); font-size:0.58rem; color:var(--text-muted); padding:0.2rem 0.55rem; border:1px solid var(--border); border-radius:10px; }
- .blog-arrow { font-size:1rem; color:var(--text-muted); transition:all 0.3s; display:inline-block; }
- .blog-item:hover .blog-arrow { color:var(--accent); transform:translateX(6px); }
-
- /* Contact */
- .contact-section { padding:12rem 0 4rem; text-align:center; max-width:1200px; margin:0 auto; }
- .contact-heading { font-family:var(--font-display); font-size:clamp(2.5rem,6vw,4.5rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:1.5rem; line-height:1.1; }
- .contact-heading em { font-style:italic; background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
- .contact-text { max-width:520px; margin:0 auto 3rem; color:var(--text-secondary); font-size:1.02rem; line-height:1.8; }
- .contact-cta { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; }
- .contact-socials { display:flex; justify-content:center; gap:2.5rem; margin-top:2.5rem; }
- .social-link { font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; transition:color 0.3s; display:flex; align-items:center; gap:0.5rem; }
- .social-link:hover { color:var(--accent); }
-
- /* Footer */
- footer { padding:3rem; text-align:center; border-top:1px solid var(--border); }
- footer p { font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted); letter-spacing:0.08em; }
-
- /* Animations */
- @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
- @keyframes scrollSlide { 0%{left:-100%} 50%{left:100%} 100%{left:100%} }
- .reveal { opacity:0; transform:translateY(35px); transition:all 0.8s var(--ease); }
- .reveal.active { opacity:1; transform:translateY(0); }
- .reveal-d1{transition-delay:0.1s} .reveal-d2{transition-delay:0.2s} .reveal-d3{transition-delay:0.3s} .reveal-d4{transition-delay:0.4s}
-
- /* Responsive */
- @media(max-width:1024px){
- .about-inner{grid-template-columns:1fr;gap:3rem}
- .exp-grid{grid-template-columns:1fr}
- .projects-grid{grid-template-columns:1fr 1fr}
- .projects-grid .project-card:nth-child(1),.projects-grid .project-card:nth-child(4){grid-column:span 1}
- }
- @media(max-width:768px){
- nav{padding:1rem 1.5rem} nav.scrolled{padding:0.8rem 1.5rem}
- .nav-links{position:fixed;inset:0;background:rgba(6,6,10,0.97);flex-direction:column;justify-content:center;align-items:center;gap:2rem;transform:translateX(100%);transition:transform 0.5s var(--ease)}
- .nav-links.open{transform:translateX(0)} .nav-links a{font-size:1.1rem}
- .menu-toggle{display:block} .dot-nav{display:none}
- .hero{padding:7rem 6% 3rem}
- .hero-cta{flex-direction:column} .hero-cta .btn-primary,.hero-cta .btn-secondary{text-align:center}
- .hero-scroll{display:none}
- .about-inner,.exp-inner,.projects-inner,.blog-inner,.embedded-section-inner,.skills-header{padding:0 6%!important}
- .about-stats{grid-template-columns:1fr 1fr}
- .projects-grid{grid-template-columns:1fr}
- .projects-grid .project-card:nth-child(1),.projects-grid .project-card:nth-child(4){grid-column:span 1}
- .contact-socials{flex-direction:column;align-items:center;gap:1rem}
- .blog-item{grid-template-columns:1fr;gap:0.4rem} .blog-tags,.blog-arrow,.blog-num{display:none}
- .skill-category{width:280px} .skills-track{padding:0 6%}
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paawan Shah | Finance & Analytics Professional</title>
+    <meta name="description" content="Paawan Shah — Finance & Analytics Professional specializing in equity research, M&A advisory, portfolio construction, and capital markets intelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <div class="glow-orb" id="glowOrb"></div>
- <canvas id="heroCanvas"></canvas>
 
- <!-- Dot Nav (Principle 1) -->
- <nav class="dot-nav" id="dotNav">
-  <a href="#hero" class="active"><span class="dot-tip">Home</span></a>
-  <a href="#about"><span class="dot-tip">About</span></a>
-  <a href="#ccfinder"><span class="dot-tip">CC Finder</span></a>
-  <a href="#skills"><span class="dot-tip">Skills</span></a>
-  <a href="#experience"><span class="dot-tip">Experience</span></a>
-  <a href="#projects"><span class="dot-tip">Projects</span></a>
-  <a href="#blog"><span class="dot-tip">Blog</span></a>
-  <a href="#games"><span class="dot-tip">Games</span></a>
-  <a href="#contact"><span class="dot-tip">Contact</span></a>
- </nav>
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-text">
+                <span class="loader-name">PAAWAN SHAH</span>
+                <span class="loader-sub">Initializing Experience...</span>
+            </div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
 
- <!-- Nav -->
- <nav id="navbar">
- <a href="#" class="nav-logo">paawan<span>.</span></a>
- <ul class="nav-links" id="navLinks">
- <li><a href="#about"><span class="nav-link-num">01.</span>About</a></li>
- <li><a href="#ccfinder"><span class="nav-link-num">02.</span>CC Finder</a></li>
- <li><a href="#skills"><span class="nav-link-num">03.</span>Skills</a></li>
- <li><a href="#experience"><span class="nav-link-num">04.</span>Experience</a></li>
- <li><a href="#projects"><span class="nav-link-num">05.</span>Projects</a></li>
- <li><a href="#blog"><span class="nav-link-num">06.</span>Blog</a></li>
- <li><a href="#games"><span class="nav-link-num">07.</span>Games</a></li>
- <li><a href="#contact"><span class="nav-link-num">08.</span>Contact</a></li>
- </ul>
- <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
- <span></span><span></span><span></span>
- </button>
- </nav>
+    <!-- ==================== 3D HUB CANVAS ==================== -->
+    <div id="hub-overlay">
+        <canvas id="hub-canvas"></canvas>
+        <div id="hub-ui">
+            <div class="hub-header">
+                <h1 class="hub-title">PAAWAN SHAH</h1>
+                <p class="hub-subtitle">Finance & Analytics Professional</p>
+                <p class="hub-hint">Click an island to explore</p>
+            </div>
+            <div class="hub-labels" id="hub-labels"></div>
+        </div>
+        <div class="hub-nav-dots" id="hub-nav-dots"></div>
+    </div>
 
- <!-- Hero -->
- <section class="hero" id="hero">
- <p class="hero-overline">Hello, my name is</p>
- <h1 class="hero-name">Paawan <span class="gradient-text">Shah</span></h1>
- <h2 class="hero-title">Finance & Analytics Professional</h2>
- <p class="hero-desc">UCW BBA & MBA graduate specializing in business finance, data analysis, and strategic forecasting. I transform complex financial data into actionable insights that drive smarter decisions.</p>
- <div class="hero-cta">
- <a href="#contact" class="btn-primary">Get In Touch</a>
- <a href="#projects" class="btn-secondary">View My Work</a>
- </div>
- <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
- </section>
+    <!-- ==================== BACK TO HUB BUTTON ==================== -->
+    <button id="back-to-hub" class="back-btn" aria-label="Back to Hub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12L12 3l9 9"/>
+            <path d="M12 3v18"/>
+        </svg>
+        <span>Back to Hub</span>
+    </button>
 
- <!-- About -->
- <section class="about-wrap" id="about">
- <div class="about-inner">
- <div class="about-text">
- <div class="section-label reveal">01 — About</div>
- <h2 class="section-heading reveal reveal-d1">I make numbers<br><em>tell stories</em></h2>
- <p class="reveal reveal-d2">I'm Paawan Shah. I did my <strong>BBA from NMIMS, Mumbai</strong> and went on to complete my <strong>MBA at University Canada West (UCW)</strong> in Vancouver. That combination gave me something I value a lot, a global perspective grounded in real fundamentals.</p>
- <p class="reveal reveal-d3">I've spent the last few years working in finance and retail, and honestly, that's where I learned the most. Not from textbooks, but from actually managing cash flows, building budgets from scratch, figuring out why certain product lines underperform, and presenting those findings to people who needed to make fast decisions. I've sat in rooms where the numbers had to tell a story, and I made sure they did.</p>
- <p class="reveal reveal-d3">What drives me is the intersection of <strong>financial analysis</strong> and <strong>clear communication</strong>. I can build a DCF model, run a variance analysis, or break down a set of financial statements, but what I really care about is making that work <em>mean something</em> to the person reading it. Numbers without context are just noise.</p>
- <p class="reveal reveal-d4">Right now, I'm focused on deepening my skills in <span class="about-highlight">equity research</span>, <span class="about-highlight">valuation</span>, and <span class="about-highlight">portfolio strategy</span>, and building the kind of portfolio that speaks for itself. This site is part of that.</p>
- </div>
- <div class="about-stats">
- <div class="stat-card reveal reveal-d1" data-tilt><div class="stat-number">BBA</div><div class="stat-label">NMIMS, Mumbai</div></div>
- <div class="stat-card reveal reveal-d2" data-tilt><div class="stat-number">MBA</div><div class="stat-label">UCW, Vancouver</div></div>
- <div class="stat-card reveal reveal-d3" data-tilt><div class="stat-number">3+</div><div class="stat-label">Years Experience</div></div>
- </div>
- </div>
- </section>
+    <!-- ==================== SECTION: ABOUT ==================== -->
+    <section id="section-about" class="page-section" data-section="about">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-lead">I thrive at the intersection of <span class="accent-text">financial analysis</span> and <span class="accent-text">clear communication</span>.</p>
+                    <p>With a BBA from NMIMS, Mumbai and an MBA from University Canada West, Vancouver, I bring a global perspective to financial problem-solving. My 3+ years of professional experience span equity research, data analytics, and strategic financial planning.</p>
+                    <p>I specialize in translating complex financial data into actionable insights that drive informed decision-making for stakeholders at every level.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Major Projects</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Degrees Earned</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Tools Mastered</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- CC Finder -->
- <section id="ccfinder" class="embedded-section">
-  <div class="embedded-section-inner">
-   <div class="section-label reveal">02 — Credit Card Finder</div>
-   <h2 class="section-heading reveal reveal-d1" style="font-size:clamp(1.4rem,3vw,2rem);">Find your <em>perfect card</em></h2>
-   <p class="section-desc reveal reveal-d2">Find the best Canadian credit card for your spending habits. Answer 5 questions and get personalized recommendations with comparisons.</p>
-   <div class="embed-frame reveal reveal-d3"><iframe src="credit-card-finder.html" height="750" loading="lazy" title="Canadian Credit Card Finder"></iframe></div>
-   <a href="credit-card-finder.html" target="_blank" class="open-fullpage">Open Full Page ↗</a>
-  </div>
- </section>
+    <!-- ==================== SECTION: CC FINDER ==================== -->
+    <section id="section-ccfinder" class="page-section" data-section="ccfinder">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Credit Card Finder</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="ccfinder-container">
+                <p class="ccfinder-intro">Answer 5 quick questions to get personalized Canadian credit card recommendations tailored to your spending habits and financial goals.</p>
+                <div class="ccfinder-quiz" id="ccfinder-quiz">
+                    <div class="quiz-step active" data-step="1">
+                        <h3 class="quiz-question">What is your primary spending category?</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-value="groceries">Groceries & Dining</button>
+                            <button class="quiz-option" data-value="travel">Travel & Hotels</button>
+                            <button class="quiz-option" data-value="gas">Gas & Transportation</button>
+                            <button class="quiz-option" data-value="general">General Purchases</button>
+                        </div>
+                    </div>
+                    <div class="quiz-step" data-step="2">
+                        <h3 class="quiz-question">What annual fee range are you comfortable with?</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-value="free">No Annual Fee</button>
+                            <button class="quiz-option" data-value="low">Under $100/year</button>
+                            <button class="quiz-option" data-value="mid">$100-$200/year</button>
+                            <button class="quiz-option" data-value="premium">$200+/year (Premium)</button>
+                        </div>
+                    </div>
+                    <div class="quiz-step" data-step="3">
+                        <h3 class="quiz-question">What reward type do you prefer?</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-value="cashback">Cash Back</button>
+                            <button class="quiz-option" data-value="points">Travel Points</button>
+                            <button class="quiz-option" data-value="miles">Airline Miles</button>
+                            <button class="quiz-option" data-value="mixed">Flexible Rewards</button>
+                        </div>
+                    </div>
+                    <div class="quiz-step" data-step="4">
+                        <h3 class="quiz-question">What is your estimated monthly spend?</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-value="low">Under $1,000</button>
+                            <button class="quiz-option" data-value="mid">$1,000 - $3,000</button>
+                            <button class="quiz-option" data-value="high">$3,000 - $5,000</button>
+                            <button class="quiz-option" data-value="vhigh">$5,000+</button>
+                        </div>
+                    </div>
+                    <div class="quiz-step" data-step="5">
+                        <h3 class="quiz-question">Do you need any additional benefits?</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-value="insurance">Travel Insurance</button>
+                            <button class="quiz-option" data-value="lounge">Airport Lounge Access</button>
+                            <button class="quiz-option" data-value="purchase">Purchase Protection</button>
+                            <button class="quiz-option" data-value="none">No Extras Needed</button>
+                        </div>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+                        <span class="quiz-progress-text" id="quiz-progress-text">Question 1 of 5</span>
+                    </div>
+                </div>
+                <div class="ccfinder-results" id="ccfinder-results" style="display:none;">
+                    <h3>Your Recommended Cards</h3>
+                    <div class="cc-results-grid" id="cc-results-grid"></div>
+                    <button class="btn-accent" id="ccfinder-reset">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- Skills -->
- <section class="skills-wrap" id="skills">
- <div class="skills-header">
- <div class="section-label reveal">03 — Skills & Expertise</div>
- <h2 class="section-heading reveal reveal-d1" style="font-size:clamp(1.4rem,3vw,2.2rem);">What I bring to <em>the table</em></h2>
- </div>
- <div class="skills-track" id="skillsTrack">
- <div class="skill-category" data-tilt><div class="skill-icon">📊</div><h3>Financial Analysis</h3><div class="skill-tags"><span class="skill-tag">Financial Reporting</span><span class="skill-tag">Income Statements</span><span class="skill-tag">Balance Sheets</span><span class="skill-tag">Cash Flow Analysis</span><span class="skill-tag">Profitability Ratios</span></div></div>
- <div class="skill-category" data-tilt><div class="skill-icon">📈</div><h3>Budgeting & Forecasting</h3><div class="skill-tags"><span class="skill-tag">Budget Creation</span><span class="skill-tag">Variance Analysis</span><span class="skill-tag">Performance Tracking</span><span class="skill-tag">Strategic Forecasting</span><span class="skill-tag">Working Capital</span></div></div>
- <div class="skill-category" data-tilt><div class="skill-icon">💻</div><h3>Data & Tools</h3><div class="skill-tags"><span class="skill-tag">Microsoft Excel</span><span class="skill-tag">Data Analysis</span><span class="skill-tag">Pivot Tables</span><span class="skill-tag">VLOOKUP</span><span class="skill-tag">Data Visualization</span></div></div>
- <div class="skill-category" data-tilt><div class="skill-icon">🤝</div><h3>Operations & Soft Skills</h3><div class="skill-tags"><span class="skill-tag">Accounts Payable</span><span class="skill-tag">Accounts Receivable</span><span class="skill-tag">Vendor Management</span><span class="skill-tag">Customer Service</span><span class="skill-tag">Team Collaboration</span></div></div>
- </div>
- </section>
+    <!-- ==================== SECTION: SKILLS ==================== -->
+    <section id="section-skills" class="page-section" data-section="skills">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+                    </div>
+                    <h3>Financial Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Income Statements</span>
+                        <span class="skill-tag">Balance Sheets</span>
+                        <span class="skill-tag">Cash Flow Analysis</span>
+                        <span class="skill-tag">Ratio Analysis</span>
+                        <span class="skill-tag">DCF Modeling</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h4v4H7z"/><path d="M7 15h10"/><path d="M7 11h10"/></svg>
+                    </div>
+                    <h3>Budgeting & Forecasting</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Budget Creation</span>
+                        <span class="skill-tag">Variance Analysis</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h2"/><path d="M7 11h4"/></svg>
+                    </div>
+                    <h3>Data & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel / VBA</span>
+                        <span class="skill-tag">Pivot Tables</span>
+                        <span class="skill-tag">VLOOKUP / INDEX-MATCH</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Python Analytics</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Operations & Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AP/AR Management</span>
+                        <span class="skill-tag">Vendor Relations</span>
+                        <span class="skill-tag">Client Communication</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Process Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- Experience -->
- <section class="exp-wrap" id="experience">
- <div class="exp-inner">
- <div class="section-label reveal">04 — Experience</div>
- <h2 class="section-heading reveal reveal-d1">Where I've <em>been</em></h2>
- <div class="exp-grid">
- <div class="exp-card reveal reveal-d2" data-tilt>
- <div class="exp-date">Present</div>
- <h3>Customer Service Representative</h3>
- <p class="exp-company">Washworld BC</p>
- <div class="exp-desc"><li>Deliver exceptional customer experiences in a fast-paced retail environment</li><li>Handle daily transactions and manage cash flow operations</li><li>Analyze sales data and inventory turnover to optimize performance</li><li>Collaborate with team members to improve operational efficiency</li></div>
- </div>
- <div class="exp-card reveal reveal-d3" data-tilt>
- <div class="exp-date">Ongoing</div>
- <h3>BBA & MBA Graduate</h3>
- <p class="exp-company">University Canada West (UCW)</p>
- <div class="exp-desc"><li>Completed Bachelor of Business Administration (BBA) and Master of Business Administration (MBA)</li><li>Deep expertise in financial reporting, budgeting, and data analysis</li><li>Applied academic knowledge to real-world retail finance scenarios</li><li>Advanced proficiency in Excel-based financial modeling and strategic management</li></div>
- </div>
- </div>
- </div>
- </section>
+    <!-- ==================== SECTION: EXPERIENCE ==================== -->
+    <section id="section-experience" class="page-section" data-section="experience">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Experience</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="experience-timeline">
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <div class="exp-meta">
+                            <span class="exp-date">Present</span>
+                            <span class="exp-type">Professional</span>
+                        </div>
+                        <h3 class="exp-title">Customer Service Representative</h3>
+                        <p class="exp-company">Washworld BC</p>
+                        <ul class="exp-details">
+                            <li>Process and reconcile daily financial transactions ensuring accuracy</li>
+                            <li>Analyze sales data to identify trends and optimize operational efficiency</li>
+                            <li>Manage customer relationships and resolve complex service inquiries</li>
+                            <li>Streamline workflow processes resulting in improved turnaround times</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <div class="exp-meta">
+                            <span class="exp-date">2021 — 2025</span>
+                            <span class="exp-type">Academic</span>
+                        </div>
+                        <h3 class="exp-title">BBA & MBA Graduate</h3>
+                        <p class="exp-company">NMIMS Mumbai & University Canada West, Vancouver</p>
+                        <ul class="exp-details">
+                            <li>Completed dual business degrees with focus on Finance & Analytics</li>
+                            <li>Applied financial modeling and data analysis across capstone projects</li>
+                            <li>Gained global business perspective through international education</li>
+                            <li>Developed expertise in equity research, valuation, and risk management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- Projects -->
- <section class="projects-wrap" id="projects">
- <div class="projects-inner">
- <div class="section-label reveal">05 — Featured Projects</div>
- <h2 class="section-heading reveal reveal-d1">Work that speaks <em>for itself</em></h2>
- <div class="projects-grid">
- <a href="projects/stock-analysis-framework.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/stock-analysis.png" alt="Stock Analysis" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>Stock Market Analysis</h3><p>Enter any company name to get a complete analysis with 15 technical indicators providing buy, hold, or sell signals, along with DCF valuation, comparable company analysis, and intrinsic value calculation powered by live market data and latest news.</p><div class="project-tech"><span>Valuation</span><span>DCF</span><span>Comps</span><span>Excel</span></div></div></a>
- <a href="projects/ma-valuation-model.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/ma-valuation.png" alt="Ma Valuation" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>M&A Valuation Model</h3><p>Full accretion/dilution analysis, precedent transaction comps, and synergy modeling for a hypothetical Enbridge acquisition using investment banking frameworks.</p><div class="project-tech"><span>M&A</span><span>Accretion/Dilution</span><span>Synergies</span><span>Excel</span></div></div></a>
- <a href="projects/portfolio-optimization.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/portfolio-optimization.png" alt="Portfolio Optimization" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>Portfolio Optimization Engine</h3><p>Markowitz efficient frontier construction, risk parity allocation, and Monte Carlo simulation for a Canadian equity portfolio anchored by Enbridge.</p><div class="project-tech"><span>Financial Analysis</span><span>MPT</span><span>Monte Carlo</span><span>Excel</span></div></div></a>
- <a href="projects/risk-assessment-tools.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/risk-assessment.png" alt="Risk Assessment" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>Risk Assessment & VaR Tools</h3><p>Enter any company name to run Value at Risk (VaR), Conditional VaR, stress testing, and scenario analysis using live Yahoo Finance data and latest news from reliable sources.</p><div class="project-tech"><span>Portfolio Management</span><span>VaR</span><span>Stress Testing</span><span>Excel</span></div></div></a>
- <a href="projects/market-analysis-dashboard.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/market-dashboard.png" alt="Market Dashboard" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>Market Analysis Dashboard</h3><p>Power BI style interactive dashboard. Enter any company name to visualize price action, volume trends, sector comparisons, financial metrics, and macro indicators in real time.</p><div class="project-tech"><span>Chart.js</span><span>JavaScript</span><span>Data Viz</span><span>API</span></div></div></a>
- <a href="projects/market-research-project.html" class="project-card reveal" style="text-decoration:none;color:inherit;"><div class="project-card-img-wrap"><img src="images/energy-research.png" alt="Energy Research" class="project-card-img" loading="lazy"></div><div class="project-card-body"><div class="project-top"><span class="project-folder">📂</span><div class="project-links"><span title="View project">↗</span></div></div><h3>Canadian Energy Sector Research</h3><p>In-depth industry analysis of Canada's energy infrastructure sector, regulatory landscape, competitive dynamics, ESG considerations, and Enbridge's strategic positioning.</p><div class="project-tech"><span>Industry Analysis</span><span>ESG</span><span>Research</span><span>Risk Analysis</span></div></div></a>
- </div>
- </div>
- </section>
+    <!-- ==================== SECTION: PROJECTS ==================== -->
+    <section id="section-projects" class="page-section" data-section="projects">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-project="1">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">Equity Research</div>
+                    <h3 class="project-title">Equity Research & DCF Valuation</h3>
+                    <p class="project-desc">Comprehensive equity coverage with technical indicators, discounted cash flow valuation, and comparable company analysis for institutional-grade research reports.</p>
+                    <div class="project-tags">
+                        <span>DCF</span><span>Comps</span><span>Technical Analysis</span><span>Financial Modeling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Analysis</a>
+                    </div>
+                </div>
+                <div class="project-card" data-project="2">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">M&A Advisory</div>
+                    <h3 class="project-title">M&A Deal Advisory Model</h3>
+                    <p class="project-desc">Full-scale merger & acquisition advisory model featuring accretion/dilution analysis, precedent transaction comps, and synergy modeling for buy-side mandates.</p>
+                    <div class="project-tags">
+                        <span>Accretion/Dilution</span><span>Synergies</span><span>Deal Structuring</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Model</a>
+                    </div>
+                </div>
+                <div class="project-card" data-project="3">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">Asset Management</div>
+                    <h3 class="project-title">Institutional Asset Allocation Engine</h3>
+                    <p class="project-desc">Sophisticated portfolio construction tool leveraging efficient frontier analysis, risk parity optimization, and Monte Carlo simulation for institutional asset allocation.</p>
+                    <div class="project-tags">
+                        <span>Efficient Frontier</span><span>Risk Parity</span><span>Monte Carlo</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Engine</a>
+                    </div>
+                </div>
+                <div class="project-card" data-project="4">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">Risk Management</div>
+                    <h3 class="project-title">Enterprise Risk & VaR Framework</h3>
+                    <p class="project-desc">Enterprise-grade risk management framework with Value at Risk modeling, stress testing protocols, and scenario analysis for regulatory compliance and portfolio oversight.</p>
+                    <div class="project-tags">
+                        <span>VaR</span><span>Stress Testing</span><span>Scenario Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Framework</a>
+                    </div>
+                </div>
+                <div class="project-card" data-project="5">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">Capital Markets</div>
+                    <h3 class="project-title">Capital Markets Intelligence Platform</h3>
+                    <p class="project-desc">Real-time capital markets dashboard with price action analysis, volume trends, sector rotation tracking, and cross-asset correlation monitoring for trading desks.</p>
+                    <div class="project-tags">
+                        <span>Real-Time Data</span><span>Sector Rotation</span><span>Correlation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Platform</a>
+                    </div>
+                </div>
+                <div class="project-card" data-project="6">
+                    <div class="project-glow"></div>
+                    <div class="project-badge">Sector Coverage</div>
+                    <h3 class="project-title">Energy Sector Coverage Report</h3>
+                    <p class="project-desc">In-depth sector coverage of Canadian energy with industry landscape analysis, regulatory framework review, ESG integration, and Enbridge positioning thesis.</p>
+                    <div class="project-tags">
+                        <span>Sector Analysis</span><span>ESG</span><span>Regulatory</span><span>Enbridge</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- Blog -->
- <section class="blog-wrap" id="blog">
- <div class="blog-inner">
- <div class="section-label reveal">06 — Blog & Content</div>
- <h2 class="section-heading reveal reveal-d1">Thoughts & <em>analysis</em></h2>
- <div class="blog-list">
- <a href="blog/market-volatility.html" class="blog-item reveal" style="text-decoration:none;color:inherit;"><span class="blog-num">01</span><div><h3>Understanding Market Volatility</h3></div><div class="blog-tags"><span>Equity Research</span><span>VIX</span><span>Risk</span></div><span class="blog-arrow">→</span></a>
- <a href="blog/technical-analysis.html" class="blog-item reveal reveal-d1" style="text-decoration:none;color:inherit;"><span class="blog-num">02</span><div><h3>Technical Analysis Guide</h3></div><div class="blog-tags"><span>Charts</span><span>RSI</span><span>MACD</span></div><span class="blog-arrow">→</span></a>
- <a href="blog/portfolio-diversification.html" class="blog-item reveal reveal-d2" style="text-decoration:none;color:inherit;"><span class="blog-num">03</span><div><h3>Portfolio Diversification Strategies</h3></div><div class="blog-tags"><span>Financial Analysis</span><span>MPT</span><span>RRSP</span></div><span class="blog-arrow">→</span></a>
- <a href="blog/canadian-sports-betting.html" class="blog-item reveal reveal-d2" style="text-decoration:none;color:inherit;"><span class="blog-num">04</span><div><h3>Canadian Sports Betting Analytics</h3></div><div class="blog-tags"><span>Analytics</span><span>Arbitrage</span><span>Regulation</span></div><span class="blog-arrow">→</span></a>
- <a href="blog/algorithmic-trading.html" class="blog-item reveal reveal-d3" style="text-decoration:none;color:inherit;"><span class="blog-num">05</span><div><h3>Algorithmic Trading Strategies</h3></div><div class="blog-tags"><span>Algo Trading</span><span>Python</span><span>ML</span></div><span class="blog-arrow">→</span></a>
- <a href="blog/crypto-market-analysis.html" class="blog-item reveal reveal-d3" style="text-decoration:none;color:inherit;"><span class="blog-num">06</span><div><h3>Crypto Market Analysis</h3></div><div class="blog-tags"><span>Crypto</span><span>DeFi</span><span>ETFs</span></div><span class="blog-arrow">→</span></a>
- </div>
- </div>
- </section>
+    <!-- ==================== SECTION: BLOG ==================== -->
+    <section id="section-blog" class="page-section" data-section="blog">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Blog & Insights</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Markets</span><span class="blog-date">2025</span></div>
+                    <h3>Understanding Market Volatility</h3>
+                    <p>A deep dive into the mechanics of market volatility, VIX interpretation, and strategies for navigating turbulent markets.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Technical</span><span class="blog-date">2025</span></div>
+                    <h3>Technical Analysis Guide</h3>
+                    <p>Comprehensive guide to chart patterns, moving averages, RSI, MACD, and building a systematic technical trading approach.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Strategy</span><span class="blog-date">2025</span></div>
+                    <h3>Portfolio Diversification Strategies</h3>
+                    <p>Modern portfolio theory applied: asset class selection, correlation analysis, and building resilient multi-asset portfolios.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Analytics</span><span class="blog-date">2024</span></div>
+                    <h3>Canadian Sports Betting Analytics</h3>
+                    <p>Data-driven analysis of the Canadian sports betting landscape with predictive modeling and market efficiency insights.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Quant</span><span class="blog-date">2024</span></div>
+                    <h3>Algorithmic Trading Strategies</h3>
+                    <p>Exploring momentum, mean-reversion, and statistical arbitrage strategies with backtesting frameworks and risk controls.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span class="blog-tag">Crypto</span><span class="blog-date">2024</span></div>
+                    <h3>Crypto Market Analysis</h3>
+                    <p>On-chain metrics, DeFi protocol analysis, and macro correlation of digital assets within traditional portfolio frameworks.</p>
+                    <a href="#" class="blog-link">Read More &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </section>
 
- <!-- Games -->
- <section id="games" class="embedded-section">
-  <div class="embedded-section-inner">
-   <div class="section-label reveal">07 — Mini Games</div>
-   <h2 class="section-heading reveal reveal-d1" style="font-size:clamp(1.4rem,3vw,2rem);">Take a <em>break</em></h2>
-   <p class="section-desc reveal reveal-d2">Take a break and play some games! Snake, 2048, Memory Match, and a Typing Speed Test, all playable right here.</p>
-   <div class="embed-frame reveal reveal-d3"><iframe src="games.html" height="800" loading="lazy" title="Mini Games"></iframe></div>
-   <a href="games.html" target="_blank" class="open-fullpage">Open Full Page ↗</a>
-  </div>
- </section>
+    <!-- ==================== SECTION: GAMES ==================== -->
+    <section id="section-games" class="page-section" data-section="games">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Mini Games</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="games-intro">Take a break and enjoy these interactive mini games built with vanilla JavaScript.</p>
+            <div class="games-grid">
+                <div class="game-card" data-game="snake">
+                    <div class="game-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h4l2-4 4 8 2-4h4"/></svg>
+                    </div>
+                    <h3>Snake</h3>
+                    <p>Classic snake game — eat, grow, don't crash!</p>
+                    <button class="btn-accent game-launch" data-game="snake">Play Now</button>
+                </div>
+                <div class="game-card" data-game="2048">
+                    <div class="game-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    </div>
+                    <h3>2048</h3>
+                    <p>Slide tiles and merge to reach 2048!</p>
+                    <button class="btn-accent game-launch" data-game="2048">Play Now</button>
+                </div>
+                <div class="game-card" data-game="memory">
+                    <div class="game-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><path d="M13 13h9v9h-9z" stroke-dasharray="3 3"/></svg>
+                    </div>
+                    <h3>Memory Match</h3>
+                    <p>Find matching pairs to test your memory!</p>
+                    <button class="btn-accent game-launch" data-game="memory">Play Now</button>
+                </div>
+                <div class="game-card" data-game="typing">
+                    <div class="game-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></svg>
+                    </div>
+                    <h3>Typing Speed</h3>
+                    <p>How fast can you type? Test your WPM!</p>
+                    <button class="btn-accent game-launch" data-game="typing">Play Now</button>
+                </div>
+            </div>
+            <!-- Game containers -->
+            <div id="game-container" class="game-container" style="display:none;">
+                <div class="game-header-bar">
+                    <h3 id="game-active-title"></h3>
+                    <button class="btn-close-game" id="close-game">&times; Close</button>
+                </div>
+                <canvas id="game-canvas" width="400" height="400"></canvas>
+                <div id="game-html-area"></div>
+            </div>
+        </div>
+    </section>
 
- <!-- Contact -->
- <section id="contact" class="contact-section">
- <div class="section-label reveal" style="justify-content:center;">08 — Contact</div>
- <h2 class="contact-heading reveal reveal-d1">Let's work<br><em>together</em></h2>
- <p class="contact-text reveal reveal-d2">I'm currently open to internship opportunities and freelance projects in finance and analytics. Whether you have a question or just want to say hello, I'd love to hear from you.</p>
- <div class="contact-cta reveal reveal-d3"><a href="mailto:paawanshah1331@gmail.com?subject=Hello%20from%20your%20portfolio" class="btn-primary">Send Me an Email</a></div>
- <div class="contact-socials reveal reveal-d4">
- <a href="https://www.linkedin.com/in/paawan-shah-61249b304/" target="_blank" rel="noopener noreferrer" class="social-link">⟶ LinkedIn</a>
- <a href="https://github.com/Paawan99" target="_blank" rel="noopener noreferrer" class="social-link">⟶ GitHub</a>
- <a href="mailto:paawanshah1331@gmail.com" class="social-link">⟶ Email</a>
- </div>
- </section>
+    <!-- ==================== SECTION: CONTACT ==================== -->
+    <section id="section-contact" class="page-section" data-section="contact">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <p class="contact-lead">I'm actively seeking <span class="accent-text">internship opportunities</span> and <span class="accent-text">freelance projects</span> in finance and analytics. Let's connect and discuss how I can add value to your team.</p>
+                <div class="contact-links">
+                    <a href="mailto:paawanshah1331@gmail.com" class="contact-card">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">paawanshah1331@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/paawanshah" target="_blank" rel="noopener" class="contact-card">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">linkedin.com/in/paawanshah</span>
+                    </a>
+                    <a href="https://github.com/paawanshah" target="_blank" rel="noopener" class="contact-card">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">github.com/paawanshah</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <footer><p>Designed & Built by Paawan Shah © 2026</p></footer>
+    <!-- ==================== AMBIENT BACKGROUND ==================== -->
+    <div class="ambient-particles" id="ambient-particles"></div>
 
- <script>
- gsap.registerPlugin(ScrollTrigger);
-
- // Three.js
- const canvas=document.getElementById('heroCanvas');
- const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
- renderer.setSize(window.innerWidth,window.innerHeight);
- renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
- const scene=new THREE.Scene();
- const cam=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
- cam.position.z=30;
- const N=1200,pos=new Float32Array(N*3),col=new Float32Array(N*3);
- for(let i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*80;pos[i*3+1]=(Math.random()-0.5)*80;pos[i*3+2]=(Math.random()-0.5)*60;const a=Math.random()>0.7;col[i*3]=a?0.39:0.48;col[i*3+1]=a?1.0:0.36;col[i*3+2]=a?0.85:0.99;}
- const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));
- const pMat=new THREE.PointsMaterial({size:0.15,vertexColors:true,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,sizeAttenuation:true});
- const pts=new THREE.Points(geo,pMat);scene.add(pts);
- const tG=new THREE.TorusGeometry(8,0.3,16,100),wM1=new THREE.MeshBasicMaterial({color:0x64ffda,wireframe:true,transparent:true,opacity:0.07});
- const torus=new THREE.Mesh(tG,wM1);torus.position.set(15,5,-10);scene.add(torus);
- const iG=new THREE.IcosahedronGeometry(5,1),wM2=new THREE.MeshBasicMaterial({color:0x7c5cfc,wireframe:true,transparent:true,opacity:0.05});
- const ico=new THREE.Mesh(iG,wM2);ico.position.set(-12,-8,-5);scene.add(ico);
- let mX=0,mY=0;
- document.addEventListener('mousemove',e=>{mX=(e.clientX/window.innerWidth)*2-1;mY=-(e.clientY/window.innerHeight)*2+1;});
- function animate(){requestAnimationFrame(animate);const t=Date.now()*0.0003;pts.rotation.y=t*0.15;pts.rotation.x=t*0.08;cam.position.x+=(mX*3-cam.position.x)*0.02;cam.position.y+=(mY*2-cam.position.y)*0.02;cam.lookAt(scene.position);torus.rotation.x=t*0.5;torus.rotation.y=t*0.3;ico.rotation.x=t*0.4;ico.rotation.z=t*0.2;const f=Math.max(0,1-window.scrollY/(window.innerHeight*0.8));pMat.opacity=0.6*f;wM1.opacity=0.07*f;wM2.opacity=0.05*f;renderer.render(scene,cam);}
- animate();
- window.addEventListener('resize',()=>{cam.aspect=window.innerWidth/window.innerHeight;cam.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
-
- // Mobile menu
- const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
- menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('active');navLinks.classList.toggle('open');});
- navLinks.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('active');navLinks.classList.remove('open');});});
-
- // Nav scroll
- const navbar=document.getElementById('navbar');
- window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50);});
-
- // Glow orb
- const orb=document.getElementById('glowOrb');
- document.addEventListener('mousemove',e=>{orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});
-
- // Scroll reveal
- const reveals=document.querySelectorAll('.reveal');
- const rObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
- reveals.forEach(el=>rObs.observe(el));
-
- // Dot nav active
- const allSec=document.querySelectorAll('[id]');
- const dots=document.querySelectorAll('.dot-nav a');
- const sObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){dots.forEach(d=>d.classList.remove('active'));const dot=document.querySelector(`.dot-nav a[href="#${e.target.id}"]`);if(dot)dot.classList.add('active');}});},{threshold:0.25});
- document.querySelectorAll('.hero,.about-wrap,.embedded-section,.skills-wrap,.exp-wrap,.projects-wrap,.blog-wrap,.contact-section').forEach(s=>sObs.observe(s));
-
- // Tilt
- document.querySelectorAll('[data-tilt]').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;c.style.transform=`perspective(800px) rotateX(${(y-r.height/2)/(r.height/2)*-4}deg) rotateY(${(x-r.width/2)/(r.width/2)*4}deg) translateY(-4px)`;});c.addEventListener('mouseleave',()=>{c.style.transform='';});});
-
- // Project glow
- document.querySelectorAll('.project-card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',`${e.clientX-r.left}px`);c.style.setProperty('--my',`${e.clientY-r.top}px`);});});
-
- // Skills horizontal scroll
- const sTrack=document.getElementById('skillsTrack');
- if(sTrack&&window.innerWidth>900){gsap.to(sTrack,{x:()=>-(sTrack.scrollWidth-window.innerWidth+100),ease:'none',scrollTrigger:{trigger:'.skills-wrap',start:'top 20%',end:()=>`+=${sTrack.scrollWidth-window.innerWidth+200}`,scrub:1,pin:true,anticipatePin:1}});}
-
- // Smooth scroll
- document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
- </script>
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="scene.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

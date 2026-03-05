@@ -7,491 +7,188 @@
     <meta name="description" content="Paawan Shah — Finance & Analytics Professional specializing in equity research, M&A advisory, portfolio construction, and capital markets intelligence.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- ==================== LOADING SCREEN ==================== -->
+    <!-- LOADER -->
     <div id="loader">
         <div class="loader-content">
-            <div class="loader-ring"></div>
-            <div class="loader-text">
-                <span class="loader-name">PAAWAN SHAH</span>
-                <span class="loader-sub">Initializing Experience...</span>
-            </div>
+            <svg class="loader-svg" viewBox="0 0 100 100"><circle class="loader-track" cx="50" cy="50" r="40"/><circle class="loader-fill" cx="50" cy="50" r="40"/></svg>
+            <div class="loader-text"><span class="loader-name">PAAWAN SHAH</span><span class="loader-sub">Loading Experience</span></div>
             <div class="loader-bar"><div class="loader-bar-fill"></div></div>
         </div>
     </div>
 
-    <!-- ==================== 3D HUB CANVAS ==================== -->
-    <div id="hub-overlay">
-        <canvas id="hub-canvas"></canvas>
-        <div id="hub-ui">
-            <div class="hub-header">
-                <h1 class="hub-title">PAAWAN SHAH</h1>
-                <p class="hub-subtitle">Finance & Analytics Professional</p>
-                <p class="hub-hint">Click an island to explore</p>
+    <!-- NAV DOTS -->
+    <nav id="slide-nav" class="slide-nav">
+        <button class="nav-dot active" data-slide="0" aria-label="Hub"></button>
+        <button class="nav-dot" data-slide="1" aria-label="Credit Cards"></button>
+        <button class="nav-dot" data-slide="2" aria-label="Markets"></button>
+        <button class="nav-dot" data-slide="3" aria-label="Games"></button>
+        <button class="nav-dot" data-slide="4" aria-label="Blogs"></button>
+        <button class="nav-dot" data-slide="5" aria-label="About"></button>
+        <button class="nav-dot" data-slide="6" aria-label="Contact"></button>
+    </nav>
+
+    <!-- SLIDES -->
+    <div id="slides-container" class="slides-container">
+
+        <!-- HUB -->
+        <section class="slide active" data-slide="0" id="slide-hub">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div></div>
+            <div class="slide-content hub-slide">
+                <div class="hub-greeting">
+                    <span class="hub-hello">Hello, I'm</span>
+                    <h1 class="hub-name">Paawan Shah</h1>
+                    <p class="hub-tagline">Finance & Analytics Professional</p>
+                </div>
+                <p class="hub-prompt">What brings you here today?</p>
+                <div class="hub-options" id="hub-options">
+                    <button class="hub-option" data-target="1" data-color="emerald">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+                        <span class="option-label">Find the Right Credit Card</span>
+                        <span class="option-desc">Personalized Canadian card recommendations</span>
+                    </button>
+                    <button class="hub-option" data-target="2" data-color="blue">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg></div>
+                        <span class="option-label">Analyze Stocks & Markets</span>
+                        <span class="option-desc">Research tools, DCF models & dashboards</span>
+                    </button>
+                    <button class="hub-option" data-target="3" data-color="purple">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 4v16"/><circle cx="15" cy="12" r="2"/></svg></div>
+                        <span class="option-label">Play Mini Games</span>
+                        <span class="option-desc">Snake, 2048, Memory & Typing tests</span>
+                    </button>
+                    <button class="hub-option" data-target="4" data-color="amber">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                        <span class="option-label">Read Blog & Insights</span>
+                        <span class="option-desc">Market analysis, strategies & crypto</span>
+                    </button>
+                    <button class="hub-option" data-target="5" data-color="rose">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <span class="option-label">About Me</span>
+                        <span class="option-desc">Experience, skills & background</span>
+                    </button>
+                </div>
             </div>
-            <div class="hub-labels" id="hub-labels"></div>
-        </div>
-        <div class="hub-nav-dots" id="hub-nav-dots"></div>
+        </section>
+
+        <!-- CREDIT CARDS -->
+        <section class="slide" data-slide="1" id="slide-cards">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1 emerald"></div><div class="bg-orb bg-orb-2 emerald"></div></div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Tool</span><h2 class="section-title">Credit Card Finder</h2><p class="section-subtitle">Answer 5 quick questions to find the perfect Canadian credit card for your needs.</p></div>
+                <div class="card-grid single-card">
+                    <a href="credit-card-finder.html" class="feature-card emerald-glow"><div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div><h3>Launch Card Finder</h3><p>Interactive quiz to match you with the best card</p><span class="feature-arrow">&rarr;</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKETS -->
+        <section class="slide" data-slide="2" id="slide-markets">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1 blue"></div><div class="bg-orb bg-orb-2 blue"></div></div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Analysis</span><h2 class="section-title">Stocks & Markets</h2><p class="section-subtitle">Professional-grade research tools, valuation models, and market intelligence.</p></div>
+                <div class="card-grid">
+                    <a href="projects/stock-analysis-framework.html" class="feature-card"><span class="card-badge">Equity</span><h3>DCF Valuation</h3><p>Cash flow models & comparable analysis</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="projects/ma-valuation-model.html" class="feature-card"><span class="card-badge">M&A</span><h3>Deal Advisory Model</h3><p>Accretion/dilution & synergy modeling</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="projects/portfolio-optimization.html" class="feature-card"><span class="card-badge">Portfolio</span><h3>Asset Allocation</h3><p>Efficient frontier & Monte Carlo</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="projects/risk-assessment-tools.html" class="feature-card"><span class="card-badge">Risk</span><h3>VaR Framework</h3><p>Value at Risk & stress testing</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="projects/market-analysis-dashboard.html" class="feature-card"><span class="card-badge">Dashboard</span><h3>Market Intelligence</h3><p>Price action & sector rotation</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="projects/market-research-project.html" class="feature-card"><span class="card-badge">Sector</span><h3>Energy Coverage</h3><p>Canadian energy & ESG analysis</p><span class="feature-arrow">&rarr;</span></a>
+                    <a href="blog/canadian-sports-betting.html" class="feature-card highlight-card"><span class="card-badge accent-badge">Strategy</span><h3>Sports Betting Analytics</h3><p>Predictive modeling & market efficiency</p><span class="feature-arrow">&rarr;</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES -->
+        <section class="slide" data-slide="3" id="slide-games">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1 purple"></div><div class="bg-orb bg-orb-2 purple"></div></div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Fun</span><h2 class="section-title">Mini Games</h2><p class="section-subtitle">Take a break with these interactive games.</p></div>
+                <div class="card-grid games-grid">
+                    <a href="games.html#snake" class="feature-card game-card"><div class="game-emoji">🐍</div><h3>Snake</h3><p>Eat, grow, don't crash!</p><span class="feature-arrow">Play &rarr;</span></a>
+                    <a href="games.html#2048" class="feature-card game-card"><div class="game-emoji">🧮</div><h3>2048</h3><p>Slide & merge tiles</p><span class="feature-arrow">Play &rarr;</span></a>
+                    <a href="games.html#memory" class="feature-card game-card"><div class="game-emoji">🧠</div><h3>Memory Match</h3><p>Find matching pairs!</p><span class="feature-arrow">Play &rarr;</span></a>
+                    <a href="games.html#typing" class="feature-card game-card"><div class="game-emoji">⌨️</div><h3>Typing Speed</h3><p>Test your WPM!</p><span class="feature-arrow">Play &rarr;</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section class="slide" data-slide="4" id="slide-blog">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1 amber"></div><div class="bg-orb bg-orb-2 amber"></div></div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Insights</span><h2 class="section-title">Blog & Research</h2><p class="section-subtitle">Deep dives into markets, strategies, and trends.</p></div>
+                <div class="card-grid">
+                    <a href="blog/market-volatility.html" class="feature-card"><span class="card-badge">Markets</span><h3>Understanding Market Volatility</h3><p>VIX interpretation & strategies</p><span class="blog-date">2025</span></a>
+                    <a href="blog/technical-analysis.html" class="feature-card"><span class="card-badge">Technical</span><h3>Technical Analysis Guide</h3><p>Chart patterns, RSI, MACD & more</p><span class="blog-date">2025</span></a>
+                    <a href="blog/portfolio-diversification.html" class="feature-card"><span class="card-badge">Strategy</span><h3>Portfolio Diversification</h3><p>Modern portfolio theory applied</p><span class="blog-date">2025</span></a>
+                    <a href="blog/algorithmic-trading.html" class="feature-card"><span class="card-badge">Quant</span><h3>Algorithmic Trading</h3><p>Momentum & stat arb strategies</p><span class="blog-date">2024</span></a>
+                    <a href="blog/crypto-market-analysis.html" class="feature-card"><span class="card-badge">Crypto</span><h3>Crypto Market Analysis</h3><p>On-chain metrics & DeFi analysis</p><span class="blog-date">2024</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="slide" data-slide="5" id="slide-about">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1 rose"></div><div class="bg-orb bg-orb-2 rose"></div></div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Profile</span><h2 class="section-title">About Me</h2></div>
+                <div class="about-layout">
+                    <div class="about-text-block">
+                        <p class="about-lead">I thrive at the intersection of <em>financial analysis</em> and <em>clear communication</em>.</p>
+                        <p>With a BBA from NMIMS, Mumbai and an MBA from University Canada West, Vancouver, I bring a global perspective to financial problem-solving. 3+ years of experience in equity research, data analytics, and strategic planning.</p>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="stat-num">3+</span><span class="stat-lbl">Years Exp.</span></div>
+                        <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Projects</span></div>
+                        <div class="stat-item"><span class="stat-num">2</span><span class="stat-lbl">Degrees</span></div>
+                        <div class="stat-item"><span class="stat-num">15+</span><span class="stat-lbl">Tools</span></div>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">DCF Modeling</span><span class="skill-pill">Equity Research</span><span class="skill-pill">Excel / VBA</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Financial Modeling</span><span class="skill-pill">Data Viz</span><span class="skill-pill">Risk Mgmt</span><span class="skill-pill">M&A</span><span class="skill-pill">Portfolio Construction</span>
+                    </div>
+                    <div class="experience-section">
+                        <div class="exp-card"><div class="exp-when">Present</div><div class="exp-info"><h4>Customer Service Representative</h4><p>Washworld BC</p></div></div>
+                        <div class="exp-card"><div class="exp-when">2021–2025</div><div class="exp-info"><h4>BBA & MBA Graduate</h4><p>NMIMS Mumbai & UCW Vancouver</p></div></div>
+                    </div>
+                    <a href="#" class="contact-cta" onclick="document.querySelector('[data-target=\x226\x22]')?.click?.();goToSlide(6);return false;">Get in Touch &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="slide" data-slide="6" id="slide-contact">
+            <div class="slide-bg"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div></div>
+            <div class="slide-content contact-slide">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Connect</span><h2 class="section-title">Get In Touch</h2><p class="section-subtitle">Seeking internship opportunities and freelance projects in finance & analytics.</p></div>
+                <div class="contact-cards">
+                    <a href="#" onclick="window.location.href=atob('bWFpbHRvOnBhYXdhbnNoYWgxMzMxQGdtYWlsLmNvbQ==');return false;" class="contact-link-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                        <span class="contact-lbl">Email</span><span class="contact-val" id="email-display"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/paawanshah" target="_blank" rel="noopener" class="contact-link-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span class="contact-lbl">LinkedIn</span><span class="contact-val">linkedin.com/in/paawanshah</span>
+                    </a>
+                    <a href="https://github.com/Paawan99" target="_blank" rel="noopener" class="contact-link-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        <span class="contact-lbl">GitHub</span><span class="contact-val">github.com/Paawan99</span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- ==================== BACK TO HUB BUTTON ==================== -->
-    <button id="back-to-hub" class="back-btn" aria-label="Back to Hub">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12L12 3l9 9"/>
-            <path d="M12 3v18"/>
-        </svg>
-        <span>Back to Hub</span>
-    </button>
-
-    <!-- ==================== SECTION: ABOUT ==================== -->
-    <section id="section-about" class="page-section" data-section="about">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">About Me</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p class="about-lead">I thrive at the intersection of <span class="accent-text">financial analysis</span> and <span class="accent-text">clear communication</span>.</p>
-                    <p>With a BBA from NMIMS, Mumbai and an MBA from University Canada West, Vancouver, I bring a global perspective to financial problem-solving. My 3+ years of professional experience span equity research, data analytics, and strategic financial planning.</p>
-                    <p>I specialize in translating complex financial data into actionable insights that drive informed decision-making for stakeholders at every level.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">6</span>
-                        <span class="stat-label">Major Projects</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Degrees Earned</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Tools Mastered</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: CC FINDER ==================== -->
-    <section id="section-ccfinder" class="page-section" data-section="ccfinder">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Credit Card Finder</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="ccfinder-container">
-                <p class="ccfinder-intro">Answer 5 quick questions to get personalized Canadian credit card recommendations tailored to your spending habits and financial goals.</p>
-                <div class="ccfinder-quiz" id="ccfinder-quiz">
-                    <div class="quiz-step active" data-step="1">
-                        <h3 class="quiz-question">What is your primary spending category?</h3>
-                        <div class="quiz-options">
-                            <button class="quiz-option" data-value="groceries">Groceries & Dining</button>
-                            <button class="quiz-option" data-value="travel">Travel & Hotels</button>
-                            <button class="quiz-option" data-value="gas">Gas & Transportation</button>
-                            <button class="quiz-option" data-value="general">General Purchases</button>
-                        </div>
-                    </div>
-                    <div class="quiz-step" data-step="2">
-                        <h3 class="quiz-question">What annual fee range are you comfortable with?</h3>
-                        <div class="quiz-options">
-                            <button class="quiz-option" data-value="free">No Annual Fee</button>
-                            <button class="quiz-option" data-value="low">Under $100/year</button>
-                            <button class="quiz-option" data-value="mid">$100-$200/year</button>
-                            <button class="quiz-option" data-value="premium">$200+/year (Premium)</button>
-                        </div>
-                    </div>
-                    <div class="quiz-step" data-step="3">
-                        <h3 class="quiz-question">What reward type do you prefer?</h3>
-                        <div class="quiz-options">
-                            <button class="quiz-option" data-value="cashback">Cash Back</button>
-                            <button class="quiz-option" data-value="points">Travel Points</button>
-                            <button class="quiz-option" data-value="miles">Airline Miles</button>
-                            <button class="quiz-option" data-value="mixed">Flexible Rewards</button>
-                        </div>
-                    </div>
-                    <div class="quiz-step" data-step="4">
-                        <h3 class="quiz-question">What is your estimated monthly spend?</h3>
-                        <div class="quiz-options">
-                            <button class="quiz-option" data-value="low">Under $1,000</button>
-                            <button class="quiz-option" data-value="mid">$1,000 - $3,000</button>
-                            <button class="quiz-option" data-value="high">$3,000 - $5,000</button>
-                            <button class="quiz-option" data-value="vhigh">$5,000+</button>
-                        </div>
-                    </div>
-                    <div class="quiz-step" data-step="5">
-                        <h3 class="quiz-question">Do you need any additional benefits?</h3>
-                        <div class="quiz-options">
-                            <button class="quiz-option" data-value="insurance">Travel Insurance</button>
-                            <button class="quiz-option" data-value="lounge">Airport Lounge Access</button>
-                            <button class="quiz-option" data-value="purchase">Purchase Protection</button>
-                            <button class="quiz-option" data-value="none">No Extras Needed</button>
-                        </div>
-                    </div>
-                    <div class="quiz-progress">
-                        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
-                        <span class="quiz-progress-text" id="quiz-progress-text">Question 1 of 5</span>
-                    </div>
-                </div>
-                <div class="ccfinder-results" id="ccfinder-results" style="display:none;">
-                    <h3>Your Recommended Cards</h3>
-                    <div class="cc-results-grid" id="cc-results-grid"></div>
-                    <button class="btn-accent" id="ccfinder-reset">Try Again</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: SKILLS ==================== -->
-    <section id="section-skills" class="page-section" data-section="skills">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">Skills & Expertise</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
-                    </div>
-                    <h3>Financial Analysis</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Income Statements</span>
-                        <span class="skill-tag">Balance Sheets</span>
-                        <span class="skill-tag">Cash Flow Analysis</span>
-                        <span class="skill-tag">Ratio Analysis</span>
-                        <span class="skill-tag">DCF Modeling</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h4v4H7z"/><path d="M7 15h10"/><path d="M7 11h10"/></svg>
-                    </div>
-                    <h3>Budgeting & Forecasting</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Budget Creation</span>
-                        <span class="skill-tag">Variance Analysis</span>
-                        <span class="skill-tag">Strategic Planning</span>
-                        <span class="skill-tag">Financial Modeling</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h2"/><path d="M7 11h4"/></svg>
-                    </div>
-                    <h3>Data & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Excel / VBA</span>
-                        <span class="skill-tag">Pivot Tables</span>
-                        <span class="skill-tag">VLOOKUP / INDEX-MATCH</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Python Analytics</span>
-                        <span class="skill-tag">SQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3>Operations & Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AP/AR Management</span>
-                        <span class="skill-tag">Vendor Relations</span>
-                        <span class="skill-tag">Client Communication</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Process Optimization</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: EXPERIENCE ==================== -->
-    <section id="section-experience" class="page-section" data-section="experience">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Experience</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="experience-timeline">
-                <div class="exp-item">
-                    <div class="exp-dot"></div>
-                    <div class="exp-content">
-                        <div class="exp-meta">
-                            <span class="exp-date">Present</span>
-                            <span class="exp-type">Professional</span>
-                        </div>
-                        <h3 class="exp-title">Customer Service Representative</h3>
-                        <p class="exp-company">Washworld BC</p>
-                        <ul class="exp-details">
-                            <li>Process and reconcile daily financial transactions ensuring accuracy</li>
-                            <li>Analyze sales data to identify trends and optimize operational efficiency</li>
-                            <li>Manage customer relationships and resolve complex service inquiries</li>
-                            <li>Streamline workflow processes resulting in improved turnaround times</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="exp-item">
-                    <div class="exp-dot"></div>
-                    <div class="exp-content">
-                        <div class="exp-meta">
-                            <span class="exp-date">2021 — 2025</span>
-                            <span class="exp-type">Academic</span>
-                        </div>
-                        <h3 class="exp-title">BBA & MBA Graduate</h3>
-                        <p class="exp-company">NMIMS Mumbai & University Canada West, Vancouver</p>
-                        <ul class="exp-details">
-                            <li>Completed dual business degrees with focus on Finance & Analytics</li>
-                            <li>Applied financial modeling and data analysis across capstone projects</li>
-                            <li>Gained global business perspective through international education</li>
-                            <li>Developed expertise in equity research, valuation, and risk management</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: PROJECTS ==================== -->
-    <section id="section-projects" class="page-section" data-section="projects">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">05</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-project="1">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">Equity Research</div>
-                    <h3 class="project-title">Equity Research & DCF Valuation</h3>
-                    <p class="project-desc">Comprehensive equity coverage with technical indicators, discounted cash flow valuation, and comparable company analysis for institutional-grade research reports.</p>
-                    <div class="project-tags">
-                        <span>DCF</span><span>Comps</span><span>Technical Analysis</span><span>Financial Modeling</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/stock-analysis-framework.html" class="project-link">View Analysis</a>
-                    </div>
-                </div>
-                <div class="project-card" data-project="2">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">M&A Advisory</div>
-                    <h3 class="project-title">M&A Deal Advisory Model</h3>
-                    <p class="project-desc">Full-scale merger & acquisition advisory model featuring accretion/dilution analysis, precedent transaction comps, and synergy modeling for buy-side mandates.</p>
-                    <div class="project-tags">
-                        <span>Accretion/Dilution</span><span>Synergies</span><span>Deal Structuring</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/ma-valuation-model.html" class="project-link">View Model</a>
-                    </div>
-                </div>
-                <div class="project-card" data-project="3">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">Asset Management</div>
-                    <h3 class="project-title">Institutional Asset Allocation Engine</h3>
-                    <p class="project-desc">Sophisticated portfolio construction tool leveraging efficient frontier analysis, risk parity optimization, and Monte Carlo simulation for institutional asset allocation.</p>
-                    <div class="project-tags">
-                        <span>Efficient Frontier</span><span>Risk Parity</span><span>Monte Carlo</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/portfolio-optimization.html" class="project-link">View Engine</a>
-                    </div>
-                </div>
-                <div class="project-card" data-project="4">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">Risk Management</div>
-                    <h3 class="project-title">Enterprise Risk & VaR Framework</h3>
-                    <p class="project-desc">Enterprise-grade risk management framework with Value at Risk modeling, stress testing protocols, and scenario analysis for regulatory compliance and portfolio oversight.</p>
-                    <div class="project-tags">
-                        <span>VaR</span><span>Stress Testing</span><span>Scenario Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/risk-assessment-tools.html" class="project-link">View Framework</a>
-                    </div>
-                </div>
-                <div class="project-card" data-project="5">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">Capital Markets</div>
-                    <h3 class="project-title">Capital Markets Intelligence Platform</h3>
-                    <p class="project-desc">Real-time capital markets dashboard with price action analysis, volume trends, sector rotation tracking, and cross-asset correlation monitoring for trading desks.</p>
-                    <div class="project-tags">
-                        <span>Real-Time Data</span><span>Sector Rotation</span><span>Correlation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/market-analysis-dashboard.html" class="project-link">View Platform</a>
-                    </div>
-                </div>
-                <div class="project-card" data-project="6">
-                    <div class="project-glow"></div>
-                    <div class="project-badge">Sector Coverage</div>
-                    <h3 class="project-title">Energy Sector Coverage Report</h3>
-                    <p class="project-desc">In-depth sector coverage of Canadian energy with industry landscape analysis, regulatory framework review, ESG integration, and Enbridge positioning thesis.</p>
-                    <div class="project-tags">
-                        <span>Sector Analysis</span><span>ESG</span><span>Regulatory</span><span>Enbridge</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/market-research-project.html" class="project-link">View Report</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: BLOG ==================== -->
-    <section id="section-blog" class="page-section" data-section="blog">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">06</span>
-                <h2 class="section-title">Blog & Insights</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Markets</span><span class="blog-date">2025</span></div>
-                    <h3>Understanding Market Volatility</h3>
-                    <p>A deep dive into the mechanics of market volatility, VIX interpretation, and strategies for navigating turbulent markets.</p>
-                    <a href="blog/market-volatility.html" class="blog-link">Read More &rarr;</a>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Technical</span><span class="blog-date">2025</span></div>
-                    <h3>Technical Analysis Guide</h3>
-                    <p>Comprehensive guide to chart patterns, moving averages, RSI, MACD, and building a systematic technical trading approach.</p>
-                    <a href="blog/technical-analysis.html" class="blog-link">Read More &rarr;</a>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Strategy</span><span class="blog-date">2025</span></div>
-                    <h3>Portfolio Diversification Strategies</h3>
-                    <p>Modern portfolio theory applied: asset class selection, correlation analysis, and building resilient multi-asset portfolios.</p>
-                    <a href="blog/portfolio-diversification.html" class="blog-link">Read More &rarr;</a>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Analytics</span><span class="blog-date">2024</span></div>
-                    <h3>Canadian Sports Betting Analytics</h3>
-                    <p>Data-driven analysis of the Canadian sports betting landscape with predictive modeling and market efficiency insights.</p>
-                    <a href="blog/canadian-sports-betting.html" class="blog-link">Read More &rarr;</a>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Quant</span><span class="blog-date">2024</span></div>
-                    <h3>Algorithmic Trading Strategies</h3>
-                    <p>Exploring momentum, mean-reversion, and statistical arbitrage strategies with backtesting frameworks and risk controls.</p>
-                    <a href="blog/algorithmic-trading.html" class="blog-link">Read More &rarr;</a>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-meta"><span class="blog-tag">Crypto</span><span class="blog-date">2024</span></div>
-                    <h3>Crypto Market Analysis</h3>
-                    <p>On-chain metrics, DeFi protocol analysis, and macro correlation of digital assets within traditional portfolio frameworks.</p>
-                    <a href="blog/crypto-market-analysis.html" class="blog-link">Read More &rarr;</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: GAMES ==================== -->
-    <section id="section-games" class="page-section" data-section="games">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">07</span>
-                <h2 class="section-title">Mini Games</h2>
-                <div class="section-line"></div>
-            </div>
-            <p class="games-intro">Take a break and enjoy these interactive mini games built with vanilla JavaScript.</p>
-            <div class="games-grid">
-                <div class="game-card" data-game="snake">
-                    <div class="game-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h4l2-4 4 8 2-4h4"/></svg>
-                    </div>
-                    <h3>Snake</h3>
-                    <p>Classic snake game — eat, grow, don't crash!</p>
-                    <button class="btn-accent game-launch" data-game="snake">Play Now</button>
-                </div>
-                <div class="game-card" data-game="2048">
-                    <div class="game-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                    </div>
-                    <h3>2048</h3>
-                    <p>Slide tiles and merge to reach 2048!</p>
-                    <button class="btn-accent game-launch" data-game="2048">Play Now</button>
-                </div>
-                <div class="game-card" data-game="memory">
-                    <div class="game-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><path d="M13 13h9v9h-9z" stroke-dasharray="3 3"/></svg>
-                    </div>
-                    <h3>Memory Match</h3>
-                    <p>Find matching pairs to test your memory!</p>
-                    <button class="btn-accent game-launch" data-game="memory">Play Now</button>
-                </div>
-                <div class="game-card" data-game="typing">
-                    <div class="game-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></svg>
-                    </div>
-                    <h3>Typing Speed</h3>
-                    <p>How fast can you type? Test your WPM!</p>
-                    <button class="btn-accent game-launch" data-game="typing">Play Now</button>
-                </div>
-            </div>
-            <!-- Game containers -->
-            <div id="game-container" class="game-container" style="display:none;">
-                <div class="game-header-bar">
-                    <h3 id="game-active-title"></h3>
-                    <button class="btn-close-game" id="close-game">&times; Close</button>
-                </div>
-                <canvas id="game-canvas" width="400" height="400"></canvas>
-                <div id="game-html-area"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== SECTION: CONTACT ==================== -->
-    <section id="section-contact" class="page-section" data-section="contact">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">08</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="contact-content">
-                <p class="contact-lead">I'm actively seeking <span class="accent-text">internship opportunities</span> and <span class="accent-text">freelance projects</span> in finance and analytics. Let's connect and discuss how I can add value to your team.</p>
-                <div class="contact-links">
-                    <a href="#" onclick="window.location.href=atob('bWFpbHRvOnBhYXdhbnNoYWgxMzMxQGdtYWlsLmNvbQ==');return false;" class="contact-card">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value" id="email-display"></span><script>document.getElementById("email-display").textContent=atob("cGFhd2Fuc2hhaDEzMzFAZ21haWwuY29t");</script>
-                    </a>
-                    <a href="https://www.linkedin.com/in/paawanshah" target="_blank" rel="noopener" class="contact-card">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        <span class="contact-label">LinkedIn</span>
-                        <span class="contact-value">linkedin.com/in/paawanshah</span>
-                    </a>
-                    <a href="https://github.com/paawanshah" target="_blank" rel="noopener" class="contact-card">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        <span class="contact-label">GitHub</span>
-                        <span class="contact-value">github.com/paawanshah</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== AMBIENT BACKGROUND ==================== -->
-    <div class="ambient-particles" id="ambient-particles"></div>
-
-    <!-- ==================== SCRIPTS ==================== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="scene.js"></script>
     <script src="app.js"></script>
+    <script>document.getElementById("email-display").textContent=atob("cGFhd2Fuc2hhaDEzMzFAZ21haWwuY29t");</script>
 </body>
 </html>

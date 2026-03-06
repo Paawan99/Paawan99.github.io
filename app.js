@@ -32,7 +32,7 @@
 
         // Exit current slide
         oldSlide.classList.remove('active');
-        oldSlide.classList.add(direction === 'down' ? 'exit-up' : '');
+        if (direction === 'down') oldSlide.classList.add('exit-up');
         oldSlide.style.opacity = '0';
         oldSlide.style.transform = direction === 'down'
             ? 'translateY(-40px) scale(0.97)'
@@ -149,9 +149,10 @@
 
     // ==================== SCROLL / WHEEL NAVIGATION ====================
     var scrollCooldown = false;
+    var accumulatedDelta = 0;
+
     document.addEventListener('wheel', function (e) {
         if (scrollCooldown) return;
-        scrollCooldown = true;
 
         // Check if the slide content is scrollable and not at edges
         var slideContent = slides[currentSlide].querySelector('.slide-content');
@@ -159,17 +160,23 @@
             var atTop = slideContent.scrollTop <= 5;
             var atBottom = slideContent.scrollTop + slideContent.clientHeight >= slideContent.scrollHeight - 5;
 
-            if (e.deltaY > 0 && !atBottom) { scrollCooldown = false; return; }
-            if (e.deltaY < 0 && !atTop) { scrollCooldown = false; return; }
+            if (e.deltaY > 0 && !atBottom) { accumulatedDelta = 0; return; }
+            if (e.deltaY < 0 && !atTop) { accumulatedDelta = 0; return; }
         }
 
-        if (e.deltaY > 30) {
+        accumulatedDelta += e.deltaY;
+
+        if (accumulatedDelta > 20) {
             goToSlide(currentSlide + 1);
-        } else if (e.deltaY < -30) {
+            accumulatedDelta = 0;
+            scrollCooldown = true;
+            setTimeout(function () { scrollCooldown = false; }, 900);
+        } else if (accumulatedDelta < -20) {
             goToSlide(currentSlide - 1);
+            accumulatedDelta = 0;
+            scrollCooldown = true;
+            setTimeout(function () { scrollCooldown = false; }, 900);
         }
-
-        setTimeout(function () { scrollCooldown = false; }, 1200);
     }, { passive: true });
 
     // ==================== TOUCH NAVIGATION ====================

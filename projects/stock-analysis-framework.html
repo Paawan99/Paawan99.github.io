@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Market Analysis Framework</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -533,15 +536,19 @@
                 flex-direction: column;
                 gap: 15px;
             }
+
             .company-header h2 {
                 font-size: 1.8em;
             }
+
             .section-title {
                 font-size: 1.4em;
             }
+
             .indicators-grid {
                 grid-template-columns: 1fr;
             }
+
             .rating-row {
                 gap: 20px;
             }
@@ -552,21 +559,28 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>Stock Analysis Framework</h1>
-            <a href="/" class="back-link">Back to Portfolio</a>
+            <a href="../index.html" class="back-link">Back to Portfolio</a>
         </div>
 
         <div class="search-section">
             <div class="search-container">
-                <input type="text" id="companyInput" class="search-input" placeholder="Enter company name or ticker (e.g., Apple, AAPL)" autocomplete="off">
+                <input type="text" id="companyInput" class="search-input"
+                    placeholder="Enter company name or ticker (e.g., Apple, AAPL)" autocomplete="off">
                 <div id="autocompleteList" class="autocomplete-list"></div>
             </div>
             <div class="quick-buttons">
@@ -583,7 +597,8 @@
 
             <div id="loading" class="loading" style="display: none;">
                 <div>Analyzing <span id="analyzingCompany"></span>...</div>
-                <div style="font-size: 0.8em; color: #8892b0; margin-top: 10px;">Gathering technical, fundamental, and market data</div>
+                <div style="font-size: 0.8em; color: #8892b0; margin-top: 10px;">Gathering technical, fundamental, and
+                    market data</div>
             </div>
 
             <div id="content" style="display: none;">
@@ -1022,22 +1037,21 @@
             const technicalRating = buyCount >= 8 ? 'Excellent' : buyCount >= 5 ? 'Good' : holdCount >= 8 ? 'Fair' : 'Poor';
             const fundamentalRating = valuation === 'UNDERVALUED' ? 'Excellent' : valuation === 'FAIR VALUE' ? 'Good' : 'Fair';
             const overallVerdict = buyCount >= 8 && valuation === 'UNDERVALUED' ? 'STRONG BUY' :
-                                    buyCount >= 5 && valuation !== 'OVERVALUED' ? 'BUY' :
-                                    sellCount >= 5 || valuation === 'OVERVALUED' ? 'SELL' : 'HOLD';
+                buyCount >= 5 && valuation !== 'OVERVALUED' ? 'BUY' :
+                    sellCount >= 5 || valuation === 'OVERVALUED' ? 'SELL' : 'HOLD';
 
             const verdictColor = overallVerdict === 'STRONG BUY' ? '#64ff64' :
-                                overallVerdict === 'BUY' ? '#64ffda' :
-                                overallVerdict === 'SELL' ? '#ff6464' : '#ffcc64';
+                overallVerdict === 'BUY' ? '#64ffda' :
+                    overallVerdict === 'SELL' ? '#ff6464' : '#ffcc64';
 
             document.getElementById('verdict').textContent = overallVerdict;
             document.getElementById('verdict').style.color = verdictColor;
 
             document.getElementById('verdictDescription').innerHTML = `
-                Based on comprehensive analysis, ${companyName} presents ${
-                    overallVerdict === 'STRONG BUY' ? 'exceptional value with strong technical momentum and fundamental support' :
+                Based on comprehensive analysis, ${companyName} presents ${overallVerdict === 'STRONG BUY' ? 'exceptional value with strong technical momentum and fundamental support' :
                     overallVerdict === 'BUY' ? 'attractive value proposition supported by multiple buy signals' :
-                    overallVerdict === 'SELL' ? 'significant concerns regarding valuation and technical deterioration' :
-                    'balanced risk reward with caution recommended'
+                        overallVerdict === 'SELL' ? 'significant concerns regarding valuation and technical deterioration' :
+                            'balanced risk reward with caution recommended'
                 }. The ${buyCount} technical buy signals combined with ${fund.pb < 2 ? 'attractive valuation multiples' : 'moderate valuations'} suggest the stock offers potential for investors with moderate to high risk tolerance. Consider reviewing individual risk profile before making investment decisions.
             `;
 
@@ -1119,4 +1133,5 @@
         }
     </script>
 </body>
+
 </html>

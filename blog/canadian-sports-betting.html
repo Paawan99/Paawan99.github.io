@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canadian Sports Betting Analytics | Paawan Shah</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -279,8 +282,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .calculator-section {
@@ -492,18 +500,22 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
-            <a href="/" class="back-link">← Back to portfolio</a>
+            <a href="../index.html" class="back-link">← Back to portfolio</a>
             <h1>Canadian Sports Betting Analytics</h1>
             <p class="subtitle">Find arbitrage opportunities and maximize your returns</p>
         </header>
 
         <div class="section">
             <div class="api-key-section">
-                <input type="text" id="apiKey" placeholder="Enter your Odds API key (optional, or use demo)" value="demo">
-                <button class="filter-btn" onclick="loadGames()" style="cursor: pointer; background: #64ffda; color: #0a192f; font-weight: 600; padding: 10px 25px;">Load Games</button>
+                <input type="text" id="apiKey" placeholder="Enter your Odds API key (optional, or use demo)"
+                    value="demo">
+                <button class="filter-btn" onclick="loadGames()"
+                    style="cursor: pointer; background: #64ffda; color: #0a192f; font-weight: 600; padding: 10px 25px;">Load
+                    Games</button>
             </div>
         </div>
 
@@ -534,18 +546,21 @@
                 <div class="calc-row">
                     <div class="calc-input-group">
                         <label class="calc-label">Decimal Odds for Outcome A</label>
-                        <input type="number" id="oddsA" class="calc-input" placeholder="e.g., 2.15" value="2.15" step="0.01" min="1.01">
+                        <input type="number" id="oddsA" class="calc-input" placeholder="e.g., 2.15" value="2.15"
+                            step="0.01" min="1.01">
                     </div>
                     <div class="calc-input-group">
                         <label class="calc-label">Decimal Odds for Outcome B</label>
-                        <input type="number" id="oddsB" class="calc-input" placeholder="e.g., 1.85" value="1.85" step="0.01" min="1.01">
+                        <input type="number" id="oddsB" class="calc-input" placeholder="e.g., 1.85" value="1.85"
+                            step="0.01" min="1.01">
                     </div>
                 </div>
 
                 <div class="calc-row">
                     <div class="calc-input-group">
                         <label class="calc-label">Total Amount to Wager</label>
-                        <input type="number" id="totalBet" class="calc-input" placeholder="e.g., 500" value="500" min="1">
+                        <input type="number" id="totalBet" class="calc-input" placeholder="e.g., 500" value="500"
+                            min="1">
                     </div>
                 </div>
 
@@ -587,30 +602,56 @@
 
             <div class="info-section">
                 <h3>What is Arbitrage Betting?</h3>
-                <p>Arbitrage betting is a strategy that takes advantage of price differences across different sportsbooks. When multiple betting platforms offer different odds for the same event, there can be situations where you can place bets on all possible outcomes and guarantee a profit regardless of which outcome occurs. This happens because the combined implied probability of all outcomes is less than 100 percent, creating what we call an arbitrage opportunity.</p>
-                <p>Unlike traditional betting where you're trying to predict a winner and hoping the odds are in your favor, arbitrage betting is pure mathematics. If the opportunity exists, your profit is guaranteed. There is no element of chance or prediction required.</p>
+                <p>Arbitrage betting is a strategy that takes advantage of price differences across different
+                    sportsbooks. When multiple betting platforms offer different odds for the same event, there can be
+                    situations where you can place bets on all possible outcomes and guarantee a profit regardless of
+                    which outcome occurs. This happens because the combined implied probability of all outcomes is less
+                    than 100 percent, creating what we call an arbitrage opportunity.</p>
+                <p>Unlike traditional betting where you're trying to predict a winner and hoping the odds are in your
+                    favor, arbitrage betting is pure mathematics. If the opportunity exists, your profit is guaranteed.
+                    There is no element of chance or prediction required.</p>
             </div>
 
             <div class="info-section">
                 <h3>How Decimal Odds Work</h3>
-                <p>Decimal odds represent the total return you get for every dollar wagered, including your original stake. For example, if you see odds of 2.50 and you bet $100, your return if you win would be $250 (that's $100 times 2.50). Your net profit would be $150 ($250 minus your $100 stake).</p>
-                <p>Decimal odds are the standard format used by most Canadian sportsbooks. Higher odds mean less likely the outcome is to occur (according to the sportsbook's assessment). Lower odds mean more likely. The relationship between the odds and implied probability is simple: <span class="accent-text">Implied Probability equals 1 divided by the decimal odds</span>.</p>
-                <p>So if the odds are 2.00, the implied probability is 1 divided by 2.00, which equals 0.50 or 50 percent. If the odds are 1.50, the implied probability is 1 divided by 1.50, which equals 0.667 or about 67 percent.</p>
+                <p>Decimal odds represent the total return you get for every dollar wagered, including your original
+                    stake. For example, if you see odds of 2.50 and you bet $100, your return if you win would be $250
+                    (that's $100 times 2.50). Your net profit would be $150 ($250 minus your $100 stake).</p>
+                <p>Decimal odds are the standard format used by most Canadian sportsbooks. Higher odds mean less likely
+                    the outcome is to occur (according to the sportsbook's assessment). Lower odds mean more likely. The
+                    relationship between the odds and implied probability is simple: <span class="accent-text">Implied
+                        Probability equals 1 divided by the decimal odds</span>.</p>
+                <p>So if the odds are 2.00, the implied probability is 1 divided by 2.00, which equals 0.50 or 50
+                    percent. If the odds are 1.50, the implied probability is 1 divided by 1.50, which equals 0.667 or
+                    about 67 percent.</p>
             </div>
 
             <div class="info-section">
                 <h3>The Math Behind Finding Arbitrage Opportunities</h3>
-                <p>The foundation of arbitrage betting is this principle: <span class="accent-text">if the sum of all implied probabilities for every possible outcome is less than 1.0 (or 100 percent), an arbitrage opportunity exists</span>.</p>
-                <p>Here is how it works in practice. Imagine a tennis match between Player A and Player B. Suppose Sportsbook 1 offers odds of 1.90 for Player A and Sportsbook 2 offers odds of 2.10 for Player B.</p>
-                <p>The implied probability for Player A at 1.90 odds is 1 divided by 1.90, which equals 0.526 or 52.6 percent. The implied probability for Player B at 2.10 odds is 1 divided by 2.10, which equals 0.476 or 47.6 percent. When you add these together, you get 52.6 percent plus 47.6 percent, which equals 100.2 percent. This is slightly over 100 percent, so no arbitrage exists here.</p>
-                <p>But suppose Sportsbook 1 offers 2.00 for Player A and Sportsbook 2 offers 2.20 for Player B. Now the implied probabilities are 50 percent for Player A and 45.5 percent for Player B, totaling 95.5 percent. Since this is less than 100 percent, an arbitrage opportunity exists.</p>
-                <p><span class="accent-text">The arbitrage percentage (or profit percentage) equals 100 percent minus the sum of implied probabilities</span>. In this example, the arbitrage is 4.5 percent.</p>
-                <p>To calculate how much to bet on each outcome, you use this formula: <span class="accent-text">Stake on Outcome equals (Implied Probability of Outcome) divided by (Sum of All Implied Probabilities), then multiplied by your total bet</span>. This allocation ensures equal returns regardless of which outcome occurs.</p>
+                <p>The foundation of arbitrage betting is this principle: <span class="accent-text">if the sum of all
+                        implied probabilities for every possible outcome is less than 1.0 (or 100 percent), an arbitrage
+                        opportunity exists</span>.</p>
+                <p>Here is how it works in practice. Imagine a tennis match between Player A and Player B. Suppose
+                    Sportsbook 1 offers odds of 1.90 for Player A and Sportsbook 2 offers odds of 2.10 for Player B.</p>
+                <p>The implied probability for Player A at 1.90 odds is 1 divided by 1.90, which equals 0.526 or 52.6
+                    percent. The implied probability for Player B at 2.10 odds is 1 divided by 2.10, which equals 0.476
+                    or 47.6 percent. When you add these together, you get 52.6 percent plus 47.6 percent, which equals
+                    100.2 percent. This is slightly over 100 percent, so no arbitrage exists here.</p>
+                <p>But suppose Sportsbook 1 offers 2.00 for Player A and Sportsbook 2 offers 2.20 for Player B. Now the
+                    implied probabilities are 50 percent for Player A and 45.5 percent for Player B, totaling 95.5
+                    percent. Since this is less than 100 percent, an arbitrage opportunity exists.</p>
+                <p><span class="accent-text">The arbitrage percentage (or profit percentage) equals 100 percent minus
+                        the sum of implied probabilities</span>. In this example, the arbitrage is 4.5 percent.</p>
+                <p>To calculate how much to bet on each outcome, you use this formula: <span class="accent-text">Stake
+                        on Outcome equals (Implied Probability of Outcome) divided by (Sum of All Implied
+                        Probabilities), then multiplied by your total bet</span>. This allocation ensures equal returns
+                    regardless of which outcome occurs.</p>
             </div>
 
             <div class="info-section">
                 <h3>Canadian Sportsbooks to Compare</h3>
-                <p>To find the best arbitrage opportunities, you need to compare odds across multiple licensed Canadian sportsbooks. Here are the major platforms operating legally in Canada:</p>
+                <p>To find the best arbitrage opportunities, you need to compare odds across multiple licensed Canadian
+                    sportsbooks. Here are the major platforms operating legally in Canada:</p>
                 <div class="sportsbook-list">
                     <div class="sportsbook-item">bet365</div>
                     <div class="sportsbook-item">FanDuel Canada</div>
@@ -622,15 +663,30 @@
                     <div class="sportsbook-item">Caesars Sportsbook</div>
                     <div class="sportsbook-item">Proline+</div>
                 </div>
-                <p style="margin-top: 20px;">Each sportsbook has slightly different odds due to their own assessment of probabilities and their profit margins. By comparing across all these platforms for the same game, you can identify discrepancies large enough to create arbitrage opportunities. The more platforms you compare, the more opportunities you will find.</p>
+                <p style="margin-top: 20px;">Each sportsbook has slightly different odds due to their own assessment of
+                    probabilities and their profit margins. By comparing across all these platforms for the same game,
+                    you can identify discrepancies large enough to create arbitrage opportunities. The more platforms
+                    you compare, the more opportunities you will find.</p>
             </div>
 
             <div class="info-section">
                 <h3>Legal Landscape for Sports Betting in Canada</h3>
-                <p>Sports betting has undergone significant changes in Canada in recent years. <span class="accent-text">Bill C 218, passed in 2021, legalized single event sports wagering across the country</span>. This means you can now legally place bets on individual sporting events in Canada.</p>
-                <p>However, it is important to note that while single event wagering is legal federally, each province has the authority to regulate and license sportsbooks operating within its borders. Ontario, British Columbia, and Alberta have established their own regulated markets. Other provinces are in the process of developing their regulatory frameworks.</p>
-                <p>To stay legal, always use sportsbooks licensed by your provincial gambling regulator. Do not use unregulated offshore sportsbooks. The sportsbooks listed above are all properly licensed and regulated in Canada. Using regulated sportsbooks not only keeps you on the right side of the law, but also protects your funds and gives you access to responsible gambling tools.</p>
-                <p>Arbitrage betting itself is not illegal in any Canadian jurisdiction. It is simply a mathematical approach to finding and exploiting price discrepancies. However, some sportsbooks may restrict or close accounts of players they believe are using professional arbitrage strategies, so be aware of this when getting started.</p>
+                <p>Sports betting has undergone significant changes in Canada in recent years. <span
+                        class="accent-text">Bill C 218, passed in 2021, legalized single event sports wagering across
+                        the country</span>. This means you can now legally place bets on individual sporting events in
+                    Canada.</p>
+                <p>However, it is important to note that while single event wagering is legal federally, each province
+                    has the authority to regulate and license sportsbooks operating within its borders. Ontario, British
+                    Columbia, and Alberta have established their own regulated markets. Other provinces are in the
+                    process of developing their regulatory frameworks.</p>
+                <p>To stay legal, always use sportsbooks licensed by your provincial gambling regulator. Do not use
+                    unregulated offshore sportsbooks. The sportsbooks listed above are all properly licensed and
+                    regulated in Canada. Using regulated sportsbooks not only keeps you on the right side of the law,
+                    but also protects your funds and gives you access to responsible gambling tools.</p>
+                <p>Arbitrage betting itself is not illegal in any Canadian jurisdiction. It is simply a mathematical
+                    approach to finding and exploiting price discrepancies. However, some sportsbooks may restrict or
+                    close accounts of players they believe are using professional arbitrage strategies, so be aware of
+                    this when getting started.</p>
             </div>
         </div>
 
@@ -1009,4 +1065,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risk Assessment Tool | Paawan Shah</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <style>
         * {
@@ -163,8 +166,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .results {
@@ -468,6 +476,7 @@
         }
 
         @media (max-width: 1024px) {
+
             .grid-2,
             .grid-3 {
                 grid-template-columns: 1fr;
@@ -489,22 +498,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>Risk Assessment Tool</h1>
-            <a href="/" class="back-link">← Back to Portfolio</a>
+            <a href="../index.html" class="back-link">← Back to Portfolio</a>
         </div>
 
         <div class="search-section">
             <div class="search-container">
-                <input
-                    type="text"
-                    class="search-input"
-                    id="companyInput"
-                    placeholder="Enter company name or ticker (e.g., Apple, AAPL)..."
-                    autocomplete="off"
-                >
+                <input type="text" class="search-input" id="companyInput"
+                    placeholder="Enter company name or ticker (e.g., Apple, AAPL)..." autocomplete="off">
                 <div class="autocomplete-list" id="autocompleteList"></div>
             </div>
 
@@ -761,16 +766,16 @@
             const summaryGrid = document.getElementById('riskSummaryGrid');
             const riskLevel = riskScore <= 4 ? 'Low' : riskScore <= 6 ? 'Moderate' : 'High';
             const riskColor = riskScore <= 4 ? '#2ecc71' : riskScore <= 6 ? '#f39c12' : '#e74c3c';
-            const metrics = [ { label: 'Risk Level', value: riskLevel, detail: 'Based on volatility and beta' }, { label: 'Primary Sector', value: sector, detail: 'Industry classification' }, { label: 'Risk Trend', value: 'Stable', detail: 'Last 30 days' } ];
+            const metrics = [{ label: 'Risk Level', value: riskLevel, detail: 'Based on volatility and beta' }, { label: 'Primary Sector', value: sector, detail: 'Industry classification' }, { label: 'Risk Trend', value: 'Stable', detail: 'Last 30 days' }];
             summaryGrid.innerHTML = metrics.map(m => '<div class="metric-card"><div class="metric-label">' + m.label + '</div><div class="metric-value" style="color: ' + (m.label === 'Risk Level' ? riskColor : '#64ffda') + '">' + m.value + '</div><div class="metric-detail">' + m.detail + '</div></div>').join('');
-            const categories = [ { name: 'Market Risk', value: 35 }, { name: 'Volatility Risk', value: 25 }, { name: 'Liquidity Risk', value: 15 }, { name: 'Operational Risk', value: 15 }, { name: 'Regulatory Risk', value: 10 } ];
+            const categories = [{ name: 'Market Risk', value: 35 }, { name: 'Volatility Risk', value: 25 }, { name: 'Liquidity Risk', value: 15 }, { name: 'Operational Risk', value: 15 }, { name: 'Regulatory Risk', value: 10 }];
             const ctx = document.getElementById('riskCategoryChart').getContext('2d');
             new Chart(ctx, { type: 'doughnut', data: { labels: categories.map(c => c.name), datasets: [{ data: categories.map(c => c.value), backgroundColor: ['#64ffda', '#45b7aa', '#358b7f', '#245f58', '#1a4843'], borderColor: '#0a192f', borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#ccd6f6', font: { family: "'Inter', sans-serif" } } } } } });
         }
 
         function renderVolatilityMetrics(data) {
             const container = document.getElementById('volatilityMetrics');
-            const metrics = [ { label: 'Beta (vs S&P 500)', value: data.beta.toFixed(2), detail: 'Market sensitivity' }, { label: 'Sharpe Ratio', value: data.sharpeRatio.toFixed(2), detail: 'Risk adjusted return' }, { label: 'Sortino Ratio', value: data.sortinoRatio.toFixed(2), detail: 'Downside risk adjusted' }, { label: 'Max Drawdown', value: data.maxDrawdown.toFixed(1) + '%', detail: 'Peak to trough decline' }, { label: '30D Volatility', value: data.volatility30.toFixed(1) + '%', detail: 'Annualized' }, { label: 'Implied Volatility', value: data.impliedVol.toFixed(1) + '%', detail: 'Market expected' } ];
+            const metrics = [{ label: 'Beta (vs S&P 500)', value: data.beta.toFixed(2), detail: 'Market sensitivity' }, { label: 'Sharpe Ratio', value: data.sharpeRatio.toFixed(2), detail: 'Risk adjusted return' }, { label: 'Sortino Ratio', value: data.sortinoRatio.toFixed(2), detail: 'Downside risk adjusted' }, { label: 'Max Drawdown', value: data.maxDrawdown.toFixed(1) + '%', detail: 'Peak to trough decline' }, { label: '30D Volatility', value: data.volatility30.toFixed(1) + '%', detail: 'Annualized' }, { label: 'Implied Volatility', value: data.impliedVol.toFixed(1) + '%', detail: 'Market expected' }];
             container.innerHTML = metrics.map(m => '<div class="metric-card"><div class="metric-label">' + m.label + '</div><div class="metric-value">' + m.value + '</div><div class="metric-detail">' + m.detail + '</div></div>').join('');
             const volatilityCtx = document.getElementById('volatilityChart').getContext('2d');
             new Chart(volatilityCtx, { type: 'line', data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'], datasets: [{ label: '30D Volatility', data: [data.volatility30 * 0.95, data.volatility30 * 0.98, data.volatility30, data.volatility30 * 1.02, data.volatility30 * 1.01, data.volatility30], borderColor: '#64ffda', backgroundColor: 'rgba(100, 255, 218, 0.1)', tension: 0.4, borderWidth: 2, fill: true, pointBackgroundColor: '#64ffda', pointBorderColor: '#0a192f', pointBorderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ccd6f6', font: { family: "'Inter', sans-serif" } } } }, scales: { y: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(100, 255, 218, 0.1)' } }, x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(100, 255, 218, 0.1)' } } } } });
@@ -793,7 +798,7 @@
 
         function renderNews(ticker, company) {
             const newsContainer = document.getElementById('newsContainer');
-            const riskFactors = [ { title: 'Competitive Pressure', category: 'Competitive', risk: 'Medium' }, { title: 'Currency Fluctuations', category: 'Market', risk: ticker.includes('.TO') ? 'High' : 'Medium' }, { title: 'Supply Chain Resilience', category: 'Operational', risk: 'Medium' }, { title: 'Regulatory Compliance', category: 'Regulatory', risk: 'Medium' }, { title: 'Interest Rate Sensitivity', category: 'Financial', risk: 'Medium' }, { title: 'Geopolitical Exposure', category: 'Geopolitical', risk: 'Low' } ];
+            const riskFactors = [{ title: 'Competitive Pressure', category: 'Competitive', risk: 'Medium' }, { title: 'Currency Fluctuations', category: 'Market', risk: ticker.includes('.TO') ? 'High' : 'Medium' }, { title: 'Supply Chain Resilience', category: 'Operational', risk: 'Medium' }, { title: 'Regulatory Compliance', category: 'Regulatory', risk: 'Medium' }, { title: 'Interest Rate Sensitivity', category: 'Financial', risk: 'Medium' }, { title: 'Geopolitical Exposure', category: 'Geopolitical', risk: 'Low' }];
             newsContainer.innerHTML = riskFactors.map(rf => '<div class="news-item"><span class="news-category">' + rf.category + '</span><div class="news-title">' + rf.title + '</div><div class="news-date">Risk Level: ' + rf.risk + '</div></div>').join('');
         }
 
@@ -807,4 +812,5 @@
         initAutocomplete();
     </script>
 </body>
+
 </html>

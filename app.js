@@ -35,8 +35,8 @@
         if (direction === 'down') oldSlide.classList.add('exit-up');
         oldSlide.style.opacity = '0';
         oldSlide.style.transform = direction === 'down'
-            ? 'translateY(-40px) scale(0.97)'
-            : 'translateY(40px) scale(0.97)';
+            ? 'translateY(-60px) scale(0.98)'
+            : 'translateY(60px) scale(0.98)';
 
         // Slight delay for enter
         setTimeout(function () {
@@ -46,8 +46,8 @@
             // Enter new slide
             newSlide.style.visibility = 'visible';
             newSlide.style.transform = direction === 'down'
-                ? 'translateY(40px) scale(0.97)'
-                : 'translateY(-40px) scale(0.97)';
+                ? 'translateY(60px) scale(0.98)'
+                : 'translateY(-60px) scale(0.98)';
             newSlide.style.opacity = '0';
 
             // Force reflow

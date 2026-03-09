@@ -157,8 +157,9 @@
         // Check if the slide content is scrollable and not at edges
         var slideContent = slides[currentSlide].querySelector('.slide-content');
         if (slideContent) {
-            var atTop = slideContent.scrollTop <= 5;
-            var atBottom = slideContent.scrollTop + slideContent.clientHeight >= slideContent.scrollHeight - 5;
+            // Add a small buffer (e.g., 20px) to the edge detection to be forgiving on mobile
+            var atTop = slideContent.scrollTop <= 20;
+            var atBottom = Math.abs((slideContent.scrollHeight - slideContent.scrollTop) - slideContent.clientHeight) <= 20;
 
             if (e.deltaY > 0 && !atBottom) { accumulatedDelta = 0; return; }
             if (e.deltaY < 0 && !atTop) { accumulatedDelta = 0; return; }
@@ -192,8 +193,20 @@
         var deltaY = touchStartY - e.changedTouches[0].clientY;
         var deltaX = touchStartX - e.changedTouches[0].clientX;
 
-        // Only trigger if vertical swipe is dominant
-        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 60) {
+        // Only trigger if vertical swipe is dominant and significant
+        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 80) { // Increased threshold
+
+            var slideContent = slides[currentSlide].querySelector('.slide-content');
+            if (slideContent) {
+                var atTop = slideContent.scrollTop <= 20;
+                var atBottom = Math.abs((slideContent.scrollHeight - slideContent.scrollTop) - slideContent.clientHeight) <= 20;
+
+                // Block transition if user is swiping up to scroll down AND not at bottom yet
+                if (deltaY > 0 && !atBottom) return;
+                // Block transition if user is swiping down to scroll up AND not at top yet
+                if (deltaY < 0 && !atTop) return;
+            }
+
             if (deltaY > 0) {
                 goToSlide(currentSlide + 1);
             } else {

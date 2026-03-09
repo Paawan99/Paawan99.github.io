@@ -579,7 +579,7 @@ a {
 }
 
 .card-grid.games-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .feature-card {
@@ -917,17 +917,20 @@ a {
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
     .slide-nav {
-        right: 16px;
-        gap: 12px;
+        right: 12px;
+        gap: 16px;
+        /* slightly more gap for tapping */
     }
 
     .nav-dot {
-        width: 5px;
-        height: 5px;
+        width: 8px;
+        /* larger tap target */
+        height: 8px;
     }
 
     .slide-content {
-        padding: 40px 24px;
+        padding: 60px 20px 40px;
+        /* add top padding to avoid status bar overlap */
     }
 
     .hub-name {
@@ -952,7 +955,8 @@ a {
         height: 18px;
     }
 
-    .card-grid {
+    .card-grid,
+    .card-grid.games-grid {
         grid-template-columns: 1fr;
     }
 

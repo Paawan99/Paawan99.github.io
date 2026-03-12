@@ -113,6 +113,7 @@
     .recommendation-card.rank-1::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gradient-1); }
     .recommendation-card.rank-2 { border-color:var(--silver); }
     .recommendation-card.rank-3 { border-color:var(--bronze); }
+    .recommendation-card.rank-4, .recommendation-card.rank-5 { border-color:var(--border-hover); }
 
     /* Credit card visual */
     .cc-visual {
@@ -154,6 +155,7 @@
     .rank-1 .card-rank { background:var(--accent); color:var(--bg-primary); }
     .rank-2 .card-rank { background:var(--silver); color:var(--bg-primary); }
     .rank-3 .card-rank { background:var(--bronze); color:var(--bg-primary); }
+    .rank-4 .card-rank, .rank-5 .card-rank { background:var(--bg-secondary); color:var(--text-secondary); border:1px solid var(--border); }
 
     .card-badge {
       display:inline-block; font-family:var(--font-mono); font-size:0.65rem;
@@ -163,6 +165,7 @@
     .rank-1 .card-badge { background:var(--accent-dim); color:var(--accent); }
     .rank-2 .card-badge { background:rgba(192,192,192,0.1); color:var(--silver); }
     .rank-3 .card-badge { background:rgba(205,127,50,0.1); color:var(--bronze); }
+    .rank-4 .card-badge, .rank-5 .card-badge { background:rgba(255,255,255,0.04); color:var(--text-secondary); }
 
     .card-name { font-family:var(--font-display); font-size:1.4rem; font-weight:700; margin-bottom:0.3rem; }
     .card-issuer { color:var(--text-muted); font-size:0.9rem; margin-bottom:1.2rem; }
@@ -206,13 +209,88 @@
       .nav-links { position:fixed; inset:0; background:rgba(10,10,11,0.97); flex-direction:column; justify-content:center; align-items:center; gap:2rem; transform:translateX(100%); transition:transform 0.5s var(--transition); }
       .nav-links.open { transform:translateX(0); }
       .menu-toggle { display:block; }
-      .page-header { padding:7rem 1.5rem 2rem; }
-      .wizard, .results, .progress-bar { padding:0 1.5rem; }
-      .options-grid { grid-template-columns:1fr 1fr; }
-      .checkbox-grid { grid-template-columns:1fr; }
-      .card-highlights { grid-template-columns:1fr 1fr; }
-      .comparison-table { font-size:0.75rem; }
-      .comparison-table th, .comparison-table td { padding:0.5rem; }
+
+      /* Full-screen app-like wizard on mobile */
+      .page-header { padding:5.5rem 1.2rem 1rem; }
+      .page-header h1 { font-size:1.7rem; line-height:1.2; }
+      .page-header p { font-size:0.85rem; line-height:1.5; }
+
+      .progress-bar { padding:0 1.2rem; margin-bottom:1rem; position:sticky; top:56px; z-index:99; background:var(--bg-primary); padding-top:0.5rem; padding-bottom:0.5rem; }
+
+      .wizard { padding:0 1.2rem; max-width:100%; }
+      .step h2 { font-size:1.25rem; line-height:1.3; }
+      .step p.subtitle { font-size:0.85rem; margin-bottom:1.2rem; }
+
+      /* Single-column option cards — larger touch targets */
+      .options-grid { grid-template-columns:1fr; gap:0.7rem; margin-bottom:1.2rem; }
+      .option-card { padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem; text-align:left; }
+      .option-card .icon { font-size:1.6rem; margin-bottom:0; flex-shrink:0; }
+      .option-card h3 { font-size:0.95rem; margin-bottom:0.1rem; }
+      .option-card p { font-size:0.75rem; }
+
+      /* Checkbox items — full width, comfortable tapping */
+      .checkbox-grid { grid-template-columns:1fr; gap:0.6rem; }
+      .checkbox-item { padding:0.9rem 1rem; font-size:0.88rem; }
+
+      /* Slider — bigger thumb for mobile */
+      input[type="range"]::-webkit-slider-thumb { width:28px; height:28px; }
+      .slider-label .value { font-size:1.3rem; }
+
+      /* Fixed bottom nav for wizard steps */
+      .wizard-nav {
+        position:sticky; bottom:0; left:0; right:0;
+        background:linear-gradient(to top, var(--bg-primary) 70%, transparent);
+        padding:1.2rem 0 1.5rem; margin-top:1rem;
+        z-index:50;
+      }
+      .btn { padding:0.9rem 1.8rem; font-size:0.8rem; width:auto; min-width:120px; }
+
+      /* Results on mobile */
+      .results { padding:0 1.2rem; }
+      .results-header h2 { font-size:1.4rem; }
+      .results-header p { font-size:0.82rem; }
+
+      .recommendation-card { padding:1.2rem; margin-bottom:1rem; }
+      .cc-visual { width:100%; max-width:300px; height:auto; aspect-ratio:1.6/1; padding:1rem 1.2rem; margin:0 auto 1rem; }
+      .cc-name { font-size:0.78rem; }
+      .cc-issuer { font-size:0.6rem; }
+      .cc-dots { font-size:0.7rem; }
+
+      .card-rank { width:32px; height:32px; font-size:0.9rem; top:1rem; right:1rem; }
+      .card-badge { font-size:0.6rem; margin-bottom:0.7rem; }
+      .card-name { font-size:1.1rem; }
+      .card-issuer { font-size:0.8rem; margin-bottom:0.8rem; }
+
+      .card-highlights { grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:1rem; }
+      .highlight { padding:0.6rem; }
+      .highlight-value { font-size:1rem; }
+      .highlight-label { font-size:0.55rem; }
+
+      .card-reason { padding:0.8rem; margin-bottom:0.8rem; }
+      .card-reason strong { font-size:0.75rem; }
+      .card-reason p { font-size:0.82rem; }
+
+      .pro-tag { font-size:0.65rem; padding:0.25rem 0.6rem; }
+
+      /* Comparison table scrollable on mobile */
+      .comparison-table { font-size:0.7rem; }
+      .comparison-table th, .comparison-table td { padding:0.4rem 0.5rem; white-space:nowrap; }
+
+      .disclaimer { font-size:0.72rem; padding:1rem; }
+      .restart-section { margin:2rem 0; }
+    }
+
+    /* Extra small phones */
+    @media (max-width:380px) {
+      .page-header { padding:5rem 1rem 0.8rem; }
+      .page-header h1 { font-size:1.4rem; }
+      .wizard { padding:0 1rem; }
+      .options-grid { gap:0.5rem; }
+      .option-card { padding:0.8rem 1rem; }
+      .option-card .icon { font-size:1.3rem; }
+      .option-card h3 { font-size:0.88rem; }
+      .btn { padding:0.8rem 1.4rem; font-size:0.72rem; }
+      .cc-visual { max-width:260px; }
     }
   </style>
 </head>
@@ -1279,27 +1357,26 @@
         `;
       });
 
-      // Comparison table
+      // Comparison table (top 3 only for readability)
+      const tableCards = top5.slice(0, 3);
       html += `
-        <h3 style="font-family:var(--font-display);font-size:1.4rem;margin:2rem 0 1rem;">Side-by-Side Comparison</h3>
-        <div style="overflow-x:auto;">
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;margin:2rem 0 1rem;">Top 3 Comparison</h3>
+        <div class="comparison-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
         <table class="comparison-table">
           <thead>
             <tr>
               <th>Feature</th>
-              ${top5.map((c,i) => `<th>${i === 0 ? '🏆 ' : ''}${c.name.split(' ').slice(0,3).join(' ')}</th>`).join('')}
+              ${tableCards.map((c,i) => `<th>${i === 0 ? '🏆 ' : ''}${c.name.split(' ').slice(0,3).join(' ')}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
-            <tr><td>Annual Fee</td>${top5.map(c => `<td${c.annualFee === Math.min(...top5.map(x=>x.annualFee)) ? ' class="winner"' : ''}>${c.annualFee === 0 ? '$0' : '$'+c.annualFee}</td>`).join('')}</tr>
-            <tr><td>Interest Rate</td>${top5.map(c => `<td${c.interestRate === Math.min(...top5.map(x=>x.interestRate)) ? ' class="winner"' : ''}>${c.interestRate}%</td>`).join('')}</tr>
-            <tr><td>Best Reward Rate</td>${top5.map(c => `<td${c.cashbackBonus === Math.max(...top5.map(x=>x.cashbackBonus)) ? ' class="winner"' : ''}>${c.cashbackBonus > 0 ? c.cashbackBonus + '%' : 'N/A'}</td>`).join('')}</tr>
-            <tr><td>Base Reward Rate</td>${top5.map(c => `<td>${c.cashbackBase > 0 ? c.cashbackBase + '%' : 'N/A'}</td>`).join('')}</tr>
-            <tr><td>Reward Type</td>${top5.map(c => `<td>${c.rewardType === 'none' ? 'Low interest' : c.rewardType}</td>`).join('')}</tr>
-            <tr><td>Min. Credit</td>${top5.map(c => `<td>${c.minCredit.charAt(0).toUpperCase() + c.minCredit.slice(1)}</td>`).join('')}</tr>
-            <tr><td>Insurance</td>${top5.map(c => `<td>${c.insurances.length > 0 ? c.insurances.length + ' coverages' : 'None'}</td>`).join('')}</tr>
-            <tr><td>Welcome Bonus</td>${top5.map(c => `<td>${c.welcomeBonus ? '✓' : '✗'}</td>`).join('')}</tr>
-            <tr><td>Match Score</td>${top5.map((c,i) => `<td${i===0?' class="winner"':''}>${Math.round(c.score)}/100</td>`).join('')}</tr>
+            <tr><td>Annual Fee</td>${tableCards.map(c => `<td${c.annualFee === Math.min(...tableCards.map(x=>x.annualFee)) ? ' class="winner"' : ''}>${c.annualFee === 0 ? '$0' : '$'+c.annualFee}</td>`).join('')}</tr>
+            <tr><td>Interest Rate</td>${tableCards.map(c => `<td${c.interestRate === Math.min(...tableCards.map(x=>x.interestRate)) ? ' class="winner"' : ''}>${c.interestRate}%</td>`).join('')}</tr>
+            <tr><td>Best Rate</td>${tableCards.map(c => `<td${c.cashbackBonus === Math.max(...tableCards.map(x=>x.cashbackBonus)) ? ' class="winner"' : ''}>${c.cashbackBonus > 0 ? c.cashbackBonus + '%' : 'N/A'}</td>`).join('')}</tr>
+            <tr><td>Type</td>${tableCards.map(c => `<td>${c.rewardType === 'none' ? 'Low rate' : c.rewardType}</td>`).join('')}</tr>
+            <tr><td>Credit</td>${tableCards.map(c => `<td>${c.minCredit.charAt(0).toUpperCase() + c.minCredit.slice(1)}</td>`).join('')}</tr>
+            <tr><td>Insurance</td>${tableCards.map(c => `<td>${c.insurances.length > 0 ? c.insurances.length + ' types' : 'None'}</td>`).join('')}</tr>
+            <tr><td>Score</td>${tableCards.map((c,i) => `<td${i===0?' class="winner"':''}>${Math.round(c.score)}/100</td>`).join('')}</tr>
           </tbody>
         </table>
         </div>

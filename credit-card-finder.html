@@ -114,6 +114,37 @@
     .recommendation-card.rank-2 { border-color:var(--silver); }
     .recommendation-card.rank-3 { border-color:var(--bronze); }
 
+    /* Credit card visual */
+    .cc-visual {
+      width:280px; height:176px; border-radius:14px; padding:1.2rem 1.4rem;
+      display:flex; flex-direction:column; justify-content:space-between;
+      position:relative; overflow:hidden; margin-bottom:1.2rem;
+      box-shadow:0 8px 30px rgba(0,0,0,0.4);
+      font-family:var(--font-body);
+    }
+    .cc-visual::before {
+      content:''; position:absolute; top:-30%; right:-20%;
+      width:60%; height:120%; border-radius:50%;
+      background:rgba(255,255,255,0.07);
+    }
+    .cc-chip {
+      width:36px; height:28px; border-radius:5px;
+      background:linear-gradient(135deg, #e8c547 0%, #c9a628 50%, #e8c547 100%);
+      border:1px solid rgba(0,0,0,0.15);
+    }
+    .cc-chip-lines { width:100%; height:100%; opacity:0.3;
+      background:repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0,0,0,0.2) 6px, rgba(0,0,0,0.2) 7px);
+    }
+    .cc-network { position:absolute; top:1.2rem; right:1.4rem; font-size:0.7rem;
+      font-weight:700; letter-spacing:0.05em; color:rgba(255,255,255,0.8); text-transform:uppercase; }
+    .cc-name { font-size:0.85rem; font-weight:600; color:rgba(255,255,255,0.95); letter-spacing:0.02em; }
+    .cc-issuer { font-size:0.65rem; color:rgba(255,255,255,0.55); letter-spacing:0.04em; }
+    .cc-dots { font-family:var(--font-mono); font-size:0.8rem; color:rgba(255,255,255,0.5); letter-spacing:0.2em; }
+
+    @media (max-width:768px) {
+      .cc-visual { width:240px; height:152px; padding:1rem 1.2rem; }
+    }
+
     .card-rank {
       position:absolute; top:1.5rem; right:1.5rem;
       width:40px; height:40px; border-radius:50%;
@@ -379,6 +410,7 @@
     const cards = [
       {
         id: 'tangerine', name: 'Tangerine Money-Back Credit Card', issuer: 'Tangerine (Scotiabank)',
+        network: 'Mastercard', cardGradient: 'linear-gradient(135deg, #f58220 0%, #e85d04 100%)',
         annualFee: 0, interestRate: 19.95, rewardType: 'cashback',
         cashbackBase: 0.5, cashbackBonus: 2, bonusCategories: ['groceries','dining','gas','bills','entertainment','online'],
         bonusCategoryCount: 3, welcomeBonus: '10% cashback for first 2 months (up to $100)',
@@ -389,6 +421,7 @@
       },
       {
         id: 'cobalt', name: 'American Express Cobalt Card', issuer: 'American Express Canada',
+        network: 'Amex', cardGradient: 'linear-gradient(135deg, #2e3192 0%, #1bbbec 100%)',
         annualFee: 156, interestRate: 22.99, rewardType: 'points',
         cashbackBase: 1, cashbackBonus: 5, bonusCategories: ['dining','groceries'],
         bonusCategoryCount: 2, welcomeBonus: 'Up to 30,000 MR points in first year',
@@ -399,6 +432,7 @@
       },
       {
         id: 'rogers_we', name: 'Rogers World Elite Mastercard', issuer: 'Rogers Bank',
+        network: 'Mastercard', cardGradient: 'linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%)',
         annualFee: 0, interestRate: 19.99, rewardType: 'cashback',
         cashbackBase: 1.5, cashbackBonus: 3, bonusCategories: ['online'],
         bonusCategoryCount: 1, welcomeBonus: 'Earn $25 in cashback after first purchase',
@@ -409,6 +443,7 @@
       },
       {
         id: 'scotiabank_gold', name: 'Scotiabank Gold American Express', issuer: 'Scotiabank',
+        network: 'Amex', cardGradient: 'linear-gradient(135deg, #c9a628 0%, #96751a 100%)',
         annualFee: 120, interestRate: 20.99, rewardType: 'points',
         cashbackBase: 1, cashbackBonus: 5, bonusCategories: ['groceries','dining','entertainment'],
         bonusCategoryCount: 3, welcomeBonus: 'Up to 40,000 Scene+ points ($400 value)',
@@ -419,6 +454,7 @@
       },
       {
         id: 'cibc_dividend', name: 'CIBC Dividend Visa Infinite', issuer: 'CIBC',
+        network: 'Visa', cardGradient: 'linear-gradient(135deg, #8b0000 0%, #4a0000 100%)',
         annualFee: 99, interestRate: 20.99, rewardType: 'cashback',
         cashbackBase: 1, cashbackBonus: 4, bonusCategories: ['groceries','gas','bills'],
         bonusCategoryCount: 3, welcomeBonus: '10% cashback for first 4 statement periods (up to $400)',
@@ -429,6 +465,7 @@
       },
       {
         id: 'td_cashback_vi', name: 'TD Cash Back Visa Infinite', issuer: 'TD Bank',
+        network: 'Visa', cardGradient: 'linear-gradient(135deg, #008a4b 0%, #005a2e 100%)',
         annualFee: 89, interestRate: 20.99, rewardType: 'cashback',
         cashbackBase: 1, cashbackBonus: 3, bonusCategories: ['groceries','gas','bills'],
         bonusCategoryCount: 3, welcomeBonus: 'Up to 6% cashback for first 3 months',
@@ -439,6 +476,7 @@
       },
       {
         id: 'simplii_cashback', name: 'Simplii Financial Cash Back Visa', issuer: 'Simplii Financial (CIBC)',
+        network: 'Visa', cardGradient: 'linear-gradient(135deg, #e04e1a 0%, #b33510 100%)',
         annualFee: 0, interestRate: 19.99, rewardType: 'cashback',
         cashbackBase: 0.5, cashbackBonus: 4, bonusCategories: ['dining'],
         bonusCategoryCount: 1, welcomeBonus: '10% cashback on first $4,000 spend (up to $400)',
@@ -449,6 +487,7 @@
       },
       {
         id: 'bmo_cashback', name: 'BMO CashBack Mastercard', issuer: 'BMO',
+        network: 'Mastercard', cardGradient: 'linear-gradient(135deg, #0075be 0%, #003f6b 100%)',
         annualFee: 0, interestRate: 20.99, rewardType: 'cashback',
         cashbackBase: 0.5, cashbackBonus: 3, bonusCategories: ['groceries'],
         bonusCategoryCount: 1, welcomeBonus: '5% cashback on first $2,000 (up to $100)',
@@ -459,6 +498,7 @@
       },
       {
         id: 'td_low_rate', name: 'TD Emerald Flex Rate Visa', issuer: 'TD Bank',
+        network: 'Visa', cardGradient: 'linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%)',
         annualFee: 0, interestRate: 8.99, rewardType: 'none',
         cashbackBase: 0, cashbackBonus: 0, bonusCategories: [],
         bonusCategoryCount: 0, welcomeBonus: 'Low rate from day one — save on interest',
@@ -469,6 +509,7 @@
       },
       {
         id: 'mbna_true_line', name: 'MBNA True Line Mastercard', issuer: 'MBNA (TD)',
+        network: 'Mastercard', cardGradient: 'linear-gradient(135deg, #2c3e50 0%, #1a252f 100%)',
         annualFee: 0, interestRate: 12.99, rewardType: 'none',
         cashbackBase: 0, cashbackBonus: 0, bonusCategories: [],
         bonusCategoryCount: 0, welcomeBonus: '0% intro APR for 12 months on balance transfers',
@@ -479,6 +520,7 @@
       },
       {
         id: 'td_aeroplan_vi', name: 'TD Aeroplan Visa Infinite', issuer: 'TD Bank',
+        network: 'Visa', cardGradient: 'linear-gradient(135deg, #1a3a4a 0%, #0d1f2d 100%)',
         annualFee: 139, interestRate: 20.99, rewardType: 'points',
         cashbackBase: 1, cashbackBonus: 3, bonusCategories: ['travel','gas'],
         bonusCategoryCount: 2, welcomeBonus: 'Up to 40,000 Aeroplan points + buddy pass',
@@ -489,6 +531,7 @@
       },
       {
         id: 'neo_secured', name: 'Neo Secured Credit Card', issuer: 'Neo Financial',
+        network: 'Mastercard', cardGradient: 'linear-gradient(135deg, #6c3fa0 0%, #3d1d6b 100%)',
         annualFee: 0, interestRate: 19.99, rewardType: 'cashback',
         cashbackBase: 0.5, cashbackBonus: 5, bonusCategories: ['dining','online'],
         bonusCategoryCount: 2, welcomeBonus: 'Up to 15% cashback at Neo partners',
@@ -590,6 +633,19 @@
           <div class="recommendation-card rank-${i+1}">
             <div class="card-rank">${i+1}</div>
             <div class="card-badge">${rankLabels[i]}</div>
+
+            <div class="cc-visual" style="background:${card.cardGradient || 'linear-gradient(135deg,#333 0%,#111 100%)'}">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <div class="cc-chip"><div class="cc-chip-lines"></div></div>
+                <div class="cc-network">${card.network || ''}</div>
+              </div>
+              <div class="cc-dots">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
+              <div>
+                <div class="cc-name">${card.name}</div>
+                <div class="cc-issuer">${card.issuer}</div>
+              </div>
+            </div>
+
             <div class="card-name">${card.name}</div>
             <div class="card-issuer">${card.issuer}</div>
 

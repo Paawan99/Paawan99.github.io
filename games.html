@@ -154,6 +154,7 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       display: block;
+      touch-action: none;
     }
 
     /* ========== 2048 GAME ========== */
@@ -553,6 +554,7 @@
       if (!snakeRunning) return;
       const dx = e.changedTouches[0].clientX - touchStartX;
       const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
       if (Math.abs(dx) > Math.abs(dy)) {
         const nd = dx > 0 ? {x:1,y:0} : {x:-1,y:0};
         if (!(nd.x === -direction.x)) nextDir = nd;
@@ -561,6 +563,9 @@
         if (!(nd.y === -direction.y)) nextDir = nd;
       }
     });
+
+    // Prevent page scrolling while swiping on snake canvas
+    snakeCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false });
 
     // Init snake display
     startSnake();
@@ -668,6 +673,7 @@
     // Touch for 2048
     const game2048El = document.getElementById('game2048');
     let t2StartX, t2StartY;
+    game2048El.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false });
     game2048El.addEventListener('touchstart', (e) => {
       t2StartX = e.touches[0].clientX;
       t2StartY = e.touches[0].clientY;

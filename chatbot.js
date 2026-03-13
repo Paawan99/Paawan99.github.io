@@ -9,7 +9,7 @@
 const css = document.createElement('style');
 css.textContent = `
 /* ═══ CHATBOT TRIGGER ═══ */
-.cb-trigger{position:fixed;bottom:24px;right:24px;z-index:9999;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 25px rgba(108,92,231,0.45);transition:all .3s cubic-bezier(.16,1,.3,1);font-size:26px;line-height:1}
+.cb-trigger{position:fixed;bottom:24px;right:24px;z-index:9999;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 25px rgba(108,92,231,0.45);transition:all .3s cubic-bezier(.16,1,.3,1);font-size:26px;line-height:1;overflow:visible}
 .cb-trigger:hover{transform:scale(1.1);box-shadow:0 8px 35px rgba(108,92,231,0.6)}
 .cb-trigger.open{transform:scale(0.9) rotate(90deg);opacity:0;pointer-events:none}
 .cb-trigger .cb-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;background:#00e676;border-radius:50%;border:2px solid #0a0a0b;animation:cb-pulse 2s infinite}
@@ -76,14 +76,46 @@ document.head.appendChild(css);
 const trigger = document.createElement('button');
 trigger.className = 'cb-trigger';
 trigger.setAttribute('aria-label','Open chat assistant');
-trigger.innerHTML = '💬<span class="cb-badge"></span>';
+trigger.innerHTML = `<svg viewBox="0 0 100 100" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hat brim -->
+  <ellipse cx="50" cy="32" rx="40" ry="8" fill="#3a2f5c"/>
+  <!-- Hat top -->
+  <path d="M28 32 C28 32 30 8 50 8 C70 8 72 32 72 32" fill="#4a3d6e"/>
+  <rect x="28" y="28" width="44" height="6" rx="3" fill="#3a2f5c"/>
+  <!-- Hat band -->
+  <rect x="28" y="30" width="44" height="4" rx="2" fill="#a855f7"/>
+  <!-- Face -->
+  <circle cx="50" cy="58" r="26" fill="#f5deb3"/>
+  <!-- Glasses bridge -->
+  <rect x="44" y="52" width="12" height="2.5" rx="1" fill="#2a2a4a"/>
+  <!-- Left lens -->
+  <circle cx="38" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/>
+  <circle cx="38" cy="54" r="8" fill="rgba(168,85,247,0.12)"/>
+  <!-- Right lens -->
+  <circle cx="62" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/>
+  <circle cx="62" cy="54" r="8" fill="rgba(168,85,247,0.12)"/>
+  <!-- Glasses arms -->
+  <line x1="28" y1="54" x2="20" y2="52" stroke="#2a2a4a" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="72" y1="54" x2="80" y2="52" stroke="#2a2a4a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Eyes behind glasses -->
+  <circle cx="38" cy="55" r="3" fill="#2a2a4a"/>
+  <circle cx="39" cy="54" r="1" fill="#fff"/>
+  <circle cx="62" cy="55" r="3" fill="#2a2a4a"/>
+  <circle cx="63" cy="54" r="1" fill="#fff"/>
+  <!-- Smile -->
+  <path d="M42 66 Q50 73 58 66" stroke="#c0855a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Magnifying glass -->
+  <circle cx="82" cy="78" r="9" fill="none" stroke="#c4b5fd" stroke-width="3"/>
+  <circle cx="82" cy="78" r="6" fill="rgba(168,85,247,0.15)"/>
+  <line x1="89" y1="85" x2="96" y2="94" stroke="#c4b5fd" stroke-width="3.5" stroke-linecap="round"/>
+</svg><span class="cb-badge"></span>`;
 document.body.appendChild(trigger);
 
 const panel = document.createElement('div');
 panel.className = 'cb-panel';
 panel.innerHTML = `
 <div class="cb-head">
-  <div class="cb-avatar">🤖</div>
+  <div class="cb-avatar"><svg viewBox="0 0 100 100" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="32" rx="40" ry="8" fill="rgba(255,255,255,0.25)"/><path d="M28 32 C28 32 30 8 50 8 C70 8 72 32 72 32" fill="rgba(255,255,255,0.35)"/><rect x="28" y="28" width="44" height="6" rx="3" fill="rgba(255,255,255,0.25)"/><rect x="28" y="30" width="44" height="4" rx="2" fill="#fff"/><circle cx="50" cy="58" r="26" fill="#f5deb3"/><rect x="44" y="52" width="12" height="2.5" rx="1" fill="#2a2a4a"/><circle cx="38" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/><circle cx="38" cy="54" r="8" fill="rgba(255,255,255,0.15)"/><circle cx="62" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/><circle cx="62" cy="54" r="8" fill="rgba(255,255,255,0.15)"/><circle cx="38" cy="55" r="3" fill="#2a2a4a"/><circle cx="39" cy="54" r="1" fill="#fff"/><circle cx="62" cy="55" r="3" fill="#2a2a4a"/><circle cx="63" cy="54" r="1" fill="#fff"/><path d="M42 66 Q50 73 58 66" stroke="#c0855a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div>
   <div class="cb-head-info">
     <h2>Paawan's Assistant</h2>
     <p>● online &middot; here to help</p>

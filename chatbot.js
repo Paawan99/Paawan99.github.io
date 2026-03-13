@@ -1,6 +1,7 @@
 /* ============================================
    PAAWAN SHAH — CHATBOT WIDGET
    Floating AI assistant for site navigation
+   Roaming puppy-style movement
    ============================================ */
 (function(){
 'use strict';
@@ -9,14 +10,26 @@
 const css = document.createElement('style');
 css.textContent = `
 /* ═══ CHATBOT TRIGGER ═══ */
-.cb-trigger{position:fixed;bottom:24px;right:24px;z-index:9999;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 25px rgba(108,92,231,0.45);transition:all .3s cubic-bezier(.16,1,.3,1);font-size:26px;line-height:1;overflow:visible}
-.cb-trigger:hover{transform:scale(1.1);box-shadow:0 8px 35px rgba(108,92,231,0.6)}
-.cb-trigger.open{transform:scale(0.9) rotate(90deg);opacity:0;pointer-events:none}
-.cb-trigger .cb-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;background:#00e676;border-radius:50%;border:2px solid #0a0a0b;animation:cb-pulse 2s infinite}
-@keyframes cb-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-/* nudge animation */
-.cb-trigger:not(.open){animation:cb-nudge 3s ease-in-out infinite 5s}
-@keyframes cb-nudge{0%,100%{transform:translateY(0)}15%{transform:translateY(-8px)}30%{transform:translateY(0)}45%{transform:translateY(-5px)}60%{transform:translateY(0)}}
+.cb-trigger{position:fixed;z-index:9999;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 25px rgba(108,92,231,0.45);font-size:26px;line-height:1;overflow:visible;
+  /* start bottom-right */
+  bottom:24px;right:24px;
+  /* smooth roaming movement */
+  transition:bottom 2.8s cubic-bezier(.25,.46,.45,.94),right 2.8s cubic-bezier(.25,.46,.45,.94),left 2.8s cubic-bezier(.25,.46,.45,.94),top 2.8s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s ease,opacity .3s ease}
+.cb-trigger:hover{transform:scale(1.15) !important;box-shadow:0 8px 35px rgba(108,92,231,0.65)}
+.cb-trigger.open{transform:scale(0) !important;opacity:0;pointer-events:none}
+.cb-trigger .cb-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:#00e676;border-radius:50%;border:2px solid #0a0a0b;animation:cb-pulse 2s infinite}
+@keyframes cb-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+/* little hop while roaming */
+.cb-trigger.roaming{animation:cb-hop 0.6s ease-in-out infinite}
+@keyframes cb-hop{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-6px) rotate(-3deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-4px) rotate(3deg)}}
+/* idle wiggle when stopped */
+.cb-trigger.idle:not(.open):not(:hover){animation:cb-wiggle 3s ease-in-out infinite}
+@keyframes cb-wiggle{0%,100%{transform:rotate(0deg)}10%{transform:rotate(-8deg)}20%{transform:rotate(8deg)}30%{transform:rotate(-5deg)}40%{transform:rotate(5deg)}50%,100%{transform:rotate(0deg)}}
+
+/* speech bubble tail on the icon */
+.cb-tail{position:absolute;bottom:-6px;right:4px;width:14px;height:14px;overflow:hidden}
+.cb-tail::before{content:'';display:block;width:14px;height:14px;background:linear-gradient(135deg,#6c5ce7,#a855f7);border-radius:0 0 0 10px;transform:rotate(0deg)}
 
 /* ═══ CHATBOT PANEL ═══ */
 .cb-panel{position:fixed;bottom:24px;right:24px;z-index:10000;width:380px;height:560px;background:#12122a;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 40px rgba(108,92,231,0.12);border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;overflow:hidden;transform:scale(0.4) translateY(40px);opacity:0;pointer-events:none;transform-origin:bottom right;transition:all .35s cubic-bezier(.16,1,.3,1)}
@@ -24,7 +37,7 @@ css.textContent = `
 
 /* header */
 .cb-head{background:linear-gradient(135deg,#6c5ce7,#a855f7);padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.cb-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;backdrop-filter:blur(8px)}
+.cb-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(8px)}
 .cb-head-info h2{color:#fff;font-size:15px;font-weight:700;font-family:'Outfit',sans-serif;margin:0}
 .cb-head-info p{color:rgba(255,255,255,0.7);font-size:11px;margin:2px 0 0;font-family:'JetBrains Mono',monospace}
 .cb-close{margin-left:auto;background:rgba(255,255,255,0.15);border:none;width:32px;height:32px;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
@@ -67,47 +80,20 @@ css.textContent = `
 /* mobile */
 @media(max-width:500px){
   .cb-panel{bottom:0;right:0;left:0;width:100%;height:100%;border-radius:0;max-height:100dvh}
-  .cb-trigger{bottom:16px;right:16px;width:54px;height:54px;font-size:22px}
+  .cb-trigger{width:54px;height:54px;font-size:22px}
 }
 `;
 document.head.appendChild(css);
 
 // ─── Inject HTML ───
 const trigger = document.createElement('button');
-trigger.className = 'cb-trigger';
+trigger.className = 'cb-trigger idle';
 trigger.setAttribute('aria-label','Open chat assistant');
-trigger.innerHTML = `<svg viewBox="0 0 100 100" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Hat brim -->
-  <ellipse cx="50" cy="32" rx="40" ry="8" fill="#3a2f5c"/>
-  <!-- Hat top -->
-  <path d="M28 32 C28 32 30 8 50 8 C70 8 72 32 72 32" fill="#4a3d6e"/>
-  <rect x="28" y="28" width="44" height="6" rx="3" fill="#3a2f5c"/>
-  <!-- Hat band -->
-  <rect x="28" y="30" width="44" height="4" rx="2" fill="#a855f7"/>
-  <!-- Face -->
-  <circle cx="50" cy="58" r="26" fill="#f5deb3"/>
-  <!-- Glasses bridge -->
-  <rect x="44" y="52" width="12" height="2.5" rx="1" fill="#2a2a4a"/>
-  <!-- Left lens -->
-  <circle cx="38" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/>
-  <circle cx="38" cy="54" r="8" fill="rgba(168,85,247,0.12)"/>
-  <!-- Right lens -->
-  <circle cx="62" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/>
-  <circle cx="62" cy="54" r="8" fill="rgba(168,85,247,0.12)"/>
-  <!-- Glasses arms -->
-  <line x1="28" y1="54" x2="20" y2="52" stroke="#2a2a4a" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="72" y1="54" x2="80" y2="52" stroke="#2a2a4a" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Eyes behind glasses -->
-  <circle cx="38" cy="55" r="3" fill="#2a2a4a"/>
-  <circle cx="39" cy="54" r="1" fill="#fff"/>
-  <circle cx="62" cy="55" r="3" fill="#2a2a4a"/>
-  <circle cx="63" cy="54" r="1" fill="#fff"/>
-  <!-- Smile -->
-  <path d="M42 66 Q50 73 58 66" stroke="#c0855a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <!-- Magnifying glass -->
-  <circle cx="82" cy="78" r="9" fill="none" stroke="#c4b5fd" stroke-width="3"/>
-  <circle cx="82" cy="78" r="6" fill="rgba(168,85,247,0.15)"/>
-  <line x1="89" y1="85" x2="96" y2="94" stroke="#c4b5fd" stroke-width="3.5" stroke-linecap="round"/>
+trigger.innerHTML = `<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  <circle cx="9.5" cy="11.5" r="0.8" fill="#fff" stroke="none"/>
+  <circle cx="12" cy="11.5" r="0.8" fill="#fff" stroke="none"/>
+  <circle cx="14.5" cy="11.5" r="0.8" fill="#fff" stroke="none"/>
 </svg><span class="cb-badge"></span>`;
 document.body.appendChild(trigger);
 
@@ -115,7 +101,7 @@ const panel = document.createElement('div');
 panel.className = 'cb-panel';
 panel.innerHTML = `
 <div class="cb-head">
-  <div class="cb-avatar"><svg viewBox="0 0 100 100" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="32" rx="40" ry="8" fill="rgba(255,255,255,0.25)"/><path d="M28 32 C28 32 30 8 50 8 C70 8 72 32 72 32" fill="rgba(255,255,255,0.35)"/><rect x="28" y="28" width="44" height="6" rx="3" fill="rgba(255,255,255,0.25)"/><rect x="28" y="30" width="44" height="4" rx="2" fill="#fff"/><circle cx="50" cy="58" r="26" fill="#f5deb3"/><rect x="44" y="52" width="12" height="2.5" rx="1" fill="#2a2a4a"/><circle cx="38" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/><circle cx="38" cy="54" r="8" fill="rgba(255,255,255,0.15)"/><circle cx="62" cy="54" r="10" fill="none" stroke="#2a2a4a" stroke-width="3"/><circle cx="62" cy="54" r="8" fill="rgba(255,255,255,0.15)"/><circle cx="38" cy="55" r="3" fill="#2a2a4a"/><circle cx="39" cy="54" r="1" fill="#fff"/><circle cx="62" cy="55" r="3" fill="#2a2a4a"/><circle cx="63" cy="54" r="1" fill="#fff"/><path d="M42 66 Q50 73 58 66" stroke="#c0855a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div>
+  <div class="cb-avatar">💬</div>
   <div class="cb-head-info">
     <h2>Paawan's Assistant</h2>
     <p>● online &middot; here to help</p>
@@ -128,18 +114,141 @@ document.body.appendChild(panel);
 
 const body = document.getElementById('cbBody');
 
+// ─── ROAMING ENGINE (puppy-style) ───
+let roamInterval = null;
+let isHovering = false;
+let chatOpen = false;
+const SIZE = 62; // button size
+const PAD = 12;  // edge padding
+
+// Predefined "spots" the puppy likes to visit (percentages of viewport)
+// It wanders along edges and sometimes ventures to mid-screen
+const spots = [
+  { side:'br' }, // bottom-right (home)
+  { side:'bl' }, // bottom-left
+  { side:'tr' }, // top-right
+  { side:'tl' }, // top-left
+  { side:'rm' }, // right-middle
+  { side:'lm' }, // left-middle
+  { side:'bm' }, // bottom-middle
+  { side:'tm' }, // top-middle
+];
+
+function getSpotPosition(spot) {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  // Add a little randomness so it's not perfectly robotic
+  const jitterX = Math.round((Math.random() - 0.5) * 40);
+  const jitterY = Math.round((Math.random() - 0.5) * 40);
+
+  switch(spot.side) {
+    case 'br': return { bottom: PAD + jitterY, right: PAD + jitterX };
+    case 'bl': return { bottom: PAD + jitterY, left: PAD + Math.abs(jitterX) };
+    case 'tr': return { top: PAD + Math.abs(jitterY), right: PAD + jitterX };
+    case 'tl': return { top: PAD + Math.abs(jitterY), left: PAD + Math.abs(jitterX) };
+    case 'rm': return { top: Math.round(vh * 0.4) + jitterY, right: PAD + jitterX };
+    case 'lm': return { top: Math.round(vh * 0.4) + jitterY, left: PAD + Math.abs(jitterX) };
+    case 'bm': return { bottom: PAD + Math.abs(jitterY), left: Math.round(vw * 0.45) + jitterX };
+    case 'tm': return { top: PAD + Math.abs(jitterY), left: Math.round(vw * 0.45) + jitterX };
+    default:   return { bottom: PAD, right: PAD };
+  }
+}
+
+let lastSpotIdx = 0; // start at bottom-right
+
+function roamToNext() {
+  if (isHovering || chatOpen) return;
+
+  // Pick a random spot that isn't the current one
+  let nextIdx;
+  do { nextIdx = Math.floor(Math.random() * spots.length); } while (nextIdx === lastSpotIdx);
+  lastSpotIdx = nextIdx;
+
+  const pos = getSpotPosition(spots[nextIdx]);
+
+  // Start hopping animation
+  trigger.classList.remove('idle');
+  trigger.classList.add('roaming');
+
+  // Clear all positional props first, then set new ones
+  trigger.style.top = '';
+  trigger.style.bottom = '';
+  trigger.style.left = '';
+  trigger.style.right = '';
+
+  // Apply new position
+  Object.keys(pos).forEach(k => {
+    trigger.style[k] = Math.max(PAD, pos[k]) + 'px';
+  });
+
+  // Stop hopping after arriving
+  setTimeout(() => {
+    trigger.classList.remove('roaming');
+    trigger.classList.add('idle');
+  }, 2800); // matches CSS transition duration
+}
+
+function startRoaming() {
+  // Wait a bit before first roam, then every 4-7 seconds
+  setTimeout(() => {
+    if (!chatOpen) roamToNext();
+    roamInterval = setInterval(() => {
+      roamToNext();
+    }, 4000 + Math.random() * 3000);
+  }, 3000);
+}
+
+function stopRoaming() {
+  if (roamInterval) { clearInterval(roamInterval); roamInterval = null; }
+  trigger.classList.remove('roaming');
+}
+
+function returnHome() {
+  // Glide back to bottom-right
+  trigger.style.top = '';
+  trigger.style.left = '';
+  trigger.style.bottom = '24px';
+  trigger.style.right = '24px';
+  lastSpotIdx = 0;
+}
+
+// Pause on hover
+trigger.addEventListener('mouseenter', () => {
+  isHovering = true;
+  trigger.classList.remove('roaming','idle');
+});
+trigger.addEventListener('mouseleave', () => {
+  isHovering = false;
+  if (!chatOpen) trigger.classList.add('idle');
+});
+
+// Start roaming on load
+startRoaming();
+
 // ─── Open / Close ───
 trigger.addEventListener('click', () => { openChat(); });
 panel.querySelector('.cb-close').addEventListener('click', () => { closeChat(); });
 
 function openChat(){
+  chatOpen = true;
+  stopRoaming();
+  returnHome();
   trigger.classList.add('open');
+  trigger.classList.remove('idle','roaming');
   panel.classList.add('open');
   if(!body.hasChildNodes()) boot();
 }
 function closeChat(){
+  chatOpen = false;
   trigger.classList.remove('open');
   panel.classList.remove('open');
+  // Resume roaming after a pause
+  setTimeout(() => {
+    if(!chatOpen){
+      trigger.classList.add('idle');
+      startRoaming();
+    }
+  }, 1500);
 }
 
 // ─── Conversation Tree ───

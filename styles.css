@@ -29,6 +29,8 @@
     --amber-dim: rgba(255, 159, 10, 0.15);
     --rose: #ff375f;
     --rose-dim: rgba(255, 55, 95, 0.15);
+    --teal: #00d4aa;
+    --teal-dim: rgba(0, 212, 170, 0.15);
 
     --radius: 20px;
     --radius-sm: 12px;
@@ -328,6 +330,10 @@ a {
     background: var(--rose);
 }
 
+.bg-orb.teal {
+    background: var(--teal);
+}
+
 @keyframes orb-float {
     0% {
         transform: translate(0, 0) scale(1);
@@ -470,6 +476,10 @@ a {
 
 .hub-option[data-color="rose"] .option-icon svg {
     stroke: var(--rose);
+}
+
+.hub-option[data-color="teal"] .option-icon svg {
+    stroke: var(--teal);
 }
 
 .option-text-group {

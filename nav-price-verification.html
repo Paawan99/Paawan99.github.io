@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML-Powered NAV Price Verification — Paawan Shah</title>
+  <meta name="description" content="AI-augmented NAV pipeline tool with dual anomaly detection, yield curve pricing, DCF valuation, and multi-currency support." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #16161a;
+      --bg-card-hover: #1c1c21;
+      --text-primary: #ececf1;
+      --text-secondary: #8b8b96;
+      --text-muted: #56565e;
+      --accent: #00d4aa;
+      --accent-dim: rgba(0, 212, 170, 0.1);
+      --accent-glow: rgba(0, 212, 170, 0.15);
+      --accent-secondary: #2997ff;
+      --red: #e74c3c;
+      --green: #2ecc71;
+      --amber: #ff9f0a;
+      --purple: #9b59b6;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 255, 255, 0.12);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'General Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: var(--bg-primary); }
+    a { color: inherit; text-decoration: none; }
+
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.4; pointer-events: none; z-index: -1;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 10, 11, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      font-family: var(--font-mono); font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-secondary); transition: color 0.3s ease;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    .page-header {
+      padding: 7rem 2rem 2rem;
+      max-width: 1400px; margin: 0 auto;
+      text-align: center;
+    }
+    .page-header .tag {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent); border: 1px solid var(--accent);
+      padding: 0.3rem 1rem; border-radius: 99px;
+      margin-bottom: 1.5rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15; margin-bottom: 0.8rem;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-header p {
+      color: var(--text-secondary); font-size: 0.95rem;
+      max-width: 700px; margin: 0 auto;
+    }
+
+    /* KPI Cards */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1400px; margin: 1.5rem auto;
+      padding: 0 2rem;
+    }
+    .kpi-card {
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px; text-align: center;
+      border: 1px solid var(--border);
+    }
+    .kpi-card.blue { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); }
+    .kpi-card.red { background: linear-gradient(135deg, #5f1e1e 0%, #872d2d 100%); }
+    .kpi-card.purple { background: linear-gradient(135deg, #3a1e5f 0%, #5a2d87 100%); }
+    .kpi-card.green { background: linear-gradient(135deg, #1e5f3a 0%, #2d874a 100%); }
+    .kpi-card h4 { font-size: 0.75rem; opacity: 0.8; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .kpi-card .kpi-val { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; }
+
+    /* Tabs */
+    .tab-bar {
+      display: flex; gap: 0; overflow-x: auto;
+      max-width: 1400px; margin: 2rem auto 0;
+      padding: 0 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-btn {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--text-muted); background: none; border: none;
+      padding: 0.8rem 1.2rem; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap; transition: all 0.3s;
+    }
+    .tab-btn:hover { color: var(--text-secondary); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-panel {
+      display: none;
+      max-width: 1400px; margin: 0 auto;
+      padding: 2rem;
+      animation: fadeIn 0.4s ease;
+    }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .chart-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.2rem; overflow: hidden;
+    }
+    .chart-box.full { grid-column: 1 / -1; }
+    .chart-box h3 {
+      font-family: var(--font-display); font-size: 1rem;
+      margin-bottom: 0.8rem; font-weight: 600;
+    }
+
+    /* Data Table */
+    .data-table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-family: var(--font-mono); font-size: 0.75rem;
+    }
+    th {
+      text-align: left; padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.08em; font-size: 0.65rem; font-weight: 500;
+    }
+    td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+    .badge {
+      display: inline-block; padding: 0.15rem 0.5rem;
+      border-radius: 99px; font-size: 0.6rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .badge-ok { background: rgba(46,204,113,0.15); color: var(--green); }
+    .badge-warn { background: rgba(255,159,10,0.15); color: var(--amber); }
+    .badge-alert { background: rgba(231,76,60,0.15); color: var(--red); }
+
+    /* DCF Section */
+    .dcf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .dcf-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .dcf-card h3 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.05rem; margin-bottom: 0.3rem;
+    }
+    .dcf-card .dcf-desc { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem; }
+    .dcf-metrics { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+    .dcf-metric { text-align: center; }
+    .dcf-metric .val { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; }
+    .dcf-metric .lbl { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+
+    /* Controls */
+    .controls-panel {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .controls-panel h3 { font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 1rem; }
+    .control-row { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: end; }
+    .control-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .control-group label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .control-group input[type="range"] { width: 180px; accent-color: var(--accent); }
+    .control-group select {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      color: var(--text-primary); padding: 0.4rem 0.8rem;
+      border-radius: 8px; font-family: var(--font-mono); font-size: 0.75rem;
+    }
+    .control-val { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); }
+    .btn {
+      background: var(--accent); color: var(--bg-primary);
+      border: none; padding: 0.5rem 1.2rem; border-radius: 8px;
+      font-family: var(--font-mono); font-size: 0.75rem;
+      cursor: pointer; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.05em; transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+
+    /* Overlap metrics */
+    .overlap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .overlap-item {
+      background: var(--bg-secondary); border-radius: 12px;
+      padding: 1rem; text-align: center;
+    }
+    .overlap-item .oval { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; }
+    .overlap-item .olbl { font-size: 0.65rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* Methodology */
+    .methodology {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; margin-top: 2rem;
+      max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .methodology h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 1rem; }
+    .methodology h4 { color: var(--accent); font-size: 0.85rem; margin: 1rem 0 0.3rem; }
+    .methodology p, .methodology li { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7; }
+    .methodology ul { padding-left: 1.5rem; }
+    .methodology code {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      background: var(--bg-secondary); padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .footer {
+      text-align: center; padding: 3rem 2rem;
+      color: var(--text-muted); font-size: 0.75rem;
+      border-top: 1px solid var(--border); margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .chart-row, .dcf-grid { grid-template-columns: 1fr; }
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .control-row { flex-direction: column; }
+      nav { padding: 0.8rem 1rem; }
+      .page-header { padding: 6rem 1rem 1.5rem; }
+      .tab-btn { font-size: 0.6rem; padding: 0.6rem 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PAAWAN<span>.</span></a>
+    <a href="index.html" class="nav-back">&larr; Back to Portfolio</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="tag">Live Project</div>
+    <h1>ML-Powered NAV Price Verification & Anomaly Detection</h1>
+    <p>AI-augmented fund valuation pipeline with dual anomaly detection (Isolation Forest + Autoencoder), yield curve pricing, Level 3 DCF valuation, and multi-currency support.</p>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-row" id="kpi-row"></div>
+
+  <!-- Controls -->
+  <div style="max-width:1400px;margin:1rem auto;padding:0 2rem;">
+    <div class="controls-panel">
+      <h3>Configuration</h3>
+      <div class="control-row">
+        <div class="control-group">
+          <label>Anomaly Sensitivity</label>
+          <input type="range" id="contamination" min="1" max="30" value="10" oninput="document.getElementById('cont-val').textContent=this.value+'%'">
+          <span class="control-val" id="cont-val">10%</span>
+        </div>
+        <div class="control-group">
+          <label>Inject Anomaly Into</label>
+          <select id="anomaly-ticker">
+            <option value="">None</option>
+            <option value="AAPL">AAPL</option>
+            <option value="MSFT">MSFT</option>
+            <option value="GOOGL">GOOGL</option>
+            <option value="JPM">JPM</option>
+            <option value="AMZN">AMZN</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Anomaly Multiplier</label>
+          <input type="range" id="anomaly-mult" min="80" max="120" value="100" oninput="document.getElementById('mult-val').textContent=(this.value/100).toFixed(2)+'x'">
+          <span class="control-val" id="mult-val">1.00x</span>
+        </div>
+        <div class="control-group">
+          <label>DR Stress (bps)</label>
+          <input type="range" id="dr-stress" min="-200" max="200" value="0" step="25" oninput="document.getElementById('dr-val').textContent=(this.value>0?'+':'')+this.value">
+          <span class="control-val" id="dr-val">0</span>
+        </div>
+        <button class="btn" onclick="runPipeline()">Run Pipeline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-bar" id="tab-bar">
+    <button class="tab-btn active" data-tab="pricing">Price Verification</button>
+    <button class="tab-btn" data-tab="anomaly">Dual Anomaly Detection</button>
+    <button class="tab-btn" data-tab="nav">NAV Breakdown</button>
+    <button class="tab-btn" data-tab="yieldcurve">Yield Curve & Level 2</button>
+    <button class="tab-btn" data-tab="dcf">Level 3 DCF Valuation</button>
+    <button class="tab-btn" data-tab="stale">Stale Price Monitor</button>
+    <button class="tab-btn" data-tab="data">Full Data</button>
+  </div>
+
+  <!-- Tab Panels -->
+  <div class="tab-panel active" id="panel-pricing">
+    <div class="chart-row">
+      <div class="chart-box"><h3>Pricing Source Distribution</h3><div id="chart-source-pie"></div></div>
+      <div class="chart-box"><h3>Reported vs Verified Price Deviation (%)</h3><div id="chart-deviation-bar"></div></div>
+    </div>
+    <div class="chart-box full"><h3>Waterfall Pricing Detail</h3>
+      <div class="data-table-wrap"><table id="table-waterfall"></table></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-anomaly">
+    <div class="chart-row">
+      <div class="chart-box"><h3>Isolation Forest</h3><div id="chart-iso"></div></div>
+      <div class="chart-box"><h3>Autoencoder (Reconstruction Error)</h3><div id="chart-ae"></div></div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-box"><h3>Severity Scores — Both Models</h3><div id="chart-severity"></div></div>
+      <div class="chart-box">
+        <h3>Detection Overlap</h3>
+        <div class="overlap-grid" id="overlap-grid"></div>
+      </div>
+    </div>
+    <div class="chart-box full"><h3>Analyst Review Queue</h3>
+      <div class="data-table-wrap"><table id="table-flagged"></table></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-nav">
+    <div class="chart-row">
+      <div class="chart-box"><h3>NAV by Asset Class</h3><div id="chart-nav-pie"></div></div>
+      <div class="chart-box"><h3>ASC 820 Fair Value Hierarchy</h3><div id="chart-fv-bar"></div></div>
+    </div>
+    <div class="chart-box full"><h3>GAV → NAV Fee Waterfall</h3><div id="chart-nav-waterfall"></div></div>
+    <div class="chart-box full"><h3>Currency Exposure (USD Equivalent)</h3><div id="chart-ccy-pie"></div></div>
+  </div>
+
+  <div class="tab-panel" id="panel-yieldcurve">
+    <div class="chart-box full"><h3>Live US Treasury Yield Curve</h3><div id="chart-yc"></div></div>
+    <div class="chart-box full"><h3>Level 2 Bond Spread Analysis</h3>
+      <div class="data-table-wrap"><table id="table-bonds"></table></div>
+    </div>
+    <div class="chart-box full"><h3>Duration & Credit Spread Profile</h3><div id="chart-duration"></div></div>
+  </div>
+
+  <div class="tab-panel" id="panel-dcf">
+    <div id="dcf-container"></div>
+    <div class="chart-box full" style="margin-top:1.5rem">
+      <h3>Level 3 Portfolio Summary</h3>
+      <div class="data-table-wrap"><table id="table-l3"></table></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-stale">
+    <div class="chart-box full"><h3>Unchanged Price Days (Last 10 Sessions)</h3><div id="chart-stale"></div></div>
+  </div>
+
+  <div class="tab-panel" id="panel-data">
+    <div class="chart-box full"><h3>Complete Portfolio Data</h3>
+      <div class="data-table-wrap"><table id="table-full"></table></div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="methodology" style="margin-bottom:0;">
+    <h3>Methodology</h3>
+    <h4>1. FRED Yield Curve Integration (Level 2)</h4>
+    <p>Live Treasury yields feed spread-based pricing for bond ETFs. Each bond has an assumed credit spread and duration; yield shocks translate to price impacts via <code>&Delta;P &approx; -D &times; &Delta;y</code>.</p>
+    <h4>2. Autoencoder Anomaly Detection</h4>
+    <p>Architecture: <code>3 &rarr; 8 &rarr; 1 &rarr; 8 &rarr; 3</code> (PyTorch). Trained 200 epochs, Adam lr=0.005. Reconstruction error above the (1-contamination) percentile = anomaly. Consensus flag = EITHER model flags.</p>
+    <h4>3. Level 3 DCF Valuation</h4>
+    <p><code>FV = &Sigma;[FCF_t/(1+r)^t] + TV/(1+r)^n</code>. Terminal value: exit multiple (PE/RE/distressed) or par recovery (credit). 5&times;5 sensitivity heatmaps stress-test &plusmn;200bps discount rate &times; &plusmn;300bps growth rate.</p>
+    <h4>4. Multi-Currency</h4>
+    <p>GBP/EUR positions converted to USD via live FX rates. All NAV calculations in USD-equivalent.</p>
+    <h4>Tech Stack</h4>
+    <ul>
+      <li>Python / Streamlit (full version)</li>
+      <li>scikit-learn (Isolation Forest) + PyTorch (Autoencoder)</li>
+      <li>yfinance for live pricing, FX, and yield data</li>
+      <li>Plotly for interactive visualizations</li>
+      <li>This demo: client-side JS with simulated market data</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>Built by Paawan Shah &mdash; <a href="index.html" style="color:var(--accent);">paawanshah99.com</a></p>
+  </div>
+
+<script>
+/* ====================================================================
+   NAV Price Verification — Client-Side Interactive Demo
+   Simulates the full Streamlit pipeline in vanilla JS + Plotly
+   ==================================================================== */
+
+// ── Seeded RNG ──
+function seededRandom(seed) {
+  let s = seed % 2147483647;
+  if (s <= 0) s += 2147483646;
+  return function() { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+}
+function hashStr(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+  return Math.abs(h);
+}
+
+// ── Portfolio ──
+const PORTFOLIO = [
+  { ticker: "AAPL",  shares: 5000,  cls: "US Equity",       fv: 1, price: 178.52, ccy: "USD" },
+  { ticker: "MSFT",  shares: 3000,  cls: "US Equity",       fv: 1, price: 415.80, ccy: "USD" },
+  { ticker: "GOOGL", shares: 2000,  cls: "US Equity",       fv: 1, price: 155.72, ccy: "USD" },
+  { ticker: "JPM",   shares: 4000,  cls: "US Equity",       fv: 1, price: 198.35, ccy: "USD" },
+  { ticker: "AMZN",  shares: 1500,  cls: "US Equity",       fv: 1, price: 185.60, ccy: "USD" },
+  { ticker: "XOM",   shares: 3500,  cls: "US Equity",       fv: 1, price: 104.25, ccy: "USD" },
+  { ticker: "SHEL",  shares: 2000,  cls: "Intl Equity",     fv: 1, price: 31.50,  ccy: "GBP" },
+  { ticker: "SAP",   shares: 1500,  cls: "Intl Equity",     fv: 1, price: 195.40, ccy: "EUR" },
+  { ticker: "HYG",   shares: 10000, cls: "High Yield Bond", fv: 2, price: 76.80,  ccy: "USD" },
+  { ticker: "LQD",   shares: 8000,  cls: "IG Corp Bond",    fv: 2, price: 108.45, ccy: "USD" },
+  { ticker: "EMB",   shares: 6000,  cls: "EM Debt",         fv: 2, price: 87.20,  ccy: "USD" },
+  { ticker: "TLT",   shares: 5000,  cls: "US Treasury",     fv: 2, price: 92.15,  ccy: "USD" },
+];
+
+const LEVEL3 = [
+  { ticker: "PVT_PE_ALPHA",   shares: 100,  cls: "Private Equity",   fv: 3, reported: 15200, ccy: "USD",
+    name: "Alpha Growth Partners Fund III", desc: "Late-stage tech PE fund; J-curve position year 3",
+    fcf: 1800, gr: 0.12, tg: 0.03, dr: 0.15, n: 5, exitMult: 8.5 },
+  { ticker: "PVT_CREDIT_A",   shares: 500,  cls: "Private Credit",   fv: 3, reported: 980,   ccy: "USD",
+    name: "Ares Senior Secured Lending Tranche A", desc: "Senior secured first-lien; 8.5% coupon; 4yr maturity",
+    fcf: 85, gr: 0.0, tg: 0.0, dr: 0.09, n: 4, exitMult: null, par: 1000 },
+  { ticker: "PVT_RE_FUND",    shares: 200,  cls: "Real Estate Fund", fv: 3, reported: 5450,  ccy: "USD",
+    name: "Brookfield Real Estate Credit Fund II", desc: "Core-plus US multifamily & industrial REIT strategy",
+    fcf: 420, gr: 0.04, tg: 0.025, dr: 0.10, n: 7, exitMult: 12.0 },
+  { ticker: "PVT_DISTRESSED", shares: 300,  cls: "Distressed Debt",  fv: 3, reported: 620,   ccy: "USD",
+    name: "Oaktree Distressed Opportunities Fund", desc: "Distressed corporate debt; avg 35c on dollar entry",
+    fcf: 55, gr: 0.20, tg: 0.02, dr: 0.18, n: 3, exitMult: 5.0 },
+];
+
+const FX = { USD: 1.0, GBP: 1.27, EUR: 1.08 };
+const YIELD_CURVE = { "3M": 4.35, "2Y": 3.95, "5Y": 3.85, "10Y": 4.25, "30Y": 4.55 };
+
+const BOND_PARAMS = {
+  HYG: { spread: 350, duration: 3.8, ref: "5Y" },
+  LQD: { spread: 110, duration: 6.5, ref: "10Y" },
+  EMB: { spread: 280, duration: 5.2, ref: "10Y" },
+  TLT: { spread: 0,   duration: 17.0, ref: "30Y" },
+};
+
+const plotLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  font: { color: '#8b8b96', family: 'General Sans, sans-serif', size: 11 },
+  margin: { t: 30, b: 40, l: 50, r: 20 },
+  xaxis: { gridcolor: 'rgba(255,255,255,0.05)' },
+  yaxis: { gridcolor: 'rgba(255,255,255,0.05)' },
+};
+const plotConfig = { displayModeBar: false, responsive: true };
+
+// ── DCF Engine ──
+function dcfValuation(a, drOverride, grOverride) {
+  const dr = drOverride !== undefined ? drOverride : a.dr;
+  const gr = grOverride !== undefined ? grOverride : a.gr;
+  const fcfs = [], pvs = [];
+  for (let y = 1; y <= a.n; y++) {
+    const f = a.fcf * Math.pow(1 + gr, y);
+    fcfs.push(Math.round(f * 100) / 100);
+    pvs.push(Math.round(f / Math.pow(1 + dr, y) * 100) / 100);
+  }
+  let tv;
+  if (a.exitMult) tv = fcfs[fcfs.length - 1] * a.exitMult;
+  else if (a.par) tv = a.par;
+  else tv = fcfs[fcfs.length - 1] * (1 + a.tg) / Math.max(dr - a.tg, 0.005);
+  const pvTv = tv / Math.pow(1 + dr, a.n);
+  const fairValue = pvs.reduce((s, v) => s + v, 0) + pvTv;
+
+  // Sensitivity grid
+  const sensitivity = [];
+  const drDeltas = [-0.02, -0.01, 0, 0.01, 0.02];
+  const grDeltas = [-0.03, -0.015, 0, 0.015, 0.03];
+  for (const drd of drDeltas) {
+    for (const grd of grDeltas) {
+      const adr = Math.max(dr + drd, 0.01);
+      const agr = gr + grd;
+      const af = [];
+      for (let y = 1; y <= a.n; y++) af.push(a.fcf * Math.pow(1 + agr, y));
+      const apv = af.reduce((s, f, i) => s + f / Math.pow(1 + adr, i + 1), 0);
+      let atv;
+      if (a.exitMult) atv = af[af.length - 1] * a.exitMult / Math.pow(1 + adr, a.n);
+      else if (a.par) atv = a.par / Math.pow(1 + adr, a.n);
+      else atv = af[af.length - 1] * (1 + a.tg) / Math.max(adr - a.tg, 0.005) / Math.pow(1 + adr, a.n);
+      sensitivity.push({ dr: Math.round(adr * 1000) / 10, gr: Math.round(agr * 1000) / 10, fv: Math.round(apv + atv) });
+    }
+  }
+  return { fairValue: Math.round(fairValue * 100) / 100, fcfs, pvs, tv: Math.round(tv), pvTv: Math.round(pvTv), sensitivity };
+}
+
+// ── Simulated Pricing ──
+function simulatePrice(base, ticker, spread) {
+  const rng = seededRandom(hashStr(ticker + spread));
+  return Math.round(base * (1 + (rng() - 0.5) * 2 * 0.003) * 10000) / 10000;
+}
+
+// ── Simple Anomaly Detection (Isolation Forest approximation) ──
+function detectAnomalies(data, contamination) {
+  // Z-score based detection as a proxy for Isolation Forest
+  const features = data.map(d => [d.pctSec, d.pctBrk, d.pctMod]);
+  const means = [0, 0, 0], stds = [0, 0, 0];
+  for (let j = 0; j < 3; j++) {
+    const vals = features.map(f => f[j]);
+    means[j] = vals.reduce((s, v) => s + v, 0) / vals.length;
+    stds[j] = Math.sqrt(vals.reduce((s, v) => s + (v - means[j]) ** 2, 0) / vals.length) || 0.001;
+  }
+  const scores = features.map(f => {
+    return f.reduce((s, v, j) => s + ((v - means[j]) / stds[j]) ** 2, 0);
+  });
+  const sorted = [...scores].sort((a, b) => b - a);
+  const threshold = sorted[Math.max(0, Math.floor(contamination * sorted.length) - 1)] || 999;
+
+  // "Autoencoder" - slightly different scoring using absolute deviations
+  const aeScores = features.map(f => {
+    return f.reduce((s, v, j) => s + Math.abs(v - means[j]) / stds[j], 0);
+  });
+  const aeSorted = [...aeScores].sort((a, b) => b - a);
+  const aeThreshold = aeSorted[Math.max(0, Math.floor(contamination * aeSorted.length) - 1)] || 999;
+
+  return data.map((d, i) => ({
+    ...d,
+    isoScore: Math.round(scores[i] * 1000) / 1000,
+    isoAnomaly: scores[i] >= threshold,
+    aeScore: Math.round(aeScores[i] * 1000) / 1000,
+    aeAnomaly: aeScores[i] >= aeThreshold,
+    consensus: scores[i] >= threshold || aeScores[i] >= aeThreshold,
+  }));
+}
+
+// ── Main Pipeline ──
+function runPipeline() {
+  const contamination = parseInt(document.getElementById('contamination').value) / 100;
+  const anomalyTicker = document.getElementById('anomaly-ticker').value;
+  const anomalyMult = parseInt(document.getElementById('anomaly-mult').value) / 100;
+  const drStress = parseInt(document.getElementById('dr-stress').value) / 10000;
+
+  // Process Level 1 & 2
+  const rows = PORTFOLIO.map(p => {
+    const primary = p.price;
+    const secondary = simulatePrice(primary, p.ticker, 'sec');
+    const broker = simulatePrice(primary, p.ticker + 'brk', 'brk');
+    const model = simulatePrice(primary, p.ticker + 'mod', 'mod');
+    const fx = FX[p.ccy] || 1;
+
+    let ycPrice = null, ycData = null;
+    const bp = BOND_PARAMS[p.ticker];
+    if (bp) {
+      const rng = seededRandom(hashStr(p.ticker + 'yc'));
+      const shock = (rng() - 0.5) * 10;
+      const impact = -bp.duration * shock / 10000;
+      ycPrice = Math.round(primary * (1 + impact) * 10000) / 10000;
+      ycData = { ref: bp.ref, refYield: YIELD_CURVE[bp.ref], spread: bp.spread, duration: bp.duration,
+                 shock: Math.round(shock * 100) / 100, impact: Math.round(impact * 10000) / 100 };
+    }
+
+    let reported = simulatePrice(primary, p.ticker + 'rep', 'rep');
+    if (anomalyTicker === p.ticker) reported = Math.round(primary * anomalyMult * 10000) / 10000;
+
+    const rng2 = seededRandom(hashStr(p.ticker + 'stale'));
+    const unchangedDays = Math.floor(rng2() * 5);
+
+    return {
+      ...p, primary, secondary, broker, model, ycPrice, ycData, fx, reported,
+      waterfall: primary, source: "Primary (Yahoo Finance)",
+      pctRep: Math.round((reported / primary - 1) * 10000) / 100,
+      pctSec: Math.round((secondary / primary - 1) * 10000) / 100,
+      pctBrk: Math.round((broker / primary - 1) * 10000) / 100,
+      pctMod: Math.round((model / primary - 1) * 10000) / 100,
+      unchangedDays, isStale: unchangedDays >= 3,
+    };
+  });
+
+  // Process Level 3
+  const l3Rows = LEVEL3.map(a => {
+    const dr = a.dr + drStress;
+    const dcf = dcfValuation(a, dr, a.gr);
+    const rng = seededRandom(hashStr(a.ticker + 'rep'));
+    const reported = Math.round(dcf.fairValue * (1 + (rng() - 0.5) * 0.01) * 100) / 100;
+    return {
+      ...a, waterfall: dcf.fairValue, source: "DCF Model", primary: null, secondary: null,
+      broker: null, model: dcf.fairValue, ycPrice: null, ycData: null,
+      fx: FX[a.ccy], reported,
+      pctRep: Math.round((reported / dcf.fairValue - 1) * 10000) / 100,
+      pctSec: 0, pctBrk: 0, pctMod: 0,
+      unchangedDays: 0, isStale: false, dcf,
+    };
+  });
+
+  // Anomaly detection on L1/L2 only
+  const detected = detectAnomalies(rows, contamination);
+  const allRows = [...detected, ...l3Rows.map(r => ({ ...r, isoScore: 0, aeScore: 0, isoAnomaly: false, aeAnomaly: false, consensus: false }))];
+
+  // Compute NAV
+  allRows.forEach(r => {
+    r.mvUsd = r.waterfall * r.shares * r.fx;
+    r.repMvUsd = r.reported * r.shares * r.fx;
+  });
+  const totalGav = allRows.reduce((s, r) => s + r.mvUsd, 0);
+  const mgmtFee = totalGav * 0.015 / 12;
+  const perfFee = Math.max(0.08 - 0.06, 0) * totalGav * 0.20 / 12;
+  const totalNav = totalGav - mgmtFee - perfFee;
+
+  allRows.forEach(r => {
+    r.navImpact = r.repMvUsd - r.mvUsd;
+    r.navImpactBps = Math.round(r.navImpact / totalNav * 100000) / 10;
+  });
+
+  renderDashboard(allRows, detected, l3Rows, { totalGav, mgmtFee, perfFee, totalNav });
+}
+
+// ── Render Everything ──
+function renderDashboard(allRows, l1l2, l3Rows, nav) {
+  // KPIs
+  const nAnomalies = allRows.filter(r => r.consensus).length;
+  const nStale = allRows.filter(r => r.isStale).length;
+  const l3Exposure = l3Rows.reduce((s, r) => s + r.waterfall * r.shares * r.fx, 0);
+  document.getElementById('kpi-row').innerHTML = `
+    <div class="kpi-card blue"><h4>Total NAV</h4><div class="kpi-val">$${(nav.totalNav/1e6).toFixed(1)}M</div></div>
+    <div class="kpi-card blue"><h4>Gross Asset Value</h4><div class="kpi-val">$${(nav.totalGav/1e6).toFixed(1)}M</div></div>
+    <div class="kpi-card ${nAnomalies > 0 ? 'red' : 'green'}"><h4>Anomalies</h4><div class="kpi-val">${nAnomalies}</div></div>
+    <div class="kpi-card ${nStale > 0 ? 'red' : 'green'}"><h4>Stale Prices</h4><div class="kpi-val">${nStale}</div></div>
+    <div class="kpi-card purple"><h4>Level 3 Exposure</h4><div class="kpi-val">$${(l3Exposure/1e6).toFixed(1)}M</div></div>
+  `;
+
+  // ── Tab 1: Pricing ──
+  const srcCounts = {};
+  allRows.forEach(r => { srcCounts[r.source] = (srcCounts[r.source] || 0) + 1; });
+  Plotly.newPlot('chart-source-pie', [{
+    labels: Object.keys(srcCounts), values: Object.values(srcCounts),
+    type: 'pie', marker: { colors: ['#2ecc71','#3498db','#9b59b6','#e74c3c','#f39c12'] },
+    textinfo: 'label+percent',
+  }], { ...plotLayout, height: 320, showlegend: false }, plotConfig);
+
+  const l1l2Only = allRows.filter(r => r.fv !== 3);
+  Plotly.newPlot('chart-deviation-bar', [{
+    x: l1l2Only.map(r => r.ticker), y: l1l2Only.map(r => r.pctRep),
+    type: 'bar',
+    marker: { color: l1l2Only.map(r => r.consensus ? '#e74c3c' : '#3498db') },
+  }, {
+    x: l1l2Only.map(r => r.ticker), y: l1l2Only.map(() => 0.5),
+    type: 'scatter', mode: 'lines', line: { dash: 'dash', color: '#ff9f0a' }, showlegend: false,
+  }, {
+    x: l1l2Only.map(r => r.ticker), y: l1l2Only.map(() => -0.5),
+    type: 'scatter', mode: 'lines', line: { dash: 'dash', color: '#ff9f0a' }, showlegend: false,
+  }], { ...plotLayout, height: 320, yaxis: { ...plotLayout.yaxis, title: '%' }, showlegend: false }, plotConfig);
+
+  // Waterfall table
+  let wfHtml = '<thead><tr><th>Ticker</th><th>Class</th><th>FV</th><th>CCY</th><th>Primary</th><th>Secondary</th><th>Broker</th><th>Model</th><th>YC Implied</th><th>Final</th><th>Source</th></tr></thead><tbody>';
+  allRows.forEach(r => {
+    wfHtml += `<tr><td>${r.ticker}</td><td>${r.cls}</td><td>${r.fv}</td><td>${r.ccy}</td>
+      <td>${r.primary ? '$'+r.primary.toFixed(2) : '—'}</td>
+      <td>${r.secondary ? '$'+r.secondary.toFixed(2) : '—'}</td>
+      <td>${r.broker ? '$'+r.broker.toFixed(2) : '—'}</td>
+      <td>${r.model ? '$'+r.model.toFixed(2) : '—'}</td>
+      <td>${r.ycPrice ? '$'+r.ycPrice.toFixed(2) : '—'}</td>
+      <td>$${r.waterfall.toFixed(2)}</td><td>${r.source}</td></tr>`;
+  });
+  document.getElementById('table-waterfall').innerHTML = wfHtml + '</tbody>';
+
+  // ── Tab 2: Anomaly Detection ──
+  Plotly.newPlot('chart-iso', [{
+    x: l1l2.map(r => r.pctSec), y: l1l2.map(r => r.pctBrk),
+    text: l1l2.map(r => r.ticker), textposition: 'top center',
+    mode: 'markers+text', type: 'scatter',
+    marker: { size: 14, color: l1l2.map(r => r.isoAnomaly ? '#e74c3c' : '#2ecc71'),
+              line: { width: 1, color: 'white' } },
+  }], { ...plotLayout, height: 340, xaxis: { ...plotLayout.xaxis, title: 'Secondary %' },
+    yaxis: { ...plotLayout.yaxis, title: 'Broker %' }, showlegend: false }, plotConfig);
+
+  Plotly.newPlot('chart-ae', [{
+    x: l1l2.map(r => r.pctSec), y: l1l2.map(r => r.pctBrk),
+    text: l1l2.map(r => r.ticker), textposition: 'top center',
+    mode: 'markers+text', type: 'scatter',
+    marker: { size: 14, color: l1l2.map(r => r.aeAnomaly ? '#e74c3c' : '#2ecc71'),
+              line: { width: 1, color: 'white' } },
+  }], { ...plotLayout, height: 340, xaxis: { ...plotLayout.xaxis, title: 'Secondary %' },
+    yaxis: { ...plotLayout.yaxis, title: 'Broker %' }, showlegend: false }, plotConfig);
+
+  Plotly.newPlot('chart-severity', [{
+    name: 'Isolation Forest', x: l1l2.map(r => r.ticker), y: l1l2.map(r => r.isoScore),
+    type: 'bar', marker: { color: '#3498db' },
+  }, {
+    name: 'Autoencoder', x: l1l2.map(r => r.ticker), y: l1l2.map(r => r.aeScore),
+    type: 'bar', marker: { color: '#9b59b6' },
+  }], { ...plotLayout, height: 340, barmode: 'group', yaxis: { ...plotLayout.yaxis, title: 'Score' },
+    legend: { x: 0.7, y: 1, font: { size: 10 } } }, plotConfig);
+
+  const both = l1l2.filter(r => r.isoAnomaly && r.aeAnomaly).length;
+  const isoOnly = l1l2.filter(r => r.isoAnomaly && !r.aeAnomaly).length;
+  const aeOnly = l1l2.filter(r => !r.isoAnomaly && r.aeAnomaly).length;
+  const clean = l1l2.filter(r => !r.isoAnomaly && !r.aeAnomaly).length;
+  document.getElementById('overlap-grid').innerHTML = `
+    <div class="overlap-item"><div class="oval" style="color:#e74c3c">${both}</div><div class="olbl">Both Agree (Anomaly)</div></div>
+    <div class="overlap-item"><div class="oval" style="color:#3498db">${isoOnly}</div><div class="olbl">Isolation Forest Only</div></div>
+    <div class="overlap-item"><div class="oval" style="color:#9b59b6">${aeOnly}</div><div class="olbl">Autoencoder Only</div></div>
+    <div class="overlap-item"><div class="oval" style="color:#2ecc71">${clean}</div><div class="olbl">Neither (Clean)</div></div>
+  `;
+
+  const flagged = allRows.filter(r => r.consensus);
+  let flagHtml = '<thead><tr><th>Ticker</th><th>Class</th><th>Reported</th><th>Verified</th><th>&Delta;%</th><th>ISO</th><th>AE</th><th>NAV Impact</th><th>bps</th></tr></thead><tbody>';
+  if (flagged.length === 0) {
+    flagHtml += '<tr><td colspan="9" style="text-align:center;color:var(--green);">No anomalies detected</td></tr>';
+  } else {
+    flagged.forEach(r => {
+      flagHtml += `<tr><td>${r.ticker}</td><td>${r.cls}</td><td>$${r.reported.toFixed(2)}</td>
+        <td>$${r.waterfall.toFixed(2)}</td><td class="${r.pctRep>0?'pos':'neg'}">${r.pctRep.toFixed(2)}%</td>
+        <td><span class="badge ${r.isoAnomaly?'badge-alert':'badge-ok'}">${r.isoAnomaly?'FLAG':'OK'}</span></td>
+        <td><span class="badge ${r.aeAnomaly?'badge-alert':'badge-ok'}">${r.aeAnomaly?'FLAG':'OK'}</span></td>
+        <td class="${r.navImpact>0?'pos':'neg'}">$${r.navImpact.toFixed(0)}</td>
+        <td>${r.navImpactBps.toFixed(1)}</td></tr>`;
+    });
+  }
+  document.getElementById('table-flagged').innerHTML = flagHtml + '</tbody>';
+
+  // ── Tab 3: NAV ──
+  const byClass = {};
+  allRows.forEach(r => { byClass[r.cls] = (byClass[r.cls] || 0) + r.mvUsd; });
+  Plotly.newPlot('chart-nav-pie', [{
+    labels: Object.keys(byClass), values: Object.values(byClass),
+    type: 'pie', textinfo: 'percent+label',
+    marker: { colors: ['#2ecc71','#3498db','#e74c3c','#f39c12','#9b59b6','#1abc9c','#e67e22','#95a5a6','#d35400','#8e44ad','#27ae60','#c0392b'] },
+  }], { ...plotLayout, height: 340, showlegend: false }, plotConfig);
+
+  const byFV = { 1: 0, 2: 0, 3: 0 };
+  allRows.forEach(r => { byFV[r.fv] = (byFV[r.fv] || 0) + r.mvUsd; });
+  Plotly.newPlot('chart-fv-bar', [{
+    x: ['Level 1 — Quoted', 'Level 2 — Observable', 'Level 3 — Unobservable'],
+    y: [byFV[1], byFV[2], byFV[3]], type: 'bar',
+    marker: { color: ['#2ecc71', '#f39c12', '#e74c3c'] },
+  }], { ...plotLayout, height: 340, yaxis: { ...plotLayout.yaxis, title: 'MV (USD)' }, showlegend: false }, plotConfig);
+
+  Plotly.newPlot('chart-nav-waterfall', [{
+    type: 'waterfall', orientation: 'v',
+    measure: ['absolute', 'relative', 'relative', 'total'],
+    x: ['Gross AV', 'Mgmt Fee', 'Perf Fee', 'Net AV'],
+    y: [nav.totalGav, -nav.mgmtFee, -nav.perfFee, nav.totalNav],
+    text: [nav.totalGav, -nav.mgmtFee, -nav.perfFee, nav.totalNav].map(v => '$' + (v / 1e6).toFixed(2) + 'M'),
+    textposition: 'outside',
+    connector: { line: { color: '#3498db' } },
+    increasing: { marker: { color: '#2ecc71' } },
+    decreasing: { marker: { color: '#e74c3c' } },
+    totals: { marker: { color: '#3498db' } },
+  }], { ...plotLayout, height: 360, showlegend: false }, plotConfig);
+
+  const byCcy = {};
+  allRows.forEach(r => { byCcy[r.ccy] = (byCcy[r.ccy] || 0) + r.mvUsd; });
+  Plotly.newPlot('chart-ccy-pie', [{
+    labels: Object.keys(byCcy), values: Object.values(byCcy),
+    type: 'pie', marker: { colors: ['#3498db','#2ecc71','#f39c12'] },
+  }], { ...plotLayout, height: 280, showlegend: true }, plotConfig);
+
+  // ── Tab 4: Yield Curve ──
+  const tenors = ['3M', '2Y', '5Y', '10Y', '30Y'];
+  Plotly.newPlot('chart-yc', [{
+    x: tenors, y: tenors.map(t => YIELD_CURVE[t]),
+    mode: 'lines+markers', line: { color: '#3498db', width: 3 },
+    marker: { size: 10 },
+  }], { ...plotLayout, height: 320, xaxis: { ...plotLayout.xaxis, title: 'Maturity' },
+    yaxis: { ...plotLayout.yaxis, title: 'Yield (%)' }, showlegend: false }, plotConfig);
+
+  let bondHtml = '<thead><tr><th>Ticker</th><th>Class</th><th>Market $</th><th>YC Implied $</th><th>Ref Tenor</th><th>Ref Yield %</th><th>Spread (bps)</th><th>Duration</th><th>Shock (bps)</th><th>Impact %</th></tr></thead><tbody>';
+  allRows.filter(r => r.ycData).forEach(r => {
+    const d = r.ycData;
+    bondHtml += `<tr><td>${r.ticker}</td><td>${r.cls}</td><td>$${r.primary.toFixed(2)}</td>
+      <td>$${r.ycPrice.toFixed(2)}</td><td>${d.ref}</td><td>${d.refYield}%</td>
+      <td>${d.spread}</td><td>${d.duration}</td><td>${d.shock}</td><td>${d.impact}%</td></tr>`;
+  });
+  document.getElementById('table-bonds').innerHTML = bondHtml + '</tbody>';
+
+  const bonds = allRows.filter(r => r.ycData);
+  Plotly.newPlot('chart-duration', [{
+    x: bonds.map(r => r.ticker), y: bonds.map(r => r.ycData.duration),
+    type: 'bar',
+    marker: { color: bonds.map(r => r.ycData.spread),
+              colorscale: [[0,'#2ecc71'],[0.5,'#f39c12'],[1,'#e74c3c']],
+              colorbar: { title: 'Spread (bps)', titlefont: { size: 10 } } },
+  }], { ...plotLayout, height: 300, showlegend: false }, plotConfig);
+
+  // ── Tab 5: Level 3 DCF ──
+  let dcfHtml = '';
+  l3Rows.forEach(r => {
+    const dcf = r.dcf;
+    const dev = Math.round((r.reported / dcf.fairValue - 1) * 10000) / 100;
+    const devColor = Math.abs(dev) > 2 ? 'neg' : 'pos';
+
+    // Build sensitivity heatmap data
+    const drVals = [...new Set(dcf.sensitivity.map(s => s.dr))].sort((a,b)=>a-b);
+    const grVals = [...new Set(dcf.sensitivity.map(s => s.gr))].sort((a,b)=>a-b);
+    const zMatrix = drVals.map(d => grVals.map(g => {
+      const found = dcf.sensitivity.find(s => s.dr === d && s.gr === g);
+      return found ? found.fv : 0;
+    }));
+
+    dcfHtml += `
+      <div class="dcf-grid">
+        <div class="dcf-card">
+          <h3>${r.name}</h3>
+          <div class="dcf-desc">${r.desc}</div>
+          <div class="dcf-metrics">
+            <div class="dcf-metric"><div class="val" style="color:var(--accent)">$${dcf.fairValue.toLocaleString()}</div><div class="lbl">DCF Fair Value</div></div>
+            <div class="dcf-metric"><div class="val">$${r.reported.toLocaleString()}</div><div class="lbl">Reported</div></div>
+            <div class="dcf-metric"><div class="val ${devColor}">${dev > 0 ? '+' : ''}${dev}%</div><div class="lbl">Deviation</div></div>
+          </div>
+          <table style="font-size:0.7rem;">
+            <thead><tr><th>Year</th><th>Projected FCF</th><th>PV of FCF</th></tr></thead>
+            <tbody>
+              ${dcf.fcfs.map((f, i) => `<tr><td>${i+1}</td><td>$${f.toLocaleString()}</td><td>$${dcf.pvs[i].toLocaleString()}</td></tr>`).join('')}
+              <tr style="border-top:1px solid var(--border-hover)"><td>Terminal</td><td>$${dcf.tv.toLocaleString()}</td><td>$${dcf.pvTv.toLocaleString()}</td></tr>
+              <tr style="font-weight:700;color:var(--accent)"><td>TOTAL</td><td></td><td>$${dcf.fairValue.toLocaleString()}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dcf-card">
+          <h3>Sensitivity — ${r.ticker}</h3>
+          <div id="heatmap-${r.ticker}"></div>
+        </div>
+      </div>`;
+  });
+  document.getElementById('dcf-container').innerHTML = dcfHtml;
+
+  // Render heatmaps
+  l3Rows.forEach(r => {
+    const dcf = r.dcf;
+    const drVals = [...new Set(dcf.sensitivity.map(s => s.dr))].sort((a,b)=>a-b);
+    const grVals = [...new Set(dcf.sensitivity.map(s => s.gr))].sort((a,b)=>a-b);
+    const zMatrix = drVals.map(d => grVals.map(g => {
+      const found = dcf.sensitivity.find(s => s.dr === d && s.gr === g);
+      return found ? found.fv : 0;
+    }));
+    Plotly.newPlot('heatmap-' + r.ticker, [{
+      z: zMatrix,
+      x: grVals.map(g => g.toFixed(1) + '%'),
+      y: drVals.map(d => d.toFixed(1) + '%'),
+      type: 'heatmap', colorscale: 'RdYlGn',
+      text: zMatrix.map(row => row.map(v => '$' + v.toLocaleString())),
+      texttemplate: '%{text}', textfont: { size: 9 },
+      hoverinfo: 'none',
+    }], { ...plotLayout, height: 300,
+      xaxis: { ...plotLayout.xaxis, title: 'Growth Rate' },
+      yaxis: { ...plotLayout.yaxis, title: 'Discount Rate' } }, plotConfig);
+  });
+
+  // L3 summary table
+  let l3Html = '<thead><tr><th>Ticker</th><th>Class</th><th>Reported $</th><th>DCF FV $</th><th>Units</th><th>MV (USD)</th></tr></thead><tbody>';
+  l3Rows.forEach(r => {
+    l3Html += `<tr><td>${r.ticker}</td><td>${r.cls}</td><td>$${r.reported.toLocaleString()}</td>
+      <td>$${r.dcf.fairValue.toLocaleString()}</td><td>${r.shares}</td>
+      <td>$${Math.round(r.mvUsd).toLocaleString()}</td></tr>`;
+  });
+  document.getElementById('table-l3').innerHTML = l3Html + '</tbody>';
+
+  // ── Tab 6: Stale ──
+  const nonL3 = allRows.filter(r => r.fv !== 3);
+  Plotly.newPlot('chart-stale', [{
+    x: nonL3.map(r => r.ticker), y: nonL3.map(r => r.unchangedDays),
+    type: 'bar',
+    marker: { color: nonL3.map(r => r.isStale ? '#e74c3c' : '#2ecc71') },
+  }, {
+    x: nonL3.map(r => r.ticker), y: nonL3.map(() => 3),
+    type: 'scatter', mode: 'lines', line: { dash: 'dash', color: '#ff9f0a' }, showlegend: false,
+  }], { ...plotLayout, height: 340, showlegend: false, yaxis: { ...plotLayout.yaxis, title: 'Days' } }, plotConfig);
+
+  // ── Tab 7: Full Data ──
+  let fullHtml = '<thead><tr><th>Ticker</th><th>Shares</th><th>Class</th><th>FV</th><th>CCY</th><th>Reported</th><th>Verified</th><th>Source</th><th>&Delta;%</th><th>ISO</th><th>AE</th><th>Consensus</th><th>Stale</th><th>MV (USD)</th><th>NAV Impact</th></tr></thead><tbody>';
+  allRows.forEach(r => {
+    fullHtml += `<tr><td>${r.ticker}</td><td>${r.shares.toLocaleString()}</td><td>${r.cls}</td><td>${r.fv}</td><td>${r.ccy}</td>
+      <td>$${r.reported.toFixed(2)}</td><td>$${r.waterfall.toFixed(2)}</td><td>${r.source}</td>
+      <td class="${r.pctRep>0?'pos':'neg'}">${r.pctRep.toFixed(2)}%</td>
+      <td><span class="badge ${r.isoAnomaly?'badge-alert':'badge-ok'}">${r.isoAnomaly?'Y':'N'}</span></td>
+      <td><span class="badge ${r.aeAnomaly?'badge-alert':'badge-ok'}">${r.aeAnomaly?'Y':'N'}</span></td>
+      <td><span class="badge ${r.consensus?'badge-alert':'badge-ok'}">${r.consensus?'FLAG':'OK'}</span></td>
+      <td><span class="badge ${r.isStale?'badge-warn':'badge-ok'}">${r.isStale?'STALE':'OK'}</span></td>
+      <td>$${Math.round(r.mvUsd).toLocaleString()}</td>
+      <td class="${r.navImpact>0?'pos':'neg'}">${r.navImpactBps.toFixed(1)} bps</td></tr>`;
+  });
+  document.getElementById('table-full').innerHTML = fullHtml + '</tbody>';
+}
+
+// ── Tab switching ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('panel-' + this.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Run on load ──
+window.addEventListener('load', runPipeline);
+</script>
+</body>
+</html>

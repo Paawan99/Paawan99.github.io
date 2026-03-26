@@ -52,6 +52,7 @@
         <button class="nav-dot" data-slide="4" aria-label="Blogs"></button>
         <button class="nav-dot" data-slide="5" aria-label="About"></button>
         <button class="nav-dot" data-slide="6" aria-label="Contact"></button>
+        <button class="nav-dot" data-slide="7" aria-label="Live Projects"></button>
     </nav>
 
     <!-- SLIDES -->
@@ -109,6 +110,16 @@
                             </svg></div>
                         <span class="option-label">Read Blog & Insights</span>
                         <span class="option-desc">Market analysis, strategies & crypto</span>
+                    </button>
+                    <button class="hub-option" data-target="7" data-color="teal">
+                        <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg></div>
+                        <span class="option-label">Live Projects</span>
+                        <span class="option-desc">ML dashboards & interactive tools</span>
                     </button>
                     <button class="hub-option" data-target="5" data-color="rose">
                         <div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -445,6 +456,49 @@
                 </div>
             </div>
         </section>
+        <!-- LIVE PROJECTS -->
+        <section class="slide" data-slide="7" id="slide-projects">
+            <div class="slide-bg">
+                <div class="bg-orb bg-orb-1 teal"></div>
+                <div class="bg-orb bg-orb-2 teal"></div>
+            </div>
+            <div class="slide-content">
+                <button class="back-btn" data-target="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" width="20" height="20">
+                        <path d="M19 12H5" />
+                        <path d="M12 19l-7-7 7-7" />
+                    </svg> Back to Hub</button>
+                <div class="section-header"><span class="section-tag">Interactive</span>
+                    <h2 class="section-title">Live Projects</h2>
+                    <p class="section-subtitle">Full-stack ML dashboards and interactive analytics tools.</p>
+                </div>
+                <div class="card-grid">
+                    <a href="nav-price-verification.html" class="feature-card highlight-card"><span
+                            class="card-badge accent-badge">ML / Python</span>
+                        <h3>NAV Price Verification</h3>
+                        <p>Dual anomaly detection, yield curve pricing, Level 3 DCF valuation & multi-currency NAV</p>
+                        <div class="feature-arrow"><span>Launch</span>
+                            <div class="arrow-icon">&rarr;</div>
+                        </div>
+                    </a>
+                    <a href="credit-card-finder.html" class="feature-card"><span class="card-badge">Tool</span>
+                        <h3>Credit Card Finder</h3>
+                        <p>Interactive quiz matching you with the best Canadian credit card</p>
+                        <div class="feature-arrow"><span>Launch</span>
+                            <div class="arrow-icon">&rarr;</div>
+                        </div>
+                    </a>
+                    <a href="games.html" target="_blank" rel="noopener" class="feature-card"><span class="card-badge">Fun</span>
+                        <h3>Mini Games</h3>
+                        <p>Snake, 2048, Memory Match & Typing Speed Test</p>
+                        <div class="feature-arrow"><span>Play</span>
+                            <div class="arrow-icon">&rarr;</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script src="app.js"></script>

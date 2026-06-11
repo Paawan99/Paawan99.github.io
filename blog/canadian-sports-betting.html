@@ -5,10 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canadian Sports Betting Analytics | Paawan Shah</title>
+    <meta name="description"
+        content="Find arbitrage opportunities across Canadian sportsbooks with live odds comparison, a stake calculator, decimal-odds math and Bill C-218 legal context.">
+    <link rel="canonical" href="https://paawanshah99.com/blog/canadian-sports-betting.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:title" content="Canadian Sports Betting Analytics">
+    <meta property="og:description"
+        content="Find arbitrage opportunities across Canadian sportsbooks with live odds comparison, a stake calculator, decimal-odds math and Bill C-218 legal context.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://paawanshah99.com/blog/canadian-sports-betting.html">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Canadian Sports Betting Analytics",
+        "author": {
+            "@type": "Person",
+            "name": "Paawan Shah",
+            "url": "https://paawanshah99.com/"
+        },
+        "mainEntityOfPage": "https://paawanshah99.com/blog/canadian-sports-betting.html"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -511,8 +536,9 @@
 
         <div class="section">
             <div class="api-key-section">
-                <input type="text" id="apiKey" placeholder="Enter your Odds API key (optional, or use demo)"
-                    value="demo">
+                <input type="password" autocomplete="off" id="apiKey" style="font-size: 16px;"
+                    placeholder="Enter your Odds API key (optional, or use demo)" value="demo"
+                    title="Your key is only sent directly to api.the-odds-api.com and is never stored.">
                 <button class="filter-btn" onclick="loadGames()"
                     style="cursor: pointer; background: #64ffda; color: #0a192f; font-weight: 600; padding: 10px 25px;">Load
                     Games</button>
@@ -695,6 +721,7 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
     <script>
         let allGames = [];
         let filteredGames = [];
@@ -793,6 +820,10 @@
             return { bestOdds1, bestOdds2, bestBook1, bestBook2 };
         }
 
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
         function displayGames() {
             const container = document.getElementById('gamesContainer');
 
@@ -808,28 +839,28 @@
                 return `
                     <div class="game-card">
                         <div class="game-header">
-                            <span class="game-league">${game.league}</span>
+                            <span class="game-league">${escapeHtml(game.league)}</span>
                             <span class="arbitrage-badge ${arb.arbExists ? 'yes' : 'no'}">
                                 ${arb.arbExists ? 'ARBITRAGE' : 'No Arb'}
                             </span>
                         </div>
                         <div class="game-teams">
                             <div class="team">
-                                <span class="team-name">${game.teams[0]}</span>
-                                <span class="best-odds">${bestOdds1.toFixed(2)} <span style="font-size: 12px; color: #8892b0;">(${bestBook1})</span></span>
+                                <span class="team-name">${escapeHtml(game.teams[0])}</span>
+                                <span class="best-odds">${bestOdds1.toFixed(2)} <span style="font-size: 12px; color: #8892b0;">(${escapeHtml(bestBook1)})</span></span>
                             </div>
                             <div class="team">
-                                <span class="team-name">${game.teams[1]}</span>
-                                <span class="best-odds">${bestOdds2.toFixed(2)} <span style="font-size: 12px; color: #8892b0;">(${bestBook2})</span></span>
+                                <span class="team-name">${escapeHtml(game.teams[1])}</span>
+                                <span class="best-odds">${bestOdds2.toFixed(2)} <span style="font-size: 12px; color: #8892b0;">(${escapeHtml(bestBook2)})</span></span>
                             </div>
                         </div>
                         <div class="odds-breakout">
                             <div class="odds-row">
-                                <span>Implied Prob ${game.teams[0]}:</span>
+                                <span>Implied Prob ${escapeHtml(game.teams[0])}:</span>
                                 <span class="accent-text">${(arb.prob1 * 100).toFixed(2)}%</span>
                             </div>
                             <div class="odds-row">
-                                <span>Implied Prob ${game.teams[1]}:</span>
+                                <span>Implied Prob ${escapeHtml(game.teams[1])}:</span>
                                 <span class="accent-text">${(arb.prob2 * 100).toFixed(2)}%</span>
                             </div>
                             <div class="odds-row">
@@ -885,7 +916,7 @@
                     const warningDiv = document.createElement('div');
                     warningDiv.className = 'warning-message';
                     warningDiv.style.marginBottom = '20px';
-                    warningDiv.innerHTML = 'Displaying sample data. To see live odds, get a free API key from <a href="https://theoddsapi.com" target="_blank">The Odds API</a> and enter it above.';
+                    warningDiv.innerHTML = 'Displaying sample data. To see live odds, get a free API key from <a href="https://theoddsapi.com" target="_blank" rel="noopener">The Odds API</a> and enter it above.';
                     container.parentElement.insertBefore(warningDiv, container);
                 }, 800);
             } else {

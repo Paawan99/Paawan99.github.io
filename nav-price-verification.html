@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ML-Powered NAV Price Verification — Paawan Shah</title>
   <meta name="description" content="AI-augmented NAV pipeline tool with dual anomaly detection, yield curve pricing, DCF valuation, and multi-currency support." />
+  <link rel="canonical" href="https://paawanshah99.com/nav-price-verification.html" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#0a0a0b" />
+  <meta property="og:title" content="ML-Powered NAV Price Verification" />
+  <meta property="og:description" content="AI-augmented NAV pipeline tool with dual anomaly detection, yield curve pricing, DCF valuation, and multi-currency support." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paawanshah99.com/nav-price-verification.html" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.plot.ly" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" integrity="sha384-Hl48Kq2HifOWdXEjMsKo6qxqvRLTYqIGbvlENBmkHAxZKIGCXv43H6W1jA671RzC" crossorigin="anonymous"></script>
   <style>
     :root {
       --bg-primary: #0a0a0b;
@@ -920,7 +927,11 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     this.classList.add('active');
-    document.getElementById('panel-' + this.dataset.tab).classList.add('active');
+    const panel = document.getElementById('panel-' + this.dataset.tab);
+    panel.classList.add('active');
+    // Charts rendered while the panel was display:none came out default-sized;
+    // re-measure them now that the panel is visible.
+    panel.querySelectorAll('.js-plotly-plot').forEach(el => Plotly.Plots.resize(el));
   });
 });
 

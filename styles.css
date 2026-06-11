@@ -64,6 +64,7 @@ body {
     color: var(--text);
     overflow: hidden;
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -197,22 +198,36 @@ a {
 }
 
 .nav-dot {
+    /* 24px hit area; the visible dot is drawn by ::after */
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    border: none;
     background: var(--border-active);
-    cursor: pointer;
     transition: var(--transition);
     transform-origin: center;
 }
 
-.nav-dot:hover {
+.nav-dot:hover::after {
     background: var(--text-bright);
     transform: scale(1.5);
 }
 
-.nav-dot.active {
+.nav-dot.active::after {
     background: var(--text-bright);
     transform: scale(1.8);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -223,6 +238,7 @@ a {
     position: relative;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
 }
 
 .slide {
@@ -259,6 +275,7 @@ a {
     max-width: 1040px;
     padding: 60px 40px;
     max-height: 100vh;
+    max-height: 100dvh;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -354,7 +371,9 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* "safe" keeps the top reachable when content overflows on short screens */
     justify-content: center;
+    justify-content: safe center;
     height: 100%;
 }
 
@@ -933,8 +952,13 @@ a {
     }
 
     .nav-dot {
-        width: 8px;
+        width: 28px;
         /* larger tap target */
+        height: 28px;
+    }
+
+    .nav-dot::after {
+        width: 8px;
         height: 8px;
     }
 
@@ -1008,5 +1032,25 @@ a {
 
     .contact-val {
         font-size: 0.95rem;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .bg-orb {
+        animation: none !important;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 }

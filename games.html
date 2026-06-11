@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mini Games — Paawan Shah</title>
   <meta name="description" content="Play fun mini-games on Paawan Shah's portfolio — Snake, 2048, Memory Match, and Typing Speed Test." />
+  <link rel="canonical" href="https://paawanshah99.com/games.html" />
+  <meta property="og:title" content="Mini Games — Paawan Shah" />
+  <meta property="og:description" content="Play fun mini-games on Paawan Shah's portfolio — Snake, 2048, Memory Match, and Typing Speed Test." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paawanshah99.com/games.html" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#0a0a0b" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +24,7 @@
       --bg-card-hover: #1c1c21;
       --text-primary: #ececf1;
       --text-secondary: #8b8b96;
-      --text-muted: #56565e;
+      --text-muted: #8a8a96;
       --accent: #64ffda;
       --accent-dim: rgba(100, 255, 218, 0.1);
       --accent-glow: rgba(100, 255, 218, 0.15);
@@ -111,6 +117,7 @@
       border-radius: 8px;
       overflow: hidden;
       transition: all 0.4s var(--transition);
+      scroll-margin-top: 80px;
     }
     .game-card:hover {
       border-color: var(--accent);
@@ -131,7 +138,14 @@
       font-family: var(--font-mono); font-size: 0.85rem;
       color: var(--accent);
     }
-    .game-body { padding: 1rem; display: flex; justify-content: center; align-items: center; }
+    .game-body { padding: 1rem; display: flex; justify-content: center; align-items: center; position: relative; }
+    .game-over-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(10, 10, 11, 0.85); text-align: center; padding: 1rem;
+    }
+    .game-over-overlay strong { font-family: var(--font-display); font-size: 1.4rem; color: var(--accent); }
+    .game-over-overlay span { color: var(--text-secondary); font-size: 0.85rem; }
     .game-controls {
       padding: 1rem 1.5rem;
       border-top: 1px solid var(--border);
@@ -155,6 +169,8 @@
       border-radius: 4px;
       display: block;
       touch-action: none;
+      max-width: 100%;
+      height: auto;
     }
 
     /* ========== 2048 GAME ========== */
@@ -203,8 +219,10 @@
       font-size: 2rem; cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
+      padding: 0; font-family: inherit; color: inherit;
     }
     .memory-card:hover { border-color: var(--accent); transform: scale(1.05); }
+    .memory-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .memory-card.flipped {
       background: var(--bg-card-hover);
       border-color: var(--accent);
@@ -291,6 +309,12 @@
       cursor: pointer; width: 30px; height: 20px;
       position: relative; z-index: 1001;
     }
+    /* invisible hit-area extension: 30x20 visual -> 54x44 tappable */
+    .menu-toggle::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+    }
     .menu-toggle span {
       display: block; width: 100%; height: 2px;
       background: var(--text-primary);
@@ -347,13 +371,13 @@
   <div class="games-grid">
 
     <!-- ========== SNAKE ========== -->
-    <div class="game-card">
+    <div class="game-card" id="snake">
       <div class="game-header">
         <h2>Snake</h2>
         <div class="game-score">Score: <span id="snakeScore">0</span></div>
       </div>
       <div class="game-body">
-        <canvas id="snakeCanvas" width="320" height="320"></canvas>
+        <canvas id="snakeCanvas" width="320" height="320" role="img" aria-label="Snake game board">Snake game board (requires JavaScript)</canvas>
       </div>
       <div class="game-controls">
         <button class="btn" onclick="startSnake()">New Game</button>
@@ -361,7 +385,7 @@
     </div>
 
     <!-- ========== 2048 ========== -->
-    <div class="game-card">
+    <div class="game-card" id="2048">
       <div class="game-header">
         <h2>2048</h2>
         <div class="game-score">Score: <span id="score2048">0</span></div>
@@ -375,7 +399,7 @@
     </div>
 
     <!-- ========== MEMORY MATCH ========== -->
-    <div class="game-card">
+    <div class="game-card" id="memory">
       <div class="game-header">
         <h2>Memory Match</h2>
         <div class="game-score">Moves: <span id="memoryMoves">0</span></div>
@@ -389,7 +413,7 @@
     </div>
 
     <!-- ========== TYPING TEST ========== -->
-    <div class="game-card">
+    <div class="game-card" id="typing">
       <div class="game-header">
         <h2>Typing Speed</h2>
         <div class="game-score">Best: <span id="typingBest">--</span> WPM</div>
@@ -397,7 +421,7 @@
       <div class="game-body">
         <div class="typing-container">
           <div class="typing-text" id="typingText"></div>
-          <input type="text" class="typing-input" id="typingInput" placeholder="Start typing here..." autocomplete="off" />
+          <input type="text" class="typing-input" id="typingInput" placeholder="Start typing here..." autocomplete="off" aria-label="Type the sentence shown above" />
           <div class="typing-stats">
             <div class="typing-stat">
               <div class="typing-stat-value" id="typingWPM">0</div>
@@ -438,6 +462,44 @@
         navLinks.classList.remove('open');
       });
     });
+
+    // =============================================
+    //  SHARED GAME HELPERS
+    // =============================================
+    // Arrow keys only drive the game the user interacted with last,
+    // and never fire while typing in an input.
+    let activeGame = null;
+    document.addEventListener('pointerdown', (e) => {
+      const card = e.target.closest('.game-card');
+      if (card && card.id) activeGame = card.id;
+    });
+    // Deep links (games.html#snake etc.) pre-select that game
+    if (['#snake', '#2048', '#memory', '#typing'].includes(location.hash)) {
+      activeGame = location.hash.slice(1);
+    }
+    function typingFieldFocused(e) {
+      return e.target && e.target.matches && e.target.matches('input, textarea');
+    }
+
+    // In-card game-over message (replaces blocking alert dialogs)
+    function showGameOverlay(gameId, title, sub) {
+      clearGameOverlay(gameId);
+      const body = document.getElementById(gameId)?.querySelector('.game-body');
+      if (!body) return;
+      const ov = document.createElement('div');
+      ov.className = 'game-over-overlay';
+      ov.setAttribute('role', 'status');
+      const strong = document.createElement('strong');
+      strong.textContent = title;
+      const span = document.createElement('span');
+      span.textContent = sub;
+      ov.append(strong, span);
+      body.appendChild(ov);
+    }
+    function clearGameOverlay(gameId) {
+      const ov = document.getElementById(gameId)?.querySelector('.game-over-overlay');
+      if (ov) ov.remove();
+    }
 
     // =============================================
     //  SNAKE GAME
@@ -535,7 +597,7 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (!snakeRunning) return;
+      if (!snakeRunning || activeGame !== 'snake' || typingFieldFocused(e)) return;
       const keys = {ArrowUp: {x:0,y:-1}, ArrowDown: {x:0,y:1}, ArrowLeft: {x:-1,y:0}, ArrowRight: {x:1,y:0}};
       const nd = keys[e.key];
       if (nd && !(nd.x === -direction.x && nd.y === -direction.y)) {
@@ -580,6 +642,7 @@
     let grid2048, score2048;
 
     function start2048() {
+      clearGameOverlay('2048');
       grid2048 = Array(16).fill(0);
       score2048 = 0;
       addTile(); addTile();
@@ -660,12 +723,13 @@
           }
         }
         if (!canMove) {
-          setTimeout(() => alert('Game Over! Score: ' + score2048), 200);
+          setTimeout(() => showGameOverlay('2048', 'Game Over', 'Score: ' + score2048 + ' — press New Game to retry'), 200);
         }
       }
     }
 
     document.addEventListener('keydown', (e) => {
+      if (activeGame !== '2048' || typingFieldFocused(e)) return;
       const map = {ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right'};
       if (map[e.key] && grid2048) { move2048(map[e.key]); e.preventDefault(); }
     });
@@ -699,6 +763,7 @@
     let memoryCards, memoryFlipped, memoryMatched, memoryMoves, memoryLocked;
 
     function startMemory() {
+      clearGameOverlay('memory');
       const pairs = [...memoryEmojis, ...memoryEmojis];
       memoryCards = pairs.sort(() => Math.random() - 0.5);
       memoryFlipped = []; memoryMatched = []; memoryMoves = 0; memoryLocked = false;
@@ -708,16 +773,24 @@
 
     function renderMemory() {
       const grid = document.getElementById('memoryGrid');
+      const hadFocus = grid.contains(document.activeElement) ? Array.from(grid.children).indexOf(document.activeElement) : -1;
       grid.innerHTML = '';
       memoryCards.forEach((emoji, i) => {
-        const card = document.createElement('div');
+        const card = document.createElement('button');
+        card.type = 'button';
         card.className = 'memory-card';
-        if (memoryFlipped.includes(i) || memoryMatched.includes(i)) card.classList.add('flipped');
-        if (memoryMatched.includes(i)) card.classList.add('matched');
+        const isUp = memoryFlipped.includes(i) || memoryMatched.includes(i);
+        if (isUp) card.classList.add('flipped');
+        if (memoryMatched.includes(i)) {
+          card.classList.add('matched');
+          card.setAttribute('aria-disabled', 'true');
+        }
+        card.setAttribute('aria-label', 'Card ' + (i + 1) + (isUp ? ', showing ' + emoji : ', face down'));
         card.innerHTML = `<span class="card-front">${emoji}</span><span class="card-back">?</span>`;
         card.addEventListener('click', () => flipCard(i));
         grid.appendChild(card);
       });
+      if (hadFocus >= 0 && grid.children[hadFocus]) grid.children[hadFocus].focus();
     }
 
     function flipCard(i) {
@@ -737,7 +810,7 @@
           memoryLocked = false;
           renderMemory();
           if (memoryMatched.length === memoryCards.length) {
-            setTimeout(() => alert('You won in ' + memoryMoves + ' moves!'), 300);
+            setTimeout(() => showGameOverlay('memory', 'You won!', memoryMoves + ' moves — press New Game to play again'), 300);
           }
         } else {
           setTimeout(() => {
@@ -809,16 +882,21 @@
           const elapsed = Math.floor((Date.now() - typingStartTime) / 1000);
           const remaining = Math.max(0, 60 - elapsed);
           document.getElementById('typingTime').textContent = remaining;
+          // Update WPM from the live input value (not the first keystroke's)
+          const current = document.getElementById('typingInput').value;
+          const words = current.split(' ').filter(w => w).length;
+          const minutes = elapsed / 60 || 1/60;
+          const wpm = Math.round(words / minutes);
+          document.getElementById('typingWPM').textContent = wpm;
           if (remaining <= 0) {
             clearInterval(typingTimer);
             document.getElementById('typingInput').disabled = true;
             typingActive = false;
+            if (!typingBestWPM || wpm > typingBestWPM) {
+              typingBestWPM = wpm;
+              document.getElementById('typingBest').textContent = wpm;
+            }
           }
-          // Update WPM
-          const words = input.split(' ').filter(w => w).length;
-          const minutes = elapsed / 60 || 1/60;
-          const wpm = Math.round(words / minutes);
-          document.getElementById('typingWPM').textContent = wpm;
         }, 1000);
       }
 

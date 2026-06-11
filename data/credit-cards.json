@@ -1,0 +1,5613 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-07T01:19:22.316Z",
+  "source": {
+    "builder": "scripts/build-site-data.js",
+    "bankKnowledgeBaseGeneratedAt": "2026-05-07T00:53:38.796527+00:00",
+    "cardSeed": "data/credit-cards.json"
+  },
+  "stats": {
+    "totalCards": 63,
+    "matchedToBankKnowledgeBase": 46,
+    "unmatchedCards": 17
+  },
+  "cards": [
+    {
+      "id": "tangerine",
+      "name": "Tangerine Money-Back Credit Card",
+      "issuer": "Tangerine (Scotiabank)",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #f58220 0%, #e85d04 100%)",
+      "annualFee": 0,
+      "interestRate": 19.95,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "groceries",
+        "dining",
+        "gas",
+        "bills",
+        "entertainment",
+        "online"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "10% cashback for first 2 months (up to $100)",
+      "minCredit": "fair",
+      "insurances": [
+        "Purchase protection"
+      ],
+      "pros": [
+        "No annual fee",
+        "Up to 2% in 3 chosen categories",
+        "Simple & flexible"
+      ],
+      "cons": [
+        "Only 0.5% on non-bonus categories",
+        "No travel perks"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "build_credit"
+      ],
+      "idealSpend": [
+        "groceries",
+        "dining",
+        "gas",
+        "bills",
+        "online",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "tangerine",
+        "institutionTitle": "Tangerine Bank",
+        "sourceFile": "tangerine.md",
+        "lastSourceModified": "2026-04-30T20:20:53.703615+00:00",
+        "sourceUrls": [
+          {
+            "label": "Tangerine rates",
+            "url": "https://www.tangerine.ca/en/rates"
+          },
+          {
+            "label": "About",
+            "url": "https://www.tangerine.ca/en/about-us"
+          },
+          {
+            "label": "Tangerine about / product pages",
+            "url": "https://www.tangerine.ca/en/about-us"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cobalt",
+      "name": "American Express Cobalt Card",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #2e3192 0%, #1bbbec 100%)",
+      "annualFee": 156,
+      "interestRate": 22.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "dining",
+        "groceries"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 30,000 MR points in first year",
+      "minCredit": "good",
+      "insurances": [
+        "Travel insurance",
+        "Purchase protection",
+        "Extended warranty"
+      ],
+      "pros": [
+        "5x points on dining & groceries",
+        "Flexible point redemption",
+        "Monthly fee ($13.08/mo)"
+      ],
+      "cons": [
+        "Not all merchants accept Amex",
+        "Annual fee adds up"
+      ],
+      "bestFor": [
+        "cashback",
+        "travel"
+      ],
+      "idealSpend": [
+        "dining",
+        "groceries",
+        "entertainment"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "rogers_we",
+      "name": "Rogers World Elite Mastercard",
+      "issuer": "Rogers Bank",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1.5,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "online"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Earn $25 in cashback after first purchase",
+      "minCredit": "excellent",
+      "insurances": [
+        "Mobile device insurance",
+        "Travel emergency medical",
+        "Rental car collision"
+      ],
+      "pros": [
+        "No annual fee",
+        "1.5% on everything",
+        "3% on USD purchases",
+        "Mobile insurance"
+      ],
+      "cons": [
+        "Requires $80K income or $15K household",
+        "Cashback redeemed against Rogers bills or statement"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "travel"
+      ],
+      "idealSpend": [
+        "general",
+        "online",
+        "travel"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotiabank_gold",
+      "name": "Scotiabank Gold American Express",
+      "issuer": "Scotiabank",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #c9a628 0%, #96751a 100%)",
+      "annualFee": 120,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "groceries",
+        "dining",
+        "entertainment"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 40,000 Scene+ points ($400 value)",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip interruption",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "5x on groceries, dining, entertainment",
+        "Strong welcome bonus",
+        "Good travel insurance"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "Amex acceptance limitations"
+      ],
+      "bestFor": [
+        "cashback",
+        "travel"
+      ],
+      "idealSpend": [
+        "groceries",
+        "dining",
+        "entertainment",
+        "travel"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_dividend",
+      "name": "CIBC Dividend Visa Infinite",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #8b0000 0%, #4a0000 100%)",
+      "annualFee": 99,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "10% cashback for first 4 statement periods (up to $400)",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Extended warranty"
+      ],
+      "pros": [
+        "4% groceries",
+        "2% gas & transport",
+        "Strong welcome offer",
+        "Comprehensive insurance"
+      ],
+      "cons": [
+        "$99 annual fee",
+        "Category rates have annual cap of $20K spend"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_cashback_vi",
+      "name": "TD Cash Back Visa Infinite",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #008a4b 0%, #005a2e 100%)",
+      "annualFee": 89,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 6% cashback for first 3 months",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Auto rental",
+        "Purchase protection"
+      ],
+      "pros": [
+        "3% groceries, gas & recurring bills",
+        "Solid insurance package",
+        "Widely accepted Visa"
+      ],
+      "cons": [
+        "$89 annual fee",
+        "Lower rates than some competitors"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "simplii_cashback",
+      "name": "Simplii Financial Cash Back Visa",
+      "issuer": "Simplii Financial (CIBC)",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #e04e1a 0%, #b33510 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "dining"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "10% cashback on first $4,000 spend (up to $400)",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "4% on dining",
+        "Great welcome bonus",
+        "1.5% on groceries"
+      ],
+      "cons": [
+        "Limited insurance",
+        "Lower base cashback"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "student"
+      ],
+      "idealSpend": [
+        "dining",
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "simplii",
+        "institutionTitle": "Simplii Financial",
+        "sourceFile": "simplii.md",
+        "lastSourceModified": "2026-04-30T20:21:05.049006+00:00",
+        "sourceUrls": [
+          {
+            "label": "Simplii",
+            "url": "https://www.simplii.com/"
+          },
+          {
+            "label": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Simplii_Financial"
+          },
+          {
+            "label": "Simplii product pages",
+            "url": "https://www.simplii.com/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bmo_cashback",
+      "name": "BMO CashBack Mastercard",
+      "issuer": "BMO",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #0075be 0%, #003f6b 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "5% cashback on first $2,000 (up to $100)",
+      "minCredit": "fair",
+      "insurances": [
+        "Purchase protection"
+      ],
+      "pros": [
+        "No annual fee",
+        "3% groceries",
+        "1% on bills",
+        "Good starter card"
+      ],
+      "cons": [
+        "0.5% on other purchases",
+        "Basic insurance"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "build_credit",
+        "student"
+      ],
+      "idealSpend": [
+        "groceries",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_low_rate",
+      "name": "TD Emerald Flex Rate Visa",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%)",
+      "annualFee": 0,
+      "interestRate": 8.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low rate from day one — save on interest",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "8.99% interest rate",
+        "No annual fee",
+        "Great for carrying balances",
+        "Simple"
+      ],
+      "cons": [
+        "No rewards or cashback",
+        "No travel perks"
+      ],
+      "bestFor": [
+        "low_interest",
+        "no_fee",
+        "build_credit"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mbna_true_line",
+      "name": "MBNA True Line Mastercard",
+      "issuer": "MBNA (TD)",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #2c3e50 0%, #1a252f 100%)",
+      "annualFee": 0,
+      "interestRate": 12.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "0% intro APR for 12 months on balance transfers",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "0% intro rate on balance transfers",
+        "Low 12.99% ongoing rate",
+        "No annual fee"
+      ],
+      "cons": [
+        "No rewards",
+        "No travel insurance"
+      ],
+      "bestFor": [
+        "low_interest",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_aeroplan_vi",
+      "name": "TD Aeroplan Visa Infinite",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #1a3a4a 0%, #0d1f2d 100%)",
+      "annualFee": 139,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "travel",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 40,000 Aeroplan points + buddy pass",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access (limited)"
+      ],
+      "pros": [
+        "Strong Aeroplan earning",
+        "Priority boarding on AC",
+        "Annual companion voucher",
+        "Good insurance"
+      ],
+      "cons": [
+        "$139 annual fee",
+        "Best value for Air Canada flyers"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "gas",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "neo_secured",
+      "name": "Neo Secured Credit Card",
+      "issuer": "Neo Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #6c3fa0 0%, #3d1d6b 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "dining",
+        "online"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 15% cashback at Neo partners",
+      "minCredit": "building",
+      "insurances": [],
+      "pros": [
+        "No credit check (secured)",
+        "High partner cashback",
+        "No annual fee",
+        "Build credit history"
+      ],
+      "cons": [
+        "Requires security deposit",
+        "Base cashback is low"
+      ],
+      "bestFor": [
+        "build_credit",
+        "student",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "dining",
+        "online",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "neo-financial",
+        "institutionTitle": "Neo Financial",
+        "sourceFile": "neo-financial.md",
+        "lastSourceModified": "2026-04-30T20:21:44.139007+00:00",
+        "sourceUrls": [
+          {
+            "label": "Neo Financial",
+            "url": "https://www.neofinancial.com/"
+          },
+          {
+            "label": "Neo Financial product pages",
+            "url": "https://www.neofinancial.com/accounts"
+          },
+          {
+            "label": "Neo for Partners",
+            "url": "https://www.neofinancial.com/partners"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_cashback",
+      "name": "RBC Cash Back Mastercard",
+      "issuer": "RBC Royal Bank",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #003da5 0%, #002366 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "groceries"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Earn up to $50 cashback in first 3 months",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection"
+      ],
+      "pros": [
+        "No annual fee",
+        "2% on groceries (first $6K)",
+        "Simple cash back"
+      ],
+      "cons": [
+        "0.5% base rate is low",
+        "Grocery cap of $6,000/year"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_cashback_preferred",
+      "name": "RBC Cash Back Preferred World Elite Mastercard",
+      "issuer": "RBC Royal Bank",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #002366 0%, #001240 100%)",
+      "annualFee": 99,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1.5,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "general"
+      ],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Up to $100 cashback in first 3 months",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "1.5% flat rate on everything",
+        "No category tracking needed",
+        "Strong insurance suite"
+      ],
+      "cons": [
+        "$99 annual fee",
+        "1.5% is good but not the highest flat rate"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "general",
+        "groceries",
+        "dining",
+        "gas",
+        "online",
+        "bills"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_ion",
+      "name": "RBC ION Visa",
+      "issuer": "RBC Royal Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #4a148c 0%, #1a0040 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Earn bonus Avion points on first purchase",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Earn Avion points",
+        "Flexible redemption options"
+      ],
+      "cons": [
+        "Low earn rate (1pt/$1)",
+        "No bonus categories",
+        "No insurance"
+      ],
+      "bestFor": [
+        "no_fee",
+        "travel"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_ion_plus",
+      "name": "RBC ION+ Visa",
+      "issuer": "RBC Royal Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #6a1b9a 0%, #38006b 100%)",
+      "annualFee": 48,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries",
+        "travel",
+        "gas",
+        "entertainment"
+      ],
+      "bonusCategoryCount": 4,
+      "welcomeBonus": "Bonus Avion points in first 3 months",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection"
+      ],
+      "pros": [
+        "3x on groceries, travel, gas, streaming",
+        "Low $48 annual fee",
+        "Avion points flexibility"
+      ],
+      "cons": [
+        "Only 1x on other categories",
+        "Limited insurance"
+      ],
+      "bestFor": [
+        "cashback",
+        "travel"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "travel",
+        "entertainment"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_avion_infinite",
+      "name": "RBC Avion Visa Infinite",
+      "issuer": "RBC Royal Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #0d47a1 0%, #002171 100%)",
+      "annualFee": 120,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [
+        "travel"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Up to 35,000 Avion points welcome bonus",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "25% bonus on travel redemptions",
+        "Strong travel insurance",
+        "Flexible Avion points"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "1pt/$1 base earn rate",
+        "Better premium options exist"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_avion_privilege",
+      "name": "RBC Avion Visa Infinite Privilege",
+      "issuer": "RBC Royal Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #1a1a2e 0%, #0a0a15 100%)",
+      "annualFee": 399,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [
+        "travel"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Up to 60,000 Avion points welcome bonus",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation/interruption",
+        "Rental car",
+        "Lounge access",
+        "Concierge"
+      ],
+      "pros": [
+        "Premium lounge access",
+        "Top-tier travel insurance",
+        "Concierge service",
+        "Best Avion card"
+      ],
+      "cons": [
+        "$399 annual fee",
+        "Requires high income",
+        "1pt/$1 flat earn rate"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc_low_rate",
+      "name": "RBC Visa Classic Low Rate",
+      "issuer": "RBC Royal Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #607d8b 0%, #37474f 100%)",
+      "annualFee": 20,
+      "interestRate": 12.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low 12.99% rate from day one",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Low 12.99% interest rate",
+        "Good for balance carrying",
+        "Widely accepted Visa"
+      ],
+      "cons": [
+        "No rewards or cashback",
+        "$20 annual fee",
+        "No insurance"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "rbc",
+        "institutionTitle": "Royal Bank of Canada (RBC)",
+        "sourceFile": "rbc.md",
+        "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "HSBC acquisition newsroom",
+            "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+          },
+          {
+            "label": "JD Power 2025 Canada Retail Banking",
+            "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+          },
+          {
+            "label": "maps.rbcroyalbank.com",
+            "url": "https://maps.rbcroyalbank.com/"
+          },
+          {
+            "label": "Business chequing accounts",
+            "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.rbcroyalbank.com/business/"
+          },
+          {
+            "label": "Commercial banking",
+            "url": "https://www.rbcroyalbank.com/commercial/index.html"
+          },
+          {
+            "label": "Industry expertise",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+          },
+          {
+            "label": "Women in Business",
+            "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_cashback",
+      "name": "TD Cash Back Visa",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #43a047 0%, #2e7d32 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 3.5% cashback for first 3 months",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection"
+      ],
+      "pros": [
+        "No annual fee",
+        "3% on groceries, gas & recurring bills",
+        "Widely accepted Visa"
+      ],
+      "cons": [
+        "Only 0.5% on other categories",
+        "Limited insurance"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_rewards",
+      "name": "TD Rewards Visa",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #66bb6a 0%, #388e3c 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Earn bonus TD Rewards on first purchase",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Earn TD Rewards points",
+        "Flexible point redemption"
+      ],
+      "cons": [
+        "Low earn rate",
+        "No bonus categories",
+        "No insurance"
+      ],
+      "bestFor": [
+        "no_fee"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_aeroplan_platinum",
+      "name": "TD Aeroplan Visa Platinum",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #00695c 0%, #004d40 100%)",
+      "annualFee": 89,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1.5,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "travel"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 20,000 Aeroplan points",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car"
+      ],
+      "pros": [
+        "Entry-level Aeroplan card",
+        "1.5x on groceries, gas & Air Canada",
+        "Good intro to travel rewards"
+      ],
+      "cons": [
+        "$89 annual fee",
+        "Lower multipliers than Infinite",
+        "Limited lounge access"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "travel"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "td_first_class",
+      "name": "TD First Class Travel Visa Infinite",
+      "issuer": "TD Bank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #1b5e20 0%, #0d3010 100%)",
+      "annualFee": 139,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1.5,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "travel"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Up to 40,000 TD Rewards points",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "3pts/$1 on travel",
+        "1.5pts on everything else",
+        "Flexible TD Rewards (not locked to Aeroplan)"
+      ],
+      "cons": [
+        "$139 annual fee",
+        "Points less valuable than Aeroplan for flights"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "td",
+        "institutionTitle": "TD Canada Trust",
+        "sourceFile": "td.md",
+        "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Results",
+            "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+          },
+          {
+            "label": "Q3 2025 Investor Fact Sheet",
+            "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+          },
+          {
+            "label": "Cards",
+            "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+          },
+          {
+            "label": "Cross-Border Banking",
+            "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+          },
+          {
+            "label": "DOJ AML guilty plea press release",
+            "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+          },
+          {
+            "label": "OCC C&D order",
+            "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+          },
+          {
+            "label": "CEO transition acceleration",
+            "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+          },
+          {
+            "label": "TD's history",
+            "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+          },
+          {
+            "label": "Small Business Banking",
+            "url": "https://www.td.com/ca/en/business-banking/"
+          },
+          {
+            "label": "Business Accounts",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+          },
+          {
+            "label": "Business Credit Cards",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+          },
+          {
+            "label": "Business Loans",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+          },
+          {
+            "label": "TD Merchant Solutions",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/payment-options/processing-solutions/"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.td.com/ca/en/commercial-banking/"
+          },
+          {
+            "label": "Commercial Expertise",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/"
+          },
+          {
+            "label": "Indigenous Banking Solutions",
+            "url": "https://www.td.com/ca/en/commercial-banking/business-expertise/indigenous-banking-solutions"
+          },
+          {
+            "label": "Women in Enterprise",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/women-in-business/"
+          },
+          {
+            "label": "Black Entrepreneurs",
+            "url": "https://www.td.com/ca/en/business-banking/small-business/black-entrepreneurs/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bmo_cashback_we",
+      "name": "BMO CashBack World Elite Mastercard",
+      "issuer": "BMO",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #01579b 0%, #002f6c 100%)",
+      "annualFee": 120,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "10% cashback on first $2,000 spend",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "5% groceries",
+        "4% transit",
+        "3% gas",
+        "2% bills",
+        "Strong insurance suite"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "Requires $80K income",
+        "Category caps apply"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bmo_eclipse",
+      "name": "BMO Eclipse Visa Infinite",
+      "issuer": "BMO",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #283593 0%, #1a237e 100%)",
+      "annualFee": 120,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "dining"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 50,000 BMO Rewards points",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "5x on groceries, gas & restaurants",
+        "Flexible BMO Rewards",
+        "Good welcome bonus"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "BMO Rewards redemption can be complex"
+      ],
+      "bestFor": [
+        "cashback",
+        "travel"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bmo_ascend",
+      "name": "BMO Ascend World Elite Mastercard",
+      "issuer": "BMO",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #0d47a1 0%, #051b4e 100%)",
+      "annualFee": 150,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "travel",
+        "dining",
+        "entertainment"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 60,000 BMO Rewards points (first year free)",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access",
+        "Concierge"
+      ],
+      "pros": [
+        "5x travel",
+        "3x dining & entertainment",
+        "First year free",
+        "Lounge access"
+      ],
+      "cons": [
+        "$150 annual fee after first year",
+        "Requires $80K income"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining",
+        "entertainment"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bmo_preferred_rate",
+      "name": "BMO Preferred Rate Mastercard",
+      "issuer": "BMO",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #78909c 0%, #455a64 100%)",
+      "annualFee": 20,
+      "interestRate": 12.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low 12.99% rate from day one",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Low 12.99% interest rate",
+        "Only $20 annual fee",
+        "Good for balance transfers"
+      ],
+      "cons": [
+        "No rewards whatsoever",
+        "Basic card with no perks"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotia_scene",
+      "name": "Scene+ Visa",
+      "issuer": "Scotiabank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #b71c1c 0%, #7f0000 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Earn 2,500 Scene+ points on first purchase",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Scene+ points for movies, groceries, travel",
+        "Good starter card"
+      ],
+      "cons": [
+        "Low earn rate",
+        "No insurance",
+        "Limited bonus categories"
+      ],
+      "bestFor": [
+        "no_fee",
+        "student",
+        "build_credit"
+      ],
+      "idealSpend": [
+        "entertainment",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotia_momentum_nf",
+      "name": "Scotia Momentum No-Fee Visa",
+      "issuer": "Scotiabank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #c62828 0%, #8e0000 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "groceries",
+        "bills"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "5% cashback on first $2,000 spent",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "2% on groceries & recurring bills",
+        "Simple cashback"
+      ],
+      "cons": [
+        "Only 1% on other purchases",
+        "No insurance coverage"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotia_momentum",
+      "name": "Scotia Momentum Visa Infinite",
+      "issuer": "Scotiabank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #d32f2f 0%, #8b0000 100%)",
+      "annualFee": 150,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "bills",
+        "gas"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "10% cashback on first $2,000 (first year fee waived)",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "4% groceries & recurring",
+        "2% gas & transit",
+        "First year free",
+        "Strong insurance"
+      ],
+      "cons": [
+        "$150 annual fee after year 1",
+        "Requires $60K income"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "bills",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotia_passport",
+      "name": "Scotiabank Passport Visa Infinite",
+      "issuer": "Scotiabank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #880e4f 0%, #4a0028 100%)",
+      "annualFee": 150,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries",
+        "dining",
+        "travel"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 40,000 Scene+ points",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access"
+      ],
+      "pros": [
+        "No foreign transaction fee",
+        "3pts on groceries",
+        "2pts on dining & travel",
+        "Lounge access"
+      ],
+      "cons": [
+        "$150 annual fee",
+        "Scene+ redemption value varies"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "groceries",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scotia_value",
+      "name": "Scotiabank Value Visa",
+      "issuer": "Scotiabank",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #ef5350 0%, #b71c1c 100%)",
+      "annualFee": 29,
+      "interestRate": 13.99,
+      "rewardType": "points",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 0.5,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low rate from day one (first year fee waived)",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Low 13.99% interest rate",
+        "First year fee waived",
+        "Earns some Scene+ points"
+      ],
+      "cons": [
+        "$29 annual fee",
+        "Very low reward rate",
+        "No insurance"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "scotiabank",
+        "institutionTitle": "Scotiabank (Bank of Nova Scotia)",
+        "sourceFile": "scotiabank.md",
+        "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2025",
+            "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+          },
+          {
+            "label": "Branch locator",
+            "url": "https://locator.scotiabank.com/"
+          },
+          {
+            "label": "Scene+ Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Scene+"
+          },
+          {
+            "label": "StartRight",
+            "url": "https://startright.scotiabank.com/ca/en.html"
+          },
+          {
+            "label": "Indigenous services",
+            "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+          },
+          {
+            "label": "Business bank accounts",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+          },
+          {
+            "label": "Select Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+          },
+          {
+            "label": "Right Size Account for Business",
+            "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+          },
+          {
+            "label": "Basic Business Account",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+          },
+          {
+            "label": "Chase Merchant Services",
+            "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+          },
+          {
+            "label": "Commercial Banking hub",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+          },
+          {
+            "label": "Commercial Industries",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries.html"
+          },
+          {
+            "label": "Indigenous Financial Services",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/industries/indigenous.html"
+          },
+          {
+            "label": "Scotiabank Women Initiative",
+            "url": "https://www.scotiabank.com/women-initiative/ca/en.html"
+          },
+          {
+            "label": "Healthcare & Professionals",
+            "url": "https://www.scotiabank.com/ca/en/commercial-banking/professionals.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_dividend_nf",
+      "name": "CIBC Dividend Visa",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #b71c1c 0%, #6a0000 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 1,
+      "bonusCategories": [
+        "groceries",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "5% cashback on first $2,000 spent",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "1% on groceries & gas",
+        "Good starter cashback card"
+      ],
+      "cons": [
+        "Low 0.5% base rate",
+        "No insurance",
+        "Limited bonus rates"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "student"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_aventura",
+      "name": "CIBC Aventura Visa",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Up to 10,000 Aventura points",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Earn Aventura travel points",
+        "Flexible redemption"
+      ],
+      "cons": [
+        "Low 1pt/$1 earn rate",
+        "No bonus categories",
+        "No insurance"
+      ],
+      "bestFor": [
+        "travel",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "travel",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_aventura_infinite",
+      "name": "CIBC Aventura Visa Infinite",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #4a148c 0%, #1a0040 100%)",
+      "annualFee": 139,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "travel",
+        "gas",
+        "groceries"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 40,000 Aventura points + companion voucher",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "2x on CIBC travel bookings",
+        "1.5x on gas, grocery, pharmacy",
+        "Flexible travel redemption"
+      ],
+      "cons": [
+        "$139 annual fee",
+        "Aventura points less valuable than some competitors"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "gas",
+        "groceries"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_aeroplan",
+      "name": "CIBC Aeroplan Visa",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #1a237e 0%, #0d1240 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [
+        "travel"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Earn Aeroplan points on first purchase",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Earn Aeroplan points",
+        "Great intro to Aeroplan ecosystem"
+      ],
+      "cons": [
+        "Low earn rate",
+        "No insurance",
+        "No lounge access"
+      ],
+      "bestFor": [
+        "travel",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "travel",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_aeroplan_infinite",
+      "name": "CIBC Aeroplan Visa Infinite",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #0d47a1 0%, #002171 100%)",
+      "annualFee": 139,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1.5,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "travel"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 50,000 Aeroplan points + buddy pass",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access"
+      ],
+      "pros": [
+        "1.5x on groceries, gas & Air Canada",
+        "Priority boarding",
+        "Annual companion voucher"
+      ],
+      "cons": [
+        "$139 annual fee",
+        "Best value for Air Canada flyers only"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "groceries",
+        "gas"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_costco",
+      "name": "CIBC Costco Mastercard",
+      "issuer": "CIBC",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #1565c0 0%, #0d47a1 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "dining",
+        "gas",
+        "groceries"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "None (Costco membership required)",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection",
+        "Extended warranty"
+      ],
+      "pros": [
+        "No annual fee",
+        "3% restaurants",
+        "2% gas & Costco",
+        "1% everything else"
+      ],
+      "cons": [
+        "Requires Costco membership",
+        "Cashback paid as annual certificate"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "dining",
+        "gas",
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cibc_select",
+      "name": "CIBC Select Visa",
+      "issuer": "CIBC",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #90a4ae 0%, #546e7a 100%)",
+      "annualFee": 29,
+      "interestRate": 12.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low 12.99% rate from day one",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Low 12.99% interest rate",
+        "Good for carrying balances",
+        "Widely accepted Visa"
+      ],
+      "cons": [
+        "No rewards",
+        "$29 annual fee",
+        "No insurance"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "cibc",
+        "institutionTitle": "CIBC (Canadian Imperial Bank of Commerce)",
+        "sourceFile": "cibc.md",
+        "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+        "sourceUrls": [
+          {
+            "label": "Quick facts",
+            "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locations.cibc.com/bc"
+          },
+          {
+            "label": "All cards",
+            "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+          },
+          {
+            "label": "Investor's Edge pricing",
+            "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+          },
+          {
+            "label": "Costco Mastercard announcement (Sep 2021)",
+            "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+          },
+          {
+            "label": "Business hub",
+            "url": "https://www.cibc.com/en/business.html"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.cibc.com/en/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.cibc.com/en/business/credit-cards.html"
+          },
+          {
+            "label": "Business loans",
+            "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Merchant services",
+            "url": "https://www.cibc.com/en/business/merchant-services.html"
+          },
+          {
+            "label": "Agriculture",
+            "url": "https://www.cibc.com/en/business/agriculture.html"
+          },
+          {
+            "label": "Agriculture loans",
+            "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+          },
+          {
+            "label": "Programs hub",
+            "url": "https://www.cibc.com/en/business/programs.html"
+          },
+          {
+            "label": "Women Entrepreneurs",
+            "url": "https://www.cibc.com/en/business/programs/women-entrepreneurs.html"
+          },
+          {
+            "label": "Black Entrepreneur Program",
+            "url": "https://www.cibc.com/en/business/programs/banking-for-black-owned-businesses.html"
+          },
+          {
+            "label": "Healthcare Programs",
+            "url": "https://www.cibc.com/en/business/programs/healthcare.html"
+          },
+          {
+            "label": "Commercial Banking",
+            "url": "https://www.cibc.com/en/commercial.html"
+          },
+          {
+            "label": "Areas of Specialization",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization.html"
+          },
+          {
+            "label": "Indigenous Banking",
+            "url": "https://www.cibc.com/en/commercial/areas-of-specialization/indigenous-banking.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nbc_allure",
+      "name": "National Bank Allure Mastercard",
+      "issuer": "National Bank of Canada",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #e53935 0%, #b71c1c 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Welcome bonus points on first purchase",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Earns reward points",
+        "Good entry-level card"
+      ],
+      "cons": [
+        "Low earn rate",
+        "No bonus categories",
+        "No insurance"
+      ],
+      "bestFor": [
+        "no_fee"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "national-bank",
+        "institutionTitle": "National Bank of Canada",
+        "sourceFile": "national-bank.md",
+        "lastSourceModified": "2026-04-30T20:06:03.403969+00:00",
+        "sourceUrls": [
+          {
+            "label": "CWB acquisition completed Feb 2025",
+            "url": "https://www.nbc.ca/about-us/news-media/press-release/2025/20250203-nbc-concludes-acquisition-cwb.html"
+          },
+          {
+            "label": "Welcome portal for CWB clients",
+            "url": "https://welcome.nbc.ca/"
+          },
+          {
+            "label": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/National_Bank_of_Canada"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locator.nbc.ca/bc"
+          },
+          {
+            "label": "Mastercard credit cards",
+            "url": "https://www.nbc.ca/personal/mastercard-credit-cards.html"
+          },
+          {
+            "label": "NBDB zero-commission announcement",
+            "url": "https://www.newswire.ca/news-releases/a-canadian-first-national-bank-direct-brokerage-announces-new-zero-commission-pricing-864148415.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.nbc.ca/business.html"
+          },
+          {
+            "label": "Business accounts and packages",
+            "url": "https://www.nbc.ca/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.nbc.ca/business/credit-cards.html"
+          },
+          {
+            "label": "Business financing solutions",
+            "url": "https://www.nbc.ca/business/financing.html"
+          },
+          {
+            "label": "Short-term financing",
+            "url": "https://www.nbc.ca/business/financing/financing-solutions/short-term.html"
+          },
+          {
+            "label": "Acquisition financing",
+            "url": "https://www.nbc.ca/business/financing/acquisition.html"
+          },
+          {
+            "label": "CWB acquisition completion",
+            "url": "https://www.nbc.ca/about-us/news-media/press-release/2025/20250203-nbc-concludes-acquisition-cwb.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nbc_world_elite",
+      "name": "National Bank World Elite Mastercard",
+      "issuer": "National Bank of Canada",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #c62828 0%, #6d0000 100%)",
+      "annualFee": 150,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2.5,
+      "bonusCategories": [
+        "travel",
+        "groceries"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 40,000 reward points",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access",
+        "Concierge"
+      ],
+      "pros": [
+        "2.5pts on travel & groceries",
+        "Lounge access",
+        "Strong insurance",
+        "Concierge service"
+      ],
+      "cons": [
+        "$150 annual fee",
+        "Requires $80K income",
+        "National Bank is smaller network"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "national-bank",
+        "institutionTitle": "National Bank of Canada",
+        "sourceFile": "national-bank.md",
+        "lastSourceModified": "2026-04-30T20:06:03.403969+00:00",
+        "sourceUrls": [
+          {
+            "label": "CWB acquisition completed Feb 2025",
+            "url": "https://www.nbc.ca/about-us/news-media/press-release/2025/20250203-nbc-concludes-acquisition-cwb.html"
+          },
+          {
+            "label": "Welcome portal for CWB clients",
+            "url": "https://welcome.nbc.ca/"
+          },
+          {
+            "label": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/National_Bank_of_Canada"
+          },
+          {
+            "label": "BC locator",
+            "url": "https://locator.nbc.ca/bc"
+          },
+          {
+            "label": "Mastercard credit cards",
+            "url": "https://www.nbc.ca/personal/mastercard-credit-cards.html"
+          },
+          {
+            "label": "NBDB zero-commission announcement",
+            "url": "https://www.newswire.ca/news-releases/a-canadian-first-national-bank-direct-brokerage-announces-new-zero-commission-pricing-864148415.html"
+          },
+          {
+            "label": "Business Banking hub",
+            "url": "https://www.nbc.ca/business.html"
+          },
+          {
+            "label": "Business accounts and packages",
+            "url": "https://www.nbc.ca/business/accounts.html"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.nbc.ca/business/credit-cards.html"
+          },
+          {
+            "label": "Business financing solutions",
+            "url": "https://www.nbc.ca/business/financing.html"
+          },
+          {
+            "label": "Short-term financing",
+            "url": "https://www.nbc.ca/business/financing/financing-solutions/short-term.html"
+          },
+          {
+            "label": "Acquisition financing",
+            "url": "https://www.nbc.ca/business/financing/acquisition.html"
+          },
+          {
+            "label": "CWB acquisition completion",
+            "url": "https://www.nbc.ca/about-us/news-media/press-release/2025/20250203-nbc-concludes-acquisition-cwb.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amex_simplycash",
+      "name": "American Express SimplyCash Card",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)",
+      "annualFee": 0,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1.25,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "groceries",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Earn 4% cashback for first 6 months",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection",
+        "Extended warranty"
+      ],
+      "pros": [
+        "No annual fee",
+        "2% on groceries & gas",
+        "1.25% on everything else",
+        "Good intro offer"
+      ],
+      "cons": [
+        "Amex not accepted everywhere",
+        "Grocery/gas category capped at $15K/yr"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "amex_simplycash_preferred",
+      "name": "American Express SimplyCash Preferred",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #1b5e20 0%, #0d3010 100%)",
+      "annualFee": 120,
+      "interestRate": 20.99,
+      "rewardType": "cashback",
+      "cashbackBase": 2,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "10% cashback on first $4,000 spend",
+      "minCredit": "good",
+      "insurances": [
+        "Purchase protection",
+        "Extended warranty",
+        "Rental car"
+      ],
+      "pros": [
+        "4% on groceries & gas",
+        "2% on everything else",
+        "Strong cashback rates"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "Amex acceptance",
+        "Category cashback cap ~$1,200/yr"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "amex_gold",
+      "name": "American Express Gold Rewards Card",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #d4a017 0%, #a67c00 100%)",
+      "annualFee": 250,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "travel",
+        "gas",
+        "groceries",
+        "dining"
+      ],
+      "bonusCategoryCount": 4,
+      "welcomeBonus": "Up to 50,000 MR points welcome bonus",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "2x on travel, gas, groceries, dining",
+        "Full Membership Rewards program",
+        "Strong insurance"
+      ],
+      "cons": [
+        "$250 annual fee",
+        "Amex acceptance limitations",
+        "MR points require strategy"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "gas",
+        "groceries",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "amex_platinum",
+      "name": "American Express Platinum Card",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #e0e0e0 0%, #9e9e9e 50%, #616161 100%)",
+      "annualFee": 799,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "travel",
+        "dining"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 80,000 MR points + $200 travel credit",
+      "minCredit": "excellent",
+      "insurances": [
+        "Comprehensive travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Priority Pass lounges",
+        "$200 annual travel credit",
+        "$200 dining credit",
+        "Concierge"
+      ],
+      "pros": [
+        "Ultimate travel card",
+        "Priority Pass lounge access",
+        "$200 travel + $200 dining credits",
+        "Comprehensive insurance"
+      ],
+      "cons": [
+        "$799 annual fee",
+        "Amex acceptance limitations",
+        "Requires high spend to justify fee"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "amex_aeroplan",
+      "name": "American Express Aeroplan Card",
+      "issuer": "American Express Canada",
+      "network": "Amex",
+      "cardGradient": "linear-gradient(135deg, #1a237e 0%, #000051 100%)",
+      "annualFee": 120,
+      "interestRate": 20.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "travel",
+        "dining"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Up to 30,000 Aeroplan points",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car"
+      ],
+      "pros": [
+        "2x on Air Canada",
+        "1.5x on dining",
+        "Aeroplan points via Amex",
+        "Good insurance"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "Amex acceptance",
+        "Lower earn than Cobalt for food"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "travel",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "triangle",
+      "name": "Triangle Mastercard",
+      "issuer": "Canadian Tire Bank",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #e53935 0%, #b71c1c 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Bonus CT Money on first purchase",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "4% at Canadian Tire, Sport Chek, Mark's",
+        "1.5% on groceries",
+        "5¢/L at Gas+"
+      ],
+      "cons": [
+        "CT Money only redeemable at CT family stores",
+        "Low base earn rate"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "general",
+        "groceries",
+        "gas"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "triangle_we",
+      "name": "Triangle World Elite Mastercard",
+      "issuer": "Canadian Tire Bank",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #c62828 0%, #7f0000 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "gas"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Bonus CT Money on first purchase",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "No annual fee!",
+        "4% CT stores",
+        "3% groceries",
+        "7¢/L Gas+",
+        "Strong insurance for $0 fee"
+      ],
+      "cons": [
+        "Requires $80K income",
+        "CT Money only at CT family stores"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "bmo",
+        "institutionTitle": "BMO (Bank of Montreal)",
+        "sourceFile": "bmo.md",
+        "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+        "sourceUrls": [
+          {
+            "label": "Q1 2026 Fact Sheet",
+            "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+          },
+          {
+            "label": "BC branch locator",
+            "url": "https://branches.bmo.com/bc/"
+          },
+          {
+            "label": "Bank of the West acquisition",
+            "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+          },
+          {
+            "label": "Air Miles acquisition",
+            "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+          },
+          {
+            "label": "Eclipse Visa Infinite",
+            "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+          },
+          {
+            "label": "Indigenous banking",
+            "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+          },
+          {
+            "label": "Business homepage",
+            "url": "https://www.bmo.com/en-ca/main/business/"
+          },
+          {
+            "label": "Business credit cards",
+            "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+          },
+          {
+            "label": "Indigenous Business Banking",
+            "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+          },
+          {
+            "label": "Loans & mortgages",
+            "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+          },
+          {
+            "label": "Moneris merchant services",
+            "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pc_mastercard",
+      "name": "PC Mastercard",
+      "issuer": "PC Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #d32f2f 0%, #a11a1a 100%)",
+      "annualFee": 0,
+      "interestRate": 19.97,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 2.5,
+      "bonusCategories": [
+        "groceries"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Bonus PC Optimum points on first purchase",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "2.5% back at Shoppers Drug Mart",
+        "1% at Loblaw grocery stores",
+        "Easy redemption"
+      ],
+      "cons": [
+        "Points only redeemable at Loblaw/Shoppers family",
+        "Low base rate",
+        "No insurance"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee",
+        "student"
+      ],
+      "idealSpend": [
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "pc_world_elite",
+      "name": "PC World Elite Mastercard",
+      "issuer": "PC Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #b71c1c 0%, #7f0000 100%)",
+      "annualFee": 0,
+      "interestRate": 19.97,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4.5,
+      "bonusCategories": [
+        "groceries"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Bonus PC Optimum points welcome offer",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "No annual fee!",
+        "4.5% at Shoppers Drug Mart",
+        "3% at Loblaw grocery stores",
+        "3¢/L at Esso",
+        "Strong insurance for $0 fee"
+      ],
+      "cons": [
+        "Requires $80K income",
+        "Points only at Loblaw/Shoppers family"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "groceries",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "brim",
+      "name": "Brim Mastercard",
+      "issuer": "Brim Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "online"
+      ],
+      "bonusCategoryCount": 1,
+      "welcomeBonus": "Accelerated partner cashback from day one",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "Up to 5% at Brim partners",
+        "Flexible point redemption",
+        "Digital-first experience"
+      ],
+      "cons": [
+        "Low base earn rate",
+        "1.5% foreign transaction fee",
+        "Partner dependent"
+      ],
+      "bestFor": [
+        "no_fee"
+      ],
+      "idealSpend": [
+        "online",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "brim_we",
+      "name": "Brim World Elite Mastercard",
+      "issuer": "Brim Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #1a1a2e 0%, #0a0a15 50%, #d4a017 100%)",
+      "annualFee": 199,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "general"
+      ],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Elevated earn rates from day one",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access",
+        "Concierge"
+      ],
+      "pros": [
+        "2% on everything (first $25K)",
+        "Lounge access",
+        "Comprehensive insurance",
+        "Flexible redemption"
+      ],
+      "cons": [
+        "$199 annual fee",
+        "1% after $25K spend",
+        "Requires $80K income"
+      ],
+      "bestFor": [
+        "travel",
+        "cashback"
+      ],
+      "idealSpend": [
+        "general",
+        "travel",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "hometrust_preferred",
+      "name": "Home Trust Preferred Visa",
+      "issuer": "Home Trust",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #0277bd 0%, #01579b 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 1,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "No foreign transaction fee from day one",
+      "minCredit": "good",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "1% cashback on everything",
+        "NO foreign transaction fee",
+        "Great for travel abroad"
+      ],
+      "cons": [
+        "Only 1% cashback",
+        "No bonus categories",
+        "No insurance"
+      ],
+      "bestFor": [
+        "travel",
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "travel",
+        "online",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "oaken",
+        "institutionTitle": "Oaken Financial",
+        "sourceFile": "oaken.md",
+        "lastSourceModified": "2026-04-30T20:24:44.599577+00:00",
+        "sourceUrls": [
+          {
+            "label": "Oaken",
+            "url": "https://www.oaken.com/"
+          },
+          {
+            "label": "Oaken product pages",
+            "url": "https://www.oaken.com/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hometrust_secured",
+      "name": "Home Trust Secured Visa",
+      "issuer": "Home Trust",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #546e7a 0%, #37474f 100%)",
+      "annualFee": 59,
+      "interestRate": 19.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Build credit with responsible use",
+      "minCredit": "building",
+      "insurances": [],
+      "pros": [
+        "Available with poor/no credit",
+        "Reports to credit bureaus",
+        "Secured deposit as limit",
+        "Visa acceptance"
+      ],
+      "cons": [
+        "$59 annual fee",
+        "Requires security deposit",
+        "No rewards",
+        "No insurance"
+      ],
+      "bestFor": [
+        "build_credit"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "oaken",
+        "institutionTitle": "Oaken Financial",
+        "sourceFile": "oaken.md",
+        "lastSourceModified": "2026-04-30T20:24:44.599577+00:00",
+        "sourceUrls": [
+          {
+            "label": "Oaken",
+            "url": "https://www.oaken.com/"
+          },
+          {
+            "label": "Oaken product pages",
+            "url": "https://www.oaken.com/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "desjardins_cashback",
+      "name": "Desjardins Cash Back Visa",
+      "issuer": "Desjardins",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)",
+      "annualFee": 0,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 0.5,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "dining",
+        "bills"
+      ],
+      "bonusCategoryCount": 2,
+      "welcomeBonus": "Cashback from first purchase",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "No annual fee",
+        "2% on restaurants, bills & transit",
+        "Good everyday card"
+      ],
+      "cons": [
+        "Only 0.5% base rate",
+        "Available mainly in Quebec/Ontario",
+        "No insurance"
+      ],
+      "bestFor": [
+        "cashback",
+        "no_fee"
+      ],
+      "idealSpend": [
+        "dining",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "desjardins_cashback_we",
+      "name": "Desjardins Cash Back World Elite Mastercard",
+      "issuer": "Desjardins",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #1b5e20 0%, #0d3010 100%)",
+      "annualFee": 100,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "dining",
+        "gas"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Bonus cashback for first 6 months",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "4% groceries ($10K cap)",
+        "3% restaurants & transit",
+        "Strong insurance",
+        "Lower fee than competitors"
+      ],
+      "cons": [
+        "$100 annual fee",
+        "Category caps",
+        "Requires $80K income"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "dining",
+        "gas",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "desjardins_odyssey_we",
+      "name": "Desjardins Odyssey World Elite Mastercard",
+      "issuer": "Desjardins",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #00695c 0%, #004d40 100%)",
+      "annualFee": 130,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 3,
+      "bonusCategories": [
+        "groceries",
+        "dining",
+        "travel"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Bonus BONUSDOLLARS for first 6 months",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Lounge access"
+      ],
+      "pros": [
+        "3% groceries",
+        "2% restaurants & transit",
+        "Lounge access",
+        "Competitive with Big 5 travel cards"
+      ],
+      "cons": [
+        "$130 annual fee",
+        "BONUSDOLLARS value can be limited",
+        "Requires $80K income"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "groceries",
+        "dining",
+        "travel"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "desjardins_flexi",
+      "name": "Desjardins Flexi Visa",
+      "issuer": "Desjardins",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #66bb6a 0%, #388e3c 100%)",
+      "annualFee": 20,
+      "interestRate": 10.9,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Lowest interest rate in Canada at 10.90%",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Ultra-low 10.90% interest rate",
+        "Lowest rate card in Canada",
+        "Good for balance carrying"
+      ],
+      "cons": [
+        "No rewards",
+        "$20 annual fee",
+        "No insurance",
+        "Limited availability"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "meridian_cashback",
+      "name": "Meridian Visa Infinite Cash Back",
+      "issuer": "Meridian Credit Union",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #1565c0 0%, #0d47a1 100%)",
+      "annualFee": 99,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 4,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "dining"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "First year annual fee waived",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "Up to 4% on select categories",
+        "First year free",
+        "Credit union member benefits"
+      ],
+      "cons": [
+        "$99 annual fee after year 1",
+        "Requires Meridian membership",
+        "Category caps apply"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "dining",
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "vancity_enviro",
+      "name": "Vancity enviro Visa Infinite",
+      "issuer": "Vancity",
+      "network": "Visa",
+      "cardGradient": "linear-gradient(135deg, #e65100 0%, #bf360c 100%)",
+      "annualFee": 120,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 1.5,
+      "bonusCategories": [
+        "general"
+      ],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Anniversary bonus + first year fee waived",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection"
+      ],
+      "pros": [
+        "Supports environmental causes",
+        "Anniversary reward bonus",
+        "Travel insurance included",
+        "Ethical banking"
+      ],
+      "cons": [
+        "$120 annual fee",
+        "BC-only credit union",
+        "Low earn rate",
+        "Limited to Vancity members"
+      ],
+      "bestFor": [
+        "travel"
+      ],
+      "idealSpend": [
+        "general",
+        "travel"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "vancity",
+        "institutionTitle": "Vancity",
+        "sourceFile": "vancity.md",
+        "lastSourceModified": "2026-04-30T20:06:39.743978+00:00",
+        "sourceUrls": [
+          {
+            "label": "Annual Report 2024",
+            "url": "https://annualreport.vancity.com/"
+          },
+          {
+            "label": "Credit cards",
+            "url": "https://www.vancity.com/bank/credit-cards"
+          },
+          {
+            "label": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Vancity"
+          },
+          {
+            "label": "B Corp profile",
+            "url": "https://www.bcorporation.net/en-us/find-a-b-corp/company/vancity-community-investment-bank/"
+          },
+          {
+            "label": "GABV stories",
+            "url": "https://www.gabv.org/stories-from-gabv/values-in-practice/vancity-building-a-stronger-workforce-to-strengthen-the-clean-economy/"
+          },
+          {
+            "label": "Business banking hub",
+            "url": "https://www.vancity.com/business"
+          },
+          {
+            "label": "Business accounts",
+            "url": "https://www.vancity.com/business/accounts"
+          },
+          {
+            "label": "Business Jumpstart Savings",
+            "url": "https://www.vancity.com/business/accounts/business-jumpstart-savings-account/"
+          },
+          {
+            "label": "Business Self-Serve Package",
+            "url": "https://www.vancity.com/business/accounts/business-self-serve-chequing-account"
+          },
+          {
+            "label": "Business Prime Account",
+            "url": "https://www.vancity.com/business/accounts/business-prime-account/"
+          },
+          {
+            "label": "Independent Business Account",
+            "url": "https://www.vancity.com/business/accounts/independent-business-account"
+          },
+          {
+            "label": "Impact Business Banking sectors",
+            "url": "https://www.vancity.com/business/sectors"
+          },
+          {
+            "label": "Indigenous financial planning",
+            "url": "https://www.vancity.com/community/indigenous/"
+          },
+          {
+            "label": "Growth Capital",
+            "url": "https://www.vancity.com/BusinessBanking/Financing/GrowthCapital/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "servus_we",
+      "name": "Servus World Elite Mastercard",
+      "issuer": "Servus Credit Union",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #0277bd 0%, #004c8c 100%)",
+      "annualFee": 150,
+      "interestRate": 19.99,
+      "rewardType": "points",
+      "cashbackBase": 1,
+      "cashbackBonus": 2,
+      "bonusCategories": [
+        "general"
+      ],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Profit Share: get 25% of annual fee back",
+      "minCredit": "excellent",
+      "insurances": [
+        "Travel medical",
+        "Trip cancellation",
+        "Rental car",
+        "Purchase protection",
+        "Concierge"
+      ],
+      "pros": [
+        "2pts/$1 on everything",
+        "Unique Profit Share (25% fee back)",
+        "Strong insurance suite",
+        "Concierge service"
+      ],
+      "cons": [
+        "$150 annual fee",
+        "Alberta-only credit union",
+        "Requires Servus membership"
+      ],
+      "bestFor": [
+        "travel",
+        "cashback"
+      ],
+      "idealSpend": [
+        "general",
+        "travel",
+        "dining"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "servus_low_rate",
+      "name": "Servus Low Rate Mastercard",
+      "issuer": "Servus Credit Union",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #4fc3f7 0%, #0288d1 100%)",
+      "annualFee": 30,
+      "interestRate": 11.99,
+      "rewardType": "none",
+      "cashbackBase": 0,
+      "cashbackBonus": 0,
+      "bonusCategories": [],
+      "bonusCategoryCount": 0,
+      "welcomeBonus": "Low 11.99% rate from day one",
+      "minCredit": "fair",
+      "insurances": [],
+      "pros": [
+        "Very low 11.99% interest",
+        "Only $30 annual fee",
+        "Good for balance carrying"
+      ],
+      "cons": [
+        "No rewards",
+        "Alberta-only credit union",
+        "Requires membership",
+        "No insurance"
+      ],
+      "bestFor": [
+        "low_interest"
+      ],
+      "idealSpend": [
+        "general"
+      ],
+      "dataSource": {
+        "type": "site_seed",
+        "institutionId": null,
+        "institutionTitle": null,
+        "sourceFile": null,
+        "lastSourceModified": null,
+        "sourceUrls": []
+      }
+    },
+    {
+      "id": "neo_world_elite",
+      "name": "Neo World Elite Mastercard",
+      "issuer": "Neo Financial",
+      "network": "Mastercard",
+      "cardGradient": "linear-gradient(135deg, #7b1fa2 0%, #4a0072 100%)",
+      "annualFee": 125,
+      "interestRate": 19.99,
+      "rewardType": "cashback",
+      "cashbackBase": 1,
+      "cashbackBonus": 5,
+      "bonusCategories": [
+        "groceries",
+        "gas",
+        "bills"
+      ],
+      "bonusCategoryCount": 3,
+      "welcomeBonus": "Up to 15% back at Neo partners + bonus",
+      "minCredit": "good",
+      "insurances": [
+        "Travel medical",
+        "Rental car",
+        "Purchase protection",
+        "Mobile device insurance"
+      ],
+      "pros": [
+        "5% groceries",
+        "4% recurring bills",
+        "3% gas",
+        "1% everything else",
+        "Strong insurance for fintech"
+      ],
+      "cons": [
+        "$125 annual fee",
+        "Variable rate (up to 29.99%)",
+        "Newer issuer"
+      ],
+      "bestFor": [
+        "cashback"
+      ],
+      "idealSpend": [
+        "groceries",
+        "gas",
+        "bills",
+        "general"
+      ],
+      "dataSource": {
+        "type": "bank_knowledge_base_match",
+        "institutionId": "neo-financial",
+        "institutionTitle": "Neo Financial",
+        "sourceFile": "neo-financial.md",
+        "lastSourceModified": "2026-04-30T20:21:44.139007+00:00",
+        "sourceUrls": [
+          {
+            "label": "Neo Financial",
+            "url": "https://www.neofinancial.com/"
+          },
+          {
+            "label": "Neo Financial product pages",
+            "url": "https://www.neofinancial.com/accounts"
+          },
+          {
+            "label": "Neo for Partners",
+            "url": "https://www.neofinancial.com/partners"
+          }
+        ]
+      }
+    }
+  ]
+}

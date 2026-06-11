@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M&A Valuation Model | Paawan Shah</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="description" content="Interactive M&amp;A valuation model: accretion/dilution analysis, synergies, deal premiums and pro-forma outputs, demonstrated on Canadian energy deals.">
+    <link rel="canonical" href="https://paawanshah99.com/projects/ma-valuation-model.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:title" content="M&A Valuation Model">
+    <meta property="og:description" content="Interactive M&amp;A valuation model: accretion/dilution analysis, synergies, deal premiums and pro-forma outputs, demonstrated on Canadian energy deals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paawanshah99.com/projects/ma-valuation-model.html">
+    <meta property="og:image" content="https://paawanshah99.com/images/ma-valuation.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://paawanshah99.com/images/ma-valuation.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -590,19 +599,21 @@
                     and to account for control and synergy potential.
                 </p>
 
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Valuation Metric</th>
-                            <th>Acquirer Multiple</th>
-                            <th>Applied to Target</th>
-                            <th>Target Current Market Cap</th>
-                            <th>Implied Premium</th>
-                        </tr>
-                    </thead>
-                    <tbody id="comparableTable">
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Valuation Metric</th>
+                                <th>Acquirer Multiple</th>
+                                <th>Applied to Target</th>
+                                <th>Target Current Market Cap</th>
+                                <th>Implied Premium</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparableTable">
+                        </tbody>
+                    </table>
+                </div>
 
                 <h3 style="margin-top: 30px;">Acquisition Price Range</h3>
                 <p style="color: #8892b0; margin-bottom: 15px; line-height: 1.6;">
@@ -639,29 +650,33 @@
                     perpetual growth beyond the projection period.
                 </p>
 
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Year</th>
-                            <th>Projected Free Cash Flow</th>
-                            <th>Discount Factor</th>
-                            <th>Present Value</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dcfTable">
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Projected Free Cash Flow</th>
+                                <th>Discount Factor</th>
+                                <th>Present Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dcfTable">
+                        </tbody>
+                    </table>
+                </div>
 
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
                 <table style="margin-top: 30px;">
-                    <thead>
-                        <tr>
-                            <th>DCF Component</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dcfSummaryTable">
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>DCF Component</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dcfSummaryTable">
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="metrics-grid" style="margin-top: 25px;">
                     <div class="metric-box">
@@ -692,20 +707,22 @@
                     earnings, but they can become accretive over time if synergies are realized.
                 </p>
 
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Offer Price</th>
-                            <th>Premium to Market</th>
-                            <th>Deal Cost</th>
-                            <th>Target EPS Contribution</th>
-                            <th>Acquirer EPS Impact</th>
-                            <th>Accretion / Dilution</th>
-                        </tr>
-                    </thead>
-                    <tbody id="accretionTable">
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Offer Price</th>
+                                <th>Premium to Market</th>
+                                <th>Deal Cost</th>
+                                <th>Target EPS Contribution</th>
+                                <th>Acquirer EPS Impact</th>
+                                <th>Accretion / Dilution</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accretionTable">
+                        </tbody>
+                    </table>
+                </div>
 
                 <h3 style="margin-top: 30px;">Key Assumptions</h3>
                 <p style="color: #8892b0; line-height: 1.6;">
@@ -740,19 +757,21 @@
                     have the most significant impact on deal attractiveness.
                 </p>
 
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
                 <table>
-                    <thead>
-                        <tr>
-                            <th colspan="6" style="text-align: center; background: rgba(100, 255, 218, 0.15);">
-                                DCF Valuation Sensitivity (Revenue Growth % / Discount Rate %)
-                            </th>
-                        </tr>
-                        <tr id="sensitivityHeaderRow">
-                        </tr>
-                    </thead>
-                    <tbody id="sensitivityTable">
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th colspan="6" style="text-align: center; background: rgba(100, 255, 218, 0.15);">
+                                    DCF Valuation Sensitivity (Revenue Growth % / Discount Rate %)
+                                </th>
+                            </tr>
+                            <tr id="sensitivityHeaderRow">
+                            </tr>
+                        </thead>
+                        <tbody id="sensitivityTable">
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="conclusion-section">
@@ -778,6 +797,7 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
     <script>
         // Company database with names and tickers
         const companyDatabase = [

@@ -1,0 +1,1564 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-07T01:19:22.316Z",
+  "source": {
+    "builder": "scripts/build-site-data.js",
+    "bankKnowledgeBaseGeneratedAt": "2026-05-07T00:53:38.796527+00:00"
+  },
+  "stats": {
+    "institutions": 26,
+    "withPersonalCardMentions": 13,
+    "withBusinessCreditCards": 17
+  },
+  "banks": [
+    {
+      "institutionId": "alterna-bank",
+      "title": "Alterna Bank",
+      "aliases": [
+        "Alterna Bank",
+        "CS Alterna Bank"
+      ],
+      "category": "Digital Bank",
+      "type": "Schedule I Canadian bank (subsidiary of Alterna Savings CU)",
+      "status": "active",
+      "headquarters": "Ottawa, ON",
+      "sourceFile": "alterna-bank.md",
+      "lastSourceModified": "2026-04-30T20:24:53.236089+00:00",
+      "locationSummary": "## BC presence None physical. Online nationwide.",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards"
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Alterna Bank",
+          "url": "https://www.alternabank.ca/"
+        },
+        {
+          "label": "Alterna Savings (parent CU)",
+          "url": "https://www.alterna.ca/"
+        },
+        {
+          "label": "Small Business hub",
+          "url": "https://www.alternabank.ca/en/small-business"
+        },
+        {
+          "label": "Small Business eChequing Account",
+          "url": "https://www.alternabank.ca/en/small-business/business-services/account-small-business-echequing"
+        },
+        {
+          "label": "Payment Processing",
+          "url": "https://www.alternabank.ca/en/small-business/business-services/payment-processing"
+        }
+      ]
+    },
+    {
+      "institutionId": "beem",
+      "title": "Beem Credit Union",
+      "aliases": [
+        "Beem",
+        "Beem Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Vancouver/Kelowna, BC",
+      "sourceFile": "beem.md",
+      "lastSourceModified": "2026-04-30T20:18:27.728655+00:00",
+      "locationSummary": "# Beem Credit Union **Largest provincially regulated CU in BC after multiple 2024-2025 mergers.** ~$17 billion AUA (post-CECU merger, effective **June 1, 2025**). 193,000+ members. 66+ branches. Regulated by BCFSA (provincial); CUDIC.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "Beem Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Beem CU",
+          "url": "https://beemcreditunion.ca/"
+        },
+        {
+          "label": "Together We Are Better timeline",
+          "url": "https://www.togetherwearebetter.ca/timeline/"
+        },
+        {
+          "label": "2024 Management Discussion and Analysis",
+          "url": "https://beemcreditunion.ca/2024-Beem-Management-Discussion-and-Analysis-Report.pdf"
+        },
+        {
+          "label": "BlueShore vote in favour of Beem merger",
+          "url": "https://beemcreditunion.ca/about-us/news/blueshore-financial-members-and-shareholders-vote-in-favour-of-merger"
+        },
+        {
+          "label": "Beem and CECU merge integration",
+          "url": "https://beemcreditunion.ca/about-us/news/beem-credit-union-and-cecu-merge-integration-now-underway"
+        },
+        {
+          "label": "Business Banking hub",
+          "url": "https://beemcreditunion.ca/business"
+        },
+        {
+          "label": "Business Spending Accounts",
+          "url": "https://beemcreditunion.ca/business/bank/spending-accounts"
+        },
+        {
+          "label": "Business Savings Accounts",
+          "url": "https://beemcreditunion.ca/business/bank/savings-accounts"
+        },
+        {
+          "label": "Business Loans and Lines of Credit",
+          "url": "https://beemcreditunion.ca/business/borrow/loans-lines-of-credit"
+        },
+        {
+          "label": "Business Credit Cards",
+          "url": "https://beemcreditunion.ca/business/bank/credit-cards"
+        },
+        {
+          "label": "About Us / merger history",
+          "url": "https://beemcreditunion.ca/about-us"
+        },
+        {
+          "label": "BlueShore merger announcement",
+          "url": "https://beemcreditunion.ca/about-us/news/blueshore-financial-members-and-shareholders-vote-in-favour-of-merger"
+        }
+      ]
+    },
+    {
+      "institutionId": "bmo",
+      "title": "BMO (Bank of Montreal)",
+      "aliases": [
+        "BMO (Bank of Montreal)",
+        "BMO",
+        "Bank of Montreal"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank (D-SIB)",
+      "status": "active",
+      "headquarters": "Montreal, QC + Toronto, ON",
+      "sourceFile": "bmo.md",
+      "lastSourceModified": "2026-04-30T16:47:11.934744+00:00",
+      "locationSummary": "# BMO (Bank of Montreal) **Canada's oldest bank (1817).** ~CAD $1.5 trillion assets (Q1 2026). **Acquired Bank of the West** Feb 1, 2023 ($16.3B USD, 1.8M customers, 500+ US branches across 32 states) — top-10 US bank. **Acquired Air Miles** June 1, 2023 from LoyaltyOne — only Big 6 to OWN a major rewards program.",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Eclipse Visa Infinite ($120 waived Y1, 5x lifestyle), Eclipse Visa Infinite Privilege (~$499), CashBack World Elite Mastercard ($120 effective June 2 2026), CashBack Mastercard ($0), CashBack Business Mastercard ($0), Air Miles World Elite Mastercard ($120 waived Y1), Air Miles Mastercard ($0), Ascend World Elite Mastercard (~$150), Rewards Mastercard, Preferred Rate Mastercard ($29 waived Y1), US Dollar Mastercard (US$35).",
+        "Note:** Air Miles transitioning to Blue Rewards summer 2026."
+      ],
+      "businessCreditCards": [
+        {
+          "name": "BMO AIR MILES Business Mastercard",
+          "network": "Mastercard",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current fee",
+          "source": "https://www.bmo.com/en-ca/main/business-banking/credit-cards/"
+        },
+        {
+          "name": "BMO CashBack Business Mastercard",
+          "network": "Mastercard",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current fee",
+          "source": "https://www.bmo.com/en-ca/main/business-banking/credit-cards/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Q1 2026 Fact Sheet",
+          "url": "https://www.bmo.com/ir/files/Live-Files/CorporateFactSheet.pdf"
+        },
+        {
+          "label": "BC branch locator",
+          "url": "https://branches.bmo.com/bc/"
+        },
+        {
+          "label": "Bank of the West acquisition",
+          "url": "https://newsroom.bmo.com/2023-02-01-BMO-Completes-Acquisition-of-Bank-of-the-West"
+        },
+        {
+          "label": "Air Miles acquisition",
+          "url": "https://newsroom.bmo.com/2023-06-01-BMO-Completes-Acquisition-of-LoyaltyOnes-AIR-MILES-Reward-Program-Business"
+        },
+        {
+          "label": "Eclipse Visa Infinite",
+          "url": "https://www.bmo.com/main/personal/credit-cards/bmo-eclipse-visa-infinite/"
+        },
+        {
+          "label": "Indigenous banking",
+          "url": "https://www.bmo.com/en-ca/main/personal/indigenous-banking/"
+        },
+        {
+          "label": "Business homepage",
+          "url": "https://www.bmo.com/en-ca/main/business/"
+        },
+        {
+          "label": "Business credit cards",
+          "url": "https://www.bmo.com/en-ca/main/business/credit-cards/"
+        },
+        {
+          "label": "Indigenous Business Banking",
+          "url": "https://www.bmo.com/en-ca/main/business/indigenous-banking/"
+        },
+        {
+          "label": "Loans & mortgages",
+          "url": "https://www.bmo.com/en-ca/main/business/loans-mortgages/overview/"
+        },
+        {
+          "label": "Moneris merchant services",
+          "url": "https://www.bmo.com/en-ca/main/business/payments-payroll/moneris/"
+        }
+      ]
+    },
+    {
+      "institutionId": "cibc",
+      "title": "CIBC (Canadian Imperial Bank of Commerce)",
+      "aliases": [
+        "CIBC (Canadian Imperial Bank of Commerce)",
+        "CIBC",
+        "Canadian Imperial Bank of Commerce"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank (D-SIB)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "cibc.md",
+      "lastSourceModified": "2026-04-30T16:48:19.518094+00:00",
+      "locationSummary": "# CIBC (Canadian Imperial Bank of Commerce) **~CAD $1.083 trillion assets (FY2025).** 974 Canadian branches (ScrapeHero Mar 2026); BC ~15% of network. ~2,843 ATMs. **JD Power 2025 #1 mobile banking app + #1 online banking + #2 retail banking satisfaction.** Operates [[simplii|Simplii Financial]] as no-fee digital sister-brand. **Exclusive Canadian issuer of Costco Mastercard** since March 4, 2022 (took over from Capital One; ~$3B portfolio).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Aventura Visa Infinite ($139), Aventura Visa Infinite Privilege ($499, $200 annual travel credit), Aventura Visa ($0), Aeroplan Visa Infinite ($139), Aeroplan Visa Infinite Privilege (~$599), Aeroplan Visa ($0), **Costco Mastercard ($0, 3% restaurants/Costco gas)**, Costco Business Mastercard ($0), Dividend Visa Infinite ($120, 4% groceries/gas/EV), Dividend Visa ($0), Select Visa ($29), Bizline Visa for Business ($0)."
+      ],
+      "businessCreditCards": [
+        {
+          "name": "CIBC Bizline Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current product lineup",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Quick facts",
+          "url": "https://www.cibc.com/en/about-cibc/corporate-profile/quick-facts.html"
+        },
+        {
+          "label": "BC locator",
+          "url": "https://locations.cibc.com/bc"
+        },
+        {
+          "label": "All cards",
+          "url": "https://www.cibc.com/en/personal-banking/credit-cards/all-credit-cards.html"
+        },
+        {
+          "label": "Investor's Edge pricing",
+          "url": "https://www.investorsedge.cibc.com/en/pricing.html"
+        },
+        {
+          "label": "Costco Mastercard announcement (Sep 2021)",
+          "url": "https://cibc.mediaroom.com/2021-09-02-CIBC-to-become-exclusive-credit-card-issuer-for-Costco-Mastercards-in-Canada-and-acquire-existing-Costco-Canadian-credit-card-portfolio"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.cibc.com/en/business.html"
+        },
+        {
+          "label": "Business accounts",
+          "url": "https://www.cibc.com/en/business/accounts.html"
+        },
+        {
+          "label": "Business credit cards",
+          "url": "https://www.cibc.com/en/business/credit-cards.html"
+        },
+        {
+          "label": "Business loans",
+          "url": "https://www.cibc.com/en/business/loans-and-lines-of-credit.html"
+        },
+        {
+          "label": "Merchant services",
+          "url": "https://www.cibc.com/en/business/merchant-services.html"
+        },
+        {
+          "label": "Agriculture",
+          "url": "https://www.cibc.com/en/business/agriculture.html"
+        },
+        {
+          "label": "Agriculture loans",
+          "url": "https://www.cibc.com/en/business/agriculture/loans-and-lines-of-credit.html"
+        }
+      ]
+    },
+    {
+      "institutionId": "coast-capital",
+      "title": "Coast Capital Savings",
+      "aliases": [
+        "Coast Capital Savings",
+        "Coast Capital",
+        "Coast Capital Savings Federal Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Federal credit union",
+      "status": "active",
+      "headquarters": "Surrey, BC",
+      "sourceFile": "coast-capital.md",
+      "lastSourceModified": "2026-04-30T20:15:48.724319+00:00",
+      "locationSummary": "# Coast Capital Savings **First federal credit union originating in BC.** ~$21.9 billion assets (2024). 600,000+ members. 45 branches. Regulated by OSFI (federal); CDIC deposit insurance — federal continuance Nov 1, 2018.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "Coast Capital Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annual Report 2024",
+          "url": "https://www.coastcapitalsavings.com/about-us/annual-reporting/2024-annual-report"
+        },
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Coast_Capital_Savings"
+        },
+        {
+          "label": "Collabria partnership announcement",
+          "url": "https://www.collabriafinancial.ca/news/expertise/coast-collabria-partnership.aspx"
+        },
+        {
+          "label": "Members approve merger",
+          "url": "https://www.coastcapitalsavings.com/about-us/press-room/news-releases/2025/20250709"
+        },
+        {
+          "label": "Business Banking hub",
+          "url": "https://www.coastcapitalsavings.com/commercial/business-banking"
+        },
+        {
+          "label": "Commercial Banking hub",
+          "url": "https://www.coastcapitalsavings.com/commercial/commercial-banking"
+        },
+        {
+          "label": "Business Chequing overview",
+          "url": "https://www.coastcapitalsavings.com/business/day-to-day-banking/business-chequing"
+        },
+        {
+          "label": "Business Core Chequing",
+          "url": "https://www.coastcapitalsavings.com/business/day-to-day-banking/business-chequing/business-core-chequing"
+        },
+        {
+          "label": "Business Essential Chequing",
+          "url": "https://www.coastcapitalsavings.com/business/day-to-day-banking/business-chequing/business-essential-chequing"
+        },
+        {
+          "label": "Business Premium Chequing",
+          "url": "https://www.coastcapitalsavings.com/business/day-to-day-banking/business-chequing/business-premium-chequing"
+        }
+      ]
+    },
+    {
+      "institutionId": "coastal-community",
+      "title": "Coastal Community Credit Union",
+      "aliases": [
+        "CCCU",
+        "Coastal Community",
+        "Coastal Community Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Nanaimo, BC (UNVERIFIED)",
+      "sourceFile": "coastal-community.md",
+      "lastSourceModified": "2026-04-30T20:16:16.125454+00:00",
+      "locationSummary": "# Coastal Community Credit Union **Largest Vancouver Island-based FI — 23rd largest CU in Canada by assets.** $4.3+ billion AUM (mid-2024). 120,000+ members and clients. 24 branches + 15 insurance locations. Regulated by BCFSA (provincial).",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "CCCU Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "CCCU",
+          "url": "https://www.cccu.ca/"
+        },
+        {
+          "label": "BlueShore discussions (historic)",
+          "url": "https://www.cccu.ca/media/coastal-community-credit-union-and-blueshore-financial"
+        },
+        {
+          "label": "Integris MOU",
+          "url": "https://www.integriscu.ca/blog/coastal-community-and-integris-enter-mou/"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.cccu.ca/business"
+        },
+        {
+          "label": "Payment solutions / merchant services",
+          "url": "https://www.cccu.ca/business/payment-solutions/merchant-credit-and-debit"
+        }
+      ]
+    },
+    {
+      "institutionId": "community-savings",
+      "title": "Community Savings Credit Union",
+      "aliases": [
+        "Community Savings",
+        "CSCU",
+        "Community Savings Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Surrey, BC (UNVERIFIED)",
+      "sourceFile": "community-savings.md",
+      "lastSourceModified": "2026-04-30T20:16:36.779283+00:00",
+      "locationSummary": "# Community Savings Credit Union **Largest fully unionized credit union in BC — 'the unions' credit union'.** $630+ million in assets. 7 branches. Regulated by BCFSA (provincial).",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "Community Savings Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Com Savings",
+          "url": "https://www.comsavings.com/"
+        },
+        {
+          "label": "CSCU/CCEC merger",
+          "url": "https://www.comsavings.com/cscu-ccecmerger"
+        },
+        {
+          "label": "Central 1: financial equity",
+          "url": "https://www.central1.com/in_the_news/community-savings-a-driving-force-for-financial-equity-in-b-c/"
+        },
+        {
+          "label": "MoveUP profile",
+          "url": "https://moveuptogether.ca/workplace/community-savings-credit-union/"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.comsavings.com/"
+        },
+        {
+          "label": "Cooperative Banking Division / CCEC merger",
+          "url": "https://www.comsavings.com/cscu-ccecmerger"
+        },
+        {
+          "label": "MoveUP union partnership profile",
+          "url": "https://moveuptogether.ca/workplace/community-savings-credit-union/"
+        }
+      ]
+    },
+    {
+      "institutionId": "eq-bank",
+      "title": "EQ Bank",
+      "aliases": [
+        "EQ Bank",
+        "Equitable Bank",
+        "EQB"
+      ],
+      "category": "Digital Bank",
+      "type": "Schedule I bank (Canada's 7th largest)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "eq-bank.md",
+      "lastSourceModified": "2026-04-30T20:21:13.045426+00:00",
+      "locationSummary": null,
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "EQ Bank",
+          "url": "https://www.eqbank.ca/"
+        },
+        {
+          "label": "Equitable Bank",
+          "url": "https://www.equitablebank.ca/"
+        },
+        {
+          "label": "Business Account",
+          "url": "https://www.eqbank.ca/business/business-account"
+        },
+        {
+          "label": "Business Account fees & features",
+          "url": "https://www.eqbank.ca/business/business-account/fees-and-features"
+        },
+        {
+          "label": "Business GICs",
+          "url": "https://www.eqbank.ca/business-account-gics"
+        }
+      ]
+    },
+    {
+      "institutionId": "khalsa",
+      "title": "Khalsa Credit Union",
+      "aliases": [
+        "Khalsa",
+        "Khalsa Credit Union",
+        "KCU"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Surrey, BC (UNVERIFIED)",
+      "sourceFile": "khalsa.md",
+      "lastSourceModified": "2026-04-30T20:16:56.230034+00:00",
+      "locationSummary": "## BC presence 6 branches: Surrey (3 locations), Vancouver, Abbotsford, Victoria.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "KCU Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED — credit card availability not confirmed on public pages",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "official 2024 Annual Report PDF",
+          "url": "https://www.khalsacreditunion.ca/assets/pdfs/KCU_Annual_Report_2024_Digital_4-22-25-DIGITAL.pdf"
+        },
+        {
+          "label": "Khalsa CU",
+          "url": "https://www.khalsacreditunion.ca/"
+        },
+        {
+          "label": "Annual Report 2024 PDF",
+          "url": "https://www.khalsacreditunion.ca/assets/pdfs/KCU_Annual_Report_2024_Digital_4-22-25-DIGITAL.pdf"
+        },
+        {
+          "label": "Branch locator",
+          "url": "https://www.khalsacreditunion.ca/locate-branch-atm"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.khalsacreditunion.ca/"
+        },
+        {
+          "label": "Annual Report 2024",
+          "url": "https://www.khalsacreditunion.ca/assets/pdfs/KCU_Annual_Report_2024_Digital_4-22-25-DIGITAL.pdf"
+        },
+        {
+          "label": "Branch locator",
+          "url": "https://www.khalsacreditunion.ca/locate-branch-atm"
+        }
+      ]
+    },
+    {
+      "institutionId": "koho",
+      "title": "KOHO",
+      "aliases": [
+        "KOHO",
+        "KOHO Financial"
+      ],
+      "category": "Digital Bank",
+      "type": "Fintech with bank partner (prepaid + savings)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "koho.md",
+      "lastSourceModified": "2026-04-30T20:21:48.985251+00:00",
+      "locationSummary": "## BC connection Peoples Trust (KOHO's banking partner) is **headquartered in Vancouver**. KOHO has Vancouver office (UNVERIFIED current). This makes KOHO indirectly a BC-headquartered banking partnership.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "KOHO",
+          "url": "https://www.koho.ca/"
+        },
+        {
+          "label": "KOHO product pages",
+          "url": "https://www.koho.ca/"
+        }
+      ]
+    },
+    {
+      "institutionId": "kootenay-savings",
+      "title": "Kootenay Savings Credit Union",
+      "aliases": [
+        "Kootenay Savings Credit Union",
+        "KSCU",
+        "Kootenay Savings"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Trail, BC",
+      "sourceFile": "kootenay-savings.md",
+      "lastSourceModified": "2026-04-30T20:17:21.872941+00:00",
+      "locationSummary": "# Kootenay Savings Credit Union ~$1.7 billion assets. ~38,000 members. 11 branches. Regulated by BCFSA (provincial).",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "KSCU Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSCU",
+          "url": "https://www.kscu.com/"
+        },
+        {
+          "label": "2024 Annual Report",
+          "url": "https://www.kscu.com/assets/pdfs/2024%20Annual%20Report.pdf"
+        },
+        {
+          "label": "Columbia Valley merger discussions",
+          "url": "https://www.cvcu.bc.ca/cvcu-news/blog-exploring-potential-merger"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.kscu.com/business/business-services"
+        },
+        {
+          "label": "Business Accounts",
+          "url": "https://www.kscu.com/business/business-accounts"
+        },
+        {
+          "label": "Business Borrowing",
+          "url": "https://www.kscu.com/business/borrowing"
+        },
+        {
+          "label": "Commercial Advisors",
+          "url": "https://www.kscu.com/business/commercial-advisors"
+        }
+      ]
+    },
+    {
+      "institutionId": "manulife-bank",
+      "title": "Manulife Bank of Canada",
+      "aliases": [
+        "Manulife Bank",
+        "Manulife Bank of Canada"
+      ],
+      "category": "Digital Bank",
+      "type": "Schedule I Canadian bank (Manulife Financial subsidiary)",
+      "status": "active",
+      "headquarters": "Waterloo, ON",
+      "sourceFile": "manulife-bank.md",
+      "lastSourceModified": "2026-04-30T20:21:58.411803+00:00",
+      "locationSummary": "## BC presence None directly. Advisors throughout BC provide access to Manulife One mortgage and other products.",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "ManulifeMONEY+ Visa Infinite** ($0 — waived for Manulife One holders + spend): 3% groceries (cap $25K/yr), 2% hotels/airlines/cruise (cap $25K/yr), 1% else; Visa Infinite (concierge, luxury hotel collection)",
+        "ManulifeMONEY+ Visa Platinum** ($0): lower-tier cashback variant"
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Manulife Bank",
+          "url": "https://www.manulifebank.ca/"
+        },
+        {
+          "label": "Business banking hub",
+          "url": "https://www.manulifebank.ca/business-banking.html"
+        },
+        {
+          "label": "Business bank accounts",
+          "url": "https://www.manulifebank.ca/business-banking/bank-accounts.html"
+        },
+        {
+          "label": "US Dollar Business Advantage Account",
+          "url": "https://www.manulifebank.ca/business-banking/bank-accounts/us-dollar-business-high-interest-savings-account.html"
+        },
+        {
+          "label": "Business Investment Savings Account",
+          "url": "https://www.manulifebank.ca/business-banking/investments/investment-savings.html"
+        }
+      ]
+    },
+    {
+      "institutionId": "national-bank",
+      "title": "National Bank of Canada",
+      "aliases": [
+        "National Bank of Canada",
+        "National Bank",
+        "NBC",
+        "Banque Nationale"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank",
+      "status": "active",
+      "headquarters": "Montreal, QC",
+      "sourceFile": "national-bank.md",
+      "lastSourceModified": "2026-04-30T20:06:03.403969+00:00",
+      "locationSummary": "## BC presence 805 West Pender Street, Vancouver V6C 1K6 (retail); 475 Howe Street #3000 (wealth). BC cities (15-25 combined post-CWB integration): Vancouver, North Vancouver, West Vancouver, White Rock, Richmond, Surrey, Langley, Victoria, Duncan, Kelowna, Vernon. **Pre-CWB merger NBC presence was much smaller — this is the key BC differentiator now.**",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "NBC Business Mastercard",
+          "network": "Mastercard",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current product lineup",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "CWB acquisition completed Feb 2025",
+          "url": "https://www.nbc.ca/about-us/news-media/press-release/2025/20250203-nbc-concludes-acquisition-cwb.html"
+        },
+        {
+          "label": "Welcome portal for CWB clients",
+          "url": "https://welcome.nbc.ca/"
+        },
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/National_Bank_of_Canada"
+        },
+        {
+          "label": "BC locator",
+          "url": "https://locator.nbc.ca/bc"
+        },
+        {
+          "label": "Mastercard credit cards",
+          "url": "https://www.nbc.ca/personal/mastercard-credit-cards.html"
+        },
+        {
+          "label": "NBDB zero-commission announcement",
+          "url": "https://www.newswire.ca/news-releases/a-canadian-first-national-bank-direct-brokerage-announces-new-zero-commission-pricing-864148415.html"
+        },
+        {
+          "label": "Business Banking hub",
+          "url": "https://www.nbc.ca/business.html"
+        },
+        {
+          "label": "Business accounts and packages",
+          "url": "https://www.nbc.ca/business/accounts.html"
+        },
+        {
+          "label": "Business credit cards",
+          "url": "https://www.nbc.ca/business/credit-cards.html"
+        },
+        {
+          "label": "Business financing solutions",
+          "url": "https://www.nbc.ca/business/financing.html"
+        },
+        {
+          "label": "Short-term financing",
+          "url": "https://www.nbc.ca/business/financing/financing-solutions/short-term.html"
+        },
+        {
+          "label": "Acquisition financing",
+          "url": "https://www.nbc.ca/business/financing/acquisition.html"
+        }
+      ]
+    },
+    {
+      "institutionId": "neo-financial",
+      "title": "Neo Financial",
+      "aliases": [
+        "Neo",
+        "Neo Financial"
+      ],
+      "category": "Digital Bank",
+      "type": "Fintech with bank partners",
+      "status": "active",
+      "headquarters": "Calgary, AB",
+      "sourceFile": "neo-financial.md",
+      "lastSourceModified": "2026-04-30T20:21:44.139007+00:00",
+      "locationSummary": null,
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Credit cards",
+        "Neo Mastercard (standard)** ($0): 1% min all, **up to 5% at partner retailers (10,000+ network)",
+        "Neo World Mastercard** (subscription-based): 2% groceries/gas/recurring, 0.5% else; World benefits",
+        "Neo World Elite Mastercard** (premium subscription): premium tier",
+        "Neo Secured Mastercard** ($0): up to 15% at partners, 1% all other (credit-building)"
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Neo Financial",
+          "url": "https://www.neofinancial.com/"
+        },
+        {
+          "label": "Neo Financial product pages",
+          "url": "https://www.neofinancial.com/accounts"
+        },
+        {
+          "label": "Neo for Partners",
+          "url": "https://www.neofinancial.com/partners"
+        }
+      ]
+    },
+    {
+      "institutionId": "oaken",
+      "title": "Oaken Financial",
+      "aliases": [
+        "Oaken",
+        "Oaken Financial",
+        "Home Trust"
+      ],
+      "category": "Digital Bank",
+      "type": "Trust company / Schedule I bank (deposit arm of Home Trust + Home Bank)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "oaken.md",
+      "lastSourceModified": "2026-04-30T20:24:44.599577+00:00",
+      "locationSummary": "## BC presence 5 retail \"Oaken Stores\" (Toronto, Calgary, Halifax, Vancouver, Ottawa — UNVERIFIED current locations). **Vancouver Oaken Store historically operated** (UNVERIFIED 2026 status — verify before publishing).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## No credit cards",
+        "Oaken does not offer credit cards."
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Oaken",
+          "url": "https://www.oaken.com/"
+        },
+        {
+          "label": "Oaken product pages",
+          "url": "https://www.oaken.com/"
+        }
+      ]
+    },
+    {
+      "institutionId": "prospera",
+      "title": "Prospera Credit Union",
+      "aliases": [
+        "Prospera",
+        "Prospera Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union (federal continuance pending for merger)",
+      "status": "active",
+      "headquarters": "Surrey, BC",
+      "sourceFile": "prospera.md",
+      "lastSourceModified": "2026-04-30T20:07:16.685852+00:00",
+      "locationSummary": "# Prospera Credit Union ~$7.53 billion assets (2023); ~$9.5 billion AUA at time of Westminster merger. 115,634 members (2023). 24 branches. Regulated by BCFSA (provincial) — pending federal continuance for merger.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "Prospera Visa Business Card",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Prospera_Credit_Union"
+        },
+        {
+          "label": "Merger info",
+          "url": "https://www.prospera.ca/merger"
+        },
+        {
+          "label": "Members approve merger",
+          "url": "https://www.prospera.ca/About/Press+Releases/members+approve+merger"
+        },
+        {
+          "label": "Regulator OK for Prospera-Westminster merger",
+          "url": "https://www.biv.com/news/economy-law-politics/regulator-gives-ok-prospera-westminster-savings-merger-8257500"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.prospera.ca/Business/Home"
+        },
+        {
+          "label": "Compare chequing accounts",
+          "url": "https://www.prospera.ca/Business/Accounts/Bus-Accounts-Compare-Chq-Accounts"
+        },
+        {
+          "label": "Business E-Chequing Account",
+          "url": "https://www.prospera.ca/Business/Accounts/Business+E-Chequing+Account"
+        },
+        {
+          "label": "Business US Account",
+          "url": "https://www.prospera.ca/Business/Accounts/Business+US+Account"
+        },
+        {
+          "label": "Compare business credit cards",
+          "url": "https://www.prospera.ca/Business/Accounts/Compare+credit+cards"
+        },
+        {
+          "label": "Visa Infinite Business Credit Card",
+          "url": "https://www.prospera.ca/Business/Accounts/Credit+Cards/Business+Visa+Infinite"
+        },
+        {
+          "label": "Low Rate Visa Business",
+          "url": "https://www.prospera.ca/Business/Accounts/Credit+Cards/Low+Rate+Visa+Business"
+        },
+        {
+          "label": "No Fee Cash Back Business Mastercard",
+          "url": "https://www.prospera.ca/Business/Accounts/Credit%20Cards/Business%20Mastercard"
+        }
+      ]
+    },
+    {
+      "institutionId": "rbc",
+      "title": "Royal Bank of Canada (RBC)",
+      "aliases": [
+        "Royal Bank of Canada (RBC)",
+        "RBC",
+        "Royal Bank",
+        "Royal Bank of Canada"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank (D-SIB)",
+      "status": "active",
+      "headquarters": "Toronto, ON / Montreal, QC",
+      "sourceFile": "rbc.md",
+      "lastSourceModified": "2026-04-30T16:46:48.498097+00:00",
+      "locationSummary": "# Royal Bank of Canada (RBC) **Largest bank in Canada by assets (~CAD $2.17 trillion FY2025).** Acquired HSBC Canada March 28, 2024 ($13.5B), making it the dominant retail player in BC. **Branches:** ~1,200–1,280 Canada • ~150–180 BC (largest Big 6 BC network post-HSBC) • 4,000+ ATMs (largest network in Canada)",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Avion Visa Infinite ($120, 1.25 pt/$1 travel), Avion Visa Infinite Privilege (~$399), Avion Visa Platinum ($120), ION+ Visa ($48), ION Visa ($0), Cash Back Mastercard ($0), Cash Back Preferred World Elite (~$99), WestJet RBC World Elite ($119), WestJet RBC ($39), Rewards+ Visa ($0), Signature Rewards Visa ($39), British Airways Visa Infinite (~$165), Avion Visa Business (~$175), US Dollar Visa Gold (US$65)."
+      ],
+      "businessCreditCards": [
+        {
+          "name": "RBC Visa Business Avion",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Travel rewards; UNVERIFIED current annual fee",
+          "source": null
+        },
+        {
+          "name": "RBC Visa Business CashBack",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annual Report 2025",
+          "url": "https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2025_e.pdf"
+        },
+        {
+          "label": "Branch locator",
+          "url": "https://maps.rbcroyalbank.com/"
+        },
+        {
+          "label": "HSBC acquisition newsroom",
+          "url": "https://www.rbc.com/newsroom/news/article.html?article=125885"
+        },
+        {
+          "label": "JD Power 2025 Canada Retail Banking",
+          "url": "https://canada.jdpower.com/press-releases/2025-canada-retail-banking-satisfaction-study"
+        },
+        {
+          "label": "maps.rbcroyalbank.com",
+          "url": "https://maps.rbcroyalbank.com/"
+        },
+        {
+          "label": "Business chequing accounts",
+          "url": "https://www.rbcroyalbank.com/business/accounts/business-chequing-accounts.html"
+        },
+        {
+          "label": "Business credit cards",
+          "url": "https://www.rbcroyalbank.com/business/credit-cards/index.html"
+        },
+        {
+          "label": "Business homepage",
+          "url": "https://www.rbcroyalbank.com/business/"
+        },
+        {
+          "label": "Commercial banking",
+          "url": "https://www.rbcroyalbank.com/commercial/index.html"
+        },
+        {
+          "label": "Industry expertise",
+          "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise.html"
+        },
+        {
+          "label": "Agriculture",
+          "url": "https://www.rbcroyalbank.com/business/advice/industry-expertise/agriculture/index.html"
+        },
+        {
+          "label": "Women in Business",
+          "url": "https://www.rbcroyalbank.com/business/advice/women-in-business/index.html"
+        }
+      ]
+    },
+    {
+      "institutionId": "sascu",
+      "title": "SASCU (Salmon Arm Savings)",
+      "aliases": [
+        "SASCU (Salmon Arm Savings)",
+        "SASCU",
+        "Salmon Arm Savings",
+        "Salmon Arm Savings and Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Salmon Arm, BC",
+      "sourceFile": "sascu.md",
+      "lastSourceModified": "2026-04-30T20:19:35.817463+00:00",
+      "locationSummary": "# SASCU (Salmon Arm Savings) $700+ million in assets. 19,000+ members. 3 branches. Regulated by BCFSA (provincial).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "Business credit cards:** UNVERIFIED — Collabria likely (typical BCFSA-regulated CU)"
+      ],
+      "businessCreditCards": [
+        {
+          "name": "SASCU Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "SASCU",
+          "url": "https://www.sascu.com/"
+        },
+        {
+          "label": "Business banking hub",
+          "url": "https://www.sascu.com/business/bank"
+        },
+        {
+          "label": "Business savings accounts",
+          "url": "https://www.sascu.com/business/bank/savings-accounts"
+        },
+        {
+          "label": "Lines of credit",
+          "url": "https://sascu.com/Business/ProductsAndServices/Borrowing/LinesOfCredit/"
+        },
+        {
+          "label": "SASCU homepage",
+          "url": "https://www.sascu.com/"
+        }
+      ]
+    },
+    {
+      "institutionId": "scotiabank",
+      "title": "Scotiabank (Bank of Nova Scotia)",
+      "aliases": [
+        "Scotiabank (Bank of Nova Scotia)",
+        "Scotiabank",
+        "BNS",
+        "Bank of Nova Scotia"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank (D-SIB)",
+      "status": "active",
+      "headquarters": "Toronto, ON / Halifax, NS chartered",
+      "sourceFile": "scotiabank.md",
+      "lastSourceModified": "2026-04-30T20:05:30.797678+00:00",
+      "locationSummary": "# Scotiabank (Bank of Nova Scotia) **~CAD $1.46 trillion (Oct 31 2025) • ~891 Canadian branches • ~3,600 ATMs + 44,000 Global ATM Alliance.** Most international Big 6 — operates extensively in Pacific Alliance (Mexico, Chile, Peru, Colombia) and Caribbean; ~35,000 employees in Latin America. Owns [[tangerine|Tangerine]] and **MD Financial Management** (exclusive to physicians, acquired from CMA 2018).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Passport Visa Infinite + ($150, **NO FX FEES**, 6 lounge passes), Passport Visa Infinite Privilege (premium, **NO FX FEES**), Momentum Visa Infinite + ($120), Momentum Visa ($39), Momentum No-Fee Visa ($0), Scene+ Visa ($0), **Gold American Express ($120, NO FX FEES, 5x restaurants/groceries/Cineplex)**, Platinum American Express (premium), Value Visa ($29 waived), Visa Business."
+      ],
+      "businessCreditCards": [
+        {
+          "name": "Scotia Momentum for Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current fee",
+          "source": null
+        },
+        {
+          "name": "ScotiaGold Passport Visa for Business",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annual Report 2025",
+          "url": "https://www.scotiabank.com/content/dam/scotiabank/corporate/quarterly-reports/2025/q4/Annual_Report_2025_EN.pdf"
+        },
+        {
+          "label": "Branch locator",
+          "url": "https://locator.scotiabank.com/"
+        },
+        {
+          "label": "Scene+ Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Scene+"
+        },
+        {
+          "label": "StartRight",
+          "url": "https://startright.scotiabank.com/ca/en.html"
+        },
+        {
+          "label": "Indigenous services",
+          "url": "https://www.scotiabank.com/ca/en/personal/programs-services/indigenous-peoples.html"
+        },
+        {
+          "label": "Business Banking hub",
+          "url": "https://www.scotiabank.com/ca/en/business-banking.html"
+        },
+        {
+          "label": "Business bank accounts",
+          "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts.html"
+        },
+        {
+          "label": "Select Account for Business",
+          "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/select-account-for-business.html"
+        },
+        {
+          "label": "Right Size Account for Business",
+          "url": "https://www.scotiabank.com/ca/en/small-business/business-banking/business-bank-accounts/right-size-account-for-business.html"
+        },
+        {
+          "label": "Basic Business Account",
+          "url": "https://www.scotiabank.com/ca/en/business-banking/banking-solutions/business-bank-accounts/basic-business-account.html"
+        },
+        {
+          "label": "Chase Merchant Services",
+          "url": "https://www.scotiabank.com/ca/en/business-banking/campaigns/merchant-services.html"
+        },
+        {
+          "label": "Commercial Banking hub",
+          "url": "https://www.scotiabank.com/ca/en/commercial-banking.html"
+        }
+      ]
+    },
+    {
+      "institutionId": "simplii",
+      "title": "Simplii Financial",
+      "aliases": [
+        "Simplii",
+        "Simplii Financial"
+      ],
+      "category": "Digital Bank",
+      "type": "Direct-banking division of CIBC",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "simplii.md",
+      "lastSourceModified": "2026-04-30T20:21:05.049006+00:00",
+      "locationSummary": "## BC presence No own branches. Uses 3,400+ CIBC ATMs (extensive BC presence — see [[cibc|CIBC]] for BC city list).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Simplii Cash Back Visa** ($0): 4% restaurants/bars/coffee (first $5K/yr), 1.5% gas/groceries/drugstore/recurring, 0.5% else",
+        "Simplii Visa** ($0): basic no-fee"
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Simplii",
+          "url": "https://www.simplii.com/"
+        },
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Simplii_Financial"
+        },
+        {
+          "label": "Simplii product pages",
+          "url": "https://www.simplii.com/"
+        }
+      ]
+    },
+    {
+      "institutionId": "sunshine-coast-cu",
+      "title": "Sunshine Coast Credit Union",
+      "aliases": [
+        "SCCU",
+        "Sunshine Coast Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union (federal continuance pending)",
+      "status": "active",
+      "headquarters": "Sechelt, BC (UNVERIFIED)",
+      "sourceFile": "sunshine-coast-cu.md",
+      "lastSourceModified": "2026-04-30T20:19:58.668828+00:00",
+      "locationSummary": "# Sunshine Coast Credit Union ~$1.2 billion AUM (early 2025). 17,500+ members. 3 branches. Regulated by BCFSA (provincial) — pending federal continuance for merger.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "SCCU Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "About",
+          "url": "https://www.sunshineccu.com/about"
+        },
+        {
+          "label": "Members approve merger",
+          "url": "https://www.sunshineccu.com/members-approve-merger"
+        },
+        {
+          "label": "Power the Future",
+          "url": "https://www.sunshineccu.com/powerthefuture"
+        },
+        {
+          "label": "Business hub",
+          "url": "https://www.sunshineccu.com/business"
+        },
+        {
+          "label": "Business accounts",
+          "url": "https://www.sunshineccu.com/business/accounts"
+        },
+        {
+          "label": "Commercial loans",
+          "url": "https://banking.sunshineccu.com/Business/ProductsAndServices/Borrowing/Loans/"
+        },
+        {
+          "label": "Digital banking / MDSB",
+          "url": "https://www.sunshineccu.com/business/digital-banking"
+        },
+        {
+          "label": "Merger announcement",
+          "url": "https://www.sunshineccu.com/members-approve-merger"
+        }
+      ]
+    },
+    {
+      "institutionId": "tangerine",
+      "title": "Tangerine Bank",
+      "aliases": [
+        "Tangerine",
+        "Tangerine Bank",
+        "ING Direct Canada"
+      ],
+      "category": "Digital Bank",
+      "type": "Schedule I bank (Scotiabank subsidiary)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "tangerine.md",
+      "lastSourceModified": "2026-04-30T20:20:53.703615+00:00",
+      "locationSummary": "## BC presence No traditional branches. Operated Cafés in select cities — **Vancouver Café at 466 Howe Street appears CLOSED late 2025** per Yelp listing (UNVERIFIED — confirm directly with Tangerine).",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Tangerine Money-Back Mastercard** ($0): 2% on 2 chosen categories (3rd if cashback to Tangerine Savings) + 0.5% else; 13 rotating categories changeable every 90 days; welcome 10% cash back up to $100 on first $1,000 spend in 2 months (valid through April 30 2026)",
+        "Tangerine World Mastercard** ($0 UNVERIFIED): standard tiers + World Mastercard travel insurance",
+        "New premium card launched April 2026 (UNVERIFIED specifics)"
+      ],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Tangerine rates",
+          "url": "https://www.tangerine.ca/en/rates"
+        },
+        {
+          "label": "About",
+          "url": "https://www.tangerine.ca/en/about-us"
+        },
+        {
+          "label": "Tangerine about / product pages",
+          "url": "https://www.tangerine.ca/en/about-us"
+        }
+      ]
+    },
+    {
+      "institutionId": "td",
+      "title": "TD Canada Trust",
+      "aliases": [
+        "TD",
+        "Toronto-Dominion Bank",
+        "TD Canada Trust"
+      ],
+      "category": "Big 6 Bank",
+      "type": "Schedule I bank (D-SIB)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "td.md",
+      "lastSourceModified": "2026-04-30T16:47:46.118378+00:00",
+      "locationSummary": "# TD Canada Trust **~CAD $2.1 trillion assets (Q1 2026) • ~1,054 Canadian branches • ~3,366 ATMs.** Operates **TD Bank N.A. (~1,100 East Coast US branches)** — largest US footprint of any Canadian bank.",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "## Cards",
+        "Aeroplan Visa Infinite ($139, 1.5x gas/grocery/EV/AC), Aeroplan Visa Infinite Privilege ($599, unlimited Maple Leaf Lounge), Aeroplan Visa Platinum ($89), Aeroplan Visa Business ($149), Cash Back Visa Infinite ($139), Cash Back Visa ($0), First Class Travel Visa Infinite ($139, 8x Expedia For TD), Platinum Travel Visa ($89), Rewards Visa ($0), US Dollar Visa (USD $39, waived w/ Borderless), Emerald Flex Rate Visa ($25), Business Cash Back Visa ($0)."
+      ],
+      "businessCreditCards": [
+        {
+          "name": "TD Business Travel Visa Infinite",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED current fee",
+          "source": null
+        },
+        {
+          "name": "TD Business Cash Back Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "UNVERIFIED",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Q1 2026 Results",
+          "url": "https://td.mediaroom.com/2026-02-26-TD-Bank-Group-Reports-First-Quarter-2026-Results"
+        },
+        {
+          "label": "Q3 2025 Investor Fact Sheet",
+          "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/quarterly-results/2025/q3/2025-q3-investor-fact-sheet-en.pdf"
+        },
+        {
+          "label": "Cards",
+          "url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/"
+        },
+        {
+          "label": "Cross-Border Banking",
+          "url": "https://www.td.com/ca/en/personal-banking/solutions/cross-border-banking"
+        },
+        {
+          "label": "DOJ AML guilty plea press release",
+          "url": "https://www.justice.gov/archives/opa/pr/td-bank-pleads-guilty-bank-secrecy-act-and-money-laundering-conspiracy-violations-18b"
+        },
+        {
+          "label": "OCC C&D order",
+          "url": "https://www.occ.treas.gov/news-issuances/news-releases/2024/nr-occ-2024-116.html"
+        },
+        {
+          "label": "CEO transition acceleration",
+          "url": "https://td.mediaroom.com/2025-01-17-TD-Bank-Group-Accelerates-CEO-Transition-Announces-Board-and-Committee-Renewal"
+        },
+        {
+          "label": "TD's history",
+          "url": "https://www.td.com/ca/en/about-td/corporate-profile/tds-history/our-roots"
+        },
+        {
+          "label": "Small Business Banking",
+          "url": "https://www.td.com/ca/en/business-banking/"
+        },
+        {
+          "label": "Business Accounts",
+          "url": "https://www.td.com/ca/en/business-banking/small-business/bank-accounts/"
+        },
+        {
+          "label": "Business Credit Cards",
+          "url": "https://www.td.com/ca/en/business-banking/small-business/credit-cards/"
+        },
+        {
+          "label": "Business Loans",
+          "url": "https://www.td.com/ca/en/business-banking/small-business/credit/borrowing/"
+        }
+      ]
+    },
+    {
+      "institutionId": "tru-cooperative-bank",
+      "title": "Tru Cooperative Bank",
+      "aliases": [
+        "Tru",
+        "Tru Cooperative Bank",
+        "First West",
+        "First West Credit Union"
+      ],
+      "category": "BC Credit Union",
+      "type": "Federal credit union (rebranded April 1, 2026)",
+      "status": "active",
+      "headquarters": "Langley, BC",
+      "sourceFile": "tru-cooperative-bank.md",
+      "lastSourceModified": "2026-04-30T20:17:57.907066+00:00",
+      "locationSummary": "## BC presence 21+ BC cities including Langley, Abbotsford, Chilliwack, Mission, Aldergrove, Surrey, Kelowna, West Kelowna, Penticton, Vernon, Kamloops, Kitimat, Duncan, Lake Cowichan, Ladysmith, Mill Bay, Salt Spring Island, Mayne Island, Pender Island, Galiano Island, Saturna Island.",
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [
+        {
+          "name": "Tru Cooperative Bank Business Visa",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED exact product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "First West Story (legacy)",
+          "url": "https://www.firstwestcu.ca/our-story/"
+        },
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/First_West_Credit_Union"
+        },
+        {
+          "label": "2024 Impact Report",
+          "url": "https://assets.firstwestcu.ca/2025/06/19063924/FWCU2024ImpactReport.pdf"
+        },
+        {
+          "label": "BCFSA news on federal continuance",
+          "url": "https://www.bcfsa.ca/about-us/news/news-release/first-west-credit-union-moving-federal-regulation"
+        },
+        {
+          "label": "Tru rebrand announcement (April 1 2026)",
+          "url": "https://www.globenewswire.com/news-release/2026/04/01/3266683/0/en/First-West-becomes-a-federal-credit-union-and-officially-launches-as-Tru-Cooperative-Bank.html"
+        },
+        {
+          "label": "Tru Cooperative Bank rebrand announcement",
+          "url": "https://www.firstwestcu.ca/media/trucooperativebank/first-west-becomes-a-federal-credit-union-and-officially-launches-as-tru-cooperative-bank/"
+        },
+        {
+          "label": "Envision Financial Business Banking hub",
+          "url": "https://www.envisionfinancial.ca/business/business-bank"
+        },
+        {
+          "label": "Envision Financial Business Accounts",
+          "url": "https://www.envisionfinancial.ca/business/business-bank/business-accounts"
+        },
+        {
+          "label": "Envision Financial Business Financing",
+          "url": "https://www.envisionfinancial.ca/business/business-borrow"
+        },
+        {
+          "label": "Valley First Business Banking hub",
+          "url": "https://www.valleyfirst.com/business/business-bank"
+        },
+        {
+          "label": "First West Capital",
+          "url": "https://www.firstwestcu.ca/first-west-capital/"
+        },
+        {
+          "label": "Our story (legacy)",
+          "url": "https://www.firstwestcu.ca/our-story/"
+        }
+      ]
+    },
+    {
+      "institutionId": "vancity",
+      "title": "Vancity",
+      "aliases": [
+        "Vancity",
+        "Vancouver City Savings"
+      ],
+      "category": "BC Credit Union",
+      "type": "Provincial credit union",
+      "status": "active",
+      "headquarters": "Vancouver, BC",
+      "sourceFile": "vancity.md",
+      "lastSourceModified": "2026-04-30T20:06:39.743978+00:00",
+      "locationSummary": "# Vancity (Vancouver City Savings Credit Union) **BC's largest values-based credit union.** ~$36 billion assets + AUA (2024). 570,000+ member-owners. 52 branches. Regulated by BCFSA (provincial); CUDIC deposit insurance.",
+      "cardsSectionPresent": true,
+      "personalCardMentions": [
+        "[Credit cards](https://www.vancity.com/bank/credit-cards)"
+      ],
+      "businessCreditCards": [
+        {
+          "name": "Vancity Visa Business Card",
+          "network": "Visa",
+          "annualFeeCad": null,
+          "notes": "Via Collabria; UNVERIFIED current product name and fee",
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annual Report 2024",
+          "url": "https://annualreport.vancity.com/"
+        },
+        {
+          "label": "Credit cards",
+          "url": "https://www.vancity.com/bank/credit-cards"
+        },
+        {
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Vancity"
+        },
+        {
+          "label": "B Corp profile",
+          "url": "https://www.bcorporation.net/en-us/find-a-b-corp/company/vancity-community-investment-bank/"
+        },
+        {
+          "label": "GABV stories",
+          "url": "https://www.gabv.org/stories-from-gabv/values-in-practice/vancity-building-a-stronger-workforce-to-strengthen-the-clean-economy/"
+        },
+        {
+          "label": "Business banking hub",
+          "url": "https://www.vancity.com/business"
+        },
+        {
+          "label": "Business accounts",
+          "url": "https://www.vancity.com/business/accounts"
+        },
+        {
+          "label": "Business Jumpstart Savings",
+          "url": "https://www.vancity.com/business/accounts/business-jumpstart-savings-account/"
+        },
+        {
+          "label": "Business Self-Serve Package",
+          "url": "https://www.vancity.com/business/accounts/business-self-serve-chequing-account"
+        },
+        {
+          "label": "Business Prime Account",
+          "url": "https://www.vancity.com/business/accounts/business-prime-account/"
+        },
+        {
+          "label": "Independent Business Account",
+          "url": "https://www.vancity.com/business/accounts/independent-business-account"
+        },
+        {
+          "label": "Impact Business Banking sectors",
+          "url": "https://www.vancity.com/business/sectors"
+        }
+      ]
+    },
+    {
+      "institutionId": "wealthsimple",
+      "title": "Wealthsimple",
+      "aliases": [
+        "Wealthsimple",
+        "Wealthsimple Technologies"
+      ],
+      "category": "Digital Bank",
+      "type": "Fintech / investment dealer (uses bank partners for CDIC)",
+      "status": "active",
+      "headquarters": "Toronto, ON",
+      "sourceFile": "wealthsimple.md",
+      "lastSourceModified": "2026-04-30T20:21:17.570892+00:00",
+      "locationSummary": null,
+      "cardsSectionPresent": false,
+      "personalCardMentions": [],
+      "businessCreditCards": [],
+      "sources": [
+        {
+          "label": "Wealthsimple",
+          "url": "https://www.wealthsimple.com/"
+        },
+        {
+          "label": "Newsroom",
+          "url": "https://newsroom.wealthsimple.com/"
+        },
+        {
+          "label": "Status page",
+          "url": "https://status.wealthsimple.com/"
+        },
+        {
+          "label": "Wealthsimple product pages",
+          "url": "https://www.wealthsimple.com/"
+        }
+      ]
+    }
+  ]
+}

@@ -15,11 +15,14 @@
     const hubOptionsContainer = document.getElementById('hub-options');
 
     // ==================== LOADER ====================
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            document.getElementById('loader').classList.add('hidden');
-        }, 2000);
+    function hideLoader() {
+        document.getElementById('loader').classList.add('hidden');
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(hideLoader, 400);
     });
+    // Safety net: never leave the loader up, even if an event above fails to fire
+    setTimeout(hideLoader, 5000);
 
     // ==================== SLIDE NAVIGATION ====================
     window.goToSlide = function (index) {
@@ -102,20 +105,22 @@
     });
 
     // ==================== HUB OPTIONS ====================
-    // Hover: dim others, highlight hovered
+    // Hover: dim others, highlight hovered (pointer devices only — synthetic
+    // hover on touch screens would leave the menu stuck dimmed)
+    var canHover = window.matchMedia('(hover: hover)').matches;
     hubOptions.forEach(function (option) {
-        option.addEventListener('mouseenter', function () {
-            hubOptionsContainer.classList.add('has-focus');
-            hubOptions.forEach(function (o) { o.classList.remove('focused'); });
-            option.classList.add('focused');
-        });
+        if (canHover) {
+            option.addEventListener('mouseenter', function () {
+                hubOptionsContainer.classList.add('has-focus');
+            });
 
-        option.addEventListener('mouseleave', function () {
-            hubOptionsContainer.classList.remove('has-focus');
-            hubOptions.forEach(function (o) { o.classList.remove('focused'); });
-        });
+            option.addEventListener('mouseleave', function () {
+                hubOptionsContainer.classList.remove('has-focus');
+            });
+        }
 
         option.addEventListener('click', function () {
+            hubOptionsContainer.classList.remove('has-focus');
             var target = parseInt(this.dataset.target);
             // Brief "selected" animation
             this.style.transform = 'scale(0.96)';
@@ -136,6 +141,9 @@
 
     // ==================== KEYBOARD NAVIGATION ====================
     document.addEventListener('keydown', function (e) {
+        // Never steal keys from form fields or the chatbot
+        var t = e.target;
+        if (t && (t.matches && t.matches('input, textarea, select') || t.isContentEditable || (t.closest && t.closest('.cb-panel')))) return;
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
             e.preventDefault();
             goToSlide(currentSlide + 1);
@@ -153,6 +161,9 @@
 
     document.addEventListener('wheel', function (e) {
         if (scrollCooldown) return;
+
+        // Let the chatbot panel scroll its own messages
+        if (e.target && e.target.closest && e.target.closest('.cb-panel, .cb-trigger')) return;
 
         // Check if the slide content is scrollable and not at edges
         var slideContent = slides[currentSlide].querySelector('.slide-content');
@@ -218,6 +229,6 @@
     // ==================== INITIAL ANIMATION ====================
     setTimeout(function () {
         animateSlideContent(slides[0]);
-    }, 2200);
+    }, 600);
 
 })();

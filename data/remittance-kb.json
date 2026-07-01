@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-01T16:02:02.608Z",
+  "source": {
+    "builder": "scripts/build-kb.js",
+    "noteCount": 6
+  },
+  "stats": {
+    "notes": 6,
+    "chunks": 18
+  },
+  "entries": [
+    {
+      "id": "cad-to-india",
+      "title": "Sending Money from Canada to India (CAD to INR)",
+      "keywords": "sending money from canada to india cad inr a high volume corridor for newcomers what check this practical tips remittance",
+      "sourceFile": "cad-to-india.md",
+      "chunks": [
+        {
+          "heading": "A high-volume corridor for newcomers",
+          "text": "The Canada-to-India corridor is one of the largest remittance corridors used by Canadian newcomers, students, and workers supporting family back home, which means it's also one of the most competitive — many providers offer specialized rates, faster delivery, or promotions specifically for CAD-to-INR transfers because of the volume involved."
+        },
+        {
+          "heading": "What to check for this corridor",
+          "text": "Because competition is high, it's worth comparing several providers specifically for CAD-to-INR rather than assuming a general \"best overall\" provider is best for this corridor: check the exact INR amount the recipient will receive for your CAD amount, whether delivery is by bank deposit (NEFT/IMPS/RTGS-style crediting to an Indian bank account), UPI-based transfer, or cash pickup, and how quickly the recipient's bank actually credits the funds (which can differ from the sender-side \"transfer complete\" time)."
+        },
+        {
+          "heading": "Practical tips",
+          "text": "Delivery to Indian bank accounts generally requires the recipient's IFSC code and account number; double-check both since incorrect details can delay or misdirect funds. Some providers offer better rates for larger transfer amounts (tiered pricing), so consolidating multiple smaller sends into fewer larger ones can reduce the effective percentage cost. As with any corridor, rates and promotions change frequently, so re-compare before each large transfer rather than relying on a rate you saw previously."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html",
+        "https://www.fintrac-canafe.gc.ca/msb-esm/list-eng"
+      ]
+    },
+    {
+      "id": "comparing-providers",
+      "title": "Comparing Money Transfer Providers",
+      "keywords": "comparing money transfer providers different business models what actually matters amount received practical comparison checklist remittance wise remitly bank wire",
+      "sourceFile": "comparing-providers.md",
+      "chunks": [
+        {
+          "heading": "Different business models",
+          "text": "Bank wires typically use their own established SWIFT network and legacy exchange-rate desks, often resulting in higher markups but perceived (sometimes overstated) security from an established institution. Fintech providers such as Wise operate more like a matching network with transparent, published exchange-rate margins and flat or percentage fees shown upfront. Providers such as Remitly (and similar cash-pickup/digital-wallet-focused services) often compete on speed and destination convenience (cash pickup, mobile wallet deposit) and may offer promotional rates for first transfers, with margins that vary more by corridor and delivery method."
+        },
+        {
+          "heading": "What actually matters: amount received",
+          "text": "The only number that matters when comparing providers is the amount your recipient actually receives in their local currency, for your specific corridor (sending country/currency to receiving country/currency), amount, and delivery method (bank deposit, cash pickup, mobile wallet). Two providers with identical advertised fees can produce very different amounts received if their exchange-rate markups differ, so always run the same transfer amount through each provider's calculator before choosing."
+        },
+        {
+          "heading": "Practical comparison checklist",
+          "text": "When comparing, check: (1) the exact amount received after all fees and the exchange rate, (2) whether the fee or rate is promotional/first-time-only versus the ongoing rate, (3) delivery speed and method, (4) any caps on transfer amount without extra verification, and (5) whether the provider is registered with Canada's financial crimes regulator (FINTRAC) or the equivalent regulator in your country. Because promotional rates and fee structures change frequently, re-check current rates each time you send a larger transfer rather than assuming last month's comparison still holds."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html",
+        "https://www.fintrac-canafe.gc.ca/msb-esm/list-eng"
+      ]
+    },
+    {
+      "id": "first-transfer-promos",
+      "title": "First-Transfer Promotions: Reading the Fine Print",
+      "keywords": "first transfer promotions reading the fine print how promos work why matters to evaluate a provider despite promo remittance",
+      "sourceFile": "first-transfer-promos.md",
+      "chunks": [
+        {
+          "heading": "How first-transfer promos work",
+          "text": "Many money transfer providers advertise an especially favorable exchange rate or a fee waiver for your first transfer, or first transfer above a minimum amount, as a customer-acquisition incentive. The promotional rate is often noticeably closer to the mid-market rate than the provider's standard ongoing rate, which is why it's tempting to judge a provider's overall value based on that first experience alone."
+        },
+        {
+          "heading": "Why the fine print matters",
+          "text": "Promotional offers typically come with conditions: a maximum promotional amount (extra funds above that cap may transfer at the standard rate), a limited time window to use the offer, restrictions to specific corridors or delivery methods, and sometimes a requirement to sign up through a specific referral link or app version. After the first qualifying transfer, the rate usually reverts to the provider's standard markup, which can be meaningfully worse than the promotional rate you experienced initially."
+        },
+        {
+          "heading": "How to evaluate a provider despite the promo",
+          "text": "Because the first transfer isn't representative of ongoing cost, simulate a second, non-promotional transfer using the provider's calculator (or check their published standard exchange-rate margin) before deciding to make that provider your regular choice. Compare that standard, ongoing rate against competitors' standard rates, not against their own promos, to get a fair sense of long-term cost — then decide separately whether it's worth using different providers' promos opportunistically for one-off large transfers."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html"
+      ]
+    },
+    {
+      "id": "remittance-cost-basics",
+      "title": "Remittance Cost Basics",
+      "keywords": "remittance cost basics two components why banks often hide the real how to estimate true money transfer exchange rate fees",
+      "sourceFile": "remittance-cost-basics.md",
+      "chunks": [
+        {
+          "heading": "Two cost components",
+          "text": "The real cost of sending money internationally has two parts: an upfront transfer fee (sometimes zero, sometimes a flat amount or a percentage) and an exchange-rate markup, which is the spread a provider adds on top of the real \"mid-market\" exchange rate (the rate banks and traders use with each other, visible on sites like an FX rate aggregator). Even when a transfer advertises \"no fee\" or \"free,\" the exchange-rate markup can still make it more expensive overall than a transfer with a small explicit fee but a rate close to mid-market."
+        },
+        {
+          "heading": "Why banks often hide the real cost",
+          "text": "Traditional banks frequently advertise \"no transfer fee\" international wires while quietly applying a large exchange-rate markup (sometimes several percent below the mid-market rate), so the fee looks attractive but the total amount your recipient gets is lower than it would be with a transparent provider. Because the markup is baked into the exchange rate rather than shown as a separate line item, it's easy to overlook unless you compare the rate you're offered to the live mid-market rate."
+        },
+        {
+          "heading": "How to estimate true cost",
+          "text": "To estimate the real cost of any transfer, compare the amount your recipient will actually receive (after fees and the rate markup) against what they would receive at the true mid-market rate for the same amount sent, then express the difference as a percentage. This \"total cost as a percentage of the amount sent\" is the only reliable way to compare providers, since fee-only or rate-only comparisons can be misleading."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html",
+        "https://www.fintrac-canafe.gc.ca/consumers-consommateurs/mt-tf-eng"
+      ]
+    },
+    {
+      "id": "safety-scams",
+      "title": "Sending Money Safely and Avoiding Scams",
+      "keywords": "sending money safely and avoiding scams use regulated providers common remittance practical safety steps fintrac fraud",
+      "sourceFile": "safety-scams.md",
+      "chunks": [
+        {
+          "heading": "Use regulated providers",
+          "text": "In Canada, legitimate money services businesses (MSBs) that transmit funds must register with FINTRAC (the Financial Transactions and Reports Analysis Centre of Canada), Canada's financial intelligence and anti-money-laundering regulator. Before trusting a new provider, verify it appears on FINTRAC's public registry of money services businesses, and be cautious of apps or individuals offering transfers outside any regulated channel, even if they promise better rates."
+        },
+        {
+          "heading": "Common remittance scams",
+          "text": "Watch for: unsolicited requests to send money urgently to a \"relative in trouble,\" fake customer-support numbers found via search ads rather than the provider's official site, phishing messages claiming a transfer is \"on hold\" and asking for banking credentials or one-time codes, and informal \"hawala\"-style or social-media-arranged transfers that bypass any regulator and offer no recourse if something goes wrong. Legitimate providers will never ask you to share a one-time password or full banking password over phone or chat."
+        },
+        {
+          "heading": "Practical safety steps",
+          "text": "Only use providers you can verify are regulated, always initiate transfers from the official app or website (not a link in an email or text), double-check the recipient's name and account/mobile details before confirming, keep transfer confirmation numbers and receipts, and treat any \"send money to unlock a bigger payment\" request as a scam. If you suspect fraud, contact your provider immediately and report it to the Canadian Anti-Fraud Centre."
+        }
+      ],
+      "sources": [
+        "https://www.fintrac-canafe.gc.ca/msb-esm/list-eng",
+        "https://antifraudcentre-centreantifraude.ca/index-eng.htm",
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html"
+      ]
+    },
+    {
+      "id": "transfer-speed-limits",
+      "title": "Transfer Speed, Limits, and Verification",
+      "keywords": "transfer speed limits and verification typical speeds kyc remittance",
+      "sourceFile": "transfer-speed-limits.md",
+      "chunks": [
+        {
+          "heading": "Typical speeds",
+          "text": "Digital-first providers (like fintech apps) commonly complete transfers within minutes to one business day for bank-to-bank transfers in well-established corridors, and can be near-instant for cash pickup or mobile wallet delivery in supported countries. Traditional bank wires typically take one to five business days, partly because they route through intermediary correspondent banks. Speed can vary by the receiving country's banking hours, holidays, and the specific delivery method chosen."
+        },
+        {
+          "heading": "Transfer limits",
+          "text": "Most providers set per-transaction and cumulative (daily, monthly, or annual) sending limits, which are often lower for new or unverified accounts and increase once you complete identity verification. Very large transfers may require additional documentation (source of funds) regardless of provider, and cash-pickup methods often have lower limits than bank-deposit methods for security reasons."
+        },
+        {
+          "heading": "Verification and KYC",
+          "text": "Regulated money transfer providers must perform Know Your Customer (KYC) identity verification — typically government-issued photo ID, and for larger amounts, proof of address or source of funds — as part of anti-money-laundering compliance. In Canada, this is required under FINTRAC regulations; expect to verify your identity before your first transfer or before exceeding certain thresholds, and keep your documents current, since incomplete verification is a common reason transfers are delayed or held."
+        }
+      ],
+      "sources": [
+        "https://www.fintrac-canafe.gc.ca/consumers-consommateurs/mt-tf-eng",
+        "https://www.canada.ca/en/financial-consumer-agency/services/banking/international-money-transfers.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-01T06:07:37.268Z",
+  "source": {
+    "builder": "scripts/build-tax-kb.js",
+    "noteCount": 8
+  },
+  "stats": {
+    "notes": 8,
+    "chunks": 38
+  },
+  "entries": [
+    {
+      "id": "canada-carbon-rebate",
+      "title": "Canada Carbon Rebate",
+      "keywords": "canada carbon rebate what it is quarterly payments varies by province base amount plus rural supplement how eligibility works tax benefits newcomer",
+      "sourceFile": "canada-carbon-rebate.md",
+      "chunks": [
+        {
+          "heading": "What it is",
+          "text": "The Canada Carbon Rebate (formerly known as the Climate Action Incentive Payment) is a tax-free payment intended to return proceeds from the federal fuel charge to individuals and families in provinces where it applies. It's designed to offset the cost impact of the federal carbon pricing system on households, and most households received back as much or more than they pay, according to CRA/government figures."
+        },
+        {
+          "heading": "Quarterly payments",
+          "text": "Like the GST/HST credit, the Canada Carbon Rebate is generally paid quarterly. Because federal carbon pricing rules and provincial participation have changed over time, availability of this rebate can change year to year — verify current status and payment dates on canada.ca before relying on it."
+        },
+        {
+          "heading": "It varies by province",
+          "text": "The rebate only applies in provinces where the federal fuel charge applies (this has historically included provinces without their own equivalent carbon pricing system). The dollar amount also varies by province, since it's tied to the fuel charge collected in that province. Residents of provinces with their own carbon pricing systems (rather than the federal backstop) may not receive this federal payment at all."
+        },
+        {
+          "heading": "Base amount plus rural supplement",
+          "text": "The rebate typically includes a base amount for an individual, with additional set amounts for a spouse/common-law partner and for each child. Residents of small and rural communities often qualify for an additional rural supplement, meant to reflect higher energy needs and reduced access to alternative transportation. Exact base amounts and the rural supplement percentage are set annually and by province, and these figures change yearly — verify on canada.ca."
+        },
+        {
+          "heading": "How eligibility works",
+          "text": "There's typically no separate application: eligibility is determined automatically from your filed tax return, similar to the GST/HST credit. You generally need to file a tax return (even with no income) and, if applicable, indicate on your return that you live in a small or rural community to be considered for the supplement. Newcomers should file a return (or the equivalent newcomer benefit application) as soon as they're eligible to be considered."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-carbon-rebate.html",
+        "https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work/returning-fuel-charge-proceeds.html"
+      ]
+    },
+    {
+      "id": "canada-child-benefit",
+      "title": "Canada Child Benefit (CCB)",
+      "keywords": "canada child benefit ccb tax free monthly payment under 6 vs to 17 amounts income phase out how apply estimates only benefits newcomer",
+      "sourceFile": "canada-child-benefit.md",
+      "chunks": [
+        {
+          "heading": "Tax-free monthly payment",
+          "text": "The Canada Child Benefit is a tax-free monthly payment made to eligible families to help with the cost of raising children under 18. Because it's tax-free, you don't report it as income and it doesn't reduce other tax credits the way taxable income would. Many provinces and territories also fold in their own child benefit as part of the same monthly payment."
+        },
+        {
+          "heading": "Under-6 vs. 6-to-17 amounts",
+          "text": "The CCB pays a higher maximum annual amount per child under age 6 than for children aged 6 through 17, reflecting the generally higher cost of care for younger children. The exact maximum annual amounts per child are set for each July-to-June benefit year and adjusted for inflation, so these figures change yearly — verify current maximums on canada.ca."
+        },
+        {
+          "heading": "Income phase-out",
+          "text": "The amount you receive is based on your (and your spouse/common-law partner's) adjusted family net income, and the benefit is gradually reduced as income rises above a set threshold, with a lower reduction rate for the first threshold and a higher rate above a second, higher threshold. Families with more children see the benefit reduced at a slightly different pace due to how the phase-out formula is structured. Because thresholds and rates are updated annually, verify current numbers on canada.ca."
+        },
+        {
+          "heading": "How to apply",
+          "text": "Many families are automatically considered for the CCB when they register a newborn's birth with their province or territory, if they consent to share information with the CRA during registration. Otherwise, you can apply directly using Form RC66 (Canada Child Benefits Application), which you may need if you're a newcomer, have recently gained custody of a child, or didn't apply at birth registration. You generally also need to be filing (or have filed) a tax return, since eligibility is reassessed every year based on your return."
+        },
+        {
+          "heading": "Estimates only",
+          "text": "Because amounts depend on income, number and ages of children, and the province or territory, only the CRA's official CCB calculator or your CRA My Account can give you an accurate, current estimate. Treat any dollar figures you see elsewhere as rough estimates that change yearly — verify on canada.ca."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html",
+        "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/rc66.html",
+        "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview/canada-child-benefit-we-calculate-your-ccb.html"
+      ]
+    },
+    {
+      "id": "fhsa-basics",
+      "title": "FHSA Basics (First Home Savings Account)",
+      "keywords": "fhsa basics first home savings account what it is deductible in tax free out annual and lifetime caps who qualifies as a time buyer benefits newcomer",
+      "sourceFile": "fhsa-basics.md",
+      "chunks": [
+        {
+          "heading": "What it is",
+          "text": "The First Home Savings Account (FHSA) is a registered account designed to help eligible first-time home buyers save for a down payment. It combines features of both an RRSP and a TFSA: contributions can reduce your taxable income, and qualifying withdrawals toward a first home are completely tax-free."
+        },
+        {
+          "heading": "Deductible in, tax-free out",
+          "text": "Like an RRSP, contributions to an FHSA are tax-deductible, lowering your taxable income for the year. Like a TFSA, growth inside the account is not taxed, and if you use the funds for a qualifying first home purchase, the withdrawal is also tax-free. This \"deductible in, tax-free out\" combination is unique among Canada's registered accounts and generally makes the FHSA a priority account for eligible first-time buyers."
+        },
+        {
+          "heading": "Annual and lifetime caps",
+          "text": "The FHSA has both an annual contribution limit and an overall lifetime contribution limit. Unused annual room can typically be carried forward to a later year (up to a cap), but only after you've opened the account — unlike the TFSA, room does not accumulate before you open one. Because these limits are set by legislation and could be adjusted, these figures change yearly — verify the current annual and lifetime limits on canada.ca."
+        },
+        {
+          "heading": "Who qualifies as a first-time buyer",
+          "text": "To open an FHSA, you generally need to be a Canadian resident, at least 18 (or the age of majority in your province), and a \"first-time home buyer\" — meaning you (and generally your spouse/common-law partner) have not owned a home that you lived in as your principal place of residence during the current calendar year or the preceding four calendar years. This means someone who owned a home longer ago may still qualify again after that window. Account holders must also close their FHSA(s) within a set number of years of first opening one, or by a certain age, whichever comes first — check current rules on canada.ca."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/first-home-savings-account.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/first-home-savings-account/opening-a-fhsas.html"
+      ]
+    },
+    {
+      "id": "first-tax-return",
+      "title": "Filing Your First Tax Return in Canada",
+      "keywords": "filing your first tax return in canada becoming a resident the deadline why file even with no income or low what you ll need to free ways benefits newcomer",
+      "sourceFile": "first-tax-return.md",
+      "chunks": [
+        {
+          "heading": "Becoming a tax resident",
+          "text": "You generally become a Canadian tax resident once you establish significant residential ties here — things like a home, a spouse or common-law partner, or dependants in Canada. Many newcomers become tax residents on the date they land (arrive with permanent resident status) or, for some temporary residents, on the date they establish those ties. Your \"residency start date\" matters because it affects which credits and benefits you can claim for your first year. If you're unsure of your exact residency start date, the CRA has guidance and you may want to speak with a tax professional."
+        },
+        {
+          "heading": "The filing deadline",
+          "text": "For most individuals, the tax filing deadline is April 30 of the following year (for example, your 2025 tax year return is due by April 30, 2026). If you or your spouse/common-law partner are self-employed, the filing deadline is extended, but any balance owing is still generally due April 30. These figures and dates change yearly — verify on canada.ca before you file."
+        },
+        {
+          "heading": "Why file even with no income or low income",
+          "text": "Many newcomers assume that if they had little or no income, they don't need to file. In Canada, filing a tax return is actually how you apply for many income-tested benefits and credits — the CRA doesn't automatically know your income unless you tell it. Filing (even a \"nil\" return) is typically required to start receiving the GST/HST credit, the Canada Carbon Rebate, the Canada Child Benefit, and provincial equivalents. Filing early in your first year, even with $0 income, can unlock ongoing quarterly payments."
+        },
+        {
+          "heading": "What you'll need to file",
+          "text": "Common documents and information include: your Social Insurance Number (SIN); T4 slips from employers (summarizing employment income and deductions); a T2202 tuition tax certificate if you were enrolled at a designated post-secondary institution; and, in some provinces, rent receipts or a landlord's information to claim provincial rent/property tax credits. If this is your first Canadian return, you may also need to report the date you arrived and, in some cases, your worldwide income for the part of the year before you became a resident."
+        },
+        {
+          "heading": "Free ways to file",
+          "text": "The CRA maintains a list of certified tax software, and many providers offer a free tier for simple returns (some are free regardless of income, others are free below an income threshold). Community volunteer tax clinics (the Community Volunteer Income Tax Program, CVITP) also file simple returns for free for eligible individuals, including many newcomers and students. Always check canada.ca for the current list of certified free software, since offerings change yearly."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/personal-income/individuals-file-tax-return.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/international-and-non-resident-taxes/newcomers-canada-immigrants.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/free-tax-help.html"
+      ]
+    },
+    {
+      "id": "gst-hst-credit",
+      "title": "GST/HST Credit",
+      "keywords": "gst hst credit what it is quarterly payments income tested how you get rough amounts estimates only tax benefits newcomer",
+      "sourceFile": "gst-hst-credit.md",
+      "chunks": [
+        {
+          "heading": "What it is",
+          "text": "The GST/HST credit is a tax-free quarterly payment from the federal government that helps individuals and families with low and modest incomes offset some of the GST or HST they pay. It's automatically considered alongside any related provincial or territorial credit that's paid together with it, depending on where you live."
+        },
+        {
+          "heading": "Quarterly payments",
+          "text": "Payments are typically issued four times a year — historically around July, October, January, and April. The amount you receive is recalculated each benefit year (July to June) based on your prior year's tax return. These payment dates and the benefit-year structure can shift slightly, so verify the current schedule on canada.ca."
+        },
+        {
+          "heading": "Income-tested",
+          "text": "The credit amount depends on your (and your spouse/common-law partner's, if applicable) net family income and the number of children registered for the Canada Child Benefit. As income rises above a certain threshold, the credit is gradually reduced (\"phased out\") until it reaches zero. Because thresholds and phase-out rates are adjusted for inflation, these figures change yearly — verify on canada.ca."
+        },
+        {
+          "heading": "How you get it",
+          "text": "For most people, there's no separate application: filing your annual tax return is what triggers the CRA to assess your eligibility and start payments automatically. Newcomers to Canada who don't yet have a filed tax return on record often need to apply directly using Form RC151 (GST/HST Credit Application for Individuals Who Become Residents of Canada) for the year they arrive, since the CRA has no prior return to assess. In later years, filing your regular return is enough."
+        },
+        {
+          "heading": "Rough amounts (estimates only)",
+          "text": "Annual GST/HST credit amounts are commonly discussed in the range of a few hundred dollars for a single adult, with additional amounts for a spouse/partner and per child, paid out over the four quarterly instalments. These are rough, illustrative figures only — actual amounts depend on income, family size, and the benefit year, and they change yearly. Always verify current amounts on canada.ca or in your CRA My Account."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/gsthstc-payment-dates.html",
+        "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/rc151.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/international-and-non-resident-taxes/newcomers-canada-immigrants.html"
+      ]
+    },
+    {
+      "id": "rrsp-basics",
+      "title": "RRSP Basics (Registered Retirement Savings Plan)",
+      "keywords": "rrsp basics registered retirement savings plan deductible contributions how contribution room is calculated taxed on withdrawal home buyers hbp and lifelong learning llp tax benefits newcomer",
+      "sourceFile": "rrsp-basics.md",
+      "chunks": [
+        {
+          "heading": "Deductible contributions",
+          "text": "Contributions to a Registered Retirement Savings Plan (RRSP) are tax-deductible, meaning they reduce your taxable income for the year you claim the deduction (you can contribute in one year and choose to claim the deduction in a later year if that's more advantageous). Investment growth inside the RRSP is not taxed while it stays in the account, letting your savings compound faster than in a regular taxable account."
+        },
+        {
+          "heading": "How contribution room is calculated",
+          "text": "Your RRSP contribution room (\"deduction limit\") is generally 18% of your previous year's earned income, up to an annual dollar maximum set by the government, plus any unused room carried forward from prior years, minus any pension adjustment if you belong to an employer pension plan. The annual dollar maximum is indexed and changes yearly — verify the current year's limit on canada.ca or in your CRA My Account, which shows your personal deduction limit."
+        },
+        {
+          "heading": "Taxed on withdrawal",
+          "text": "Unlike a TFSA, money you withdraw from an RRSP is generally added to your taxable income in the year you withdraw it, and is taxed at your marginal rate at that time. The idea is that you get a tax break now (during your working years, often at a higher tax bracket) and pay tax later in retirement, potentially at a lower bracket. Withdrawals are also subject to withholding tax deducted at source by your financial institution."
+        },
+        {
+          "heading": "Home Buyers' Plan (HBP) and Lifelong Learning Plan (LLP)",
+          "text": "Two special programs let you withdraw from your RRSP without immediate tax, provided you repay the amount over time: the Home Buyers' Plan (HBP) allows eligible first-time home buyers to withdraw up to a set limit toward a home purchase, and the Lifelong Learning Plan (LLP) allows withdrawals to fund full-time education or training for you or your spouse/partner. Both require repayment installments over a number of years, and unrepaid amounts are added to your taxable income. Limits and repayment periods change from time to time, so check canada.ca for current rules before using either program."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/what-a-rrsp.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/what-home-buyers-plan.html"
+      ]
+    },
+    {
+      "id": "tfsa-basics",
+      "title": "TFSA Basics (Tax-Free Savings Account)",
+      "keywords": "tfsa basics tax free savings account growth contribution room age 18 and canadian residency withdraw anytime over penalty newcomer note benefits",
+      "sourceFile": "tfsa-basics.md",
+      "chunks": [
+        {
+          "heading": "Tax-free growth",
+          "text": "A Tax-Free Savings Account (TFSA) lets any growth — interest, dividends, or capital gains — accumulate and be withdrawn completely tax-free. Unlike an RRSP, contributions are not tax-deductible, but you also never pay tax on qualifying withdrawals, which makes the TFSA a flexible, general-purpose savings and investing vehicle available to eligible Canadian residents."
+        },
+        {
+          "heading": "Contribution room: age 18 and Canadian residency",
+          "text": "TFSA contribution room begins accumulating in the year you turn 18 and hold a valid Social Insurance Number, but only for years in which you are also a resident of Canada for tax purposes. If you were 18 or older but not yet a Canadian resident in a given year, you generally do not accumulate TFSA room for that year. This is a key point for newcomers: your TFSA room typically starts from the year you become a tax resident (or turn 18, if later), not from the year Canada introduced the TFSA. Room can only be used once you actually open a TFSA account, which generally requires being a resident with a valid SIN."
+        },
+        {
+          "heading": "Withdraw anytime",
+          "text": "You can withdraw from a TFSA at any time, for any reason, without owing tax on the withdrawal. Withdrawn amounts are added back to your available contribution room, but only starting the following calendar year — not immediately."
+        },
+        {
+          "heading": "Over-contribution penalty",
+          "text": "If you contribute more than your available TFSA room, the CRA charges a penalty tax of 1% per month on the excess amount, for each month it remains in the account. This can add up quickly, so it's important to track your available room (shown in your CRA My Account) before contributing, especially if you have multiple TFSA accounts at different institutions. These penalty rates and rules can be updated, so verify current details on canada.ca."
+        },
+        {
+          "heading": "Newcomer note",
+          "text": "If you immigrated to Canada partway through your life, your cumulative TFSA room is based only on the years since you became a resident (and were 18+), not on every year since the TFSA program began. Many newcomers mistakenly assume they have the same room as someone who was a resident the whole time — double-check your CRA-reported room before making a large contribution."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/contributions.html"
+      ]
+    },
+    {
+      "id": "which-account-first",
+      "title": "Which Account First: FHSA vs. RRSP vs. TFSA",
+      "keywords": "which account first fhsa vs rrsp tfsa this is a general framework not personalized advice consider if you re planning to buy home capture an employer match or when income high for flexibility lower putting it together tax benefits newcomer",
+      "sourceFile": "which-account-first.md",
+      "chunks": [
+        {
+          "heading": "This is a general framework, not personalized advice",
+          "text": "Canada's three main registered savings accounts — the FHSA, RRSP, and TFSA — each have different tax treatment and goals. There's no single \"best\" order that fits everyone; the right choice depends on your income, homeownership plans, employer benefits, and time horizon. This note is general education, not a recommendation for your specific situation — consider speaking with a licensed financial advisor for personalized advice."
+        },
+        {
+          "heading": "Consider FHSA first if you're planning to buy a first home",
+          "text": "If you're a first-time home buyer (or expect to be one within the next few years) and can afford to set money aside, the First Home Savings Account is often considered first because contributions are tax-deductible and qualifying withdrawals toward a home are tax-free — a combination neither the RRSP nor TFSA offers alone. Because FHSA room only starts accumulating after you open the account (unlike the TFSA), opening one early — even with a small deposit — can be worthwhile if you might buy a home eventually."
+        },
+        {
+          "heading": "Consider RRSP to capture an employer match or when income is high",
+          "text": "If your employer offers to match RRSP contributions, contributing at least enough to get the full match is often considered a priority, since it's effectively an immediate return on your contribution. The RRSP also tends to be more attractive when your current income (and marginal tax rate) is relatively high, since the deduction is worth more now, with the expectation you'll withdraw it later in retirement at a potentially lower tax rate."
+        },
+        {
+          "heading": "Consider TFSA for flexibility or lower income",
+          "text": "If your income is relatively low or moderate, the immediate tax deduction from an RRSP is worth less, so some people prioritize the TFSA, where withdrawals are always tax-free and don't affect income-tested benefits or credits (RRSP/RRIF withdrawals count as taxable income, which can reduce benefits like the GST/HST credit or CCB). The TFSA is also useful for shorter-term goals or emergency funds because you can withdraw anytime without tax consequences."
+        },
+        {
+          "heading": "Putting it together",
+          "text": "A common general approach is: capture any employer RRSP match, prioritize the FHSA if buying a first home is a near-term goal, then split additional savings between RRSP (especially in higher-income years) and TFSA (for flexibility and lower-income years) based on your own tax situation. This is only a starting framework — your ideal mix depends on personal factors this note can't account for, so treat it as general education rather than a personal financial plan."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/first-home-savings-account.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans.html",
+        "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canadian Tax & Benefits Finder — Paawan Shah</title>
+  <meta name="description" content="A free Canadian Tax & Benefits Finder: figure out whether to fund your FHSA, RRSP, or TFSA first, estimate your GST/HST credit, Canada Carbon Rebate, and Canada Child Benefit, and get a newcomer's guide to filing your first tax return. Educational estimates only." />
+  <meta name="keywords" content="Canada tax benefits estimator, GST HST credit calculator, Canada Carbon Rebate estimate, Canada Child Benefit calculator, FHSA vs RRSP vs TFSA, first tax return newcomer Canada" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://paawanshah99.com/tax-benefits.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Canadian Tax & Benefits Finder" />
+  <meta property="og:description" content="Which registered account first, rough benefit estimates (GST/HST credit, Carbon Rebate, CCB), a newcomer first-tax-return guide, and a retrieval-only notes copilot. Educational, not tax advice." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paawanshah99.com/tax-benefits.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- FAQ schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Should I contribute to my FHSA, RRSP, or TFSA first?","acceptedAnswer":{"@type":"Answer","text":"It depends on your goal. Saving for a first home: prioritize the FHSA, since it combines a tax deduction going in with tax-free withdrawals for a qualifying home purchase. Employer RRSP match: contribute enough to capture the full match first — that's an immediate guaranteed return. Higher income: the RRSP deduction is worth more at higher marginal tax rates. Otherwise, the TFSA offers the most flexibility with tax-free withdrawals anytime."}},
+      {"@type":"Question","name":"What is the GST/HST credit and who gets it?","acceptedAnswer":{"@type":"Answer","text":"The GST/HST credit is a tax-free quarterly payment from the CRA that helps individuals and families with low and modest incomes offset sales tax. It's calculated automatically from your filed tax return based on your adjusted family net income, marital status, and number of children — you must file a return every year to keep receiving it, even with no income."}},
+      {"@type":"Question","name":"Who is eligible for the Canada Carbon Rebate?","acceptedAnswer":{"@type":"Answer","text":"Residents of provinces where the federal fuel charge applies can receive the Canada Carbon Rebate automatically after filing a tax return. The base amount varies by province and household size, and residents of small or rural communities can receive an additional rural top-up. Provinces with their own equivalent carbon pricing system may not receive the federal rebate."}},
+      {"@type":"Question","name":"Do I need to file a Canadian tax return if I have no income?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Filing — even with zero income — is what unlocks income-tested benefits like the GST/HST credit, the Canada Carbon Rebate, and the Canada Child Benefit if you have children. The typical deadline is April 30. Many newcomers miss out on their first year of benefits simply by not filing."}}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0b; --bg-secondary: #111113; --bg-card: #16161a;
+      --bg-card-hover: #1c1c21; --text-primary: #ececf1; --text-secondary: #8b8b96;
+      --text-muted: #56565e; --accent: #64ffda; --accent-dim: rgba(100,255,218,0.1);
+      --accent-glow: rgba(100,255,218,0.15); --accent-secondary: #7c5cfc;
+      --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12);
+      --gradient-1: linear-gradient(135deg, #64ffda 0%, #7c5cfc 100%);
+      --font-display: 'Syne', sans-serif; --font-body: 'General Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace; --transition: cubic-bezier(0.16,1,0.3,1);
+      --warn: #ffb347; --good: #64ffda;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent); color: var(--bg-primary); }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .grid-bg { position:fixed; inset:0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size:80px 80px; opacity:0.4; pointer-events:none; z-index:-1; }
+
+    /* ===== NAV ===== */
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.1rem 3rem; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(20px) saturate(180%); background:rgba(10,10,11,0.8); border-bottom:1px solid var(--border); }
+    .nav-logo { font-family:var(--font-display); font-weight:800; font-size:1.3rem; letter-spacing:-0.01em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display:flex; gap:2.2rem; list-style:none; }
+    .nav-links a { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary); transition:color 0.3s ease; }
+    .nav-links a:hover { color: var(--accent); }
+    @media (max-width: 900px) { nav { padding:1rem 1.3rem; } .nav-links { display:none; } }
+
+    .wrap { max-width:1080px; margin:0 auto; padding:0 1.6rem; }
+
+    /* ===== HERO ===== */
+    .hero { padding:9rem 1.6rem 3rem; max-width:900px; margin:0 auto; text-align:center; }
+    .eyebrow { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.18em; color:var(--accent); margin-bottom:1.1rem; }
+    .hero h1 { font-family:var(--font-display); font-size:clamp(2.1rem,6vw,4rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.1rem; }
+    .hero h1 .grad { background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero p.lede { color:var(--text-secondary); font-size:1.1rem; max-width:640px; margin:0 auto 1.8rem; }
+    .cta-row { display:flex; gap:0.9rem; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 1.5rem; border-radius:99px; font-weight:600; font-size:0.92rem; border:1px solid var(--border-hover); transition:all 0.3s var(--transition); }
+    .btn-primary { background:var(--accent); color:#04120e; border-color:var(--accent); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 30px var(--accent-glow); }
+    .btn-ghost { color:var(--text-primary); background:var(--bg-card); }
+    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+
+    .disclaimer-badge { display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.6rem; padding:0.4rem 0.9rem; border:1px solid var(--border); border-radius:99px; font-size:0.72rem; color:var(--text-muted); font-family:var(--font-mono); }
+    .disclaimer-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--warn); }
+
+    /* ===== STATS ===== */
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:820px; margin:2.5rem auto 0; }
+    .stat { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.3rem 1rem; text-align:center; }
+    .stat .num { font-family:var(--font-display); font-size:clamp(1.4rem,4vw,2rem); font-weight:800; color:var(--accent); }
+    .stat .lbl { font-size:0.78rem; color:var(--text-secondary); margin-top:0.3rem; }
+    @media (max-width:640px){ .stats{ grid-template-columns:1fr; } }
+
+    /* ===== SECTION ===== */
+    section.block { padding:4rem 0 1rem; }
+    .section-head { text-align:center; max-width:660px; margin:0 auto 2.2rem; }
+    .section-head .kicker { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--accent); }
+    .section-head h2 { font-family:var(--font-display); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; margin:0.6rem 0 0.5rem; letter-spacing:-0.01em; }
+    .section-head p { color:var(--text-secondary); font-size:0.98rem; }
+
+    /* ===== CTA / AFFILIATE ===== */
+    .aff-cta { display:inline-flex; align-items:center; gap:0.5rem; margin-top:0.4rem; padding:0.5rem 0.95rem; border-radius:99px; background:var(--accent-dim); border:1px solid rgba(100,255,218,0.25); color:var(--accent); font-size:0.8rem; font-weight:600; }
+    .aff-cta:hover { background:rgba(100,255,218,0.16); }
+    .aff-tag { font-family:var(--font-mono); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--warn); border:1px solid rgba(255,179,71,0.35); border-radius:4px; padding:0.05rem 0.3rem; }
+
+    /* ===== TOOL CARDS (shared: optimizer + estimator) ===== */
+    .tool { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.6rem; max-width:820px; margin:0 auto; }
+    .tool h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:700; margin-bottom:0.3rem; }
+    .tool .sub { font-size:0.82rem; color:var(--text-muted); margin-bottom:1.3rem; }
+    .fields-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem 1.2rem; }
+    @media (max-width:640px){ .fields-grid{ grid-template-columns:1fr; } }
+    .field { margin-bottom:0.9rem; }
+    .field label { display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.35rem; }
+    .field label .val { color:var(--accent); font-family:var(--font-mono); }
+    .field input[type=range] { width:100%; -webkit-appearance:none; height:5px; border-radius:99px; background:var(--bg-secondary); outline:none; }
+    .field input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:17px; height:17px; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 10px var(--accent-glow); }
+    .field input[type=number], .field select { width:100%; background:var(--bg-secondary); border:1px solid var(--border-hover); border-radius:9px; padding:0.6rem 0.75rem; color:var(--text-primary); font-family:inherit; font-size:0.9rem; }
+    .field input:focus, .field select:focus { outline:none; border-color:var(--accent); }
+    .result { margin-top:1rem; padding:1rem; background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; text-align:center; }
+    .result .big { font-family:var(--font-display); font-size:1.9rem; font-weight:800; color:var(--accent); }
+    .result .cap { font-size:0.78rem; color:var(--text-secondary); margin-top:0.2rem; }
+    .note-line { font-size:0.78rem; color:var(--text-muted); margin-top:1rem; line-height:1.6; }
+    .note-line a { color:var(--accent); }
+
+    /* ===== RANKED ORDER (optimizer output) ===== */
+    .rank-list { margin-top:1.2rem; display:flex; flex-direction:column; gap:0.7rem; }
+    .rank-item { display:flex; gap:0.9rem; align-items:flex-start; background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:0.9rem 1.1rem; }
+    .rank-num { flex:0 0 auto; width:30px; height:30px; border-radius:50%; background:var(--accent-dim); border:1px solid rgba(100,255,218,0.3); color:var(--accent); font-family:var(--font-display); font-weight:800; font-size:0.95rem; display:flex; align-items:center; justify-content:center; }
+    .rank-item:first-child .rank-num { background:var(--accent); color:#04120e; }
+    .rank-body h4 { font-family:var(--font-display); font-size:1rem; font-weight:700; }
+    .rank-body p { font-size:0.85rem; color:var(--text-secondary); margin-top:0.15rem; }
+
+    /* ===== BENEFIT CARDS ===== */
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.1rem; max-width:960px; margin:1.4rem auto 0; }
+    .rec-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.4rem; display:flex; flex-direction:column; transition:all 0.3s ease; }
+    .rec-card:hover { border-color:var(--accent); transform:translateY(-3px); }
+    .rec-card .rc-tag { font-family:var(--font-mono); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent-secondary); margin-bottom:0.6rem; }
+    .rec-card h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:700; margin-bottom:0.4rem; }
+    .rec-card .big-amt { font-family:var(--font-display); font-size:1.7rem; font-weight:800; color:var(--accent); margin-bottom:0.3rem; }
+    .rec-card p { font-size:0.83rem; color:var(--text-secondary); flex:1; margin-bottom:0.6rem; }
+    .rec-card .est-tag { font-family:var(--font-mono); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--warn); border:1px solid rgba(255,179,71,0.3); border-radius:4px; padding:0.15rem 0.4rem; display:inline-block; align-self:flex-start; margin-bottom:0.6rem; }
+
+    /* ===== GUIDES ACCORDION ===== */
+    .guides { max-width:760px; margin:0 auto; }
+    .guide { border:1px solid var(--border); border-radius:12px; margin-bottom:0.7rem; overflow:hidden; background:var(--bg-card); }
+    .guide-head { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.1rem 1.2rem; cursor:pointer; }
+    .guide-head h4 { font-family:var(--font-display); font-size:1rem; font-weight:600; }
+    .guide-head .g-toggle { color:var(--text-muted); transition:transform 0.3s ease; }
+    .guide.open .g-toggle { transform:rotate(45deg); color:var(--accent); }
+    .guide-body { max-height:0; overflow:hidden; transition:max-height 0.45s var(--transition); }
+    .guide.open .guide-body { max-height:640px; }
+    .guide-body-inner { padding:0 1.2rem 1.3rem; color:var(--text-secondary); font-size:0.9rem; }
+    .guide-body-inner ul { margin:0.4rem 0 0.6rem 1.1rem; }
+    .guide-body-inner li { margin-bottom:0.35rem; }
+
+    /* ===== ASK MY NOTES COPILOT ===== */
+    .ask-wrap { max-width:760px; margin:0 auto; }
+    .ask-box { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.4rem; }
+    .ask-input-row { display:flex; gap:0.6rem; }
+    .ask-input-row input { flex:1; background:var(--bg-secondary); border:1px solid var(--border-hover); border-radius:10px; padding:0.85rem 1rem; color:var(--text-primary); font-size:0.95rem; font-family:inherit; }
+    .ask-input-row input:focus { outline:none; border-color:var(--accent); }
+    .ask-input-row input:disabled { opacity:0.5; }
+    .ask-send { background:var(--accent); color:#04120e; border:none; border-radius:10px; padding:0 1.2rem; font-weight:700; }
+    .ask-send:disabled { opacity:0.5; cursor:not-allowed; }
+    .kb-status { font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted); margin-top:0.7rem; display:flex; align-items:center; gap:0.4rem; }
+    .kb-status .dot { width:6px; height:6px; border-radius:50%; background:var(--warn); }
+    .kb-status.ready .dot { background:var(--good); }
+    .chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.9rem; }
+    .chip { font-size:0.78rem; color:var(--text-secondary); background:var(--bg-secondary); border:1px solid var(--border); border-radius:99px; padding:0.4rem 0.85rem; transition:all 0.25s ease; }
+    .chip:hover { border-color:var(--accent); color:var(--accent); }
+    .chip:disabled { opacity:0.4; cursor:not-allowed; }
+    .ask-answer { margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--border); display:none; }
+    .ask-answer.show { display:block; animation:fadeIn 0.4s ease; }
+    .ask-answer h4 { font-family:var(--font-display); font-size:1.05rem; margin-bottom:0.5rem; }
+    .ask-answer p { color:var(--text-secondary); font-size:0.92rem; margin-bottom:0.7rem; white-space:pre-wrap; }
+    .ask-src { font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); }
+    .ask-src a { color:var(--accent); }
+    .ask-note { font-size:0.72rem; color:var(--text-muted); margin-top:0.9rem; font-style:italic; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ===== FOOTER ===== */
+    footer { margin-top:4rem; border-top:1px solid var(--border); padding:2.4rem 1.6rem; }
+    .foot-inner { max-width:900px; margin:0 auto; }
+    .foot-disc { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.2rem; font-size:0.78rem; color:var(--text-muted); line-height:1.6; margin-bottom:1.4rem; }
+    .foot-disc strong { color:var(--text-secondary); }
+    .foot-links { display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center; font-family:var(--font-mono); font-size:0.74rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); }
+    .foot-links a:hover { color:var(--accent); }
+    .foot-copy { text-align:center; color:var(--text-muted); font-size:0.75rem; margin-top:1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Tax<span>Wise</span></a>
+    <ul class="nav-links">
+      <li><a href="#optimizer">Which First?</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#guide">Newcomer Guide</a></li>
+      <li><a href="#ask">Ask My Notes</a></li>
+      <li><a href="index.html">Paawan Shah ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Canadian tax & benefits, in plain English</div>
+    <h1>Figure out your <span class="grad">taxes & benefits</span> in Canada.</h1>
+    <p class="lede">Which registered account to fund first, rough estimates for the GST/HST credit, Canada Carbon Rebate, and Canada Child Benefit, a newcomer's first-tax-return guide, and a notes copilot that only quotes curated answers — never guesses.</p>
+    <div class="cta-row">
+      <a href="#optimizer" class="btn btn-primary">Which account first?</a>
+      <a href="#benefits" class="btn btn-ghost">Estimate my benefits</a>
+    </div>
+    <div class="disclaimer-badge"><span class="dot"></span> Educational estimates only — not tax, financial, or legal advice</div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">free tools: account order, benefits, guide, copilot</div></div>
+      <div class="stat"><div class="num">Apr 30</div><div class="lbl">usual federal filing deadline</div></div>
+      <div class="stat"><div class="num">$0</div><div class="lbl">income needed to still be worth filing</div></div>
+    </div>
+  </header>
+
+  <!-- 1. REGISTERED ACCOUNT OPTIMIZER -->
+  <section class="block" id="optimizer">
+    <div class="section-head">
+      <div class="kicker">FHSA · RRSP · TFSA</div>
+      <h2>Which account should I fund first?</h2>
+      <p>A quick, deterministic ranking based on your goal and situation — not a projection or a recommendation to buy any specific product.</p>
+    </div>
+    <div class="tool">
+      <h3>Registered-account priority</h3>
+      <div class="sub">Answer three quick questions to see a suggested funding order.</div>
+      <div class="fields-grid">
+        <div class="field">
+          <label>Annual income <span class="val" id="opt-income-val">$60,000</span></label>
+          <input type="range" id="opt-income" min="20000" max="250000" value="60000" step="5000" />
+        </div>
+        <div class="field">
+          <label>Primary goal</label>
+          <select id="opt-goal">
+            <option value="retirement">Retirement</option>
+            <option value="home">First home</option>
+            <option value="flexible" selected>Flexible access / not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Employer RRSP match available?</label>
+          <select id="opt-match">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="rank-list" id="opt-result"></div>
+      <div class="note-line">This is a simplified priority order, not a contribution-room calculator. For contribution limits and growth projections, see the <a href="projects/portfolio-optimization.html">Tax-Advantaged Investment Planner</a>.</div>
+    </div>
+  </section>
+
+  <!-- 2. BENEFITS ELIGIBILITY ESTIMATOR -->
+  <section class="block" id="benefits">
+    <div class="section-head">
+      <div class="kicker">Rough Estimates</div>
+      <h2>What benefits might I qualify for?</h2>
+      <p>Simplified estimates for three federal benefits. Every number below is a rough estimate — verify current-year amounts at canada.ca before budgeting around them.</p>
+    </div>
+    <div class="tool">
+      <h3>Benefits eligibility estimator</h3>
+      <div class="sub">Adjust your household details to see estimated annual amounts.</div>
+      <div class="fields-grid">
+        <div class="field">
+          <label>Province / territory</label>
+          <select id="ben-province">
+            <option value="ON">Ontario</option>
+            <option value="BC">British Columbia</option>
+            <option value="AB">Alberta</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="MB">Manitoba</option>
+            <option value="NB">New Brunswick</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="PE">Prince Edward Island</option>
+            <option value="NL">Newfoundland and Labrador</option>
+            <option value="QC">Quebec (no federal fuel charge)</option>
+            <option value="OTHER">Other / territory</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Marital status</label>
+          <select id="ben-marital">
+            <option value="single">Single</option>
+            <option value="couple">Married / common-law</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Children under 6 <span class="val" id="ben-kids-u6-val">0</span></label>
+          <input type="range" id="ben-kids-u6" min="0" max="5" value="0" step="1" />
+        </div>
+        <div class="field">
+          <label>Children 6–17 <span class="val" id="ben-kids-6-17-val">0</span></label>
+          <input type="range" id="ben-kids-6-17" min="0" max="5" value="0" step="1" />
+        </div>
+        <div class="field">
+          <label>Adjusted family net income <span class="val" id="ben-income-val">$45,000</span></label>
+          <input type="range" id="ben-income" min="0" max="200000" value="45000" step="1000" />
+        </div>
+        <div class="field">
+          <label>Rural / small community?</label>
+          <select id="ben-rural">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="cards-grid" id="ben-result"></div>
+      <div class="note-line">All figures are rough, simplified estimates for education purposes — they are not a benefits calculation from the CRA. Verify current-year amounts at <a href="https://www.canada.ca" target="_blank" rel="noopener">canada.ca</a>.</div>
+    </div>
+  </section>
+
+  <!-- 3. NEWCOMER FIRST-TAX-RETURN GUIDE -->
+  <section class="block" id="guide">
+    <div class="section-head">
+      <div class="kicker">Guide</div>
+      <h2>Your first Canadian tax return</h2>
+      <p>Short, plain-English answers for first-time filers and newcomers. Tap to open.</p>
+    </div>
+    <div class="guides" id="guides-root"></div>
+    <p style="text-align:center; max-width:640px; margin:1.4rem auto 0; font-size:0.78rem; color:var(--text-muted);">
+      New to Canada? Start with the <a href="newcomer.html" style="color:var(--accent);">90-day money checklist →</a>
+    </p>
+  </section>
+
+  <!-- 4. ASK MY NOTES COPILOT -->
+  <section class="block" id="ask">
+    <div class="section-head">
+      <div class="kicker">Ask My Notes</div>
+      <h2>A copilot that only quotes curated notes</h2>
+      <p>Retrieval-only — it searches a fixed knowledge base and shows you the exact text, with a citation. Nothing is generated, and nothing leaves your browser.</p>
+    </div>
+    <div class="ask-wrap">
+      <div class="ask-box">
+        <div class="ask-input-row">
+          <input id="ask-input" type="text" placeholder="e.g. What is the GST/HST credit?" autocomplete="off" disabled />
+          <button class="ask-send" id="ask-send" disabled>Ask</button>
+        </div>
+        <div class="kb-status" id="kb-status"><span class="dot"></span> Loading knowledge base…</div>
+        <div class="chips" id="ask-chips"></div>
+        <div class="ask-answer" id="ask-answer">
+          <h4 id="answer-title"></h4>
+          <p id="answer-body"></p>
+          <div class="ask-src" id="answer-src"></div>
+        </div>
+        <div class="ask-note">Answers are quoted directly from curated notes (retrieval-only, nothing leaves your browser) — so it won't make things up.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-disc">
+        <strong>Affiliate disclosure:</strong> Links marked <span class="aff-tag">Affiliate</span> may earn us a commission if you sign up — at no extra cost to you. It helps keep this tool free. We only list things we'd genuinely suggest to a friend.<br><br>
+        <strong>Not advice:</strong> This page provides general, educational information and rough estimates about Canadian taxes and government benefits. It is <em>not</em> personalized tax, financial, or legal advice, and it is not affiliated with the Canada Revenue Agency (CRA). Tax rules, benefit amounts, and income thresholds change every year — always verify current-year figures with the CRA at canada.ca, or consult a licensed tax professional, before filing or making financial decisions.<br><br>
+        <strong>Privacy:</strong> All calculations run locally in your browser. The "Ask My Notes" copilot only fetches a static, same-origin knowledge base file — no accounts, no analytics, no data leaves your device.
+      </div>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="newcomer.html">Landed (Newcomer Guide)</a>
+        <a href="credit-card-finder.html">Credit Card Finder</a>
+        <a href="#optimizer">Which First?</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#ask">Ask My Notes</a>
+      </div>
+      <div class="foot-copy">TaxWise — a project by Paawan Shah · Vancouver, BC · © <span id="year"></span></div>
+    </div>
+  </footer>
+
+  <script>
+  /* =============================================================
+     TAXWISE — Canadian Tax & Benefits Finder
+     Configure real links here once affiliate programs are approved.
+     Leave as "#" to render a disabled-looking CTA with an Affiliate tag.
+     ============================================================= */
+  const AFFILIATE = {
+    taxFiling: "#",     // e.g. Wealthsimple Tax referral
+    roboAdvisor: "#"    // e.g. Wealthsimple / Qtrade referral
+  };
+
+  const $ = s => document.querySelector(s);
+  const el = (tag, cls, html) => { const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; };
+
+  function ctaHTML(cta){
+    if(!cta) return "";
+    const url = AFFILIATE[cta.key] || "#";
+    const isLive = url && url !== "#";
+    const rel = isLive ? 'rel="sponsored noopener" target="_blank"' : 'onclick="return false;" aria-disabled="true"';
+    return `<div><a class="aff-cta" href="${url}" ${rel}>${cta.label} <span class="aff-tag">Affiliate</span></a></div>`;
+  }
+
+  /* ===================== 1. REGISTERED-ACCOUNT OPTIMIZER ===================== */
+  const optIncome = $("#opt-income"), optGoal = $("#opt-goal"), optMatch = $("#opt-match");
+
+  const ACCOUNT_INFO = {
+    fhsa: { name:"FHSA", full:"First Home Savings Account", generic:"Deductible going in, tax-free coming out for a qualifying first home purchase." },
+    rrsp: { name:"RRSP", full:"Registered Retirement Savings Plan", generic:"Tax-deductible contributions now; withdrawals are taxed later as income." },
+    tfsa: { name:"TFSA", full:"Tax-Free Savings Account", generic:"No deduction going in, but all growth and withdrawals are completely tax-free, anytime." }
+  };
+
+  function calcOptimizer(){
+    const income = +optIncome.value, goal = optGoal.value, match = optMatch.value;
+    $("#opt-income-val").textContent = "$" + income.toLocaleString();
+
+    // Deterministic ranking logic
+    let order = [];
+    let rationale = {};
+
+    if (goal === "home") {
+      order = ["fhsa", "rrsp", "tfsa"];
+      rationale.fhsa = "Saving for a first home: the FHSA combines an RRSP-style deduction going in with TFSA-style tax-free withdrawals for a qualifying home purchase — hard to beat for this goal.";
+      if (match === "yes") {
+        order = ["fhsa", "rrsp", "tfsa"];
+        rationale.rrsp = "Your employer match is still a guaranteed, immediate return — contribute enough to capture the full match after prioritizing the FHSA.";
+      } else {
+        rationale.rrsp = income >= 100000
+          ? "At your income level the RRSP deduction is worth more per dollar contributed, so it ranks ahead of the TFSA once the FHSA is being funded."
+          : "The RRSP still offers a useful deduction, but ranks behind the more flexible TFSA at this income level.";
+        if (income < 100000) order = ["fhsa", "tfsa", "rrsp"];
+      }
+      rationale.tfsa = order.indexOf("tfsa") === order.length - 1
+        ? "Once your first-home savings are on track, the TFSA is a flexible top-up for any other goal."
+        : "The TFSA's tax-free flexibility makes it the next stop after the FHSA at this income level.";
+    } else if (match === "yes") {
+      order = ["rrsp", "fhsa", "tfsa"];
+      rationale.rrsp = "Your employer offers an RRSP match — contribute enough to capture the full match first. That's an immediate, guaranteed return that neither the FHSA nor TFSA can replicate.";
+      rationale.fhsa = "Keep the FHSA in mind if a first home is ever on the table — it's the single best account for that specific goal.";
+      rationale.tfsa = "After capturing your match, the TFSA is the most flexible place for additional savings.";
+    } else if (goal === "retirement") {
+      if (income >= 100000) {
+        order = ["rrsp", "tfsa", "fhsa"];
+        rationale.rrsp = "High income + retirement goal: the RRSP deduction is worth more at higher marginal tax rates, and you defer that income to retirement when your rate is typically lower.";
+        rationale.tfsa = "The TFSA is a flexible complement once RRSP room is being used, with fully tax-free growth.";
+        rationale.fhsa = "Not your current goal, but worth opening early if a first home ever becomes a possibility — contribution room only starts accruing after you open it.";
+      } else {
+        order = ["tfsa", "rrsp", "fhsa"];
+        rationale.tfsa = "At this income level, the RRSP deduction is worth less per dollar, and the TFSA's tax-free flexibility (and no impact on income-tested benefits) usually wins for retirement saving.";
+        rationale.rrsp = "Still useful for retirement — becomes more attractive as your income (and marginal tax rate) rises over time.";
+        rationale.fhsa = "Not your current goal, but worth opening early if a first home ever becomes a possibility.";
+      }
+    } else {
+      // flexible / not sure
+      order = ["tfsa", "fhsa", "rrsp"];
+      rationale.tfsa = "For flexible access with no specific goal, the TFSA usually wins: no deduction to give up, but withdrawals are tax-free anytime for any reason.";
+      rationale.fhsa = "Worth opening if a first home is even a possibility — contribution room only starts once the account is open, so earlier is better.";
+      rationale.rrsp = income >= 100000
+        ? "At your income level the RRSP deduction is fairly valuable too — consider splitting savings once your TFSA room is being used."
+        : "Keep in reserve for when your income (and marginal tax rate) rises, since the deduction becomes more valuable then.";
+    }
+
+    const root = $("#opt-result"); root.innerHTML = "";
+    order.forEach((key, i) => {
+      const info = ACCOUNT_INFO[key];
+      const item = el("div", "rank-item");
+      item.innerHTML = `<div class="rank-num">${i+1}</div><div class="rank-body"><h4>${info.name} — ${info.full}</h4><p>${rationale[key]}</p></div>`;
+      root.appendChild(item);
+    });
+  }
+  [optIncome, optGoal, optMatch].forEach(x => x.addEventListener("input", calcOptimizer));
+
+  /* ===================== 2. BENEFITS ELIGIBILITY ESTIMATOR ===================== */
+  const benProvince = $("#ben-province"), benMarital = $("#ben-marital"),
+        benKidsU6 = $("#ben-kids-u6"), benKids617 = $("#ben-kids-6-17"),
+        benIncome = $("#ben-income"), benRural = $("#ben-rural");
+
+  // Simplified, illustrative base figures loosely modeled on recent benefit-year structures.
+  // NOT official CRA figures — see disclaimers. All amounts in CAD/year unless noted.
+  const CARBON_REBATE_BASE = { // per adult, illustrative annual base amount by province; 0 = not applicable
+    ON: 280, AB: 450, SK: 340, MB: 300, NB: 220, NS: 240, PE: 220, NL: 300, BC: 0, QC: 0, OTHER: 0
+  };
+
+  function fmt(n){ return "$" + Math.round(n).toLocaleString(); }
+
+  function calcGSTHST(income, isCouple, numKids){
+    // Simplified phase-out model: base credit for adult(s) + per-child amount, reduced 5% of income over a threshold.
+    const adultBase = isCouple ? 650 : 340;
+    const kidBase = numKids * 180;
+    let credit = adultBase + kidBase;
+    const threshold = isCouple ? 45000 : 25000;
+    if (income > threshold) {
+      credit -= (income - threshold) * 0.05;
+    }
+    return Math.max(0, Math.round(credit));
+  }
+
+  function calcCarbonRebate(province, isCouple, numKids, rural){
+    const base = CARBON_REBATE_BASE[province] || 0;
+    if (base === 0) return 0;
+    let total = base; // first adult
+    if (isCouple) total += base * 0.5; // spouse/partner top-up
+    total += numKids * base * 0.25; // per-child top-up
+    if (rural) total *= 1.2; // rural top-up (illustrative 20%)
+    return Math.round(total);
+  }
+
+  function calcCCB(income, u6, k617){
+    // Simplified age-based max amounts with a two-tier phase-out, loosely modeled on CCB structure.
+    const maxU6 = 7997, max617 = 6748;
+    let annual = (u6 * maxU6) + (k617 * max617);
+    const numKids = u6 + k617;
+    if (numKids === 0) return 0;
+    const threshold1 = 36502, threshold2 = 79087;
+    if (income > threshold1) {
+      const rate1 = numKids === 1 ? 0.07 : numKids === 2 ? 0.135 : numKids === 3 ? 0.19 : 0.23;
+      const excess1 = Math.min(income, threshold2) - threshold1;
+      annual -= excess1 * rate1;
+      if (income > threshold2) {
+        const rate2 = numKids === 1 ? 0.032 : numKids === 2 ? 0.057 : numKids === 3 ? 0.08 : 0.095;
+        annual -= (income - threshold2) * rate2;
+      }
+    }
+    return Math.max(0, Math.round(annual));
+  }
+
+  function calcBenefits(){
+    const province = benProvince.value, isCouple = benMarital.value === "couple";
+    const u6 = +benKidsU6.value, k617 = +benKids617.value, income = +benIncome.value;
+    const rural = benRural.value === "yes";
+    const numKids = u6 + k617;
+
+    $("#ben-kids-u6-val").textContent = u6;
+    $("#ben-kids-6-17-val").textContent = k617;
+    $("#ben-income-val").textContent = "$" + income.toLocaleString();
+
+    const gsthstAnnual = calcGSTHST(income, isCouple, numKids);
+    const carbonAnnual = calcCarbonRebate(province, isCouple, numKids, rural);
+    const ccbAnnual = calcCCB(income, u6, k617);
+
+    const root = $("#ben-result"); root.innerHTML = "";
+
+    const cards = [
+      { tag:"Quarterly · Federal", title:"GST/HST Credit", amt: fmt(gsthstAnnual) + "/yr",
+        body:`Roughly ${fmt(Math.round(gsthstAnnual/4))} per quarter based on your household size and income. Phases out gradually above a modest-income threshold.` },
+      { tag: carbonAnnual > 0 ? "Quarterly · Province-dependent" : "Not applicable", title:"Canada Carbon Rebate", amt: carbonAnnual > 0 ? fmt(carbonAnnual) + "/yr" : "$0",
+        body: carbonAnnual > 0
+          ? `Includes a base amount for your province${isCouple ? ", a spouse/partner top-up," : ""}${numKids>0 ? " and a per-child amount" : ""}${rural ? ", plus a rural top-up" : ""}.`
+          : "Your selected province either has its own equivalent carbon-pricing system or isn't modeled here as receiving the federal rebate." },
+      { tag: numKids > 0 ? "Monthly · Federal" : "No children entered", title:"Canada Child Benefit", amt: numKids > 0 ? fmt(ccbAnnual) + "/yr" : "$0",
+        body: numKids > 0
+          ? `Roughly ${fmt(Math.round(ccbAnnual/12))}/month combined, using higher per-child amounts for kids under 6 and a two-tier income phase-out.`
+          : "Add children under 6 or aged 6–17 above to estimate the Canada Child Benefit." }
+    ];
+
+    cards.forEach(c => {
+      const card = el("div", "rec-card");
+      card.innerHTML = `<div class="rc-tag">${c.tag}</div><div class="est-tag">Rough estimate</div><h4>${c.title}</h4><div class="big-amt">${c.amt}</div><p>${c.body}</p>`;
+      root.appendChild(card);
+    });
+  }
+  [benProvince, benMarital, benKidsU6, benKids617, benIncome, benRural].forEach(x => x.addEventListener("input", calcBenefits));
+
+  /* ===================== 3. NEWCOMER FIRST-TAX-RETURN GUIDE ===================== */
+  const GUIDES = [
+    { q:"When do you become a tax resident of Canada?", a:"You generally become a tax resident once you establish significant residential ties — most importantly a home in Canada, and a spouse/common-law partner or dependants living here. Secondary ties (driver's licence, provincial health coverage, bank accounts) can also support residency. In your arrival year you typically file a part-year return reporting the exact date you became a resident." },
+    { q:"When is the tax filing deadline?", a:"For most individuals, the deadline is <strong>April 30</strong> of the following year. If you or your spouse/common-law partner are self-employed, the return deadline extends to June 15 — but any balance owing is still due April 30. Filing late can delay benefit payments even if you owe nothing." },
+    { q:"Why file a return even with no or low income?", a:"Filing — even with $0 income — is what triggers the CRA to calculate and pay out income-tested benefits like the <strong>GST/HST credit</strong>, the <strong>Canada Carbon Rebate</strong>, and the <strong>Canada Child Benefit</strong> if you have kids. Skipping your first return is one of the most common ways newcomers miss out on money they're entitled to." },
+    { q:"What documents do you need to file?", a:"<ul><li>Your Social Insurance Number (SIN)</li><li>T4 slips from any employment income</li><li>A T2202 tuition slip if you were a student</li><li>Your Canadian residency start date</li><li>Rent receipts or landlord details in some provinces, for provincial rent/property tax credits</li></ul>Keep these organized from your first year onward — it makes every future return faster." },
+    { q:"How does filing unlock the GST/HST credit, CCB, and Carbon Rebate?", a:"All three benefits are calculated automatically by the CRA using the income, marital status, and dependant information on your <strong>filed</strong> tax return. There's normally no separate application — but with no return on file, the CRA has nothing to calculate from, so payments simply don't start." },
+    { q:"What are your free or low-cost filing options?", a:"<ul><li><strong>NETFILE-certified software</strong> — several offer a free tier for simple returns</li><li><strong>Community volunteer tax clinics</strong> (CVITP) — free help for eligible modest-income filers</li><li><strong>Paid software or professionals</strong> — worth it for more complex situations (self-employment, multiple provinces, etc.)</li></ul>Compare a couple of free NETFILE-certified options before paying for software you may not need." },
+  ];
+
+  function renderGuides(){
+    const root = $("#guides-root");
+    GUIDES.forEach(g => {
+      const guide = el("div", "guide");
+      guide.innerHTML = `<div class="guide-head"><h4>${g.q}</h4><div class="g-toggle">＋</div></div><div class="guide-body"><div class="guide-body-inner">${g.a}</div></div>`;
+      guide.querySelector(".guide-head").addEventListener("click", () => guide.classList.toggle("open"));
+      root.appendChild(guide);
+    });
+  }
+
+  /* ===================== 4. ASK MY NOTES — RETRIEVAL-ONLY COPILOT ===================== */
+  let KB_ENTRIES = [];   // populated from data/tax-kb.json
+  let kbReady = false;
+
+  const askInput = $("#ask-input"), askSend = $("#ask-send"), kbStatus = $("#kb-status");
+
+  function tokenize(str){
+    return (str || "").toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2);
+  }
+
+  // Score one entry: hits across keywords + title + every chunk heading + every chunk text,
+  // with a small boost for title/heading hits. Returns { score, bestChunkIndex }.
+  function scoreEntry(entry, tokens){
+    const titleLower = (entry.title || "").toLowerCase();
+    const keywordsLower = (entry.keywords || "").toLowerCase();
+    let score = 0;
+
+    tokens.forEach(tok => {
+      if (keywordsLower.includes(tok)) score += 1;
+      if (titleLower.includes(tok)) score += 1.5; // title boost
+    });
+
+    let bestChunkIdx = 0, bestChunkScore = -1;
+    (entry.chunks || []).forEach((chunk, idx) => {
+      const headingLower = (chunk.heading || "").toLowerCase();
+      const textLower = (chunk.text || "").toLowerCase();
+      let chunkScore = 0;
+      tokens.forEach(tok => {
+        if (headingLower.includes(tok)) chunkScore += 1.5; // heading boost
+        if (textLower.includes(tok)) chunkScore += 1;
+      });
+      score += chunkScore;
+      if (chunkScore > bestChunkScore) { bestChunkScore = chunkScore; bestChunkIdx = idx; }
+    });
+
+    return { score, bestChunkIdx };
+  }
+
+  function retrieve(query){
+    const tokens = tokenize(query);
+    if (!tokens.length) return null;
+
+    let best = null, bestScore = 0, bestChunkIdx = 0;
+    KB_ENTRIES.forEach(entry => {
+      const { score, bestChunkIdx: chunkIdx } = scoreEntry(entry, tokens);
+      if (score > bestScore) {
+        bestScore = score; best = entry; bestChunkIdx = chunkIdx;
+      }
+    });
+
+    const THRESHOLD = 0.5; // small threshold — require at least a partial hit
+    if (!best || bestScore <= THRESHOLD) return null;
+    return { entry: best, chunk: best.chunks[bestChunkIdx] };
+  }
+
+  function showAnswer(result){
+    const box = $("#ask-answer");
+    if (!result){
+      $("#answer-title").textContent = "No matching note found";
+      $("#answer-body").textContent = "I don't have a note on that yet — try rephrasing or browse the guide above.";
+      $("#answer-src").textContent = "";
+    } else {
+      const { entry, chunk } = result;
+      $("#answer-title").textContent = chunk.heading || entry.title;
+      // Render chunk text VERBATIM via textContent — never generated or paraphrased.
+      $("#answer-body").textContent = chunk.text;
+      let srcLine = `Source: ${entry.title} › ${chunk.heading}`;
+      $("#answer-src").textContent = srcLine;
+      if (entry.sources && entry.sources[0]) {
+        const link = document.createElement("a");
+        link.href = entry.sources[0];
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = " (view source)";
+        $("#answer-src").appendChild(link);
+      }
+    }
+    box.classList.add("show");
+  }
+
+  function handleAsk(){
+    if (!kbReady) return;
+    const q = askInput.value;
+    showAnswer(retrieve(q));
+  }
+
+  askSend.addEventListener("click", handleAsk);
+  askInput.addEventListener("keydown", e => { if (e.key === "Enter") handleAsk(); });
+
+  const STARTER_CHIPS = [
+    "How do I file my first tax return?",
+    "What is the GST/HST credit?",
+    "Who gets the Canada Carbon Rebate?",
+    "TFSA vs RRSP vs FHSA — which first?",
+    "How much is the Canada Child Benefit?"
+  ];
+
+  function renderChips(){
+    const root = $("#ask-chips");
+    root.innerHTML = "";
+    STARTER_CHIPS.forEach(c => {
+      const b = el("button", "chip", c);
+      b.disabled = !kbReady;
+      b.addEventListener("click", () => {
+        if (!kbReady) return;
+        askInput.value = c;
+        showAnswer(retrieve(c));
+      });
+      root.appendChild(b);
+    });
+  }
+
+  function setKbLoading(){
+    kbStatus.classList.remove("ready");
+    kbStatus.innerHTML = '<span class="dot"></span> Loading knowledge base…';
+    askInput.disabled = true;
+    askSend.disabled = true;
+    renderChips();
+  }
+
+  function setKbReady(count){
+    kbReady = true;
+    kbStatus.classList.add("ready");
+    kbStatus.innerHTML = `<span class="dot"></span> Knowledge base loaded — ${count} notes ready (retrieval-only, offline)`;
+    askInput.disabled = false;
+    askSend.disabled = false;
+    renderChips();
+  }
+
+  function setKbError(){
+    kbReady = false;
+    kbStatus.classList.remove("ready");
+    kbStatus.innerHTML = '<span class="dot"></span> Could not load the knowledge base — try refreshing the page.';
+    askInput.disabled = true;
+    askSend.disabled = true;
+    renderChips();
+  }
+
+  async function loadKB(){
+    setKbLoading();
+    try {
+      const res = await fetch("data/tax-kb.json");
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const json = await res.json();
+      KB_ENTRIES = Array.isArray(json.entries) ? json.entries : [];
+      setKbReady(KB_ENTRIES.length);
+    } catch (err) {
+      setKbError();
+    }
+  }
+
+  /* ---- init ---- */
+  renderGuides();
+  calcOptimizer();
+  calcBenefits();
+  loadKB();
+  $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-01T16:02:02.583Z",
+  "source": {
+    "builder": "scripts/build-kb.js",
+    "noteCount": 8
+  },
+  "stats": {
+    "notes": 8,
+    "chunks": 32
+  },
+  "entries": [
+    {
+      "id": "crs-additional-points",
+      "title": "CRS Additional Points",
+      "keywords": "crs additional points provincial nomination 600 french language bonus 25 or 50 sibling in canada 15 canadian study experience 30 important arranged employment were removed spring 2025 express entry pnp",
+      "sourceFile": "crs-additional-points.md",
+      "chunks": [
+        {
+          "heading": "Provincial nomination: +600",
+          "text": "A nomination from a Provincial Nominee Program (PNP) aligned with Express Entry adds 600 CRS points — enough to effectively guarantee an Invitation to Apply (ITA) in the next relevant draw, since 600 points puts a candidate above nearly every other score in the pool. See the dedicated PNP note for how nominations work."
+        },
+        {
+          "heading": "French language bonus: +25 or +50",
+          "text": "Candidates with strong French results (commonly CLB 7 or higher on all four abilities) can receive bonus points, with a lower bonus for French-only strength and a higher bonus (roughly 50 points) if you also have strong English results (commonly CLB 5 or higher). This bonus was introduced to support French-speaking immigration outside Quebec and has become a significant lever, especially combined with French-language category draws."
+        },
+        {
+          "heading": "Sibling in Canada: +15",
+          "text": "If you or your spouse/common-law partner has a brother or sister who is a Canadian citizen or permanent resident, living in Canada, and at least 18 years old, you may claim 15 additional points. Only one sibling relationship can be claimed, and specific relationship and residency conditions apply."
+        },
+        {
+          "heading": "Canadian study experience: +15 or +30",
+          "text": "Completing a credential from a Canadian post-secondary institution can add points: shorter programs (roughly one or two years) typically earn 15 points, while longer programs (three years or more, including most bachelor's, master's, and doctoral degrees) typically earn 30 points. This is separate from, and in addition to, education points and skill-transferability combinations."
+        },
+        {
+          "heading": "Important: arranged employment points were removed in spring 2025",
+          "text": "Historically, a valid, qualifying job offer (arranged employment) could add significant CRS points. IRCC removed arranged employment points from the CRS as of the changes rolled out in spring 2025 — a job offer may still support eligibility for certain programs, but it no longer directly adds CRS points. Always verify the current rules on the official IRCC page before relying on any job-offer point value."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/criteria-additional-points.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/express-entry-changes.html"
+      ]
+    },
+    {
+      "id": "crs-canadian-experience",
+      "title": "CRS Canadian Work Experience",
+      "keywords": "crs canadian work experience how points what counts as eligible why noc teer eligibility matters express entry",
+      "sourceFile": "crs-canadian-experience.md",
+      "chunks": [
+        {
+          "heading": "How Canadian experience points work",
+          "text": "CRS awards points for skilled work experience gained inside Canada, generally counted in full years (with partial-year experience usually not credited until a full year is reached). Points increase with more years of Canadian experience, up to a cap (commonly five years or more), after which additional years no longer add further core points. Canadian work experience is valuable both for direct CRS points and because it feeds into skill-transferability combination points."
+        },
+        {
+          "heading": "What counts as eligible experience",
+          "text": "To count, work experience generally must be paid, skilled, and full-time (or an equal amount of part-time work), performed while you had authorization to work in Canada, and classified under an eligible occupation in Canada's National Occupational Classification (NOC) system at the TEER (Training, Education, Experience, and Responsibilities) 0, 1, 2, or 3 categories — roughly management, professional, and technical/skilled trades occupations. Experience in TEER 4 or 5 occupations (more routine or elementary work) typically does not qualify."
+        },
+        {
+          "heading": "Why NOC/TEER eligibility matters",
+          "text": "Because CRS Canadian-experience points and Canadian Experience Class (CEC) eligibility both depend on TEER classification, it's important to confirm the correct NOC code for your job duties (not just your job title) before relying on that experience in your profile. Misclassifying a role can affect both your CRS score and your eligibility for an Express Entry program."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/criteria-core-human-capital-factors.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/canadian-experience-class.html",
+        "https://noc.esdc.gc.ca/"
+      ]
+    },
+    {
+      "id": "crs-core-age-education",
+      "title": "CRS Core Factors: Age and Education",
+      "keywords": "crs core factors age and education points peak at 20 29 more generally means foreign credentials need an eca express entry",
+      "sourceFile": "crs-core-age-education.md",
+      "chunks": [
+        {
+          "heading": "Age points peak at 20-29",
+          "text": "Age points are awarded on a sliding scale and depend on whether you have an accompanying spouse or common-law partner. Without a spouse, candidates aged roughly 20 to 29 receive the maximum age points, and points gradually decrease for candidates in their 30s, 40s, and beyond, reaching zero around age 45. With an accompanying spouse, the maximum age points are lower (because points are also split with the spouse's factors), but the same general shape applies: youth is rewarded, and older applicants receive fewer or no age points."
+        },
+        {
+          "heading": "More education generally means more points",
+          "text": "Education points increase with the level of credential: a high school diploma earns the fewest points, while a master's degree, a professional degree needed to practice in a licensed profession, or a doctoral (PhD) degree earns close to the maximum. Two or more post-secondary credentials, with one being at least three years long, can also score well. As with age, the maximum available education points is higher for candidates without a spouse than for the primary applicant when a spouse is also being scored."
+        },
+        {
+          "heading": "Foreign credentials need an ECA",
+          "text": "If your degree, diploma, or certificate was earned outside Canada, it generally must be assessed through an Educational Credential Assessment (ECA) from an organization designated by IRCC before it can count toward your CRS education points. The ECA confirms that your foreign credential is valid and equivalent to a completed credential in Canada. ECAs typically take weeks to a few months to process and have a validity period, so timing matters if you are close to submitting an Express Entry profile."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/criteria-core-human-capital-factors.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessed.html"
+      ]
+    },
+    {
+      "id": "crs-improve-score",
+      "title": "Practical Ways to Improve Your CRS Score",
+      "keywords": "practical ways to improve your crs score retake language test add french gain canadian work experience get an eca done early pursue a provincial nominee program watch category based draws express entry pnp",
+      "sourceFile": "crs-improve-score.md",
+      "chunks": [
+        {
+          "heading": "Retake your language test",
+          "text": "Because language points scale steeply around CLB thresholds (especially CLB 7, 9, and 10) and also feed into skill-transferability combination points, improving even one ability's score on a retake can raise your CRS meaningfully more than almost any other single action. Many candidates find retaking CELPIP, IELTS, TEF, or TCF the fastest lever available to them."
+        },
+        {
+          "heading": "Add French",
+          "text": "Gaining French proficiency (even alongside strong English) can unlock the French-language bonus (+25 or +50 points) and opens eligibility for French-language category-based draws, which have had some of the lowest cut-off scores in recent Express Entry rounds. This makes French a high-leverage option for candidates who can invest time in language study."
+        },
+        {
+          "heading": "Gain Canadian work experience",
+          "text": "Time spent working in Canada in an eligible NOC TEER 0/1/2/3 occupation adds direct core points and boosts skill-transferability combinations with education and language. Even a change from zero to one year of Canadian experience can produce a noticeable score jump."
+        },
+        {
+          "heading": "Get an ECA done early",
+          "text": "If you have foreign education, completing an Educational Credential Assessment (ECA) is required before that education counts toward CRS points. Because ECAs take time to process and expire after a set period, getting one done early (and renewing before it lapses) avoids losing points unexpectedly right before submitting a profile."
+        },
+        {
+          "heading": "Pursue a Provincial Nominee Program",
+          "text": "A PNP nomination adds 600 points and effectively guarantees an ITA, making it the single largest lever available, though it usually comes with a commitment to the nominating province. See the dedicated PNP note for details."
+        },
+        {
+          "heading": "Watch category-based draws",
+          "text": "IRCC periodically runs category-based Express Entry draws targeting specific groups — recent categories have included French-language proficiency, healthcare occupations, STEM occupations, skilled trades, and agriculture/agri-food. These draws can have lower cut-off scores than general draws, so candidates who qualify for a targeted category should confirm their profile reflects the relevant occupation or language proficiency, and watch IRCC's announcements for which categories are active each round."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/eligibility/category-based-selection.html"
+      ]
+    },
+    {
+      "id": "crs-language",
+      "title": "CRS Language Points: First and Second Official Language",
+      "keywords": "crs language points first and second official why clb 9 matters express entry celpip ielts tef tcf",
+      "sourceFile": "crs-language.md",
+      "chunks": [
+        {
+          "heading": "First official language points",
+          "text": "Every Express Entry candidate must take an approved language test in English (CELPIP-General or IELTS General Training) or French (TEF Canada or TCF Canada) for their first official language, and IRCC converts the test scores into Canadian Language Benchmark (CLB) levels for each of four abilities: speaking, listening, reading, and writing. CRS points are awarded per ability based on the CLB level achieved, so a stronger result in even one ability adds points, and results are typically valid for two years from the test date."
+        },
+        {
+          "heading": "Second official language points",
+          "text": "You can also claim points for a second official language (French if your first language is English, or English if your first language is French) if you have valid test results, though the points available for a second language are smaller than for the first. Adding a credible second-language result, especially French, can meaningfully raise your score even at a modest CLB level."
+        },
+        {
+          "heading": "Why CLB 9+ matters",
+          "text": "CLB 7 is often treated as a baseline threshold for various immigration programs, but CLB 9 and above is a common target for maximizing CRS points, since language points scale up noticeably as you cross benchmark thresholds (particularly around CLB 7, CLB 9, and CLB 10). Reaching CLB 9 in all four abilities also unlocks larger skill-transferability combination points (see the skill transferability note) and can be the single biggest lever for raising a borderline CRS score."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-requirements.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/criteria-core-human-capital-factors.html"
+      ]
+    },
+    {
+      "id": "crs-overview",
+      "title": "CRS Overview (Comprehensive Ranking System)",
+      "keywords": "crs overview comprehensive ranking system what is maximum 1 200 points the four factor buckets it s an estimate not a guarantee express entry immigration ircc",
+      "sourceFile": "crs-overview.md",
+      "chunks": [
+        {
+          "heading": "What CRS is",
+          "text": "The Comprehensive Ranking System (CRS) is the points-based test that Immigration, Refugees and Citizenship Canada (IRCC) uses to rank candidates in the Express Entry pool. Everyone eligible for Express Entry (Federal Skilled Worker, Canadian Experience Class, or Federal Skilled Trades) gets a CRS score, and IRCC periodically invites the highest-ranked candidates to apply for permanent residence through an \"Invitation to Apply\" (ITA) draw."
+        },
+        {
+          "heading": "Maximum 1,200 points",
+          "text": "The CRS score has a maximum of 1,200 points, split into two broad parts: up to 600 points from \"core/human capital\" factors (plus spouse factors, if applicable) and up to 600 points from \"additional\" factors such as a provincial nomination, a valid job offer (largely phased out — see below), or Canadian education. In practice, most candidates without a provincial nomination score well below 600 total."
+        },
+        {
+          "heading": "The four factor buckets",
+          "text": "CRS points come from four buckets: (1) core human capital factors — age, education, official language proficiency, and Canadian work experience; (2) spouse or common-law partner factors — their education, language, and Canadian work experience, which only apply if you have an accompanying spouse; (3) skill transferability factors — combinations of education, language, and work experience that can add up to 100 extra points; and (4) additional points — for a provincial nomination, French language ability, a sibling in Canada, or Canadian study experience."
+        },
+        {
+          "heading": "It's an estimate, not a guarantee",
+          "text": "Any CRS calculator, including a copilot like this one, produces an estimate for educational purposes only. Your actual, official score is calculated by IRCC when you submit a complete Express Entry profile, and only IRCC's tool and rules are authoritative. Rules, cut-off scores, and point values change over time (for example, arranged employment points were removed in 2025), so always verify current figures and eligibility on the official IRCC website before making decisions."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html"
+      ]
+    },
+    {
+      "id": "crs-pnp",
+      "title": "Provincial Nominee Programs (PNP) and CRS",
+      "keywords": "provincial nominee programs pnp and crs how a nomination adds 600 points express entry aligned streams trade offs to weigh",
+      "sourceFile": "crs-pnp.md",
+      "chunks": [
+        {
+          "heading": "How a nomination adds 600 points",
+          "text": "Each Canadian province and territory (except Quebec, which runs its own separate immigration system) operates Provincial Nominee Program streams that let them nominate candidates for permanent residence based on local labour-market or economic needs. When a province nominates an Express Entry candidate, IRCC adds 600 points to that candidate's CRS score, which in practice puts them at or near the maximum score and virtually guarantees an Invitation to Apply (ITA) at the next relevant draw."
+        },
+        {
+          "heading": "Express Entry-aligned streams",
+          "text": "Not all PNP streams work through Express Entry — some are \"base\" PNP streams with their own separate application process and no direct CRS boost. The streams that matter for CRS are the \"enhanced\" or Express Entry-aligned PNP streams, where the province nominates a candidate who already has an Express Entry profile, triggering the 600-point boost. Each province sets its own eligibility criteria (occupation lists, connection to the province, work experience, education, or a job offer in that province), and criteria change often, so check the specific province's immigration website for current streams and requirements."
+        },
+        {
+          "heading": "Trade-offs to weigh",
+          "text": "A provincial nomination usually comes with a condition or expectation to reside and work in the nominating province, at least initially. Some candidates target a PNP specifically to reach ITA-guaranteed territory quickly, while others prefer to wait for a strong core CRS score and more geographic flexibility. Processing times, application windows, and quotas vary by province and can change year to year."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/provincial-nominees.html"
+      ]
+    },
+    {
+      "id": "crs-skill-transferability",
+      "title": "CRS Skill Transferability Factors",
+      "keywords": "crs skill transferability factors combinations not standalone scores education x language canadian experience foreign and certificate of qualification combination express entry work",
+      "sourceFile": "crs-skill-transferability.md",
+      "chunks": [
+        {
+          "heading": "Combinations, not standalone scores",
+          "text": "Skill transferability points reward candidates whose factors reinforce each other, on the theory that strong language ability plus solid education or Canadian experience predicts better labour-market success. Unlike the core factors, these points come from combining two factors at a time, and the whole category is capped at 100 points even though several sub-combinations exist."
+        },
+        {
+          "heading": "Education x language",
+          "text": "If you have a post-secondary credential and strong official language results (generally CLB 7 or CLB 9 thresholds), you earn points for the combination — more points as both the credential level and the CLB level rise. A candidate with only moderate language scores and a strong degree, or vice versa, earns fewer combination points than one who is strong in both."
+        },
+        {
+          "heading": "Education x Canadian experience",
+          "text": "Similarly, having a post-secondary credential together with Canadian work experience (one year, or two or more years) earns combination points. This rewards candidates who have both formal education and proven Canadian workplace experience, rather than just one or the other."
+        },
+        {
+          "heading": "Foreign experience x language, and foreign experience x Canadian experience",
+          "text": "Foreign (outside Canada) skilled work experience combined with strong language results, or foreign experience combined with Canadian work experience, can also generate combination points, recognizing that international experience plus either language strength or Canadian workplace exposure is a positive signal."
+        },
+        {
+          "heading": "Certificate of qualification combination",
+          "text": "Candidates in a trade occupation who hold a valid certificate of qualification from a Canadian provincial or territorial body, combined with strong official language results, can earn additional transferability points — recognizing skilled trades that may not require a post-secondary degree."
+        }
+      ],
+      "sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/criteria-skill-transferability-factors.html"
+      ]
+    }
+  ]
+}

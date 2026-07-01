@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landed — Your First 90 Days of Money in Canada | Paawan Shah</title>
+  <meta name="description" content="Landed is a free guide + tools for newcomers to Canada: open a bank account, get a no-credit-history credit card, build your credit score, file your first tax return, claim benefits, and send money home. Built by an immigrant, for immigrants." />
+  <meta name="keywords" content="newcomer to Canada finances, build credit Canada immigrant, best bank account newcomer Canada, no credit history credit card Canada, first tax return newcomer, international student money Canada, send money to India from Canada" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://paawanshah99.com/newcomer.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Landed — Your First 90 Days of Money in Canada" />
+  <meta property="og:description" content="A free, no-BS guide + tools for newcomers to Canada: banking, credit, taxes, benefits, and remittances. Built by an immigrant, for immigrants." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paawanshah99.com/newcomer.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=General+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- FAQ schema for SEO (mirrors the guides below) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How do I build a credit score in Canada as a newcomer?","acceptedAnswer":{"@type":"Answer","text":"Get a starter or secured credit card, keep your balance under ~30% of the limit, and pay on time every month. A usable score (650+) typically takes about 6–12 months of consistent history reported to Equifax and TransUnion."}},
+      {"@type":"Question","name":"What bank account should a newcomer to Canada open?","acceptedAnswer":{"@type":"Answer","text":"Canada's major banks (RBC, Scotiabank, TD, CIBC, BMO) all run newcomer programs that usually waive monthly fees for a period and do not require Canadian credit history. Compare the fee-free period, included credit card, and international transfer options."}},
+      {"@type":"Question","name":"Do I need to file a tax return in Canada if I had no income?","acceptedAnswer":{"@type":"Answer","text":"Often yes. Filing a return — even with little or no income — is how you unlock benefits like the GST/HST credit, the Canada Carbon Rebate, and the Canada Child Benefit. The deadline is usually April 30."}},
+      {"@type":"Question","name":"What is the cheapest way to send money from Canada to India?","acceptedAnswer":{"@type":"Answer","text":"Specialist transfer services (such as Wise or Remitly) are usually cheaper than a bank wire because they use closer-to-mid-market exchange rates and lower flat fees. Always compare the total cost (fee + exchange-rate markup), not just the advertised fee."}}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0b; --bg-secondary: #111113; --bg-card: #16161a;
+      --bg-card-hover: #1c1c21; --text-primary: #ececf1; --text-secondary: #8b8b96;
+      --text-muted: #56565e; --accent: #64ffda; --accent-dim: rgba(100,255,218,0.1);
+      --accent-glow: rgba(100,255,218,0.15); --accent-secondary: #7c5cfc;
+      --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12);
+      --gradient-1: linear-gradient(135deg, #64ffda 0%, #7c5cfc 100%);
+      --font-display: 'Syne', sans-serif; --font-body: 'General Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace; --transition: cubic-bezier(0.16,1,0.3,1);
+      --warn: #ffb347; --good: #64ffda;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent); color: var(--bg-primary); }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .grid-bg { position:fixed; inset:0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size:80px 80px; opacity:0.4; pointer-events:none; z-index:-1; }
+
+    /* ===== NAV ===== */
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.1rem 3rem; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(20px) saturate(180%); background:rgba(10,10,11,0.8); border-bottom:1px solid var(--border); }
+    .nav-logo { font-family:var(--font-display); font-weight:800; font-size:1.3rem; letter-spacing:-0.01em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display:flex; gap:2.2rem; list-style:none; }
+    .nav-links a { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary); transition:color 0.3s ease; }
+    .nav-links a:hover { color: var(--accent); }
+    @media (max-width: 820px) { nav { padding:1rem 1.3rem; } .nav-links { display:none; } }
+
+    .wrap { max-width:1080px; margin:0 auto; padding:0 1.6rem; }
+
+    /* ===== HERO ===== */
+    .hero { padding:9rem 1.6rem 3rem; max-width:900px; margin:0 auto; text-align:center; }
+    .eyebrow { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.18em; color:var(--accent); margin-bottom:1.1rem; }
+    .hero h1 { font-family:var(--font-display); font-size:clamp(2.1rem,6vw,4rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.1rem; }
+    .hero h1 .grad { background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero p.lede { color:var(--text-secondary); font-size:1.1rem; max-width:640px; margin:0 auto 1.8rem; }
+    .cta-row { display:flex; gap:0.9rem; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 1.5rem; border-radius:99px; font-weight:600; font-size:0.92rem; border:1px solid var(--border-hover); transition:all 0.3s var(--transition); }
+    .btn-primary { background:var(--accent); color:#04120e; border-color:var(--accent); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 30px var(--accent-glow); }
+    .btn-ghost { color:var(--text-primary); background:var(--bg-card); }
+    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+
+    .disclaimer-badge { display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.6rem; padding:0.4rem 0.9rem; border:1px solid var(--border); border-radius:99px; font-size:0.72rem; color:var(--text-muted); font-family:var(--font-mono); }
+    .disclaimer-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--warn); }
+
+    /* ===== STATS ===== */
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:820px; margin:2.5rem auto 0; }
+    .stat { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.3rem 1rem; text-align:center; }
+    .stat .num { font-family:var(--font-display); font-size:clamp(1.4rem,4vw,2rem); font-weight:800; color:var(--accent); }
+    .stat .lbl { font-size:0.78rem; color:var(--text-secondary); margin-top:0.3rem; }
+    @media (max-width:640px){ .stats{ grid-template-columns:1fr; } }
+
+    /* ===== SECTION ===== */
+    section.block { padding:4rem 0 1rem; }
+    .section-head { text-align:center; max-width:660px; margin:0 auto 2.2rem; }
+    .section-head .kicker { font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--accent); }
+    .section-head h2 { font-family:var(--font-display); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; margin:0.6rem 0 0.5rem; letter-spacing:-0.01em; }
+    .section-head p { color:var(--text-secondary); font-size:0.98rem; }
+
+    /* ===== CHECKLIST ===== */
+    .progress-shell { max-width:760px; margin:0 auto 1.6rem; }
+    .progress-top { display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.5rem; }
+    .progress-bar { height:8px; background:var(--bg-card); border:1px solid var(--border); border-radius:99px; overflow:hidden; }
+    .progress-fill { height:100%; width:0; background:var(--gradient-1); transition:width 0.5s var(--transition); }
+
+    .phase { max-width:760px; margin:0 auto 1.4rem; }
+    .phase-title { font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-secondary); margin:1.4rem 0 0.7rem; }
+    .task { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; margin-bottom:0.6rem; transition:border-color 0.3s ease; overflow:hidden; }
+    .task:hover { border-color:var(--border-hover); }
+    .task.done { opacity:0.62; }
+    .task-head { display:flex; align-items:flex-start; gap:0.85rem; padding:1rem 1.1rem; cursor:pointer; }
+    .checkbox { flex:0 0 auto; width:22px; height:22px; border-radius:6px; border:1.5px solid var(--border-hover); display:flex; align-items:center; justify-content:center; margin-top:2px; transition:all 0.25s ease; }
+    .task.done .checkbox { background:var(--accent); border-color:var(--accent); }
+    .checkbox svg { width:13px; height:13px; stroke:#04120e; opacity:0; transition:opacity 0.2s ease; }
+    .task.done .checkbox svg { opacity:1; }
+    .task-titles { flex:1; }
+    .task-titles h4 { font-family:var(--font-display); font-size:1rem; font-weight:600; }
+    .task.done .task-titles h4 { text-decoration:line-through; }
+    .task-titles .meta { font-size:0.8rem; color:var(--text-muted); margin-top:0.1rem; }
+    .task-toggle { flex:0 0 auto; color:var(--text-muted); font-size:0.8rem; transition:transform 0.3s ease; margin-top:2px; }
+    .task.open .task-toggle { transform:rotate(180deg); }
+    .task-body { max-height:0; overflow:hidden; transition:max-height 0.4s var(--transition); }
+    .task.open .task-body { max-height:420px; }
+    .task-body-inner { padding:0 1.1rem 1.1rem 3rem; color:var(--text-secondary); font-size:0.9rem; }
+    .task-body-inner p { margin-bottom:0.6rem; }
+
+    /* ===== CTA / AFFILIATE ===== */
+    .aff-cta { display:inline-flex; align-items:center; gap:0.5rem; margin-top:0.4rem; padding:0.5rem 0.95rem; border-radius:99px; background:var(--accent-dim); border:1px solid rgba(100,255,218,0.25); color:var(--accent); font-size:0.8rem; font-weight:600; }
+    .aff-cta:hover { background:rgba(100,255,218,0.16); }
+    .aff-tag { font-family:var(--font-mono); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--warn); border:1px solid rgba(255,179,71,0.35); border-radius:4px; padding:0.05rem 0.3rem; }
+
+    /* ===== ASK LANDED ===== */
+    .ask-wrap { max-width:760px; margin:0 auto; }
+    .ask-box { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.4rem; }
+    .ask-input-row { display:flex; gap:0.6rem; }
+    .ask-input-row input { flex:1; background:var(--bg-secondary); border:1px solid var(--border-hover); border-radius:10px; padding:0.85rem 1rem; color:var(--text-primary); font-size:0.95rem; font-family:inherit; }
+    .ask-input-row input:focus { outline:none; border-color:var(--accent); }
+    .ask-send { background:var(--accent); color:#04120e; border:none; border-radius:10px; padding:0 1.2rem; font-weight:700; }
+    .chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.9rem; }
+    .chip { font-size:0.78rem; color:var(--text-secondary); background:var(--bg-secondary); border:1px solid var(--border); border-radius:99px; padding:0.4rem 0.85rem; transition:all 0.25s ease; }
+    .chip:hover { border-color:var(--accent); color:var(--accent); }
+    .ask-answer { margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--border); display:none; }
+    .ask-answer.show { display:block; animation:fadeIn 0.4s ease; }
+    .ask-answer h4 { font-family:var(--font-display); font-size:1.05rem; margin-bottom:0.5rem; }
+    .ask-answer p { color:var(--text-secondary); font-size:0.92rem; margin-bottom:0.7rem; }
+    .ask-src { font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); }
+    .ask-note { font-size:0.72rem; color:var(--text-muted); margin-top:0.9rem; font-style:italic; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ===== TOOLS / CALCULATORS ===== */
+    .tools-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; max-width:900px; margin:0 auto; }
+    @media (max-width:760px){ .tools-grid{ grid-template-columns:1fr; } }
+    .tool { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.5rem; }
+    .tool h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:700; margin-bottom:0.3rem; }
+    .tool .sub { font-size:0.82rem; color:var(--text-muted); margin-bottom:1.1rem; }
+    .field { margin-bottom:0.9rem; }
+    .field label { display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.35rem; }
+    .field label .val { color:var(--accent); font-family:var(--font-mono); }
+    .field input[type=range] { width:100%; -webkit-appearance:none; height:5px; border-radius:99px; background:var(--bg-secondary); outline:none; }
+    .field input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:17px; height:17px; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 10px var(--accent-glow); }
+    .field input[type=number], .field select { width:100%; background:var(--bg-secondary); border:1px solid var(--border-hover); border-radius:9px; padding:0.6rem 0.75rem; color:var(--text-primary); font-family:inherit; font-size:0.9rem; }
+    .field input:focus, .field select:focus { outline:none; border-color:var(--accent); }
+    .result { margin-top:1rem; padding:1rem; background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; text-align:center; }
+    .result .big { font-family:var(--font-display); font-size:1.9rem; font-weight:800; color:var(--accent); }
+    .result .cap { font-size:0.78rem; color:var(--text-secondary); margin-top:0.2rem; }
+
+    /* ===== CARD PICKER ===== */
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.1rem; max-width:960px; margin:0 auto; }
+    .rec-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.4rem; display:flex; flex-direction:column; transition:all 0.3s ease; }
+    .rec-card:hover { border-color:var(--accent); transform:translateY(-3px); }
+    .rec-card .rc-tag { font-family:var(--font-mono); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent-secondary); margin-bottom:0.6rem; }
+    .rec-card h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:700; margin-bottom:0.4rem; }
+    .rec-card p { font-size:0.85rem; color:var(--text-secondary); flex:1; margin-bottom:0.9rem; }
+    .rec-card .best-for { font-size:0.76rem; color:var(--text-muted); margin-bottom:0.9rem; }
+
+    /* ===== GUIDES ACCORDION ===== */
+    .guides { max-width:760px; margin:0 auto; }
+    .guide { border:1px solid var(--border); border-radius:12px; margin-bottom:0.7rem; overflow:hidden; background:var(--bg-card); }
+    .guide-head { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.1rem 1.2rem; cursor:pointer; }
+    .guide-head h4 { font-family:var(--font-display); font-size:1rem; font-weight:600; }
+    .guide-head .g-toggle { color:var(--text-muted); transition:transform 0.3s ease; }
+    .guide.open .g-toggle { transform:rotate(45deg); color:var(--accent); }
+    .guide-body { max-height:0; overflow:hidden; transition:max-height 0.45s var(--transition); }
+    .guide.open .guide-body { max-height:640px; }
+    .guide-body-inner { padding:0 1.2rem 1.3rem; color:var(--text-secondary); font-size:0.9rem; }
+    .guide-body-inner ul { margin:0.4rem 0 0.6rem 1.1rem; }
+    .guide-body-inner li { margin-bottom:0.35rem; }
+
+    /* ===== EMAIL CAPTURE ===== */
+    .capture { max-width:640px; margin:0 auto; background:linear-gradient(160deg, rgba(100,255,218,0.06), rgba(124,92,252,0.06)); border:1px solid var(--border-hover); border-radius:20px; padding:2.2rem 1.8rem; text-align:center; }
+    .capture h2 { font-family:var(--font-display); font-size:1.6rem; font-weight:700; margin-bottom:0.5rem; }
+    .capture p { color:var(--text-secondary); font-size:0.92rem; margin-bottom:1.3rem; }
+    .capture form { display:flex; gap:0.6rem; max-width:440px; margin:0 auto; }
+    .capture input { flex:1; background:var(--bg-secondary); border:1px solid var(--border-hover); border-radius:10px; padding:0.8rem 1rem; color:var(--text-primary); font-family:inherit; }
+    .capture input:focus { outline:none; border-color:var(--accent); }
+    .capture .msg { font-size:0.82rem; color:var(--accent); margin-top:0.9rem; min-height:1.1rem; }
+    @media (max-width:520px){ .capture form{ flex-direction:column; } }
+
+    /* ===== FOOTER ===== */
+    footer { margin-top:4rem; border-top:1px solid var(--border); padding:2.4rem 1.6rem; }
+    .foot-inner { max-width:900px; margin:0 auto; }
+    .foot-disc { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.2rem; font-size:0.78rem; color:var(--text-muted); line-height:1.6; margin-bottom:1.4rem; }
+    .foot-disc strong { color:var(--text-secondary); }
+    .foot-links { display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center; font-family:var(--font-mono); font-size:0.74rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); }
+    .foot-links a:hover { color:var(--accent); }
+    .foot-copy { text-align:center; color:var(--text-muted); font-size:0.75rem; margin-top:1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Land<span>ed</span></a>
+    <ul class="nav-links">
+      <li><a href="#checklist">Checklist</a></li>
+      <li><a href="#ask">Ask Landed</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#cards">Cards</a></li>
+      <li><a href="#guides">Guides</a></li>
+      <li><a href="index.html">Paawan Shah ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Built by an immigrant, for immigrants</div>
+    <h1>Your first 90 days of <span class="grad">money in Canada</span>, sorted.</h1>
+    <p class="lede">SIN, bank account, a credit card that works with <em>no</em> Canadian history, building your credit score, your first tax return, benefits you can claim, and sending money home — one clear checklist, free.</p>
+    <div class="cta-row">
+      <a href="#checklist" class="btn btn-primary">Start the 90-day checklist</a>
+      <a href="#ask" class="btn btn-ghost">Ask a money question</a>
+    </div>
+    <div class="disclaimer-badge"><span class="dot"></span> Educational only — not financial, tax, or immigration advice</div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~455K</div><div class="lbl">newcomers arrive in Canada each year</div></div>
+      <div class="stat"><div class="num">~1 in 4</div><div class="lbl">new immigrants start with a credit score under 670</div></div>
+      <div class="stat"><div class="num">6–12 mo</div><div class="lbl">to build a usable credit score from zero</div></div>
+    </div>
+  </header>
+
+  <!-- CHECKLIST -->
+  <section class="block" id="checklist">
+    <div class="section-head">
+      <div class="kicker">The 90-Day Plan</div>
+      <h2>Do these, in this order</h2>
+      <p>Tick things off as you go — your progress saves on this device. Tap any item for the how and why.</p>
+    </div>
+
+    <div class="progress-shell">
+      <div class="progress-top"><span id="progress-label">0 of 0 done</span><span id="progress-pct">0%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <div id="checklist-root" class="phase"></div>
+  </section>
+
+  <!-- ASK LANDED -->
+  <section class="block" id="ask">
+    <div class="section-head">
+      <div class="kicker">Ask Landed</div>
+      <h2>Money questions, straight answers</h2>
+      <p>Type a question about money in Canada. Answers come from a curated newcomer knowledge base — no jargon, no upsell.</p>
+    </div>
+    <div class="ask-wrap">
+      <div class="ask-box">
+        <div class="ask-input-row">
+          <input id="ask-input" type="text" placeholder="e.g. How do I build credit with no history?" autocomplete="off" />
+          <button class="ask-send" id="ask-send">Ask</button>
+        </div>
+        <div class="chips" id="ask-chips"></div>
+        <div class="ask-answer" id="ask-answer">
+          <h4 id="answer-title"></h4>
+          <p id="answer-body"></p>
+          <div id="answer-cta"></div>
+          <div class="ask-src" id="answer-src"></div>
+        </div>
+        <div class="ask-note">This returns curated information from our Canada-money knowledge base (offline, no data leaves your browser). A live AI copilot can be connected later via an API key — see the notes in the code.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="block" id="tools">
+    <div class="section-head">
+      <div class="kicker">Free Tools</div>
+      <h2>Run the numbers</h2>
+      <p>Quick estimators to help you plan. These are rough, educational models — not guarantees.</p>
+    </div>
+    <div class="tools-grid">
+      <!-- Credit builder -->
+      <div class="tool">
+        <h3>Credit-building timeline</h3>
+        <div class="sub">Roughly how long until you reach a usable score.</div>
+        <div class="field">
+          <label>Starting point
+            <span class="val" id="cb-start-val">No credit history</span></label>
+          <select id="cb-start">
+            <option value="0">No credit history at all</option>
+            <option value="1">Thin file (1 new account)</option>
+            <option value="2">Some history, a few late payments</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>On-time payments <span class="val" id="cb-ontime-val">100%</span></label>
+          <input type="range" id="cb-ontime" min="70" max="100" value="100" step="1" />
+        </div>
+        <div class="field">
+          <label>Card utilization <span class="val" id="cb-util-val">20%</span></label>
+          <input type="range" id="cb-util" min="0" max="90" value="20" step="5" />
+        </div>
+        <div class="result">
+          <div class="big" id="cb-result">~9 mo</div>
+          <div class="cap">estimated time to a ~650+ score</div>
+        </div>
+      </div>
+
+      <!-- Rent vs Buy -->
+      <div class="tool">
+        <h3>Rent vs buy (quick check)</h3>
+        <div class="sub">A back-of-envelope comparison over your time horizon.</div>
+        <div class="field">
+          <label>Monthly rent <span class="val" id="rb-rent-val">$2,000</span></label>
+          <input type="range" id="rb-rent" min="800" max="5000" value="2000" step="50" />
+        </div>
+        <div class="field">
+          <label>Home price <span class="val" id="rb-price-val">$700,000</span></label>
+          <input type="range" id="rb-price" min="300000" max="2000000" value="700000" step="10000" />
+        </div>
+        <div class="field">
+          <label>Down payment <span class="val" id="rb-down-val">10%</span></label>
+          <input type="range" id="rb-down" min="5" max="35" value="10" step="1" />
+        </div>
+        <div class="field">
+          <label>Years you'll stay <span class="val" id="rb-years-val">5</span></label>
+          <input type="range" id="rb-years" min="1" max="15" value="5" step="1" />
+        </div>
+        <div class="result">
+          <div class="big" id="rb-result">—</div>
+          <div class="cap" id="rb-cap">over your time horizon (rough estimate)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARD PICKER -->
+  <section class="block" id="cards">
+    <div class="section-head">
+      <div class="kicker">Credit Cards</div>
+      <h2>Cards that work with no Canadian history</h2>
+      <p>Start here to build credit fast. These are card <em>categories</em> — compare current offers before you apply.</p>
+    </div>
+    <div class="cards-grid" id="cards-root"></div>
+    <p style="text-align:center; max-width:640px; margin:1.4rem auto 0; font-size:0.78rem; color:var(--text-muted);">
+      Want a full spend-based comparison of Canadian cards? Try the <a href="credit-card-finder.html" style="color:var(--accent);">Credit Card Finder →</a>
+    </p>
+  </section>
+
+  <!-- GUIDES -->
+  <section class="block" id="guides">
+    <div class="section-head">
+      <div class="kicker">Guides</div>
+      <h2>The stuff nobody explains</h2>
+      <p>Short, honest guides for your first months. Tap to open.</p>
+    </div>
+    <div class="guides" id="guides-root"></div>
+  </section>
+
+  <!-- EMAIL CAPTURE -->
+  <section class="block">
+    <div class="capture">
+      <h2>Get the free Newcomer Money Checklist</h2>
+      <p>A printable PDF of everything above, plus the occasional tip on credit, taxes, and deals. No spam.</p>
+      <form id="capture-form">
+        <input type="email" id="capture-email" placeholder="you@email.com" required />
+        <button type="submit" class="btn btn-primary" style="border-radius:10px;">Send it to me</button>
+      </form>
+      <div class="msg" id="capture-msg"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-disc">
+        <strong>Affiliate disclosure:</strong> Some links on this page marked <span class="aff-tag">Affiliate</span> may earn us a commission if you sign up — at no extra cost to you. It helps keep this guide free. We only list things we'd genuinely suggest to a friend.<br><br>
+        <strong>Not advice:</strong> Landed provides general financial <em>education</em> and tools for newcomers to Canada. It is not personalized financial, tax, investment, or immigration advice. Rates, offers, benefit rules, and eligibility change often — always verify current terms with the provider or a licensed professional before acting.<br><br>
+        <strong>Privacy:</strong> Your checklist progress and answers stay in your browser (local storage). We don't sell your data.
+      </div>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="credit-card-finder.html">Credit Card Finder</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#ask">Ask Landed</a>
+        <a href="#guides">Guides</a>
+      </div>
+      <div class="foot-copy">Landed — a project by Paawan Shah · Vancouver, BC · © <span id="year"></span></div>
+    </div>
+  </footer>
+
+  <script>
+  /* =============================================================
+     LANDED — newcomer money hub
+     Configure real links here once affiliate programs are approved.
+     Leave as "#" to render a disabled-looking CTA with an Affiliate tag.
+     ============================================================= */
+  const AFFILIATE = {
+    newcomerBank: "#",      // e.g. RBC/Scotiabank/TD/CIBC/BMO newcomer program referral
+    securedCard: "#",       // secured/starter credit card
+    remittance: "#",        // Wise / Remitly referral
+    esim: "#",              // Airalo or similar
+    tenantInsurance: "#",   // renters insurance
+    roboAdvisor: "#",       // Wealthsimple / Qtrade
+    taxFiling: "#"          // Wealthsimple Tax etc.
+  };
+  // Where the email capture posts. Replace with a real Formspree/ConvertKit endpoint.
+  const CAPTURE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxxx"
+
+  /* ---------- CHECKLIST DATA ---------- */
+  const PHASES = [
+    { title: "Week 1 — Land & set up", items: [
+      { id:"sin", t:"Get your SIN (Social Insurance Number)", meta:"Free · Service Canada", body:"Your SIN is a 9-digit number you need to work and to open interest-earning accounts. It's free from Service Canada — online, by mail, or in person with your immigration document + passport. Never pay anyone for it.", cta:null },
+      { id:"bank", t:"Open a newcomer bank account", meta:"No credit history needed", body:"Canada's major banks (RBC, Scotiabank, TD, CIBC, BMO) run newcomer programs that usually waive monthly fees for a period and don't require Canadian credit history. Compare the fee-free window, any included credit card, and free international transfers.", cta:{key:"newcomerBank", label:"Compare newcomer accounts"} },
+      { id:"phone", t:"Sort out a phone / eSIM", meta:"Stay connected from day one", body:"An eSIM gets you a working number the moment you land, before you commit to a Canadian carrier plan. Handy for verification codes when opening accounts.", cta:{key:"esim", label:"Get an arrival eSIM"} },
+    ]},
+    { title: "First month — Build the base", items: [
+      { id:"card", t:"Get a starter or secured credit card", meta:"This is how credit starts", body:"With no history, a secured card (you put down a refundable deposit) or a bank newcomer card is the fastest on-ramp. The card itself matters less than how you use it — see the credit guide below.", cta:{key:"securedCard", label:"See starter cards"} },
+      { id:"credit", t:"Start building your credit score", meta:"Utilization < 30%, pay in full", body:"Use the card for small regular purchases, keep the balance under ~30% of the limit, and pay the full statement balance on time every month. Scores are tracked by Equifax and TransUnion; expect a usable score in about 6–12 months.", cta:null },
+      { id:"insurance", t:"Get tenant (renters) insurance", meta:"Often required by landlords", body:"It's cheap (often ~$15–30/month) and many landlords require it. It covers your belongings and, importantly, liability. It can also make you look like a stronger renter.", cta:{key:"tenantInsurance", label:"Compare tenant insurance"} },
+      { id:"budget", t:"Set a simple first-months budget", meta:"Know your runway", body:"List fixed costs (rent, phone, transit, groceries) against your income or savings so you know your runway. The rent-vs-buy and credit tools above can help you plan.", cta:null },
+    ]},
+    { title: "Months 2–3 — Grow & optimize", items: [
+      { id:"tax", t:"Plan your first tax return", meta:"Even with low/no income", body:"Filing (deadline usually April 30) is how you unlock benefits like the GST/HST credit and the Canada Carbon Rebate — even if you earned little. Keep records of your landing date and income.", cta:{key:"taxFiling", label:"File your taxes"} },
+      { id:"registered", t:"Learn TFSA vs RRSP vs FHSA", meta:"Canada's tax-shelters", body:"TFSA: tax-free growth, room accrues once you're a resident. RRSP: tax-deductible contributions, room builds from earned income you report. FHSA: for a first home — deductible going in and tax-free coming out. Don't over-contribute; check your limits in CRA My Account.", cta:{key:"roboAdvisor", label:"Open an investing account"} },
+      { id:"remit", t:"Set up cheaper money transfers home", meta:"Skip the bank markup", body:"Bank wires bury cost in the exchange rate. Specialist services (e.g. Wise, Remitly) usually give closer-to-mid-market rates and lower flat fees. Always compare total cost = fee + FX markup.", cta:{key:"remittance", label:"Compare transfer rates"} },
+    ]},
+  ];
+
+  /* ---------- KNOWLEDGE BASE (Ask Landed) ---------- */
+  const KB = [
+    { id:"build-credit", kw:"build credit score history no history zero starter secured improve raise", title:"How to build credit in Canada from zero",
+      body:"Get a starter or secured credit card, use it for small regular purchases, keep the balance under ~30% of the limit, and pay the full statement on time every month. Your history is reported to Equifax and TransUnion; a usable score (650+) usually takes about 6–12 months of consistent, on-time use.",
+      cta:{key:"securedCard", label:"See starter cards"}, src:"Landed KB · Credit basics" },
+    { id:"best-bank", kw:"bank account open newcomer chequing which bank rbc scotiabank td cibc bmo fees", title:"Which bank account should a newcomer open?",
+      body:"All of Canada's big banks (RBC, Scotiabank, TD, CIBC, BMO) have newcomer programs that typically waive monthly fees for a period and don't need Canadian credit history. Compare: how long fees are waived, whether a credit card is included, and free international transfers. There's no single 'best' — match it to your needs.",
+      cta:{key:"newcomerBank", label:"Compare newcomer accounts"}, src:"Landed KB · Banking" },
+    { id:"first-card", kw:"credit card no history newcomer secured starter approve apply first", title:"Getting your first credit card with no history",
+      body:"Two reliable routes: a secured card (refundable deposit sets your limit) or a bank newcomer card (approved using your status + income rather than Canadian credit). Start small, pay in full, and you can usually move to a regular rewards card within a year.",
+      cta:{key:"securedCard", label:"See starter cards"}, src:"Landed KB · Credit cards" },
+    { id:"taxes", kw:"tax return file taxes cra benefits gst hst credit carbon rebate deadline income", title:"Do I need to file a tax return?",
+      body:"Usually yes — even with little or no income. Filing (deadline generally April 30) is what unlocks the GST/HST credit, the Canada Carbon Rebate, and the Canada Child Benefit if you have kids. Newcomers often leave money on the table by not filing their first year.",
+      cta:{key:"taxFiling", label:"File your taxes"}, src:"Landed KB · Taxes & benefits" },
+    { id:"registered", kw:"tfsa rrsp fhsa invest savings registered account tax shelter difference", title:"TFSA vs RRSP vs FHSA — the short version",
+      body:"TFSA: grows tax-free, room accrues once you're a Canadian resident, withdraw anytime. RRSP: contributions are tax-deductible; room builds from earned income you report. FHSA: for buying a first home — deductible in, tax-free out. Check your personal limits in CRA My Account before contributing.",
+      cta:{key:"roboAdvisor", label:"Open an investing account"}, src:"Landed KB · Investing basics" },
+    { id:"remit", kw:"send money home india remittance transfer wise remitly cheapest fx exchange rate abroad", title:"Cheapest way to send money home",
+      body:"Banks hide most of the cost in a poor exchange rate. Specialist transfer services (like Wise or Remitly) usually use closer-to-mid-market rates with a small flat fee. Compare the total cost — fee plus exchange-rate markup — not just the advertised fee.",
+      cta:{key:"remittance", label:"Compare transfer rates"}, src:"Landed KB · Remittances" },
+    { id:"housing", kw:"rent renting apartment no credit history landlord reference housing lease", title:"Renting with no Canadian credit history",
+      body:"Many landlords ask for credit history or Canadian references you won't have yet. Offer what you can: proof of income/job offer, a larger deposit if allowed in your province, tenant insurance, and reference letters from prior landlords. Tenant insurance and a clean paper trail make you look lower-risk.",
+      cta:{key:"tenantInsurance", label:"Compare tenant insurance"}, src:"Landed KB · Housing" },
+    { id:"sin", kw:"sin social insurance number work service canada apply", title:"Getting your SIN",
+      body:"Your SIN is free from Service Canada and needed to work and to open interest-bearing accounts. Apply online, by mail, or in person with your immigration document and passport. Never pay a third party for it.",
+      cta:null, src:"Landed KB · Getting started" },
+    { id:"benefits", kw:"benefits gst credit carbon rebate ccb child benefit eligible claim government", title:"Benefits you might be able to claim",
+      body:"After filing taxes, you may qualify for the GST/HST credit (quarterly payments for lower incomes), the Canada Carbon Rebate, and — if you have children — the Canada Child Benefit. Eligibility depends on residency and income, so file to find out.",
+      cta:null, src:"Landed KB · Taxes & benefits" },
+  ];
+
+  /* ---------- CARD CATEGORIES ---------- */
+  const CARD_CATS = [
+    { tag:"Best for: zero history", title:"Secured credit card", body:"You place a refundable deposit that becomes your limit. Approval doesn't depend on Canadian credit, so it's the most reliable first card. Use it lightly and pay in full.", best:"No history · guaranteed approval route", cta:{key:"securedCard", label:"See secured cards"} },
+    { tag:"Best for: bank customers", title:"Bank newcomer card", body:"Comes bundled with many newcomer banking packages. Approved using your status and income rather than a Canadian score. Convenient if you've just opened a newcomer account.", best:"Just opened a newcomer account", cta:{key:"newcomerBank", label:"See newcomer bundles"} },
+    { tag:"Best for: spending abroad", title:"No-FX-fee card", body:"Most Canadian cards add ~2.5% on foreign purchases. A no-foreign-transaction-fee card saves real money if you still spend in your home currency or travel.", best:"You spend abroad or in another currency", cta:{key:"securedCard", label:"See no-FX cards"} },
+    { tag:"Best for: after 6–12 mo", title:"Cashback starter", body:"Once you have some history, a simple no-fee cashback card rewards everyday spending. A sensible graduation from your first secured/newcomer card.", best:"Built a little history, want rewards", cta:{key:"securedCard", label:"See cashback cards"} },
+  ];
+
+  /* ---------- GUIDES ---------- */
+  const GUIDES = [
+    { q:"Your first 30 days: SIN → bank → credit card", a:"<ul><li><strong>Day 1–3:</strong> Apply for your SIN (free, Service Canada).</li><li><strong>Week 1:</strong> Open a newcomer bank account — no Canadian credit history required.</li><li><strong>Week 2–4:</strong> Get a secured or newcomer credit card and make one small purchase.</li><li><strong>Ongoing:</strong> Pay the full balance on time, keep utilization under 30%.</li></ul>Order matters: you need the SIN for banking, and the account often unlocks the card." },
+    { q:"Build a credit score from zero", a:"Your score is built from: payment history (pay on time, always), utilization (keep balances under ~30% of your limit), age of accounts (don't close your first card), and mix. With no history, one well-used starter card reported to Equifax/TransUnion usually gets you to a usable score in <strong>6–12 months</strong>. Avoid: missed payments, maxing the card, and applying for many cards at once." },
+    { q:"TFSA vs RRSP vs FHSA, explained simply", a:"<ul><li><strong>TFSA</strong> — grows tax-free; contribution room accrues once you're a resident; withdraw anytime.</li><li><strong>RRSP</strong> — contributions cut your taxable income now; room builds from earned income you report; taxed on withdrawal.</li><li><strong>FHSA</strong> — for a first home; deductible going in, tax-free coming out.</li></ul>Check your exact limits in CRA My Account before contributing — over-contributing is penalized." },
+    { q:"Your first tax return & the benefits it unlocks", a:"File even if you earned little. The deadline is usually <strong>April 30</strong>. Filing can unlock the <strong>GST/HST credit</strong>, the <strong>Canada Carbon Rebate</strong>, and the <strong>Canada Child Benefit</strong> (if you have kids). Keep your landing date and any income records. Many newcomers miss their first-year benefits simply by not filing." },
+    { q:"Send money home without losing to fees", a:"Compare the <strong>total</strong> cost = flat fee + exchange-rate markup. Banks look 'free' but bury cost in a poor rate. Specialist services (Wise, Remitly and similar) usually get you closer to the mid-market rate. Send a small test transfer first, and watch for promotional first-transfer rates." },
+    { q:"Renting with no Canadian references", a:"Landlords often want credit history or local references you don't have yet. Strengthen your application with: a job offer / proof of income, a larger deposit where your province allows it, tenant insurance, and reference letters from previous landlords. A clean, organized application beats a thin credit file." },
+  ];
+
+  /* ===================== RENDER ===================== */
+  const $ = s => document.querySelector(s);
+  const el = (tag, cls, html) => { const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; };
+
+  function ctaHTML(cta){
+    if(!cta) return "";
+    const url = AFFILIATE[cta.key] || "#";
+    const isLive = url && url !== "#";
+    const rel = isLive ? 'rel="sponsored noopener" target="_blank"' : 'onclick="return false;" aria-disabled="true"';
+    return `<div><a class="aff-cta" href="${url}" ${rel}>${cta.label} <span class="aff-tag">Affiliate</span></a></div>`;
+  }
+
+  /* ---- checklist ---- */
+  const STORE_KEY = "landed_checklist_v1";
+  let doneSet = new Set(JSON.parse(localStorage.getItem(STORE_KEY) || "[]"));
+
+  function renderChecklist(){
+    const root = $("#checklist-root"); root.innerHTML="";
+    PHASES.forEach(phase => {
+      root.appendChild(el("div","phase-title",phase.title));
+      phase.items.forEach(item => {
+        const done = doneSet.has(item.id);
+        const task = el("div", "task"+(done?" done":""));
+        task.dataset.id = item.id;
+        task.innerHTML = `
+          <div class="task-head">
+            <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div class="task-titles"><h4>${item.t}</h4><div class="meta">${item.meta}</div></div>
+            <div class="task-toggle">▾</div>
+          </div>
+          <div class="task-body"><div class="task-body-inner"><p>${item.body}</p>${ctaHTML(item.cta)}</div></div>`;
+        // toggle open on body area / title; checkbox toggles done
+        task.querySelector(".checkbox").addEventListener("click", e=>{ e.stopPropagation(); toggleDone(item.id); });
+        task.querySelector(".task-head").addEventListener("click", ()=> task.classList.toggle("open"));
+        root.appendChild(task);
+      });
+    });
+    updateProgress();
+  }
+  function toggleDone(id){
+    if(doneSet.has(id)) doneSet.delete(id); else doneSet.add(id);
+    localStorage.setItem(STORE_KEY, JSON.stringify([...doneSet]));
+    document.querySelectorAll(`.task[data-id="${id}"]`).forEach(t=>t.classList.toggle("done"));
+    updateProgress();
+  }
+  function updateProgress(){
+    const total = PHASES.reduce((n,p)=>n+p.items.length,0);
+    const done = [...doneSet].filter(id => PHASES.some(p=>p.items.some(i=>i.id===id))).length;
+    const pct = total ? Math.round(done/total*100) : 0;
+    $("#progress-fill").style.width = pct+"%";
+    $("#progress-label").textContent = `${done} of ${total} done`;
+    $("#progress-pct").textContent = pct+"%";
+  }
+
+  /* ---- Ask Landed ---- */
+  function answer(query){
+    const q = (query||"").toLowerCase();
+    if(!q.trim()) return null;
+    const words = q.split(/[^a-z0-9]+/).filter(w=>w.length>2);
+    let best=null, bestScore=0;
+    KB.forEach(entry=>{
+      const hay = (entry.kw+" "+entry.title).toLowerCase();
+      let score=0;
+      words.forEach(w=>{ if(hay.includes(w)) score++; });
+      // small boost for title matches
+      words.forEach(w=>{ if(entry.title.toLowerCase().includes(w)) score+=0.5; });
+      if(score>bestScore){ bestScore=score; best=entry; }
+    });
+    return bestScore>0 ? best : null;
+  }
+  function showAnswer(entry, fallbackQuery){
+    const box=$("#ask-answer");
+    if(!entry){
+      $("#answer-title").textContent = "I don't have a curated answer for that yet";
+      $("#answer-body").textContent = "Try rephrasing, or tap one of the suggested questions. You can also browse the Guides section below. (This offline copilot only covers newcomer money basics for now.)";
+      $("#answer-cta").innerHTML=""; $("#answer-src").textContent="";
+    } else {
+      $("#answer-title").textContent = entry.title;
+      $("#answer-body").textContent = entry.body;
+      $("#answer-cta").innerHTML = ctaHTML(entry.cta);
+      $("#answer-src").textContent = entry.src;
+    }
+    box.classList.add("show");
+  }
+  function renderChips(){
+    const chips = [
+      "How do I build credit with no history?",
+      "Which bank account should I open?",
+      "Do I need to file taxes?",
+      "Cheapest way to send money home?",
+      "TFSA vs RRSP vs FHSA?"
+    ];
+    const root=$("#ask-chips");
+    chips.forEach(c=>{ const b=el("button","chip",c); b.addEventListener("click",()=>{ $("#ask-input").value=c; showAnswer(answer(c)); }); root.appendChild(b); });
+  }
+  $("#ask-send").addEventListener("click", ()=> showAnswer(answer($("#ask-input").value)));
+  $("#ask-input").addEventListener("keydown", e=>{ if(e.key==="Enter") showAnswer(answer($("#ask-input").value)); });
+
+  /* ---- cards ---- */
+  function renderCards(){
+    const root=$("#cards-root");
+    CARD_CATS.forEach(c=>{
+      const card=el("div","rec-card");
+      card.innerHTML=`<div class="rc-tag">${c.tag}</div><h4>${c.title}</h4><p>${c.body}</p><div class="best-for">✓ ${c.best}</div>${ctaHTML(c.cta)}`;
+      root.appendChild(card);
+    });
+  }
+
+  /* ---- guides ---- */
+  function renderGuides(){
+    const root=$("#guides-root");
+    GUIDES.forEach(g=>{
+      const guide=el("div","guide");
+      guide.innerHTML=`<div class="guide-head"><h4>${g.q}</h4><div class="g-toggle">＋</div></div><div class="guide-body"><div class="guide-body-inner">${g.a}</div></div>`;
+      guide.querySelector(".guide-head").addEventListener("click",()=>guide.classList.toggle("open"));
+      root.appendChild(guide);
+    });
+  }
+
+  /* ---- calculators ---- */
+  function fmt(n){ return "$"+Math.round(n).toLocaleString(); }
+  // credit builder
+  const cbStart=$("#cb-start"), cbOntime=$("#cb-ontime"), cbUtil=$("#cb-util");
+  function calcCredit(){
+    const start=+cbStart.value, ontime=+cbOntime.value, util=+cbUtil.value;
+    $("#cb-start-val").textContent = cbStart.options[cbStart.selectedIndex].text;
+    $("#cb-ontime-val").textContent = ontime+"%";
+    $("#cb-util-val").textContent = util+"%";
+    // base months to ~650 by starting point
+    let months = [9, 7, 12][start];
+    months += (100-ontime)*0.6;          // late payments slow you down
+    months += Math.max(0, util-30)*0.12; // high utilization penalty
+    if(util<10) months -= 1;             // very low utilization slight help
+    months = Math.max(3, Math.round(months));
+    $("#cb-result").textContent = "~"+months+" mo";
+  }
+  [cbStart,cbOntime,cbUtil].forEach(x=>x.addEventListener("input",calcCredit));
+  // rent vs buy
+  const rbRent=$("#rb-rent"), rbPrice=$("#rb-price"), rbDown=$("#rb-down"), rbYears=$("#rb-years");
+  function calcRentBuy(){
+    const rent=+rbRent.value, price=+rbPrice.value, down=+rbDown.value/100, years=+rbYears.value;
+    $("#rb-rent-val").textContent = fmt(rent);
+    $("#rb-price-val").textContent = fmt(price);
+    $("#rb-down-val").textContent = (down*100)+"%";
+    $("#rb-years-val").textContent = years;
+    // --- rough model ---
+    const rate=0.052, n=25*12, mRate=rate/12; // 25yr amort, illustrative 5.2%
+    const loan=price*(1-down);
+    const mortgage = loan * mRate * Math.pow(1+mRate,n) / (Math.pow(1+mRate,n)-1);
+    const ownExtra = price*0.015/12; // taxes+maintenance ~1.5%/yr
+    const rentInflation=0.03, homeAppr=0.03;
+    let rentCost=0, r=rent;
+    for(let y=0;y<years;y++){ rentCost += r*12; r*=(1+rentInflation); }
+    // buying: down payment opportunity + payments + costs, minus equity + appreciation
+    const closing = price*0.02;
+    let paid = (mortgage+ownExtra)*12*years + price*down + closing;
+    // equity built (principal paid) + appreciation
+    let bal=loan; for(let m=0;m<years*12;m++){ const interest=bal*mRate; bal-= (mortgage-interest); }
+    const equity=(loan-bal) + price*(Math.pow(1+homeAppr,years)-1) + price*down;
+    const netBuy = paid - equity;
+    const diff = rentCost - netBuy; // positive => buying cheaper
+    if(Math.abs(diff) < price*0.01){
+      $("#rb-result").textContent = "≈ Break-even";
+      $("#rb-cap").textContent = `renting vs buying are close over ${years} yr (rough estimate)`;
+    } else if(diff>0){
+      $("#rb-result").textContent = "Buying ~"+fmt(diff);
+      $("#rb-cap").textContent = `estimated ${years}-yr advantage of buying (rough)`;
+    } else {
+      $("#rb-result").textContent = "Renting ~"+fmt(-diff);
+      $("#rb-cap").textContent = `estimated ${years}-yr advantage of renting (rough)`;
+    }
+  }
+  [rbRent,rbPrice,rbDown,rbYears].forEach(x=>x.addEventListener("input",calcRentBuy));
+
+  /* ---- email capture ---- */
+  $("#capture-form").addEventListener("submit", async e=>{
+    e.preventDefault();
+    const email=$("#capture-email").value.trim();
+    const msg=$("#capture-msg");
+    if(!email){ return; }
+    if(!CAPTURE_ENDPOINT){
+      // store locally until a real endpoint is configured
+      const list=JSON.parse(localStorage.getItem("landed_emails")||"[]"); list.push({email,ts:Date.now()});
+      localStorage.setItem("landed_emails", JSON.stringify(list));
+      msg.textContent="Thanks! You're on the list. (Connect an email endpoint to go live.)";
+      $("#capture-email").value="";
+      return;
+    }
+    try{
+      const res=await fetch(CAPTURE_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({email})});
+      msg.textContent = res.ok ? "Thanks! Check your inbox for the checklist." : "Something went wrong — try again.";
+      if(res.ok) $("#capture-email").value="";
+    }catch(err){ msg.textContent="Network error — try again."; }
+  });
+
+  /* ---- init ---- */
+  renderChecklist();
+  renderChips();
+  renderCards();
+  renderGuides();
+  calcCredit();
+  calcRentBuy();
+  $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
